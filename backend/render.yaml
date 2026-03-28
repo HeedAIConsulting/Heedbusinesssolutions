@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: heed-api
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: FIRECRAWL_API_KEY
+        sync: false  # Firecrawl API key from firecrawl.dev
+      - key: ANTHROPIC_API_KEY
+        sync: false  # Anthropic API key from console.anthropic.com
+      - key: PROSPECT_TOOL_PASSWORD
+        sync: false  # Password for the prospect finder tool
+      - key: NOTIFICATION_EMAIL
+        value: reachus@heedbusinesssolutions.com  # Where score notifications are sent
+      - key: SMTP_HOST
+        sync: false  # SMTP server hostname (e.g., smtp.gmail.com)
+      - key: SMTP_PORT
+        value: "587"  # SMTP port (587 for TLS, 465 for SSL)
+      - key: SMTP_USER
+        sync: false  # SMTP username / email address
+      - key: SMTP_PASS
+        sync: false  # SMTP password or app password
+      - key: ALLOWED_ORIGIN
+        value: https://heedbusinesssolutions.com  # Frontend domain for CORS
