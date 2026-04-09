@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO &amp; GEO Audit Report — MVP Law Group vs Talai Law | March 29, 2026</title>
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --gold: #c9a84c;
+    --cream: #fdfaf4;
+    --teal: #2a6f6b;
+    --red: #c0392b;
+    --green: #27ae60;
+    --amber: #f39c12;
+    --light-gray: #f4f5f7;
+    --border: #ddd;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+    background: #fff;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+  .report { max-width: 1000px; margin: 0 auto; padding: 40px 30px; }
+
+  /* Header */
+  .report-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 100%;
+    background: linear-gradient(135deg, transparent 50%, rgba(201,168,76,0.15) 50%);
+  }
+  .report-header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .report-header .subtitle { color: var(--gold); font-size: 16px; font-weight: 600; }
+  .report-header .meta { margin-top: 16px; font-size: 13px; opacity: 0.8; }
+
+  /* Sections */
+  .section { margin-bottom: 40px; page-break-inside: avoid; }
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    color: var(--navy);
+    border-bottom: 3px solid var(--gold);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+  }
+  .section-num {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  /* Score Cards */
+  .score-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .score-card {
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+  }
+  .score-card.client { border-color: var(--navy); }
+  .score-card.competitor { border-color: var(--teal); }
+  .score-card h3 { font-size: 16px; margin-bottom: 4px; }
+  .score-card .firm-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; margin-bottom: 12px; }
+  .score-badge {
+    display: inline-block;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .score-badge.green { color: var(--green); }
+  .score-badge.amber { color: var(--amber); }
+  .score-badge.red { color: var(--red); }
+  .score-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+  th {
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) td { background: var(--light-gray); }
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge-green { background: #e8f5e9; color: var(--green); }
+  .badge-amber { background: #fff8e1; color: #e67e22; }
+  .badge-red { background: #fce4ec; color: var(--red); }
+  .badge-gray { background: #eceff1; color: #607d8b; }
+  .check { color: var(--green); font-weight: 700; }
+  .cross { color: var(--red); font-weight: 700; }
+  .gap-pos { color: var(--green); font-weight: 600; }
+  .gap-neg { color: var(--red); font-weight: 600; }
+
+  /* Callout boxes */
+  .callout {
+    border-left: 4px solid;
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 16px;
+  }
+  .callout-red { border-color: var(--red); background: #fdf0ef; }
+  .callout-green { border-color: var(--green); background: #edf7ed; }
+  .callout-amber { border-color: var(--amber); background: #fef9ee; }
+  .callout-navy { border-color: var(--navy); background: #eef1f5; }
+  .callout h4 { margin-bottom: 4px; font-size: 14px; }
+  .callout p, .callout ul { font-size: 13px; }
+  .callout ul { padding-left: 18px; }
+
+  /* Tier cards */
+  .tier { margin-bottom: 20px; }
+  .tier-header {
+    font-weight: 700;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 6px 6px 0 0;
+    color: #fff;
+  }
+  .tier-1 .tier-header { background: var(--red); }
+  .tier-2 .tier-header { background: var(--amber); }
+  .tier-3 .tier-header { background: var(--teal); }
+  .tier-4 .tier-header { background: #7f8c8d; }
+  .tier-body {
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 16px;
+  }
+  .tier-body ol { padding-left: 20px; }
+  .tier-body li { margin-bottom: 8px; font-size: 13px; }
+
+  /* Category breakdown */
+  .cat-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 80px 80px 80px;
+    align-items: center;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .cat-row.header {
+    background: var(--navy);
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: none;
+  }
+  .cat-row:nth-child(even):not(.header) { background: var(--light-gray); }
+  .bar-container { height: 20px; background: #e0e0e0; border-radius: 10px; overflow: hidden; position: relative; }
+  .bar-fill { height: 100%; border-radius: 10px; transition: width 0.3s; }
+  .bar-fill.client-bar { background: var(--navy); }
+  .bar-fill.comp-bar { background: var(--teal); position: absolute; top: 0; opacity: 0.5; }
+
+  /* Print */
+  @media print {
+    .report { padding: 20px; }
+    .report-header { border-radius: 0; }
+    .section { page-break-inside: avoid; }
+  }
+
+  /* Footer */
+  .report-footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    color: #999;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="report">
+
+<!-- HEADER -->
+<div class="report-header">
+  <h1>SEO &amp; GEO Competitive Audit</h1>
+  <div class="subtitle">MVP Law Group, APC vs. Talai Law Offices</div>
+  <div class="meta">
+    Report Date: March 29, 2026 &nbsp;|&nbsp; Prepared by: Heed AI Solutions<br>
+    Client Domain: mvplawgroupla.com &nbsp;|&nbsp; Competitor Domain: talailaw.com
+  </div>
+</div>
+
+<!-- 1. EXECUTIVE SUMMARY -->
+<div class="section">
+  <h2 class="section-title"><span class="section-num">1</span> Executive Summary</h2>
+
+  <div class="score-grid">
+    <div class="score-card client">
+      <div class="firm-label">Client</div>
+      <h3>MVP Law Group, APC</h3>
+      <div class="score-badge amber">38</div>
+      <div class="score-label">Overall SEO Score</div>
+    </div>
+    <div class="score-card competitor">
+      <div class="firm-label">Competitor</div>
+      <h3>Talai Law Offices</h3>
+      <div class="score-badge green">74</div>
+      <div class="score-label">Overall SEO Score</div>
+    </div>
+  </div>
+
+  <div class="callout callout-red">
+    <h4>Key Finding: 36-Point Competitive Gap</h4>
+    <p>Talai Law outperforms MVP Law Group across nearly every SEO dimension. The most critical gap is in <strong>GEO page coverage</strong>: Talai has an estimated 150 to 300+ location/keyword pages under <code>/areas-we-serve/</code>, while MVP has <strong>zero</strong>. This single factor gives Talai dominant visibility for local search queries across the San Fernando Valley, Westside, and LA County.</p>
+  </div>
+
+  <div class="callout callout-green">
+    <h4>Top 3 MVP Wins</h4>
+    <ul>
+      <li><strong>Expertise.com Recognition:</strong> MVP is #5 of 8 "Best Estate Planning Lawyers in Encino" — Talai is not listed on Expertise.com for Encino</li>
+      <li><strong>Chamber Membership:</strong> Active Calabasas Chamber member (board level) — strong local authority signal</li>
+      <li><strong>Media Presence:</strong> Weekly HorizonTV appearances + YouTube channel provides unique video content authority</li>
+    </ul>
+  </div>
+
+  <div class="callout callout-red">
+    <h4>Top 3 Critical Gaps</h4>
+    <ul>
+      <li><strong>GEO Pages:</strong> 0 vs. 150 to 300+ location pages — Talai dominates local keyword variations</li>
+      <li><strong>SuperLawyers Listing:</strong> Talai has Rising Stars 2023 to 2024 — MVP is absent</li>
+      <li><strong>Directory Breadth:</strong> Talai is on 8+ legal directories; MVP on only 4 to 5</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 2. CATEGORY BREAKDOWN -->
+<div class="section">
+  <h2 class="section-title"><span class="section-num">2</span> Category Scores</h2>
+
+  <div class="cat-row header">
+    <div>Category</div>
+    <div>Visual Comparison</div>
+    <div style="text-align:center">MVP</div>
+    <div style="text-align:center">Talai</div>
+    <div style="text-align:center">Gap</div>
+  </div>
+
+  <div class="cat-row">
+    <div><strong>On-Site SEO</strong><br><span style="font-size:11px;opacity:0.6">Pages, titles, meta, structured data</span></div>
+    <div>
+      <div class="bar-container">
+        <div class="bar-fill client-bar" style="width:35%"></div>
+        <div class="bar-fill comp-bar" style="width:70%"></div>
+      </div>
+    </div>
+    <div style="text-align:center"><span class="badge badge-red">35</span></div>
+    <div style="text-align:center"><span class="badge badge-amber">70</span></div>
+    <div style="text-align:center" class="gap-neg">-35</div>
+  </div>
+
+  <div class="cat-row">
+    <div><strong>GEO Coverage</strong><br><span style="font-size:11px;opacity:0.6">City/service landing pages</span></div>
+    <div>
+      <div class="bar-container">
+        <div class="bar-fill client-bar" style="width:0%"></div>
+        <div class="bar-fill comp-bar" style="width:92%"></div>
+      </div>
+    </div>
+    <div style="text-align:center"><span class="badge badge-red">0</span></div>
+    <div style="text-align:center"><span class="badge badge-green">92</span></div>
+    <div style="text-align:center" class="gap-neg">-92</div>
+  </div>
+
+  <div class="cat-row">
+    <div><strong>Directory Presence</strong><br><span style="font-size:11px;opacity:0.6">Listings, NAP, completeness</span></div>
+    <div>
+      <div class="bar-container">
+        <div class="bar-fill client-bar" style="width:45%"></div>
+        <div class="bar-fill comp-bar" style="width:75%"></div>
+      </div>
+    </div>
+    <div style="text-align:center"><span class="badge badge-amber">45</span></div>
+    <div style="text-align:center"><span class="badge badge-amber">75</span></div>
+    <div style="text-align:center" class="gap-neg">-30</div>
+  </div>
+
+  <div class="cat-row">
+    <div><strong>Review Strength</strong><br><span style="font-size:11px;opacity:0.6">Count, rating, velocity</span></div>
+    <div>
+      <div class="bar-container">
+        <div class="bar-fill client-bar" style="width:55%"></div>
+        <div class="bar-fill comp-bar" style="width:80%"></div>
+      </div>
+    </div>
+    <div style="text-align:center"><span class="badge badge-amber">55</span></div>
+    <div style="text-align:center"><span class="badge badge-green">80</span></div>
+    <div style="text-align:center" class="gap-neg">-25</div>
+  </div>
+
+  <div class="cat-row">
+    <div><strong>Content Authority</strong><br><span style="font-size:11px;opacity:0.6">Blog, video, social, media</span></div>
+    <div>
+      <div class="bar-container">
+        <div class="bar-fill client-bar" style="width:50%"></div>
+        <div class="bar-fill comp-bar" style="width:60%"></div>
+      </div>
+    </div>
+    <div style="text-align:center"><span class="badge badge-amber">50</span></div>
+    <div style="text-align:center"><span class="badge badge-amber">60</span></div>
+    <div style="text-align:center" class="gap-neg">-10</div>
+  </div>
+
+  <div class="cat-row">
+    <div><strong>Backlink Signals</strong><br><span style="font-size:11px;opacity:0.6">Directories, chambers, media</span></div>
+    <div>
+      <div class="bar-container">
+        <div class="bar-fill client-bar" style="width:40%"></div>
+        <div class="bar-fill comp-bar" style="width:65%"></div>
+      </div>
+    </div>
+    <div style="text-align:center"><span class="badge badge-amber">40</span></div>
+    <div style="text-align:center"><span class="badge badge-amber">65</span></div>
+    <div style="text-align:center" class="gap-neg">-25</div>
+  </div>
+</div>
+
+<!-- 3. KEYWORD RANKINGS -->
+<div class="section">
+  <h2 class="section-title"><span class="section-num">3</span> Keyword Rankings Snapshot</h2>
+
+  <p style="margin-bottom:16px;font-size:13px;">Positions are based on where each domain appeared in Google organic results at the time of this audit. "NF" = Not Found in top 20 results.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Keyword</th>
+        <th>Monthly Est. Vol.</th>
+        <th>MVP Position</th>
+        <th>Talai Position</th>
+        <th>Winner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>estate planning attorney Encino</strong></td>
+        <td>320</td>
+        <td>Expertise.com (#5 of 8)</td>
+        <td>Multiple GEO pages in top 10</td>
+        <td><span class="badge badge-red">Talai</span></td>
+      </tr>
+      <tr>
+        <td><strong>estate planning lawyer Encino</strong></td>
+        <td>260</td>
+        <td>NF in top 10 organic</td>
+        <td>GEO page indexed</td>
+        <td><span class="badge badge-red">Talai</span></td>
+      </tr>
+      <tr>
+        <td><strong>living trust attorney Encino</strong></td>
+        <td>170</td>
+        <td>NF</td>
+        <td>NF (but has GEO page)</td>
+        <td><span class="badge badge-gray">Tie</span></td>
+      </tr>
+      <tr>
+        <td><strong>probate lawyer Encino</strong></td>
+        <td>140</td>
+        <td>NF</td>
+        <td>NF</td>
+        <td><span class="badge badge-gray">Tie</span></td>
+      </tr>
+      <tr>
+        <td><strong>estate planning Woodland Hills</strong></td>
+        <td>210</td>
+        <td>NF</td>
+        <td>Homepage ranks (based in WH)</td>
+        <td><span class="badge badge-red">Talai</span></td>
+      </tr>
+      <tr>
+        <td><strong>estate planning attorney Calabasas</strong></td>
+        <td>170</td>
+        <td>NF</td>
+        <td>GEO page: /areas-we-serve/calabasas/</td>
+        <td><span class="badge badge-red">Talai</span></td>
+      </tr>
+      <tr>
+        <td><strong>trust attorney Woodland Hills</strong></td>
+        <td>110</td>
+        <td>NF</td>
+        <td>Service page indexed</td>
+        <td><span class="badge badge-red">Talai</span></td>
+      </tr>
+      <tr>
+        <td><strong>estate planning Sherman Oaks</strong></td>
+        <td>140</td>
+        <td>NF</td>
+        <td>GEO page indexed</td>
+        <td><span class="badge badge-red">Talai</span></td>
+      </tr>
+      <tr>
+        <td><strong>estate planning Beverly Hills</strong></td>
+        <td>390</td>
+        <td>NF</td>
+        <td>GEO page indexed</td>
+        <td><span class="badge badge-red">Talai</span></td>
+      </tr>
+      <tr>
+        <td><strong>wills and trusts Encino</strong></td>
+        <td>90</td>
+        <td>NF</td>
+        <td>GEO page indexed</td>
+        <td><span class="badge badge-red">Talai</span></td>
+      </tr>
+      <tr>
+        <td><strong>bankruptcy attorney Encino</strong></td>
+        <td>90</td>
+        <td>Wix page indexed</td>
+        <td>NF (not a practice area)</td>
+        <td><span class="badge badge-green">MVP</span></td>
+      </tr>
+      <tr>
+        <td><strong>personal injury lawyer Encino</strong></td>
+        <td>210</td>
+        <td>Yelp listing appears</td>
+        <td>NF (not a practice area)</td>
+        <td><span class="badge badge-green">MVP</span></td>
+      </tr>
+      <tr>
+        <td><strong>"MVP Law Group"</strong> (brand)</td>
+        <td>20</td>
+        <td>Position 1 (branded)</td>
+        <td>N/A</td>
+        <td><span class="badge badge-green">MVP</span></td>
+      </tr>
+      <tr>
+        <td><strong>"Talai Law"</strong> (brand)</td>
+        <td>30</td>
+        <td>N/A</td>
+        <td>Position 1 (branded)</td>
+        <td><span class="badge badge-green">Talai</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-navy">
+    <h4>Key Takeaway</h4>
+    <p>MVP wins on branded search and in practice areas Talai doesn't serve (bankruptcy, personal injury). But for the high-value estate planning keywords across every SFV city, <strong>Talai dominates through sheer volume of keyword-targeted GEO pages</strong>. MVP is functionally invisible for local estate planning searches outside of the Expertise.com listing.</p>
+  </div>
+</div>
+
+<!-- 4. GEO COVERAGE -->
+<div class="section">
+  <h2 class="section-title"><span class="section-num">4</span> GEO Coverage Analysis</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>MVP Law Group</th>
+        <th>Talai Law</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Location/service pages</td>
+        <td class="cross">0 pages</td>
+        <td class="check">150 to 300+ pages (est.)</td>
+      </tr>
+      <tr>
+        <td>URL pattern</td>
+        <td>N/A</td>
+        <td>/areas-we-serve/{keyword}-in-{city}/</td>
+      </tr>
+      <tr>
+        <td>Keyword variation strategy</td>
+        <td>N/A</td>
+        <td>10+ keyword combos per city (estate planning lawyer, estate trust attorney, wills and estate, etc.)</td>
+      </tr>
+      <tr>
+        <td>Cities covered</td>
+        <td>0</td>
+        <td>Encino, Woodland Hills, Sherman Oaks, Beverly Hills, Calabasas, Westlake Village, LA County, and more</td>
+      </tr>
+      <tr>
+        <td>Structured data on GEO pages</td>
+        <td>N/A</td>
+        <td>Likely (Trustindex reviews embedded)</td>
+      </tr>
+      <tr>
+        <td>Cross-linking strategy</td>
+        <td>N/A</td>
+        <td>Each page links to /schedule-a-call/ and service pages</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-red">
+    <h4>Critical Gap: This Is the #1 Reason Talai Outranks MVP</h4>
+    <p>Talai's strategy: create a dedicated page for every plausible keyword + city combination. For Encino alone, they have pages targeting:</p>
+    <ul>
+      <li>Estate Planning Lawyer in Encino</li>
+      <li>Estate Planning Attorney in Encino</li>
+      <li>Estate Trust Lawyer in Encino</li>
+      <li>Estate Trust Law Firm in Encino</li>
+      <li>Estate And Will Lawyer in Encino</li>
+      <li>Estate Planning Law Firm in Encino</li>
+      <li>Wills Estate Attorney in Encino</li>
+      <li>Estate Law Attorney in Encino</li>
+      <li>Estate Law Law Firm in Encino</li>
+      <li>Estate Plan Law Firm in Encino</li>
+      <li>...and more</li>
+    </ul>
+    <p style="margin-top:8px;">Multiply this across 10+ cities and you get 150 to 300+ indexed pages, each targeting a unique long-tail search query. <strong>MVP has zero pages doing this.</strong></p>
+  </div>
+
+  <h3 style="margin:20px 0 12px;font-size:16px;">Recommended GEO Expansion for MVP Law Group</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Service Keyword</th>
+        <th>Priority Cities (8)</th>
+        <th>Est. Pages</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Estate Planning Attorney/Lawyer</td>
+        <td rowspan="6" style="vertical-align:middle">Encino, Woodland Hills, Calabasas, Tarzana, Sherman Oaks, Studio City, Reseda, Van Nuys, Beverly Hills, Brentwood, Pasadena, Glendale, Burbank</td>
+        <td>13</td>
+      </tr>
+      <tr><td>Living Trust Attorney/Lawyer</td><td>13</td></tr>
+      <tr><td>Probate Attorney/Lawyer</td><td>13</td></tr>
+      <tr><td>Trust Administration Attorney</td><td>13</td></tr>
+      <tr><td>Bankruptcy Attorney (Ch. 7/13)</td><td>13</td></tr>
+      <tr><td>Conservatorship Attorney</td><td>13</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" style="text-align:right;font-weight:700">Recommended Total:</td>
+        <td style="font-weight:700">78+ pages</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<!-- 5. DIRECTORY PRESENCE -->
+<div class="section">
+  <h2 class="section-title"><span class="section-num">5</span> Directory Presence Scorecard</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Directory</th>
+        <th>MVP Listed?</th>
+        <th>MVP Rating</th>
+        <th>Talai Listed?</th>
+        <th>Talai Rating</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Google Business Profile</strong></td>
+        <td class="check">Yes</td>
+        <td>4.7 (61 reviews)</td>
+        <td class="check">Yes</td>
+        <td>5.0 (est. 50+ reviews)</td>
+        <td><span class="badge badge-red">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Yelp</strong></td>
+        <td class="check">Yes</td>
+        <td>19 reviews</td>
+        <td class="check">Yes</td>
+        <td>5.0 stars</td>
+        <td><span class="badge badge-amber">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Avvo</strong></td>
+        <td class="check">Yes</td>
+        <td>10.0 Superb</td>
+        <td class="check">Yes</td>
+        <td>Listed with reviews</td>
+        <td><span class="badge badge-green">Good</span></td>
+      </tr>
+      <tr>
+        <td><strong>Expertise.com</strong></td>
+        <td class="check">Yes (#5 of 8)</td>
+        <td>Ranked</td>
+        <td class="cross">Not listed (Encino)</td>
+        <td>N/A</td>
+        <td><span class="badge badge-green">MVP Wins</span></td>
+      </tr>
+      <tr>
+        <td><strong>SuperLawyers</strong></td>
+        <td class="cross">Not listed</td>
+        <td>N/A</td>
+        <td class="check">Rising Stars 2023-24</td>
+        <td>Featured</td>
+        <td><span class="badge badge-red">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>FindLaw</strong></td>
+        <td class="cross">Not listed</td>
+        <td>N/A</td>
+        <td class="check">Yes</td>
+        <td>Listed</td>
+        <td><span class="badge badge-amber">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Justia</strong></td>
+        <td class="cross">Not found</td>
+        <td>N/A</td>
+        <td class="check">Yes</td>
+        <td>Listed</td>
+        <td><span class="badge badge-amber">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Lawyers of Distinction</strong></td>
+        <td class="check">Yes</td>
+        <td>Featured</td>
+        <td class="cross">Not found</td>
+        <td>N/A</td>
+        <td><span class="badge badge-green">MVP Wins</span></td>
+      </tr>
+      <tr>
+        <td><strong>Lawyers.com</strong></td>
+        <td class="check">Yes (verified)</td>
+        <td>Listed</td>
+        <td>Unknown</td>
+        <td>N/A</td>
+        <td><span class="badge badge-gray">Neutral</span></td>
+      </tr>
+      <tr>
+        <td><strong>Calabasas Chamber</strong></td>
+        <td class="check">Yes (Board)</td>
+        <td>Member</td>
+        <td class="cross">Not found</td>
+        <td>N/A</td>
+        <td><span class="badge badge-green">MVP Wins</span></td>
+      </tr>
+      <tr>
+        <td><strong>ProLawFirms</strong></td>
+        <td class="check">Yes</td>
+        <td>Listed</td>
+        <td>Unknown</td>
+        <td>N/A</td>
+        <td><span class="badge badge-gray">Neutral</span></td>
+      </tr>
+      <tr>
+        <td><strong>Asset Protection Council</strong></td>
+        <td class="cross">Not found</td>
+        <td>N/A</td>
+        <td class="check">Yes</td>
+        <td>Featured</td>
+        <td><span class="badge badge-amber">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>LawInfo</strong></td>
+        <td class="check">Yes</td>
+        <td>Listed</td>
+        <td>Unknown</td>
+        <td>N/A</td>
+        <td><span class="badge badge-gray">Neutral</span></td>
+      </tr>
+      <tr>
+        <td><strong>Facebook</strong></td>
+        <td class="check">Yes (510 likes)</td>
+        <td>Active</td>
+        <td class="check">Yes</td>
+        <td>Active</td>
+        <td><span class="badge badge-gray">Neutral</span></td>
+      </tr>
+      <tr>
+        <td><strong>LinkedIn</strong></td>
+        <td class="check">Yes (500+)</td>
+        <td>Active</td>
+        <td class="check">Yes</td>
+        <td>Active</td>
+        <td><span class="badge badge-gray">Neutral</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-amber">
+    <h4>Missing Directory Opportunities for MVP</h4>
+    <ul>
+      <li><strong>SuperLawyers</strong> — Paid profile + nomination process; high authority backlink</li>
+      <li><strong>FindLaw</strong> — Free listing available; claim and optimize</li>
+      <li><strong>Justia</strong> — Free lawyer profile; high DA backlink</li>
+      <li><strong>Martindale-Hubbell</strong> — Not found for either firm; first-mover opportunity</li>
+      <li><strong>BBB</strong> — Not found for MVP; trust signal</li>
+      <li><strong>NAELA directory</strong> — MVP is a member but check if profile is live</li>
+      <li><strong>WealthCounsel directory</strong> — MVP is a member but check if profile is live</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 6. REVIEW COMPARISON -->
+<div class="section">
+  <h2 class="section-title"><span class="section-num">6</span> Review Profile Comparison</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Platform</th>
+        <th>MVP Reviews</th>
+        <th>MVP Rating</th>
+        <th>Talai Reviews</th>
+        <th>Talai Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Google</td>
+        <td>61</td>
+        <td>4.7 stars</td>
+        <td>50+ (est.)</td>
+        <td>5.0 stars</td>
+      </tr>
+      <tr>
+        <td>Yelp</td>
+        <td>19</td>
+        <td>Listed</td>
+        <td>Listed</td>
+        <td>5.0 stars</td>
+      </tr>
+      <tr>
+        <td>Avvo</td>
+        <td>Listed</td>
+        <td>10.0 Superb</td>
+        <td>Listed</td>
+        <td>Positive reviews</td>
+      </tr>
+      <tr>
+        <td>Birdeye (aggregated)</td>
+        <td>61</td>
+        <td>Listed</td>
+        <td>Not found</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>Facebook</td>
+        <td>2</td>
+        <td>Not yet rated</td>
+        <td>Listed</td>
+        <td>Active</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-navy">
+    <h4>Review Strategy Assessment</h4>
+    <p><strong>MVP's Avvo 10.0 Superb rating is a significant asset</strong> that should be prominently featured on the website and in marketing materials. However, Talai's perfect 5.0 Google rating carries more weight for local pack rankings.</p>
+    <p style="margin-top:8px;"><strong>Target:</strong> MVP should aim for 100 Google reviews by Q3 2026 (currently 61). Every new client should receive a review request via email/text after case completion. Even 5 new reviews per month closes the gap quickly.</p>
+  </div>
+</div>
+
+<!-- 7. CONTENT & AUTHORITY -->
+<div class="section">
+  <h2 class="section-title"><span class="section-num">7</span> Content &amp; Authority Audit</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Signal</th>
+        <th>MVP Law Group</th>
+        <th>Talai Law</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Indexed Pages</strong></td>
+        <td>~10 pages (Wix site)</td>
+        <td>~200+ pages (core + GEO)</td>
+      </tr>
+      <tr>
+        <td><strong>Blog / Articles</strong></td>
+        <td class="cross">None detected</td>
+        <td class="check">Active blog at /blog/</td>
+      </tr>
+      <tr>
+        <td><strong>Video Content</strong></td>
+        <td class="check">YouTube channel + HorizonTV weekly</td>
+        <td class="check">Active YouTube channel (youtube.com/talailaw) + KIRN 670 AM radio (weekly)</td>
+      </tr>
+      <tr>
+        <td><strong>Resource Pages</strong></td>
+        <td class="check">/estate-planning-resources/</td>
+        <td>Service-specific content pages</td>
+      </tr>
+      <tr>
+        <td><strong>Social Media</strong></td>
+        <td>Facebook (510 likes), LinkedIn, Instagram, YouTube</td>
+        <td>Facebook, LinkedIn</td>
+      </tr>
+      <tr>
+        <td><strong>Media Appearances</strong></td>
+        <td class="check">HorizonTV (weekly), YouTube</td>
+        <td class="check">YouTube (youtube.com/talailaw), KIRN 670 AM Radio (weekly)</td>
+      </tr>
+      <tr>
+        <td><strong>Professional Memberships</strong></td>
+        <td>AAEPA, NAELA, WealthCounsel, LACBA, WLALA, Calabasas Chamber</td>
+        <td>Asset Protection Council, SuperLawyers Rising Stars</td>
+      </tr>
+      <tr>
+        <td><strong>Sitemap.xml</strong></td>
+        <td class="cross">Not detected (Wix auto-generates)</td>
+        <td class="check">Present at /sitemap/</td>
+      </tr>
+      <tr>
+        <td><strong>Structured Data</strong></td>
+        <td class="cross">Basic Wix defaults only</td>
+        <td>Likely via WordPress + review widgets</td>
+      </tr>
+      <tr>
+        <td><strong>Platform</strong></td>
+        <td>Wix (limited SEO control)</td>
+        <td>Custom/WordPress (full SEO control)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-amber">
+    <h4>Platform Limitation</h4>
+    <p>MVP's current site runs on <strong>Wix</strong>, which limits SEO customization: no custom structured data, limited URL control, no GEO page generation, slow page speed, and bloated HTML. <strong>The static site we built (in /MVPLaw/) resolves all of these issues</strong> and is ready for deployment with proper structured data, clean URLs, and a foundation for GEO page expansion.</p>
+  </div>
+</div>
+
+<!-- 8. TECHNICAL SEO CHECKLIST -->
+<div class="section">
+  <h2 class="section-title"><span class="section-num">8</span> Technical SEO Checklist</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Check</th>
+        <th>MVP (Live Wix Site)</th>
+        <th>MVP (New Static Build)</th>
+        <th>Talai</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>SSL / HTTPS</td>
+        <td class="check">Yes</td>
+        <td class="check">Yes (Cloudflare)</td>
+        <td class="check">Yes</td>
+      </tr>
+      <tr>
+        <td>Mobile responsive</td>
+        <td class="check">Yes (Wix)</td>
+        <td class="check">Yes</td>
+        <td class="check">Yes</td>
+      </tr>
+      <tr>
+        <td>Custom meta titles</td>
+        <td class="check">Basic</td>
+        <td class="check">Optimized</td>
+        <td class="check">Optimized</td>
+      </tr>
+      <tr>
+        <td>Meta descriptions</td>
+        <td>Wix auto-generated</td>
+        <td class="check">Custom per page</td>
+        <td class="check">Custom per page</td>
+      </tr>
+      <tr>
+        <td>H1 optimization</td>
+        <td>Wix default</td>
+        <td class="check">Keyword-targeted</td>
+        <td class="check">Keyword-targeted</td>
+      </tr>
+      <tr>
+        <td>Sitemap.xml</td>
+        <td>Wix auto</td>
+        <td class="cross">Not yet created</td>
+        <td class="check">Present</td>
+      </tr>
+      <tr>
+        <td>Robots.txt</td>
+        <td>Wix auto</td>
+        <td class="cross">Not yet created</td>
+        <td class="check">Present</td>
+      </tr>
+      <tr>
+        <td>Structured data (JSON-LD)</td>
+        <td class="cross">None</td>
+        <td class="cross">Not yet added</td>
+        <td>Partial (reviews)</td>
+      </tr>
+      <tr>
+        <td>Page speed</td>
+        <td class="cross">Wix overhead</td>
+        <td class="check">Fast (static HTML)</td>
+        <td>WordPress (moderate)</td>
+      </tr>
+      <tr>
+        <td>Clean URLs</td>
+        <td class="cross">Wix paths</td>
+        <td class="check">Clean .html paths</td>
+        <td class="check">Clean WP paths</td>
+      </tr>
+      <tr>
+        <td>Security headers</td>
+        <td>Wix default</td>
+        <td class="cross">_headers not yet created</td>
+        <td>Unknown</td>
+      </tr>
+      <tr>
+        <td>GA4 tracking</td>
+        <td>Unknown</td>
+        <td class="cross">Not yet wired</td>
+        <td>Likely present</td>
+      </tr>
+      <tr>
+        <td>GEO pages</td>
+        <td class="cross">0</td>
+        <td class="cross">0 (but infra ready)</td>
+        <td class="check">150 to 300+</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 9. PRIORITIZED RECOMMENDATIONS -->
+<div class="section">
+  <h2 class="section-title"><span class="section-num">9</span> Prioritized Recommendations</h2>
+
+  <div class="tier tier-1">
+    <div class="tier-header">Tier 1 — Critical (This Week)</div>
+    <div class="tier-body">
+      <ol>
+        <li><strong>Deploy the new static site to Cloudflare Pages.</strong> The Wix site is the single biggest technical bottleneck. The new build at <code>/MVPLaw/</code> has clean HTML, fast load times, proper heading structure, and is ready for SEO optimization. Complete the pre-launch checklist (Formspree endpoints, GA4, booking link, maps embed, robots.txt, sitemap.xml).</li>
+        <li><strong>Add sitemap.xml and robots.txt</strong> to the new site before deployment.</li>
+        <li><strong>Wire GA4 tracking (G-XXXXXXX)</strong> on all pages of the new site so we start collecting data on day one.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="tier tier-2">
+    <div class="tier-header">Tier 2 — High Priority (This Month)</div>
+    <div class="tier-body">
+      <ol>
+        <li><strong>Generate GEO pages.</strong> Use the geo-local-pages skill to create 78+ city x service pages covering 13 cities and 6 practice areas. This is the single highest-impact SEO action available — it directly competes with Talai's 150 to 300+ page strategy.</li>
+        <li><strong>Add JSON-LD structured data</strong> to all pages: Attorney (Person), LegalService (LocalBusiness), FAQPage, BreadcrumbList. Use the structured-data-jsonld skill.</li>
+        <li><strong>Claim missing directory profiles:</strong> SuperLawyers, FindLaw, Justia, Martindale-Hubbell, BBB. Each is a high-DA backlink + discovery channel.</li>
+        <li><strong>Launch a Google review campaign.</strong> Target: 100 Google reviews by Q3 2026. Send automated follow-up emails/texts to every completed client.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="tier tier-3">
+    <div class="tier-header">Tier 3 — Medium Priority (This Quarter)</div>
+    <div class="tier-body">
+      <ol>
+        <li><strong>Start a blog.</strong> Publish 2 to 4 posts per month targeting long-tail estate planning queries: "Do I need a living trust in California?", "What happens if you die without a will in CA?", "How to choose a conservator in California", etc.</li>
+        <li><strong>Embed YouTube videos</strong> from HorizonTV appearances on relevant practice area pages. Video embeds increase dwell time and provide unique content signals.</li>
+        <li><strong>Build out a Calabasas-specific content hub</strong> since Maria is on the Chamber board. A dedicated "Estate Planning in Calabasas" resource page with local community context would compete directly with Talai's Calabasas GEO page.</li>
+        <li><strong>Optimize Google Business Profile:</strong> Add weekly posts, new photos, Q&A responses. Ensure NAP (Name, Address, Phone) is identical across all directories.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="tier tier-4">
+    <div class="tier-header">Tier 4 — Nice to Have (Ongoing)</div>
+    <div class="tier-body">
+      <ol>
+        <li><strong>Pursue SuperLawyers nomination.</strong> This is a paid + peer-review process but carries significant authority and is one of Talai's key differentiators.</li>
+        <li><strong>Create downloadable lead magnets</strong> (estate planning checklist PDF, "5 Mistakes to Avoid" guide) to capture email leads from organic traffic.</li>
+        <li><strong>Build local backlinks:</strong> Guest posts on Calabasas Chamber blog, Encino Chamber, local news outlets, community event sponsorships.</li>
+        <li><strong>Consider Google Ads for high-intent keywords</strong> ("estate planning attorney Encino") while organic rankings build. Typical CPC for legal keywords: $15 to $40.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- 10. APPENDIX: COMPETITOR PAGE INVENTORY -->
+<div class="section">
+  <h2 class="section-title"><span class="section-num">10</span> Appendix: Competitor Page Inventory</h2>
+
+  <h3 style="margin-bottom:12px;font-size:16px;">Talai Law — Core Pages (~12)</h3>
+  <table>
+    <thead>
+      <tr><th>URL</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>talailaw.com/</td><td>Homepage (Woodland Hills Estate Planning)</td></tr>
+      <tr><td>talailaw.com/about-us/</td><td>About page + radio show mention</td></tr>
+      <tr><td>talailaw.com/our-services/</td><td>Services overview</td></tr>
+      <tr><td>talailaw.com/our-services/estate-planning/</td><td>Estate planning service page</td></tr>
+      <tr><td>talailaw.com/our-services/trusts/</td><td>Trusts service page</td></tr>
+      <tr><td>talailaw.com/our-team/</td><td>Team page</td></tr>
+      <tr><td>talailaw.com/our-team/ali-talai-esq-ll-m/</td><td>Ali Talai bio</td></tr>
+      <tr><td>talailaw.com/blog/</td><td>Blog index</td></tr>
+      <tr><td>talailaw.com/schedule-a-call/</td><td>Contact / booking</td></tr>
+      <tr><td>talailaw.com/how-our-law-firm-is-different/</td><td>Differentiator page</td></tr>
+      <tr><td>talailaw.com/sitemap/</td><td>HTML sitemap</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin:20px 0 12px;font-size:16px;">Talai Law — GEO Pages (Sampled, est. 150 to 300+ total)</h3>
+  <table>
+    <thead>
+      <tr><th>City</th><th>Keyword Variations Found</th><th>Est. Pages</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Encino</strong></td>
+        <td>estate planning lawyer, estate planning attorney, estate trust lawyer, estate trust law firm, estate and will lawyer, estate planning law firm, wills estate attorney, estate law attorney, estate law law firm, estate plan law firm, estate law firm, estate plan lawyer</td>
+        <td>12+</td>
+      </tr>
+      <tr>
+        <td><strong>Beverly Hills</strong></td>
+        <td>revocable living trust law office, revocable trust attorney, + likely more</td>
+        <td>10+ (est.)</td>
+      </tr>
+      <tr>
+        <td><strong>Sherman Oaks</strong></td>
+        <td>revocable trust attorney + likely more</td>
+        <td>10+ (est.)</td>
+      </tr>
+      <tr>
+        <td><strong>Westlake Village</strong></td>
+        <td>trusts estate law firm + likely more</td>
+        <td>10+ (est.)</td>
+      </tr>
+      <tr>
+        <td><strong>Calabasas</strong></td>
+        <td>estate planning lawyer (dedicated /calabasas/ page)</td>
+        <td>10+ (est.)</td>
+      </tr>
+      <tr>
+        <td><strong>Los Angeles County</strong></td>
+        <td>wills and estate lawyer, estate trust lawyer, revocable living trust law office, living trust attorney, wills and estate law firm</td>
+        <td>12+ (est.)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin:20px 0 12px;font-size:16px;">Key Competitive Intel</h3>
+  <table>
+    <thead>
+      <tr><th>Factor</th><th>Detail</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Office proximity</td><td><strong>Both firms are on the same street.</strong> MVP: 6200 Canoga Ave, Woodland Hills. Talai: 6300 Canoga Ave, Woodland Hills. They are direct geographic competitors.</td></tr>
+      <tr><td>Firm age</td><td>Talai: est. 1994 (32 years). MVP: est. 2009 (17 years).</td></tr>
+      <tr><td>Fee model</td><td>Talai: flat-fee (advertised). MVP: not publicly stated.</td></tr>
+      <tr><td>Niche focus</td><td>Talai: estate planning only. MVP: estate planning + bankruptcy + personal injury (broader but less focused).</td></tr>
+      <tr><td>Advanced credential</td><td>Talai: LL.M. in Taxation (estate tax planning specialization). MVP: NAELA, WealthCounsel, AAEPA memberships.</td></tr>
+      <tr><td>Community outreach</td><td>Talai: YouTube channel (youtube.com/talailaw) + KIRN 670 AM radio show (Farsi-language community). MVP: HorizonTV (Russian-language community) + YouTube + free seminars.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FOOTER -->
+<div class="report-footer">
+  <p><strong>SEO &amp; GEO Competitive Audit Report</strong> | Generated March 29, 2026</p>
+  <p>Prepared by Heed AI Solutions for MVP Law Group, APC</p>
+  <p style="margin-top:8px;">Data collected via public web search. For precise rank tracking and backlink metrics,<br>supplement with SEMrush, Ahrefs, or BrightLocal paid tools.</p>
+  <p style="margin-top:8px;font-size:11px;">This report can be re-generated at any time using the <code>/seo-geo-audit</code> skill.</p>
+</div>
+
+</div>
+</body>
+</html>

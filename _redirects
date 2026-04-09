@@ -1,0 +1,30 @@
+# Cloudflare Pages redirects / rewrites
+# Syntax: <from>   <to>   <status>
+#   200 = rewrite (URL stays the same, content served from target)
+#   301 = permanent redirect
+#   302 = temporary redirect
+
+# Clean URLs — ensure printed QR codes and marketing links resolve
+/events               /events.html               200
+/events/              /events.html               200
+/referral             /referral.html             200
+/referral/            /referral.html             200
+/vip-referral         /referral.html             301
+/vip                  /referral.html             301
+
+# Common friendly URLs → canonical pages
+/about                /about.html                200
+/contact              /contact.html              200
+/reviews              /reviews.html              200
+/press                /press.html                200
+/media                /press.html                301
+/team                 /about.html#team           301
+
+/estate-planning      /estate-planning.html      200
+/probate              /probate.html              200
+/bankruptcy           /bankruptcy.html           200
+/conservatorships     /conservatorships.html     200
+/special-needs-trust  /special-needs-trust.html  200
+
+# Legacy path cleanup
+/admin                /contact.html              301

@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MVP Law Growth Plan — Heed Business Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ══════════════════════════════════
+   RESET & TOKENS
+══════════════════════════════════ */
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --navy:#0d1b2a; --navy2:#162535; --navy3:#1e3048;
+  --gold:#c9a84c; --gold-lt:#f5e9c8; --gold-pale:#fdf8ee;
+  --teal:#2a7a6f; --teal-lt:#dff0ed;
+  --red:#c0392b; --red-lt:#fce4ec;
+  --green:#27ae60; --green-lt:#e8f5e9;
+  --amber:#f39c12; --amber-lt:#fff8e1;
+  --slate:#f6f7f9; --border:#e4e7ed;
+  --text:#1c2027; --mid:#505768; --muted:#8891a0;
+  --white:#ffffff;
+  --radius:12px;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--slate);color:var(--text);line-height:1.65;font-size:14px;overflow-x:hidden;}
+
+/* ── TOP BAR ── */
+.topbar{background:var(--navy);padding:12px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.topbar-brand{color:var(--gold);font-size:13px;font-weight:600;letter-spacing:.04em;}
+.topbar-right{color:rgba(255,255,255,.4);font-size:11px;}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:56px 32px 48px;position:relative;overflow:hidden;text-align:center;}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.08)0%,transparent 70%);}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:8px;}
+.hero h1 em{color:var(--gold);font-style:italic;}
+.hero-sub{color:rgba(255,255,255,.45);font-size:15px;margin-bottom:24px;font-weight:300;}
+.hero-meta{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;}
+.hero-meta .hm{text-align:center;}
+.hero-meta .hm-label{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:2px;}
+.hero-meta .hm-value{font-size:14px;color:rgba(255,255,255,.7);}
+.hero-meta .hm-value.gold{color:var(--gold);font-weight:600;}
+
+/* ── TAB NAV ── */
+.tab-nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.tab-nav::-webkit-scrollbar{height:0;}
+.tab-btn{flex:none;padding:14px 20px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;position:relative;}
+.tab-btn:hover{color:var(--text);background:var(--slate);}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--gold);font-weight:700;}
+.tab-btn .tab-num{display:inline-block;width:20px;height:20px;border-radius:50%;background:var(--slate);color:var(--muted);font-size:10px;font-weight:700;line-height:20px;text-align:center;margin-right:6px;}
+.tab-btn.active .tab-num{background:var(--navy);color:var(--gold);}
+
+/* ── TAB PANELS ── */
+.tab-panel{display:none;max-width:960px;margin:0 auto;padding:32px 24px 80px;}
+.tab-panel.active{display:block;animation:fadeUp .35s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── CARDS ── */
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.card-head{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.card-num{width:30px;height:30px;border-radius:8px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--navy);}
+.card-body{padding:24px;}
+
+/* ── TABLES ── */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0;}
+th{background:var(--navy);color:var(--white);padding:10px 14px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
+tr:nth-child(even) td{background:var(--slate);}
+.check{color:var(--green);font-weight:700;}
+.cross{color:var(--red);font-weight:700;}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase;}
+.badge-green{background:var(--green-lt);color:var(--green);}
+.badge-amber{background:var(--amber-lt);color:#e67e22;}
+.badge-red{background:var(--red-lt);color:var(--red);}
+.badge-navy{background:#e8edf3;color:var(--navy);}
+.badge-teal{background:var(--teal-lt);color:var(--teal);}
+
+/* ── CALLOUTS ── */
+.callout{border-left:4px solid;padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0;}
+.callout h4{margin-bottom:4px;font-size:14px;}
+.callout p,.callout ul{font-size:13px;}
+.callout ul{padding-left:18px;margin-top:6px;}
+.callout-gold{border-color:var(--gold);background:var(--gold-pale);}
+.callout-teal{border-color:var(--teal);background:var(--teal-lt);}
+.callout-red{border-color:var(--red);background:var(--red-lt);}
+.callout-navy{border-color:var(--navy);background:#eef1f5;}
+
+/* ── GRID ── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:16px 0;}
+@media(max-width:700px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+.stat-card{background:var(--slate);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;}
+.stat-card .sc-num{font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;line-height:1;}
+.stat-card .sc-num.green{color:var(--green);}
+.stat-card .sc-num.red{color:var(--red);}
+.stat-card .sc-num.amber{color:var(--amber);}
+.stat-card .sc-num.navy{color:var(--navy);}
+.stat-card .sc-num.gold{color:var(--gold);}
+.stat-card .sc-label{font-size:11px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.08em;}
+
+/* ── COMPARISON BOXES ── */
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin:16px 0;align-items:stretch;}
+.vs-box{border:2px solid var(--border);border-radius:var(--radius);padding:24px;position:relative;}
+.vs-box.current{border-color:var(--red);background:#fdf7f6;}
+.vs-box.upgrade{border-color:var(--green);background:#f5faf7;}
+.vs-divider{display:flex;align-items:center;justify-content:center;padding:0 16px;font-size:20px;font-weight:700;color:var(--muted);}
+.vs-label{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;}
+.vs-box.current .vs-label{color:var(--red);}
+.vs-box.upgrade .vs-label{color:var(--green);}
+.vs-list{list-style:none;}
+.vs-list li{font-size:13px;padding:5px 0;padding-left:20px;position:relative;color:var(--mid);}
+.vs-list li::before{position:absolute;left:0;font-size:12px;top:6px;}
+.vs-box.current .vs-list li::before{content:'\f00d';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--red);}
+.vs-box.upgrade .vs-list li::before{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--green);}
+@media(max-width:700px){.vs-grid{grid-template-columns:1fr;}.vs-divider{padding:12px 0;}}
+
+/* ── APPROVE / DISAPPROVE TOGGLES ── */
+.approval-row{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;background:var(--white);transition:all .25s;}
+.approval-row.approved{border-color:var(--green);background:var(--green-lt);}
+.approval-row.declined{border-color:var(--border);background:var(--slate);opacity:.6;}
+.ar-left{flex:1;}
+.ar-title{font-size:14px;font-weight:600;color:var(--navy);}
+.ar-desc{font-size:12px;color:var(--muted);margin-top:2px;}
+.ar-price{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--navy);margin-right:16px;white-space:nowrap;}
+.ar-btns{display:flex;gap:6px;}
+.ar-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--border);background:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;}
+.ar-btn.approve:hover,.ar-btn.approve.selected{background:var(--green);border-color:var(--green);color:var(--white);}
+.ar-btn.decline:hover,.ar-btn.decline.selected{background:var(--red);border-color:var(--red);color:var(--white);}
+.ar-btn.approve{color:var(--green);}
+.ar-btn.decline{color:var(--red);}
+
+/* ── PRICING SUMMARY BOX ── */
+.price-summary{background:var(--navy);border-radius:var(--radius);padding:28px;color:var(--white);margin:24px 0;}
+.ps-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px;}
+.ps-row:last-child{border-bottom:none;}
+.ps-row.total{border-top:2px solid var(--gold);margin-top:8px;padding-top:12px;font-weight:700;font-size:16px;}
+.ps-row .ps-amt{color:var(--gold);font-family:'JetBrains Mono',monospace;font-weight:600;}
+.ps-row.total .ps-amt{font-size:20px;}
+.ps-row.savings{color:var(--green-lt);}
+.ps-row.savings .ps-amt{color:#69db9f;}
+
+/* ── PERSONA CARDS ── */
+.persona{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:16px;}
+.persona-head{background:var(--navy);padding:16px 20px;display:flex;align-items:center;gap:14px;}
+.persona-icon{width:44px;height:44px;border-radius:50%;background:rgba(201,168,76,.15);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.persona-name{font-size:16px;font-weight:600;color:var(--white);}
+.persona-sub{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px;}
+.persona-body{padding:16px 20px;background:var(--white);}
+.persona-body p{font-size:13px;color:var(--mid);margin-bottom:8px;}
+.persona-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.persona-tags span{background:var(--gold-pale);color:var(--navy);font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;}
+
+/* ── PHASE TIMELINE ── */
+.tl-item{display:grid;grid-template-columns:80px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);}
+.tl-item:last-child{border-bottom:none;}
+.tl-week{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;padding-top:2px;}
+.tl-content h4{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px;}
+.tl-content p{font-size:13px;color:var(--mid);margin:0;}
+
+/* ── FINANCING CALC ── */
+.fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+.fin-card{border:2px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;cursor:pointer;transition:all .25s;}
+.fin-card:hover,.fin-card.selected{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-lt);}
+.fin-card .fc-months{font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--navy);}
+.fin-card .fc-per{font-size:12px;color:var(--muted);margin-top:4px;}
+.fin-card .fc-monthly{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--gold);margin-top:8px;}
+.fin-card .fc-label{font-size:11px;color:var(--muted);margin-top:2px;}
+
+/* ── LANGUAGE FLAGS ── */
+.lang-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:16px 0;}
+.lang-card{border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;background:var(--white);}
+.lang-card .lc-flag{font-size:36px;margin-bottom:8px;}
+.lang-card .lc-name{font-size:14px;font-weight:600;color:var(--navy);}
+.lang-card .lc-pages{font-size:12px;color:var(--muted);margin-top:2px;}
+.lang-card .lc-pop{font-size:11px;color:var(--teal);font-weight:600;margin-top:6px;}
+@media(max-width:600px){.lang-grid{grid-template-columns:1fr 1fr;}}
+
+/* ── CTA BLOCK ── */
+.cta-block{background:var(--navy);border-radius:var(--radius);padding:40px;text-align:center;margin:32px 0;}
+.cta-block h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.cta-block p{color:rgba(255,255,255,.5);font-size:14px;margin-bottom:24px;}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);padding:14px 28px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:opacity .15s;}
+.cta-btn:hover{opacity:.88;}
+.cta-btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--gold);padding:14px 28px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;border:2px solid rgba(201,168,76,.3);cursor:pointer;transition:all .15s;margin-left:12px;}
+.cta-btn-outline:hover{border-color:var(--gold);background:rgba(201,168,76,.1);}
+
+/* ── DASHBOARD PREVIEW ── */
+.dash-preview{border:2px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:16px 0;}
+.dash-chrome{background:#1e1e1e;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+.dash-dot{width:10px;height:10px;border-radius:50%;}
+.dash-url{flex:1;text-align:center;font-size:11px;color:rgba(255,255,255,.4);}
+.dash-body{background:var(--navy);padding:32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.dash-widget{background:var(--navy2);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:16px;text-align:center;}
+.dash-widget .dw-label{font-size:10px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
+.dash-widget .dw-num{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:var(--gold);}
+.dash-widget .dw-trend{font-size:11px;margin-top:4px;}
+.dash-widget .dw-trend.up{color:#69db9f;}
+.dash-widget .dw-trend.down{color:#e74c3c;}
+
+/* ── FOOTER ── */
+.site-footer{text-align:center;padding:32px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}
+
+/* ── TOTALS BAR ── */
+.totals-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--navy);border-top:2px solid var(--gold);padding:12px 32px;display:flex;align-items:center;justify-content:space-between;transform:translateY(100%);transition:transform .3s;box-shadow:0 -4px 20px rgba(0,0,0,.3);}
+.totals-bar.visible{transform:translateY(0);}
+.tb-left{color:rgba(255,255,255,.6);font-size:13px;}
+.tb-left strong{color:var(--white);}
+.tb-right{display:flex;align-items:center;gap:20px;}
+.tb-total{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--gold);}
+.tb-total span{font-size:12px;font-weight:400;color:rgba(255,255,255,.4);}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-brand">Heed Business Solutions</div>
+  <div class="topbar-right">Confidential &mdash; Prepared for MVP Law Group, APC &mdash; March 30, 2026</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Growth Plan Proposal</div>
+  <h1>MVP Law <em>Growth Plan</em></h1>
+  <p class="hero-sub">Maria V. Primushko, Esq. &middot; Estate Planning &middot; Bankruptcy &middot; Probate &middot; Conservatorships</p>
+  <div class="hero-meta">
+    <div class="hm">
+      <div class="hm-label">Prepared By</div>
+      <div class="hm-value">Michael Bowers &middot; Heed Business Solutions</div>
+    </div>
+    <div class="hm">
+      <div class="hm-label">Presented</div>
+      <div class="hm-value">March 30, 2026 &middot; 12:00 PM</div>
+    </div>
+    <div class="hm">
+      <div class="hm-label">Location</div>
+      <div class="hm-value">MVP Law Group &middot; 6200 Canoga Ave, Woodland Hills</div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<nav class="tab-nav" id="tabNav">
+  <button class="tab-btn active" data-tab="overview"><span class="tab-num">1</span>Overview</button>
+  <button class="tab-btn" data-tab="competition"><span class="tab-num">2</span>Competition</button>
+  <button class="tab-btn" data-tab="brand"><span class="tab-num">3</span>Brand</button>
+  <button class="tab-btn" data-tab="plan30"><span class="tab-num">4</span>30-Day Plan</button>
+  <button class="tab-btn" data-tab="growth"><span class="tab-num">5</span>Growth Plan</button>
+  <button class="tab-btn" data-tab="local"><span class="tab-num">6</span>Local &amp; Language</button>
+  <button class="tab-btn" data-tab="pricing"><span class="tab-num">7</span>Pricing</button>
+  <button class="tab-btn" data-tab="next"><span class="tab-num">8</span>Next Steps</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 1: OVERVIEW
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel active" id="overview">
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num">01</div>
+      <div class="card-title">Where We Are</div>
+    </div>
+    <div class="card-body">
+      <p>Maria, you approved the Starter engagement and we have been executing on the foundation: website build, brand direction, social content, and Lawcus automation. This proposal is the recommended next step to <strong>directly compete with Talai Law</strong>, your closest geographic competitor (literally one building away at 6300 Canoga Ave).</p>
+
+      <div class="vs-grid">
+        <div class="vs-box current">
+          <div class="vs-label"><i class="fa-solid fa-circle-xmark" style="margin-right:4px;"></i> Without Upgrades (Starter Only)</div>
+          <ul class="vs-list">
+            <li>New website live with 11 pages</li>
+            <li>20 AI avatar reels + 20 static posts monthly</li>
+            <li>10 SEO blog posts per month</li>
+            <li>Zero local/city landing pages</li>
+            <li>English only</li>
+            <li>No paid ad management</li>
+            <li>No service-specific landing pages</li>
+            <li>Talai keeps 150 to 300+ page advantage</li>
+          </ul>
+        </div>
+        <div class="vs-divider">vs</div>
+        <div class="vs-box upgrade">
+          <div class="vs-label"><i class="fa-solid fa-circle-check" style="margin-right:4px;"></i> With Growth Plan Upgrades</div>
+          <ul class="vs-list">
+            <li>Everything in Starter</li>
+            <li>140 local SEO city pages</li>
+            <li>4 languages: Spanish, Russian, Ukrainian, Armenian</li>
+            <li>10 service landing pages per month (ad-ready, with clear CTAs)</li>
+            <li>20 SEO blog posts per month in all 5 languages (100 total posts)</li>
+            <li>40 social posts per month (20 reels + 20 static) — every weekday</li>
+            <li>Google + Meta ads management</li>
+            <li>Monthly analytics reporting + live dashboard</li>
+            <li>Overtake Talai's GEO presence entirely</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout callout-gold">
+        <h4>The Bottom Line</h4>
+        <p>Talai Law has dominated local search with 150+ location pages and aggressive directory presence. <strong>No competitor in this market, including Talai, is publishing in Spanish, Russian, Ukrainian, or Armenian.</strong> With the San Fernando Valley's large Eastern European and Hispanic populations, this is an untapped market that gives MVP Law a decisive first-mover advantage.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num"><i class="fa-solid fa-file-lines" style="font-size:13px;"></i></div>
+      <div class="card-title">Documents Included in This Presentation</div>
+    </div>
+    <div class="card-body">
+      <table>
+        <thead><tr><th>Tab</th><th>Document</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td><strong>Competition Report</strong> — Full SEO/GEO audit: MVP Law vs. Talai Law</td><td><span class="badge badge-green">Complete</span></td></tr>
+          <tr><td>3</td><td><strong>Brand Direction</strong> — 3 design directions for your review</td><td><span class="badge badge-green">Complete</span></td></tr>
+          <tr><td>4</td><td><strong>30-Day Plan</strong> — Keywords, personas, messaging focus for Month 1</td><td><span class="badge badge-green">Complete</span></td></tr>
+          <tr><td>5</td><td><strong>Growth Plan</strong> — Scale tier details, landing pages, ad strategy</td><td><span class="badge badge-green">Complete</span></td></tr>
+          <tr><td>6</td><td><strong>Local &amp; Language Pages</strong> — 140 GEO pages + 4 language translations</td><td><span class="badge badge-green">Complete</span></td></tr>
+          <tr><td>7</td><td><strong>Pricing</strong> — Itemized, approve/decline each option</td><td><span class="badge badge-amber">Awaiting Approval</span></td></tr>
+          <tr><td>8</td><td><strong>Next Steps</strong> — Live dashboard, timeline, CTA</td><td><span class="badge badge-navy">Ready</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 2: COMPETITION REPORT
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="competition">
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num">02</div>
+      <div class="card-title">SEO &amp; GEO Competitive Audit: MVP Law vs. Talai Law</div>
+    </div>
+    <div class="card-body">
+      <p style="margin-bottom:20px;">Full head-to-head comparison conducted March 30, 2026. Talai Law Offices (6300 Canoga Ave, Woodland Hills) is your direct geographic competitor, one building away from your office at 6200 Canoga Ave.</p>
+
+      <div class="grid-3">
+        <div class="stat-card">
+          <div class="sc-num amber">38</div>
+          <div class="sc-label">MVP SEO Score</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-num green">74</div>
+          <div class="sc-label">Talai SEO Score</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-num red">-36</div>
+          <div class="sc-label">Gap to Close</div>
+        </div>
+      </div>
+
+      <!-- Category breakdown -->
+      <h3 style="margin:24px 0 12px;font-size:16px;color:var(--navy);">Category Breakdown</h3>
+      <table>
+        <thead><tr><th>Category</th><th>MVP</th><th>Talai</th><th>Gap</th></tr></thead>
+        <tbody>
+          <tr><td><strong>On-Site SEO</strong></td><td><span class="badge badge-red">35</span></td><td><span class="badge badge-amber">70</span></td><td class="cross">-35</td></tr>
+          <tr><td><strong>GEO Coverage</strong></td><td><span class="badge badge-red">0</span></td><td><span class="badge badge-green">92</span></td><td class="cross">-92</td></tr>
+          <tr><td><strong>Directory Presence</strong></td><td><span class="badge badge-amber">45</span></td><td><span class="badge badge-amber">75</span></td><td class="cross">-30</td></tr>
+          <tr><td><strong>Review Strength</strong></td><td><span class="badge badge-amber">55</span></td><td><span class="badge badge-green">80</span></td><td class="cross">-25</td></tr>
+          <tr><td><strong>Content Authority</strong></td><td><span class="badge badge-amber">50</span></td><td><span class="badge badge-amber">60</span></td><td class="cross">-10</td></tr>
+          <tr><td><strong>Backlink Signals</strong></td><td><span class="badge badge-amber">40</span></td><td><span class="badge badge-amber">65</span></td><td class="cross">-25</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-red">
+        <h4>Critical Gap: GEO Pages (0 vs. 150 to 300+)</h4>
+        <p>Talai has created 10+ keyword variations for every city they target. For Encino alone: "estate planning lawyer in Encino", "estate trust law firm in Encino", "wills estate attorney in Encino", and 9+ more. Multiply across 10+ cities = 150 to 300+ indexed pages. <strong>MVP has zero.</strong></p>
+      </div>
+
+      <h3 style="margin:24px 0 12px;font-size:16px;color:var(--navy);">Keyword Rankings</h3>
+      <table>
+        <thead><tr><th>Keyword</th><th>MVP</th><th>Talai</th><th>Winner</th></tr></thead>
+        <tbody>
+          <tr><td>estate planning attorney Encino</td><td>Expertise.com only</td><td>Multiple GEO pages</td><td><span class="badge badge-red">Talai</span></td></tr>
+          <tr><td>estate planning lawyer Encino</td><td>Not found</td><td>GEO page indexed</td><td><span class="badge badge-red">Talai</span></td></tr>
+          <tr><td>estate planning Woodland Hills</td><td>Not found</td><td>Homepage ranks</td><td><span class="badge badge-red">Talai</span></td></tr>
+          <tr><td>estate planning Calabasas</td><td>Not found</td><td>GEO page indexed</td><td><span class="badge badge-red">Talai</span></td></tr>
+          <tr><td>estate planning Sherman Oaks</td><td>Not found</td><td>GEO page indexed</td><td><span class="badge badge-red">Talai</span></td></tr>
+          <tr><td>estate planning Beverly Hills</td><td>Not found</td><td>GEO page indexed</td><td><span class="badge badge-red">Talai</span></td></tr>
+          <tr><td>bankruptcy attorney Encino</td><td>Wix page indexed</td><td>Not a practice area</td><td><span class="badge badge-green">MVP</span></td></tr>
+          <tr><td>personal injury lawyer Encino</td><td>Yelp listing</td><td>Not a practice area</td><td><span class="badge badge-green">MVP</span></td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:24px 0 12px;font-size:16px;color:var(--navy);">Directory Presence</h3>
+      <table>
+        <thead><tr><th>Directory</th><th>MVP</th><th>Talai</th></tr></thead>
+        <tbody>
+          <tr><td>Google Reviews</td><td>4.7 stars (61)</td><td>5.0 stars (50+ est.)</td></tr>
+          <tr><td>Yelp</td><td class="check">19 reviews</td><td class="check">5.0 stars</td></tr>
+          <tr><td>Avvo</td><td class="check">10.0 Superb</td><td class="check">Listed</td></tr>
+          <tr><td>Expertise.com</td><td class="check">#5 of 8 Encino</td><td class="cross">Not listed</td></tr>
+          <tr><td>SuperLawyers</td><td class="cross">Not listed</td><td class="check">Rising Stars 23-24</td></tr>
+          <tr><td>FindLaw</td><td class="cross">Not listed</td><td class="check">Listed</td></tr>
+          <tr><td>Justia</td><td class="cross">Not listed</td><td class="check">Listed</td></tr>
+          <tr><td>Lawyers of Distinction</td><td class="check">Featured</td><td class="cross">Not listed</td></tr>
+          <tr><td>Calabasas Chamber</td><td class="check">Board member</td><td class="cross">Not listed</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-teal">
+        <h4>What Talai is NOT Doing</h4>
+        <ul>
+          <li>No multilingual pages (Spanish, Russian, Ukrainian, Armenian)</li>
+          <li>No community event workshops</li>
+          <li>Not on Expertise.com for Encino</li>
+          <li>No Calabasas Chamber membership</li>
+        </ul>
+        <p style="margin-top:8px;"><strong>These are your openings.</strong> The Growth Plan exploits every one of them.</p>
+      </div>
+
+      <div class="callout callout-red">
+        <h4>What Talai IS Doing Well</h4>
+        <ul>
+          <li><strong>Active YouTube channel</strong> (<a href="https://www.youtube.com/talailaw" style="color:var(--red);">youtube.com/talailaw</a>) — consistent video content production</li>
+          <li><strong>Weekly radio show</strong> on KIRN 670 AM — community authority building</li>
+          <li><strong>150 to 300+ GEO pages</strong> — dominating local search</li>
+          <li><strong>5.0 Google rating</strong> — perfect review score</li>
+        </ul>
+        <p style="margin-top:8px;">The Growth Plan is designed to <strong>match and surpass this activity level</strong> — particularly through AI avatar video content at scale on YouTube, which Talai is producing manually.</p>
+      </div>
+
+      <p style="margin-top:16px;font-size:13px;color:var(--muted);">Full interactive report with all data: <a href="seo-geo-audit-2026-03-29.html" style="color:var(--teal);">Open Full Audit Report &rarr;</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 3: BRAND DIRECTION
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="brand">
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num">03</div>
+      <div class="card-title">Brand Direction Selection</div>
+    </div>
+    <div class="card-body">
+      <p>Three brand directions were designed for your review. Each includes a full color palette, typography system, logo wordmark treatment, and sample website section. Select the direction that feels right for MVP Law Group's identity.</p>
+
+      <div class="callout callout-gold">
+        <h4>Interactive Brand Kit</h4>
+        <p>The full brand direction presentation with live previews of each option is available as a separate interactive document. Click below to review all three directions side by side.</p>
+      </div>
+
+      <div style="text-align:center;margin:24px 0;">
+        <a href="brand-kit.html" class="cta-btn"><i class="fa-solid fa-palette"></i> View Brand Kit Selection &rarr;</a>
+      </div>
+
+      <p style="font-size:13px;color:var(--muted);text-align:center;">Opens in a new view. Compare palettes, typography, and layout options. Your selection drives the final website design.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 4: 30-DAY PLAN
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="plan30">
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num">04</div>
+      <div class="card-title">30-Day Launch Plan: Keywords, Personas &amp; Messaging</div>
+    </div>
+    <div class="card-body">
+
+      <h3 style="font-size:16px;color:var(--navy);margin-bottom:16px;">Target Client Personas</h3>
+
+      <div class="persona">
+        <div class="persona-head">
+          <div class="persona-icon"><i class="fa-solid fa-house-chimney"></i></div>
+          <div>
+            <div class="persona-name">The Protector Parent</div>
+            <div class="persona-sub">Ages 38 to 55 &middot; Homeowner &middot; Children under 18 &middot; HHI $120K+</div>
+          </div>
+        </div>
+        <div class="persona-body">
+          <p><strong>Pain:</strong> "What happens to my kids and house if something happens to me?" Has been meaning to set up a trust but keeps putting it off. Triggered by a friend's experience with probate or a health scare.</p>
+          <p><strong>Messaging angle:</strong> "Your family deserves a plan, not a probate case." Emphasize speed, simplicity, and the cost of doing nothing.</p>
+          <div class="persona-tags">
+            <span>living trust</span><span>guardianship</span><span>estate planning for families</span><span>avoid probate</span><span>power of attorney</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="persona">
+        <div class="persona-head">
+          <div class="persona-icon"><i class="fa-solid fa-briefcase"></i></div>
+          <div>
+            <div class="persona-name">The Business Builder</div>
+            <div class="persona-sub">Ages 40 to 60 &middot; Business owner &middot; Real estate investor &middot; $250K+ assets</div>
+          </div>
+        </div>
+        <div class="persona-body">
+          <p><strong>Pain:</strong> Business is growing but nothing is structured to survive them. Mixing personal and business assets. Worried about lawsuits, taxes, and succession.</p>
+          <p><strong>Messaging angle:</strong> "Build the business. Protect the legacy." Asset protection, LLC structuring, business succession planning, and irrevocable trusts.</p>
+          <div class="persona-tags">
+            <span>asset protection</span><span>business succession</span><span>irrevocable trust</span><span>estate tax planning</span><span>family business</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="persona">
+        <div class="persona-head">
+          <div class="persona-icon"><i class="fa-solid fa-heart"></i></div>
+          <div>
+            <div class="persona-name">The Caregiver</div>
+            <div class="persona-sub">Ages 45 to 65 &middot; Caring for aging parent or disabled family member</div>
+          </div>
+        </div>
+        <div class="persona-body">
+          <p><strong>Pain:</strong> Parent is declining. Needs conservatorship, special needs trust, or Medi-Cal planning. Overwhelmed, emotional, needs someone who understands. Cultural context matters (Eastern European, Hispanic families).</p>
+          <p><strong>Messaging angle:</strong> "We understand the weight you carry." Compassion-first, clear guidance, someone who speaks their language (literally).</p>
+          <div class="persona-tags">
+            <span>conservatorship</span><span>special needs trust</span><span>elder law</span><span>Medi-Cal planning</span><span>caregiver support</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:28px 0 16px;">Month 1 Keyword Targets</h3>
+
+      <table>
+        <thead><tr><th>Keyword Cluster</th><th>Target Keywords</th><th>Content Type</th><th>Priority</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Core Estate Planning</strong></td>
+            <td>estate planning attorney Encino, living trust lawyer Encino, estate planning Calabasas, trust attorney near me</td>
+            <td>Service pages + GEO pages</td>
+            <td><span class="badge badge-red">Critical</span></td>
+          </tr>
+          <tr>
+            <td><strong>Probate &amp; Administration</strong></td>
+            <td>probate lawyer Encino, California probate process, how to avoid probate, trust administration attorney</td>
+            <td>Service page + 2 blog posts</td>
+            <td><span class="badge badge-amber">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>Special Needs</strong></td>
+            <td>special needs trust attorney Los Angeles, ABLE account California, pooled trust California</td>
+            <td>Service page + 1 blog post</td>
+            <td><span class="badge badge-amber">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>Bankruptcy</strong></td>
+            <td>bankruptcy attorney Encino, Chapter 7 vs 13, bankruptcy lawyer Woodland Hills, debt relief attorney</td>
+            <td>Service page + 2 blog posts</td>
+            <td><span class="badge badge-amber">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>Conservatorships</strong></td>
+            <td>conservatorship attorney Encino, how to get conservatorship California, LPS conservatorship</td>
+            <td>Service page + 1 blog post</td>
+            <td><span class="badge badge-teal">Medium</span></td>
+          </tr>
+          <tr>
+            <td><strong>Multilingual</strong></td>
+            <td>abogado planificacion patrimonial, адвокат по наследственным делам, адвокат з нерухомості</td>
+            <td>Translated pages (all)</td>
+            <td><span class="badge badge-red">Critical</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:28px 0 16px;">The Gap Between You and Talai</h3>
+
+      <div class="callout callout-red">
+        <h4>Where Talai Is Winning Right Now</h4>
+        <ul>
+          <li><strong>150 to 300+ GEO pages</strong> vs. your 0 — they dominate every "estate planning + city" search</li>
+          <li><strong>5.0 Google rating</strong> vs. your 4.7 — perfect score carries more weight in the local pack</li>
+          <li><strong>SuperLawyers Rising Stars</strong> — a credential you are missing</li>
+          <li><strong>Active blog</strong> — ongoing content production vs. none</li>
+          <li><strong>8+ directory listings</strong> vs. your 4 to 5</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-teal">
+        <h4>Where You Can Leap Ahead</h4>
+        <ul>
+          <li><strong>Multilingual pages</strong> — Talai publishes in English only. The Valley's Russian, Ukrainian, Armenian, and Spanish-speaking communities are completely unserved</li>
+          <li><strong>AI avatar video at scale</strong> — Talai has an active YouTube channel (<a href="https://www.youtube.com/talailaw" style="color:var(--teal);">youtube.com/talailaw</a>), but produces content manually. With AI avatar reels, you can match and exceed their video output every single week</li>
+          <li><strong>Community events</strong> — you run free workshops; they do not</li>
+          <li><strong>Expertise.com</strong> — you are ranked #5 of 8 in Encino; they are not listed</li>
+          <li><strong>Calabasas Chamber</strong> — you sit on the board; they have no membership</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:28px 0 16px;">How the Growth Plan Closes the Gap: Month 1 Output</h3>
+
+      <div class="vs-grid">
+        <div class="vs-box current">
+          <div class="vs-label">Starter Only (No Upgrades)</div>
+          <ul class="vs-list">
+            <li>10 blog posts published</li>
+            <li>20 social posts (10 reels + 10 static)</li>
+            <li>11 website pages indexed</li>
+            <li>English only</li>
+            <li>No city-specific pages</li>
+            <li>No ad landing pages</li>
+            <li>Talai keeps 150 to 300+ page advantage</li>
+            <li>Estimated organic reach: 500 to 1,000 impressions</li>
+          </ul>
+        </div>
+        <div class="vs-divider">vs</div>
+        <div class="vs-box upgrade">
+          <div class="vs-label">With Growth Plan (Recommended)</div>
+          <ul class="vs-list">
+            <li>20 blog posts published in all 5 languages (100 total)</li>
+            <li>40 social posts (20 reels + 20 static) — every weekday</li>
+            <li>11 + 140 + 44 + 80 blog pages = 275+ pages indexed</li>
+            <li>5 languages (EN + ES + RU + UK + HY)</li>
+            <li>140 city-specific landing pages</li>
+            <li>10 ad-ready service landing pages</li>
+            <li>Google + Meta ads driving paid traffic</li>
+            <li>Estimated organic reach: 5,000 to 15,000 impressions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout callout-navy">
+        <h4>The Math</h4>
+        <p>Talai has ~200+ pages indexed and an <strong>active YouTube channel</strong> producing regular video. With the Growth Plan, MVP launches with <strong>275+ pages in Month 1</strong> and adds <strong>110+ new pages every month</strong> (20 blog posts x 5 languages + 10 landing pages), plus <strong>40 social posts per month</strong> including AI avatar reels for YouTube, Instagram, TikTok, and LinkedIn. By Month 2, MVP surpasses Talai's total page count. By Month 6, MVP dominates the local search landscape in 5 languages with 800+ indexed pages.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30-DAY CONTENT CALENDAR -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num"><i class="fa-solid fa-calendar-days" style="font-size:13px;"></i></div>
+      <div class="card-title">30-Day Content Calendar — Month 1</div>
+    </div>
+    <div class="card-body">
+      <p style="margin-bottom:16px;">Every weekday gets 2 posts (1 reel + 1 static). Blog posts publish on a rolling schedule. This calendar is for your review and approval before anything goes live.</p>
+
+      <div style="overflow-x:auto;">
+      <table style="font-size:12px;">
+        <thead>
+          <tr>
+            <th style="width:50px;">Day</th>
+            <th style="width:80px;">Date</th>
+            <th>Reel Topic (AI Avatar)</th>
+            <th>Static Post Topic</th>
+            <th>Blog Post</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Mon</td><td>Apr 6</td><td>Why every family needs a living trust</td><td>Credential spotlight: Avvo 10.0 Superb</td><td>What Is a Living Trust and Do I Need One?</td></tr>
+          <tr><td>Tue</td><td>Apr 7</td><td>3 things probate costs your family</td><td>Client testimonial graphic</td><td></td></tr>
+          <tr><td>Wed</td><td>Apr 8</td><td>What is a power of attorney?</td><td>Myth vs. fact: "Wills avoid probate"</td><td>Probate in California: What to Expect</td></tr>
+          <tr><td>Thu</td><td>Apr 9</td><td>How to choose a guardian for your kids</td><td>Free workshop announcement</td><td></td></tr>
+          <tr><td>Fri</td><td>Apr 10</td><td>Bankruptcy is not failure — it is a tool</td><td>Community spotlight: Calabasas Chamber</td><td>Chapter 7 vs. Chapter 13: Which Is Right for You?</td></tr>
+          <tr style="background:var(--gold-pale);"><td colspan="5" style="text-align:center;font-weight:600;color:var(--navy);font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Weekend — no posts</td></tr>
+          <tr><td>Mon</td><td>Apr 13</td><td>What happens if you die without a trust in CA?</td><td>Infographic: estate planning checklist</td><td>5 Documents Every California Adult Needs</td></tr>
+          <tr><td>Tue</td><td>Apr 14</td><td>Special needs trusts: protect benefits</td><td>Quote card: "Plan for those you love"</td><td></td></tr>
+          <tr><td>Wed</td><td>Apr 15</td><td>Healthcare directives save families from crisis</td><td>Office tour / behind the scenes</td><td>Healthcare Directives: Your Voice When You Cannot Speak</td></tr>
+          <tr><td>Thu</td><td>Apr 16</td><td>Conservatorships: when a loved one cannot decide</td><td>FAQ: "How much does estate planning cost?"</td><td></td></tr>
+          <tr><td>Fri</td><td>Apr 17</td><td>Your digital assets need a plan too</td><td>Partner spotlight: community event</td><td>Digital Assets and Estate Planning: What You Need to Know</td></tr>
+          <tr style="background:var(--gold-pale);"><td colspan="5" style="text-align:center;font-weight:600;color:var(--navy);font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Weekend — no posts</td></tr>
+          <tr><td>Mon</td><td>Apr 20</td><td>Business owners: protect what you built</td><td>Credential: WealthCounsel member</td><td>Estate Planning for Business Owners: Succession and Protection</td></tr>
+          <tr><td>Tue</td><td>Apr 21</td><td>ABLE accounts for disabled family members</td><td>Testimonial: "Maria made it so easy"</td><td></td></tr>
+          <tr><td>Wed</td><td>Apr 22</td><td>Trust administration: what happens after</td><td>Infographic: probate timeline in CA</td><td>Trust Administration: A Step by Step Guide</td></tr>
+          <tr><td>Thu</td><td>Apr 23</td><td>Blended families need special planning</td><td>FAQ: "Can I change my trust after creating it?"</td><td></td></tr>
+          <tr><td>Fri</td><td>Apr 24</td><td>Debt relief options in California</td><td>Event recap / photo carousel</td><td>How to Stop Creditor Harassment in California</td></tr>
+          <tr style="background:var(--gold-pale);"><td colspan="5" style="text-align:center;font-weight:600;color:var(--navy);font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Weekend — no posts</td></tr>
+          <tr><td>Mon</td><td>Apr 27</td><td>Irrevocable trusts: asset protection explained</td><td>Credential: NAELA member</td><td>Irrevocable Trusts: When and Why You Need One</td></tr>
+          <tr><td>Tue</td><td>Apr 28</td><td>Medi-Cal planning: protect your parents' home</td><td>Quote card: "Your legacy is your family"</td><td></td></tr>
+          <tr><td>Wed</td><td>Apr 29</td><td>LPS conservatorships in California</td><td>Infographic: types of trusts comparison</td><td>Conservatorships in California: General vs. LPS</td></tr>
+          <tr><td>Thu</td><td>Apr 30</td><td>The real cost of not having a plan</td><td>Month 1 recap: what we accomplished</td><td></td></tr>
+          <tr><td>Fri</td><td>May 1</td><td>Pooled trusts: an option for special needs</td><td>Free consultation CTA post</td><td>Pooled Trusts vs. Individual Special Needs Trusts</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="grid-3" style="margin-top:20px;">
+        <div class="stat-card">
+          <div class="sc-num gold">20</div>
+          <div class="sc-label">AI Avatar Reels</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-num gold">20</div>
+          <div class="sc-label">Static Posts</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-num gold">12</div>
+          <div class="sc-label">Blog Posts (Month 1)</div>
+        </div>
+      </div>
+
+      <div class="callout callout-gold">
+        <h4>Matching Talai's YouTube Presence</h4>
+        <p>Talai Law maintains an active YouTube channel at <a href="https://www.youtube.com/talailaw" style="color:var(--navy);font-weight:600;">youtube.com/talailaw</a>. Every AI avatar reel we produce for Maria will also be published to her YouTube channel, building a video library that matches Talai's content volume. Combined with Maria's live HorizonTV appearances, MVP's YouTube channel will grow rapidly.</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;">This calendar is subject to your review. Use the feedback form below or on the Next Steps tab to request changes to any topic, swap dates, or add time-sensitive content.</p>
+    </div>
+  </div>
+
+  <!-- FEEDBACK FORM -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num"><i class="fa-solid fa-comment-dots" style="font-size:13px;"></i></div>
+      <div class="card-title">Notes &amp; Feedback</div>
+    </div>
+    <div class="card-body">
+      <p style="margin-bottom:16px;">Have questions, want to swap a topic, or need to flag something? Send your notes here and Michael will respond within 24 hours.</p>
+
+      <form id="feedbackForm" onsubmit="submitFeedback(event)" style="margin:0;">
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:600;color:var(--navy);margin-bottom:4px;">Your Name</label>
+          <input type="text" name="name" required placeholder="Maria Primushko" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;">
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:600;color:var(--navy);margin-bottom:4px;">Regarding</label>
+          <select name="regarding" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;background:var(--white);">
+            <option value="Content Calendar">Content Calendar</option>
+            <option value="Brand Direction">Brand Direction</option>
+            <option value="Pricing / Upgrades">Pricing / Upgrades</option>
+            <option value="Local & Language Pages">Local &amp; Language Pages</option>
+            <option value="Competition Report">Competition Report</option>
+            <option value="General Feedback">General Feedback</option>
+          </select>
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:600;color:var(--navy);margin-bottom:4px;">Your Notes</label>
+          <textarea name="notes" required rows="5" placeholder="Share your thoughts, changes, or questions here..." style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;resize:vertical;"></textarea>
+        </div>
+        <button type="submit" class="cta-btn" style="width:100%;justify-content:center;"><i class="fa-solid fa-paper-plane"></i> Send Feedback</button>
+      </form>
+
+      <div id="feedbackConfirmation" style="display:none;background:var(--green-lt);border:2px solid var(--green);border-radius:var(--radius);padding:24px;text-align:center;margin-top:16px;">
+        <i class="fa-solid fa-circle-check" style="font-size:28px;color:var(--green);margin-bottom:8px;display:block;"></i>
+        <h4 style="color:var(--green);font-size:16px;margin-bottom:4px;">Feedback Sent</h4>
+        <p style="font-size:13px;color:var(--mid);margin:0;">Michael will review your notes and respond within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 5: GROWTH PLAN
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="growth">
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num">05</div>
+      <div class="card-title">The Scale Tier &mdash; at Growth Engine Pricing</div>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-navy">
+        <h4>Why Scale? Because Talai is Not Standing Still.</h4>
+        <p>Talai has an <strong>active YouTube channel</strong>, a <strong>weekly radio show</strong>, <strong>150+ GEO pages</strong>, and a <strong>5.0 Google rating</strong>. On Starter, you are building a foundation. On Scale, you are <strong>matching and surpassing their output</strong> — 40 social posts per month (every weekday), 20 blog posts, 10 ad-ready landing pages, and paid ad campaigns driving leads directly to your phone. This is how you close the gap.</p>
+      </div>
+
+      <p>You are currently on the <strong>Starter tier ($1,500/mo)</strong>. This proposal upgrades you to the <strong>Scale tier at the Growth Engine price point ($2,150/mo)</strong> — a $500/mo discount on the published Scale rate of $2,650/mo. This pricing is offered because you are an early client and a West Valley Chamber partner.</p>
+
+      <div class="grid-3">
+        <div class="stat-card" style="border:2px solid var(--border);">
+          <div class="sc-label" style="margin-bottom:8px;">Starter (Current)</div>
+          <div class="sc-num navy">$1,500</div>
+          <div class="sc-label">per month</div>
+        </div>
+        <div class="stat-card" style="border:2px solid var(--green);background:var(--green-lt);">
+          <div class="sc-label" style="margin-bottom:8px;color:var(--green);">Scale (Proposed)</div>
+          <div class="sc-num green">$2,150</div>
+          <div class="sc-label">per month <span style="color:var(--green);">(save $500/mo)</span></div>
+        </div>
+        <div class="stat-card" style="border:2px solid var(--border);opacity:.5;">
+          <div class="sc-label" style="margin-bottom:8px;">Scale (Published)</div>
+          <div class="sc-num" style="color:var(--muted);text-decoration:line-through;">$2,650</div>
+          <div class="sc-label">per month + ad spend</div>
+        </div>
+      </div>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:24px 0 12px;">What Scale Adds to Starter</h3>
+      <table>
+        <thead><tr><th>Feature</th><th>Starter</th><th>Scale (at Growth Engine price)</th></tr></thead>
+        <tbody>
+          <tr><td>AI Avatar Reels</td><td>10/month</td><td><strong>20/month</strong></td></tr>
+          <tr><td>Static Social Posts</td><td>10/month</td><td><strong>20/month (every weekday)</strong></td></tr>
+          <tr><td>SEO Blog Posts</td><td>10/month (English only)</td><td><strong>20/month in all 5 languages</strong> (100 total posts/mo)</td></tr>
+          <tr><td>Service Landing Pages</td><td class="cross">Not included</td><td><strong>10/month</strong> (ad-ready, with CTAs)</td></tr>
+          <tr><td>Google + Meta Ads Management</td><td class="cross">Not included</td><td class="check"><strong>Included</strong> (+ ad spend)</td></tr>
+          <tr><td>A/B Testing</td><td class="cross">Not included</td><td class="check"><strong>Included</strong></td></tr>
+          <tr><td>Lawcus Monitoring</td><td>Basic</td><td><strong>Full monitoring + tuning</strong></td></tr>
+          <tr><td>Monthly Analytics Report</td><td class="cross">Not included</td><td class="check"><strong>Included</strong></td></tr>
+          <tr><td>Quarterly Strategy Call</td><td class="cross">Not included</td><td class="check"><strong>Included</strong></td></tr>
+          <tr><td>Website Hosting</td><td class="check">Included</td><td class="check">Included</td></tr>
+          <tr><td>Website Updates</td><td>1/month</td><td><strong>Unlimited</strong></td></tr>
+          <tr><td>Live Dashboard Access</td><td class="cross">Not included</td><td class="check"><strong>Always-on dashboard</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-teal">
+        <h4>Why Landing Pages Matter</h4>
+        <p>Each landing page is built for a specific service + audience + ad campaign. They have a single CTA (book a consultation or download a guide), remove navigation distractions, and are optimized for Google Ads quality scores. <strong>10 new landing pages per month means you are continuously expanding your ad-ready surface area</strong> — each one a new keyword target and a new conversion path.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 6: LOCAL & LANGUAGE PAGES
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="local">
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num">06</div>
+      <div class="card-title">Local SEO Pages &amp; Multilingual Expansion</div>
+    </div>
+    <div class="card-body">
+      <p>This is the competitive equalizer. Talai has 150 to 300+ location pages. <strong>We build 140 in one deployment.</strong> Then we go further with something Talai is not doing at all: full-site translation into 4 languages spoken by hundreds of thousands of San Fernando Valley residents.</p>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:20px 0 12px;">140 Local SEO Pages</h3>
+      <p>Each page targets a specific <strong>service + city</strong> combination with unique, locally-resonant content, JSON-LD structured data (Service + FAQPage), and internal cross-linking.</p>
+
+      <table>
+        <thead><tr><th>Service</th><th>Cities (14)</th><th>Pages</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Estate Planning</td>
+            <td rowspan="10" style="vertical-align:middle;font-size:12px;line-height:1.8;">Encino, Woodland Hills, Calabasas, Tarzana, Sherman Oaks, Studio City, Reseda, Van Nuys, Northridge, Beverly Hills, Brentwood, Pasadena, Glendale, Burbank</td>
+            <td>14</td>
+          </tr>
+          <tr><td>Living Trusts</td><td>14</td></tr>
+          <tr><td>Probate</td><td>14</td></tr>
+          <tr><td>Trust Administration</td><td>14</td></tr>
+          <tr><td>Conservatorships</td><td>14</td></tr>
+          <tr><td>Special Needs Trusts</td><td>14</td></tr>
+          <tr><td>Bankruptcy (Ch. 7)</td><td>14</td></tr>
+          <tr><td>Bankruptcy (Ch. 13)</td><td>14</td></tr>
+          <tr><td>Power of Attorney</td><td>14</td></tr>
+          <tr><td>Healthcare Directives</td><td>14</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2" style="text-align:right;font-weight:700;">Total GEO Pages:</td><td style="font-weight:700;">140</td></tr>
+        </tfoot>
+      </table>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:28px 0 12px;">4-Language Translation: The Untapped Market</h3>
+      <p>The San Fernando Valley has one of the most diverse populations in the country. Hundreds of thousands of residents browse their phones and computers in their native language. <strong>No estate planning firm in this market is publishing in these languages.</strong></p>
+
+      <div class="lang-grid">
+        <div class="lang-card">
+          <div class="lc-flag">&#127466;&#127480;</div>
+          <div class="lc-name">Spanish</div>
+          <div class="lc-pages">11 pages translated</div>
+          <div class="lc-pop">1.6M+ Spanish speakers in LA County</div>
+        </div>
+        <div class="lang-card">
+          <div class="lc-flag">&#127479;&#127482;</div>
+          <div class="lc-name">Russian</div>
+          <div class="lc-pages">11 pages translated</div>
+          <div class="lc-pop">Large community in West Hollywood, Valley</div>
+        </div>
+        <div class="lang-card">
+          <div class="lc-flag">&#127482;&#127462;</div>
+          <div class="lc-name">Ukrainian</div>
+          <div class="lc-pages">11 pages translated</div>
+          <div class="lc-pop">Growing community, post-2022 arrivals</div>
+        </div>
+        <div class="lang-card">
+          <div class="lc-flag">&#127462;&#127474;</div>
+          <div class="lc-name">Armenian</div>
+          <div class="lc-pages">11 pages translated</div>
+          <div class="lc-pop">200K+ in Glendale, Burbank, Valley</div>
+        </div>
+      </div>
+
+      <div class="callout callout-gold">
+        <h4>Page Count &amp; Pricing</h4>
+        <table style="margin:8px 0 0;">
+          <thead><tr><th>Item</th><th>Pages</th><th>Rate</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>Local SEO city pages</td><td>140</td><td>$50/page</td><td style="font-weight:700;">$7,000</td></tr>
+            <tr><td>Spanish translation</td><td>11</td><td>$50/page</td><td style="font-weight:700;">$550</td></tr>
+            <tr><td>Russian translation</td><td>11</td><td>$50/page</td><td style="font-weight:700;">$550</td></tr>
+            <tr><td>Ukrainian translation</td><td>11</td><td>$50/page</td><td style="font-weight:700;">$550</td></tr>
+            <tr><td>Armenian translation</td><td>11</td><td>$50/page</td><td style="font-weight:700;">$550</td></tr>
+          </tbody>
+          <tfoot>
+            <tr style="background:var(--navy);color:var(--white);"><td colspan="2" style="font-weight:700;color:var(--white);">Total</td><td style="color:var(--white);">184 pages</td><td style="font-weight:700;color:var(--gold);">$9,200</td></tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:28px 0 12px;">See It in Action: Sample Blog Post in All 5 Languages</h3>
+      <p style="margin-bottom:16px;">Every blog post is written natively for each community — not just translated, but culturally adapted with locally relevant examples, scenarios, and legal context. Tap any language below to see a real sample:</p>
+
+      <div style="background:var(--slate);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:24px;">
+        <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:12px;"><i class="fa-solid fa-newspaper" style="color:var(--gold);margin-right:6px;"></i>"How One Lawsuit Can Put Everything at Risk: Asset Protection for High-Net-Worth Families"</div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;">
+          <a href="blog-samples/asset-protection-en.html" target="_blank" style="display:block;text-align:center;padding:14px 8px;background:var(--white);border:2px solid var(--navy);border-radius:8px;text-decoration:none;transition:all .2s;font-size:13px;font-weight:600;color:var(--navy);">
+            &#127482;&#127480;<br>English
+          </a>
+          <a href="blog-samples/asset-protection-es.html" target="_blank" style="display:block;text-align:center;padding:14px 8px;background:var(--white);border:2px solid var(--border);border-radius:8px;text-decoration:none;transition:all .2s;font-size:13px;font-weight:600;color:var(--navy);">
+            &#127466;&#127480;<br>Espa&ntilde;ol
+          </a>
+          <a href="blog-samples/asset-protection-ru.html" target="_blank" style="display:block;text-align:center;padding:14px 8px;background:var(--white);border:2px solid var(--border);border-radius:8px;text-decoration:none;transition:all .2s;font-size:13px;font-weight:600;color:var(--navy);">
+            &#127479;&#127482;<br>&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;
+          </a>
+          <a href="blog-samples/asset-protection-uk.html" target="_blank" style="display:block;text-align:center;padding:14px 8px;background:var(--white);border:2px solid var(--border);border-radius:8px;text-decoration:none;transition:all .2s;font-size:13px;font-weight:600;color:var(--navy);">
+            &#127482;&#127462;<br>&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;
+          </a>
+          <a href="blog-samples/asset-protection-hy.html" target="_blank" style="display:block;text-align:center;padding:14px 8px;background:var(--white);border:2px solid var(--border);border-radius:8px;text-decoration:none;transition:all .2s;font-size:13px;font-weight:600;color:var(--navy);">
+            &#127462;&#127474;<br>&#1344;&#1377;&#1397;&#1381;&#1408;&#1381;&#1398;
+          </a>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:10px;margin-bottom:0;">Each link opens a unique, standalone page with content written specifically for that community. These are not translations of each other — they are 5 distinct articles with culturally relevant scenarios, examples, and legal context.</p>
+      </div>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:28px 0 12px;">Financing Options</h3>
+      <p>We understand this is a significant investment. Heed Business Solutions will finance the page build so you can spread the cost into manageable payments. <strong>First payment due today to begin work. Remaining payments begin May 1st.</strong></p>
+
+      <div class="fin-grid">
+        <div class="fin-card selected">
+          <div class="fc-months">3</div>
+          <div class="fc-per">payments — recommended</div>
+          <div class="fc-monthly">$3,067</div>
+          <div class="fc-label">$3,067 today + $3,067 May 1 + $3,066 Jun 1</div>
+        </div>
+        <div class="fin-card">
+          <div class="fc-months">6</div>
+          <div class="fc-per">payments</div>
+          <div class="fc-monthly">$1,534</div>
+          <div class="fc-label">$1,534 today + $1,534/mo May through Sep</div>
+        </div>
+      </div>
+
+      <div class="callout callout-navy">
+        <h4>Total Monthly During Financing (3-payment plan)</h4>
+        <p><strong>Today:</strong> $3,067 (first page payment) + Scale retainer begins May 1<br>
+        <strong>May:</strong> $2,150 retainer + $3,067 page financing = <strong>$5,217</strong><br>
+        <strong>Jun:</strong> $2,150 retainer + $3,066 page financing = <strong>$5,216</strong> (final page payment)<br>
+        <strong>Jul onward:</strong> <strong>$2,150/month</strong> (ongoing Scale retainer only, plus ad spend)</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 7: PRICING
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="pricing">
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num">07</div>
+      <div class="card-title">Itemized Pricing &mdash; Approve or Decline Each Option</div>
+    </div>
+    <div class="card-body">
+      <p>Every item below is individually selectable. Approve what makes sense now. Anything declined today can be added later at the same rate. Tap the checkmark to approve or the X to decline.</p>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:20px 0 12px;">Monthly Retainer Upgrade</h3>
+
+      <div class="approval-row" data-price="2150" data-type="monthly">
+        <div class="ar-left">
+          <div class="ar-title">Scale Tier (at Growth Engine pricing)</div>
+          <div class="ar-desc">20 blog posts, 10 landing pages, ads management, A/B testing, analytics, dashboard, unlimited website updates</div>
+        </div>
+        <div class="ar-price">$2,150<span style="font-size:11px;font-weight:400;color:var(--muted);">/mo</span></div>
+        <div class="ar-btns">
+          <button class="ar-btn approve" title="Approve"><i class="fa-solid fa-check"></i></button>
+          <button class="ar-btn decline" title="Decline"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:28px 0 12px;">Local SEO Pages (One-Time, Financed)</h3>
+
+      <div class="approval-row" data-price="7000" data-type="onetime">
+        <div class="ar-left">
+          <div class="ar-title">140 Local SEO City Pages</div>
+          <div class="ar-desc">10 services x 14 cities, unique content, JSON-LD, cross-linking, sitemap integration</div>
+        </div>
+        <div class="ar-price">$7,000</div>
+        <div class="ar-btns">
+          <button class="ar-btn approve" title="Approve"><i class="fa-solid fa-check"></i></button>
+          <button class="ar-btn decline" title="Decline"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:28px 0 12px;">Language Translations (One-Time, Financed)</h3>
+
+      <div class="approval-row" data-price="550" data-type="onetime">
+        <div class="ar-left">
+          <div class="ar-title">Spanish Translation (11 pages)</div>
+          <div class="ar-desc">Full site translated, hreflang SEO wiring, language switcher, Google indexing</div>
+        </div>
+        <div class="ar-price">$550</div>
+        <div class="ar-btns">
+          <button class="ar-btn approve" title="Approve"><i class="fa-solid fa-check"></i></button>
+          <button class="ar-btn decline" title="Decline"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <div class="approval-row" data-price="550" data-type="onetime">
+        <div class="ar-left">
+          <div class="ar-title">Russian Translation (11 pages)</div>
+          <div class="ar-desc">Full site translated, hreflang SEO wiring, language switcher, Google indexing</div>
+        </div>
+        <div class="ar-price">$550</div>
+        <div class="ar-btns">
+          <button class="ar-btn approve" title="Approve"><i class="fa-solid fa-check"></i></button>
+          <button class="ar-btn decline" title="Decline"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <div class="approval-row" data-price="550" data-type="onetime">
+        <div class="ar-left">
+          <div class="ar-title">Ukrainian Translation (11 pages)</div>
+          <div class="ar-desc">Full site translated, hreflang SEO wiring, language switcher, Google indexing</div>
+        </div>
+        <div class="ar-price">$550</div>
+        <div class="ar-btns">
+          <button class="ar-btn approve" title="Approve"><i class="fa-solid fa-check"></i></button>
+          <button class="ar-btn decline" title="Decline"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <div class="approval-row" data-price="550" data-type="onetime">
+        <div class="ar-left">
+          <div class="ar-title">Armenian Translation (11 pages)</div>
+          <div class="ar-desc">Full site translated, hreflang SEO wiring, language switcher, Google indexing</div>
+        </div>
+        <div class="ar-price">$550</div>
+        <div class="ar-btns">
+          <button class="ar-btn approve" title="Approve"><i class="fa-solid fa-check"></i></button>
+          <button class="ar-btn decline" title="Decline"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:28px 0 12px;">Ad Spend (Separate from Management Fee)</h3>
+
+      <div class="approval-row" data-price="0" data-type="adspend">
+        <div class="ar-left">
+          <div class="ar-title">Google + Meta Ads Budget</div>
+          <div class="ar-desc">Recommended starting budget. Ad management is included in Scale tier. Ad spend goes directly to Google/Meta.</div>
+        </div>
+        <div class="ar-price">$500 to $1,500<span style="font-size:11px;font-weight:400;color:var(--muted);">/mo</span></div>
+        <div class="ar-btns">
+          <button class="ar-btn approve" title="Approve"><i class="fa-solid fa-check"></i></button>
+          <button class="ar-btn decline" title="Decline"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <!-- LIVE TOTALS -->
+      <div class="price-summary" id="priceSummary">
+        <div style="font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Your Selection Summary</div>
+        <div class="ps-row">
+          <span>Current Starter Retainer</span>
+          <span class="ps-amt">$1,500/mo</span>
+        </div>
+        <div class="ps-row" id="ps-upgrade" style="display:none;">
+          <span>Upgrade to Scale (at Growth Engine price)</span>
+          <span class="ps-amt">$2,150/mo</span>
+        </div>
+        <div class="ps-row" id="ps-pages" style="display:none;">
+          <span>Local + Language Pages (184 pages, financed: 1st payment today + 5 monthly)</span>
+          <span class="ps-amt">$1,534/mo x 6</span>
+        </div>
+        <div class="ps-row" id="ps-adspend" style="display:none;">
+          <span>Ad Spend Budget (paid to Google/Meta)</span>
+          <span class="ps-amt">$500-1,500/mo</span>
+        </div>
+        <div class="ps-row savings" id="ps-savings" style="display:none;">
+          <span>Scale Tier Discount (vs. published $2,650/mo)</span>
+          <span class="ps-amt">-$500/mo</span>
+        </div>
+        <div class="ps-row total" id="ps-total">
+          <span>Monthly Total</span>
+          <span class="ps-amt" id="totalAmt">$1,500/mo</span>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:24px;">
+        <button class="cta-btn" id="submitApproval" onclick="submitSelections()" style="font-size:16px;padding:16px 36px;"><i class="fa-solid fa-paper-plane"></i> Submit My Selections</button>
+        <p style="font-size:12px;color:var(--muted);margin-top:12px;">Your selections will be sent to Michael Bowers at Heed Business Solutions for processing.</p>
+      </div>
+
+      <div id="submitConfirmation" style="display:none;background:var(--green-lt);border:2px solid var(--green);border-radius:var(--radius);padding:28px;text-align:center;margin-top:20px;">
+        <i class="fa-solid fa-circle-check" style="font-size:32px;color:var(--green);margin-bottom:12px;display:block;"></i>
+        <h4 style="color:var(--green);font-size:18px;margin-bottom:8px;">Selections Submitted</h4>
+        <p style="font-size:14px;color:var(--mid);margin:0;">Thank you, Maria. Michael will follow up within 24 hours to confirm your selections and next steps.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 8: NEXT STEPS
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="next">
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num">08</div>
+      <div class="card-title">Next Steps</div>
+    </div>
+    <div class="card-body">
+
+      <h3 style="font-size:16px;color:var(--navy);margin-bottom:16px;">Your Live Dashboard</h3>
+      <p>Every client on the Growth Plan gets a live, always-on dashboard. You and Jaslen can log in at any time to see exactly what is being done, what is performing, and where your traffic is coming from.</p>
+
+      <div class="dash-preview">
+        <div class="dash-chrome">
+          <div class="dash-dot" style="background:#ff5f56;"></div>
+          <div class="dash-dot" style="background:#ffbd2e;"></div>
+          <div class="dash-dot" style="background:#27c93f;"></div>
+          <div class="dash-url">dashboard.heedbusinesssolutions.com/mvplaw</div>
+        </div>
+        <div class="dash-body">
+          <div class="dash-widget">
+            <div class="dw-label">Website Visitors</div>
+            <div class="dw-num">1,247</div>
+            <div class="dw-trend up"><i class="fa-solid fa-arrow-up"></i> +34% vs last month</div>
+          </div>
+          <div class="dash-widget">
+            <div class="dw-label">Pages Indexed</div>
+            <div class="dw-num">195</div>
+            <div class="dw-trend up"><i class="fa-solid fa-arrow-up"></i> from 11 pages</div>
+          </div>
+          <div class="dash-widget">
+            <div class="dw-label">Leads Generated</div>
+            <div class="dw-num">18</div>
+            <div class="dw-trend up"><i class="fa-solid fa-arrow-up"></i> +6 from ads</div>
+          </div>
+          <div class="dash-widget">
+            <div class="dw-label">Google Rankings</div>
+            <div class="dw-num">23</div>
+            <div class="dw-trend up"><i class="fa-solid fa-arrow-up"></i> keywords in top 10</div>
+          </div>
+          <div class="dash-widget">
+            <div class="dw-label">Social Reach</div>
+            <div class="dw-num">8.4K</div>
+            <div class="dw-trend up"><i class="fa-solid fa-arrow-up"></i> across 3 platforms</div>
+          </div>
+          <div class="dash-widget">
+            <div class="dw-label">Google Reviews</div>
+            <div class="dw-num">78</div>
+            <div class="dw-trend up"><i class="fa-solid fa-arrow-up"></i> +17 this month</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Dashboard preview with sample data. Your live dashboard will reflect real-time analytics from day one.</p>
+
+      <h3 style="font-size:16px;color:var(--navy);margin:28px 0 16px;">Implementation Timeline</h3>
+      <p style="margin-bottom:16px;">From the moment you approve the brand direction, the full Growth Plan deployment takes <strong>5 to 7 business days</strong>.</p>
+
+      <div class="tl-item">
+        <div class="tl-week">Day 1-2</div>
+        <div class="tl-content">
+          <h4>GEO Pages + Structured Data</h4>
+          <p>140 local pages generated and deployed. JSON-LD structured data added to all pages. Sitemap regenerated and submitted to Google Search Console.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Day 3-4</div>
+        <div class="tl-content">
+          <h4>Language Translations</h4>
+          <p>All 4 language versions built, hreflang tags wired, language switcher added to nav. Submitted to Google for indexing.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Day 5-6</div>
+        <div class="tl-content">
+          <h4>Landing Pages + Ad Setup</h4>
+          <p>First 10 service landing pages built with clear CTAs. Google Ads and Meta Ads campaigns configured, audiences set, tracking pixels installed.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Day 7</div>
+        <div class="tl-content">
+          <h4>Ads Live + Dashboard Active</h4>
+          <p>Campaigns go live. Dashboard connected and shared with Maria and Jaslen. First analytics snapshot delivered. Blog and social content engines at full speed (20 blog posts + 40 social posts per month).</p>
+        </div>
+      </div>
+
+      <!-- STATIONERY BONUS -->
+      <div class="card" style="border:2px solid var(--gold);box-shadow:0 0 0 4px var(--gold-pale);">
+        <div class="card-head" style="background:var(--navy);border-bottom:none;">
+          <div class="card-num" style="background:var(--gold);color:var(--navy);"><i class="fa-solid fa-gift" style="font-size:13px;"></i></div>
+          <div class="card-title" style="color:var(--gold);">Signing Bonus: Custom Stationery Package</div>
+        </div>
+        <div class="card-body">
+          <p>As a bonus for accepting the Growth Plan and proceeding today, Heed Business Solutions will provide MVP Law Group with a complete set of <strong>custom-designed stationery</strong> matching your selected brand direction from the brand kit.</p>
+
+          <!-- Stationery Visual Mockup -->
+          <div style="background:linear-gradient(135deg, #f8f6f2 0%, #edeae4 100%);border:1px solid var(--border);border-radius:var(--radius);padding:40px 32px;margin:20px 0;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:16px;right:20px;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);">Preview</div>
+
+            <!-- Business Cards -->
+            <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-bottom:32px;">
+              <div style="width:320px;">
+                <div style="background:var(--navy);border-radius:8px;padding:28px 24px;box-shadow:0 4px 20px rgba(0,0,0,.15);position:relative;">
+                  <div style="position:absolute;top:12px;right:16px;width:32px;height:32px;border:1px solid rgba(201,168,76,.3);border-radius:4px;display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--gold);">M</span>
+                  </div>
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--white);margin-bottom:2px;">Maria V. Primushko</div>
+                  <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Attorney at Law</div>
+                  <div style="height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:12px;width:60%;"></div>
+                  <div style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.8;">
+                    <i class="fa-solid fa-phone" style="color:var(--gold);width:14px;font-size:9px;"></i> (818) 788-7881<br>
+                    <i class="fa-solid fa-envelope" style="color:var(--gold);width:14px;font-size:9px;"></i> mvp@mvplawgroupla.com<br>
+                    <i class="fa-solid fa-location-dot" style="color:var(--gold);width:14px;font-size:9px;"></i> 6200 Canoga Ave, Ste 202, Woodland Hills
+                  </div>
+                </div>
+                <div style="font-size:10px;color:var(--muted);text-align:center;margin-top:8px;">Business Card (front)</div>
+              </div>
+
+              <div style="width:320px;">
+                <div style="background:var(--white);border:1px solid #e0ddd7;border-radius:8px;padding:28px 24px;box-shadow:0 4px 20px rgba(0,0,0,.08);text-align:center;">
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--navy);margin-bottom:2px;">MVP</div>
+                  <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Law Group, APC</div>
+                  <div style="height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin-bottom:16px;"></div>
+                  <div style="font-size:10px;color:var(--muted);line-height:1.8;">
+                    Estate Planning &middot; Bankruptcy &middot; Probate<br>
+                    Conservatorships &middot; Special Needs Trusts<br>
+                    <span style="color:var(--teal);font-weight:600;">mvplawgroupla.com</span>
+                  </div>
+                </div>
+                <div style="font-size:10px;color:var(--muted);text-align:center;margin-top:8px;">Business Card (back)</div>
+              </div>
+            </div>
+
+            <!-- Letterhead -->
+            <div style="max-width:400px;margin:0 auto 24px;">
+              <div style="background:var(--white);border:1px solid #e0ddd7;border-radius:6px;padding:24px 20px;box-shadow:0 2px 12px rgba(0,0,0,.06);position:relative;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--navy);">
+                  <div>
+                    <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--navy);">MVP Law Group, APC</div>
+                    <div style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);">Estate Planning &middot; Bankruptcy &middot; Probate</div>
+                  </div>
+                  <div style="width:28px;height:28px;border:1px solid var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;color:var(--gold);">M</span>
+                  </div>
+                </div>
+                <div style="font-size:9px;color:#ccc;line-height:2;">
+                  ________________________________________<br>
+                  ________________________________________<br>
+                  ________________________________________<br>
+                  ________________________________________<br>
+                  ________________________________________
+                </div>
+                <div style="margin-top:16px;padding-top:10px;border-top:1px solid #eee;display:flex;justify-content:space-between;font-size:8px;color:var(--muted);">
+                  <span>(818) 788-7881</span>
+                  <span>mvp@mvplawgroupla.com</span>
+                  <span>mvplawgroupla.com</span>
+                </div>
+              </div>
+              <div style="font-size:10px;color:var(--muted);text-align:center;margin-top:8px;">Letterhead Stationery</div>
+            </div>
+
+            <!-- Thank You Card -->
+            <div style="max-width:300px;margin:0 auto;">
+              <div style="background:var(--navy);border-radius:8px;padding:32px 24px;box-shadow:0 4px 16px rgba(0,0,0,.12);text-align:center;">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--gold);font-style:italic;margin-bottom:4px;">Thank You</div>
+                <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent);margin:8px auto;width:60%;"></div>
+                <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:8px;">MVP Law Group, APC</div>
+              </div>
+              <div style="font-size:10px;color:var(--muted);text-align:center;margin-top:8px;">Thank You Card</div>
+            </div>
+          </div>
+
+          <!-- Package Details -->
+          <table style="margin-top:16px;">
+            <thead><tr><th>Item</th><th>Quantity</th><th>Details</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Business Cards</strong></td><td>3 sets of 500 (1,500 total)</td><td>Premium card stock, full color front and back, matching brand direction</td></tr>
+              <tr><td><strong>Letterhead Stationery</strong></td><td>500 pages</td><td>High-quality paper, branded header and footer</td></tr>
+              <tr><td><strong>Standard Envelopes</strong></td><td>250</td><td>#10 business envelopes, branded return address</td></tr>
+              <tr><td><strong>Large Envelopes</strong></td><td>250</td><td>9" x 12" document envelopes, branded</td></tr>
+              <tr><td><strong>Branded Notepads</strong></td><td>10 pads (50 sheets each)</td><td>Custom branded header, tear-off sheets</td></tr>
+              <tr><td><strong>Thank You Cards</strong></td><td>100 with envelopes</td><td>Foil-stamped, premium card stock, matching brand</td></tr>
+            </tbody>
+          </table>
+
+          <div class="callout callout-gold" style="margin-top:16px;">
+            <h4><i class="fa-solid fa-gift" style="margin-right:6px;"></i> This Entire Package is Complimentary</h4>
+            <p>No additional cost. This is our signing bonus for proceeding with the Growth Plan today. All designs will match the brand direction you select, and the stationery will be shipped directly to your office within 2 to 3 weeks of brand approval.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <h3>Ready to Compete?</h3>
+        <p>Review the pricing tab, approve your selections, and let's build your growth engine.</p>
+        <button class="cta-btn" onclick="document.querySelector('[data-tab=pricing]').click();"><i class="fa-solid fa-check-double"></i> Go to Pricing &amp; Approve</button>
+        <a href="seo-geo-audit-2026-03-29.html" class="cta-btn-outline"><i class="fa-solid fa-chart-bar"></i> View Full Audit Report</a>
+      </div>
+
+      <div style="background:var(--slate);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;margin-top:24px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:4px;">Michael Bowers</div>
+        <div style="color:var(--gold);font-size:13px;font-weight:600;margin-bottom:16px;">President &middot; Heed Business Solutions</div>
+        <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;font-size:13px;color:var(--muted);">
+          <span><i class="fa-solid fa-phone" style="color:var(--gold);margin-right:5px;"></i>310-363-0826</span>
+          <span><i class="fa-solid fa-globe" style="color:var(--gold);margin-right:5px;"></i>heedbusinesssolutions.com</span>
+          <span><i class="fa-solid fa-envelope" style="color:var(--gold);margin-right:5px;"></i>mbowers@heedbusinesssolutions.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="site-footer">
+  <p>Confidential &middot; Prepared for MVP Law Group, APC &middot; March 30, 2026 &middot; Heed Business Solutions</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════ -->
+<script>
+// ── Tab switching ──
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// ── Approval toggles ──
+document.querySelectorAll('.approval-row').forEach(row => {
+  const approveBtn = row.querySelector('.ar-btn.approve');
+  const declineBtn = row.querySelector('.ar-btn.decline');
+
+  approveBtn.addEventListener('click', () => {
+    row.classList.remove('declined');
+    row.classList.add('approved');
+    approveBtn.classList.add('selected');
+    declineBtn.classList.remove('selected');
+    updateTotals();
+  });
+
+  declineBtn.addEventListener('click', () => {
+    row.classList.remove('approved');
+    row.classList.add('declined');
+    declineBtn.classList.add('selected');
+    approveBtn.classList.remove('selected');
+    updateTotals();
+  });
+});
+
+// ── Financing card selection ──
+document.querySelectorAll('.fin-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.fin-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+  });
+});
+
+// ── Update pricing totals ──
+function updateTotals() {
+  const rows = document.querySelectorAll('.approval-row');
+  let hasUpgrade = false;
+  let pageTotal = 0;
+  let hasAdSpend = false;
+
+  rows.forEach(row => {
+    if (!row.classList.contains('approved')) return;
+    const title = row.querySelector('.ar-title').textContent;
+    const price = parseInt(row.dataset.price) || 0;
+
+    if (title.includes('Scale')) hasUpgrade = true;
+    else if (title.includes('Ad')) hasAdSpend = true;
+    else pageTotal += price;
+  });
+
+  document.getElementById('ps-upgrade').style.display = hasUpgrade ? 'flex' : 'none';
+  document.getElementById('ps-savings').style.display = hasUpgrade ? 'flex' : 'none';
+  document.getElementById('ps-adspend').style.display = hasAdSpend ? 'flex' : 'none';
+
+  if (pageTotal > 0) {
+    const monthly = Math.ceil(pageTotal / 6);
+    document.getElementById('ps-pages').style.display = 'flex';
+    document.getElementById('ps-pages').querySelector('.ps-amt').textContent = '$' + monthly.toLocaleString() + '/mo x 6';
+  } else {
+    document.getElementById('ps-pages').style.display = 'none';
+  }
+
+  let monthlyTotal = hasUpgrade ? 2150 : 1500;
+  if (pageTotal > 0) monthlyTotal += Math.ceil(pageTotal / 6);
+  document.getElementById('totalAmt').textContent = '$' + monthlyTotal.toLocaleString() + '/mo';
+}
+
+// ── Submit selections ──
+function submitSelections() {
+  const rows = document.querySelectorAll('.approval-row');
+  let approved = [];
+  let declined = [];
+
+  rows.forEach(row => {
+    const title = row.querySelector('.ar-title').textContent;
+    if (row.classList.contains('approved')) approved.push(title);
+    else if (row.classList.contains('declined')) declined.push(title);
+  });
+
+  // Check if at least one selection was made
+  const totalSelections = approved.length + declined.length;
+  if (totalSelections === 0) {
+    alert('Please approve or decline at least one item before submitting.');
+    return;
+  }
+
+  // Build mailto with selections
+  const subject = encodeURIComponent('MVP Law Growth Plan — Selections Submitted');
+  let body = 'APPROVED:\n';
+  if (approved.length === 0) body += '(none)\n';
+  else approved.forEach(a => body += '- ' + a + '\n');
+  body += '\nDECLINED:\n';
+  if (declined.length === 0) body += '(none)\n';
+  else declined.forEach(d => body += '- ' + d + '\n');
+  body += '\nMonthly Total: ' + document.getElementById('totalAmt').textContent;
+
+  // Send via mailto
+  window.location.href = 'mailto:mbowers@heedbusinesssolutions.com?subject=' + subject + '&body=' + encodeURIComponent(body);
+
+  // Show confirmation
+  document.getElementById('submitApproval').style.display = 'none';
+  document.getElementById('submitConfirmation').style.display = 'block';
+}
+
+// ── Submit feedback form ──
+function submitFeedback(e) {
+  e.preventDefault();
+  const form = document.getElementById('feedbackForm');
+  const name = form.querySelector('[name="name"]').value;
+  const regarding = form.querySelector('[name="regarding"]').value;
+  const notes = form.querySelector('[name="notes"]').value;
+
+  const subject = encodeURIComponent('MVP Law Growth Plan Feedback — ' + regarding);
+  let body = 'From: ' + name + '\n';
+  body += 'Regarding: ' + regarding + '\n\n';
+  body += notes;
+
+  window.location.href = 'mailto:mbowers@heedbusinesssolutions.com?subject=' + subject + '&body=' + encodeURIComponent(body);
+
+  form.style.display = 'none';
+  document.getElementById('feedbackConfirmation').style.display = 'block';
+}
+</script>
+</body>
+</html>

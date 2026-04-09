@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Press &amp; Media | Maria V. Primushko, Esq. | MVP Law Group, APC</title>
+  <meta name="description" content="Speaker bios, headshots, logo assets, and speaking request form for Maria V. Primushko, Esq. Available for podcasts, panels, workshops, keynotes, guest blogging, and media commentary.">
+  <link rel="canonical" href="https://www.mvplawgroupla.com/press.html">
+
+  <meta property="og:title" content="Press & Media | Maria V. Primushko, Esq. | MVP Law Group, APC">
+  <meta property="og:description" content="Speaker bios, headshots, logo assets, and speaking request form for Maria V. Primushko, Esq.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Josefin+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    /* Bio toggle tabs */
+    .bio-tabs { display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap; }
+    .bio-tab {
+      padding:8px 20px; border:1px solid var(--border); border-radius:20px;
+      font-size:0.85rem; font-weight:500; cursor:pointer; background:var(--bg);
+      color:var(--text-mid); transition:all var(--ease); font-family:var(--font-body);
+    }
+    .bio-tab:hover { border-color:var(--gold); color:var(--gold); }
+    .bio-tab.active { background:var(--gold); color:var(--noir); border-color:var(--gold); }
+    .bio-panel { display:none; }
+    .bio-panel.active { display:block; }
+
+    /* Speaker topic pills */
+    .topic-pills { display:flex; flex-wrap:wrap; gap:8px; }
+    .topic-pill {
+      padding:7px 16px; border:1px solid var(--border); border-radius:20px;
+      font-size:0.82rem; color:var(--text-mid); background:var(--bg); transition:all var(--ease);
+    }
+    .topic-pill:hover { border-color:var(--gold); color:var(--gold); }
+
+    /* Asset download grid */
+    .asset-card {
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg);
+      overflow:hidden; transition:all var(--ease);
+    }
+    .asset-card:hover { border-color:var(--gold); box-shadow:var(--shadow); }
+    .asset-preview {
+      padding:28px; display:flex; align-items:center; justify-content:center; min-height:180px;
+    }
+    .asset-preview-dark { background:#0E0D0B; }
+    .asset-preview-light { background:#F0EBE2; }
+    .asset-info { padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
+    .asset-info-name { font-size:0.9rem; font-weight:500; color:var(--text); }
+    .asset-info-sub { font-size:0.78rem; color:var(--text-muted); }
+
+    /* Format type cards */
+    .format-card {
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg);
+      padding:24px; text-align:center; transition:all var(--ease);
+    }
+    .format-card:hover { border-color:var(--gold); }
+    .format-icon {
+      width:52px; height:52px; border-radius:50%; background:var(--gold-pale);
+      display:flex; align-items:center; justify-content:center;
+      font-size:22px; color:var(--gold); margin:0 auto 14px;
+    }
+    .format-card h3 { font-family:var(--font-heading); font-size:1.1rem; color:var(--text); margin-bottom:6px; }
+    .format-card p { font-size:0.92rem; color:var(--text-mid); line-height:1.7; }
+
+    /* Form field styles */
+    .press-field {
+      width:100%; padding:12px 14px; border:1px solid var(--border); border-radius:var(--radius);
+      font-size:0.95rem; font-family:'Josefin Sans',sans-serif; background:var(--bg);
+      color:var(--text); margin-bottom:14px; transition:border-color var(--ease);
+    }
+    .press-field:focus { outline:none; border-color:var(--gold); }
+    .press-label { display:block; font-size:0.92rem; font-weight:500; color:var(--text); margin-bottom:4px; }
+
+    /* Checkbox grid for engagement types */
+    .engagement-grid {
+      display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; margin-bottom:14px;
+    }
+    .engagement-grid label {
+      display:flex; align-items:center; gap:8px; font-size:0.9rem;
+      color:var(--text-mid); cursor:pointer; padding:6px 0;
+    }
+    .engagement-grid input[type="checkbox"] {
+      width:16px; height:16px; accent-color:var(--gold); cursor:pointer;
+    }
+
+    /* Featured In — magazine tear-sheet cards */
+    .feature-card {
+      display:flex; flex-direction:column;
+      background:var(--surface); border:1px solid var(--border); border-top:3px solid var(--gold);
+      border-radius:var(--radius-lg); overflow:hidden; text-decoration:none;
+      transition:transform var(--ease), border-color var(--ease), box-shadow var(--ease);
+    }
+    .feature-card:hover {
+      border-color:var(--gold); box-shadow:var(--shadow); transform:translateY(-3px);
+    }
+    .feature-card-visual {
+      position:relative; aspect-ratio: 4 / 3; overflow:hidden;
+      background:#f4efe4;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .feature-card-visual img {
+      width:100%; height:100%; object-fit:cover; object-position:center top;
+      transition:transform 0.6s ease;
+    }
+    .feature-card:hover .feature-card-visual img { transform:scale(1.04); }
+    .feature-card-visual--placeholder {
+      background:linear-gradient(135deg, #1a1812 0%, #2a2419 55%, #3d3425 100%);
+      flex-direction:column; padding:28px 24px; text-align:center; gap:8px;
+    }
+    .feature-card-visual--placeholder::before {
+      content:""; position:absolute; inset:0;
+      background:radial-gradient(circle at 30% 20%, rgba(212,168,75,0.18), transparent 60%);
+      pointer-events:none;
+    }
+    .feature-card-visual--voyage {
+      background:linear-gradient(135deg, #0f1a22 0%, #172632 55%, #22384a 100%);
+    }
+    .feature-placeholder-badge {
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.8rem; font-weight:600; color:#fff;
+      letter-spacing:0.02em; position:relative; z-index:1;
+    }
+    .feature-placeholder-year {
+      font-family:'Cormorant Garamond', serif;
+      font-size:2.6rem; font-weight:700; color:var(--gold);
+      line-height:1; position:relative; z-index:1;
+    }
+    .feature-placeholder-tag {
+      font-size:0.72rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase;
+      color:rgba(255,255,255,0.75); position:relative; z-index:1;
+    }
+    .feature-card-body { padding:22px 24px 24px; }
+    .feature-card-meta {
+      display:flex; align-items:center; gap:10px; margin-bottom:10px;
+      font-size:11px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+    }
+    .feature-card-meta i { font-size:14px; }
+    .feature-card-title {
+      font-family:var(--font-heading); font-size:1.3rem; font-weight:600;
+      color:var(--text); margin-bottom:8px; line-height:1.3;
+    }
+    .feature-card-desc {
+      font-size:0.92rem; color:var(--text-mid); line-height:1.6; margin-bottom:14px;
+    }
+    .feature-card-cta {
+      font-size:0.82rem; color:var(--gold); font-weight:500;
+    }
+    .feature-card-cta i { font-size:10px; margin-left:3px; }
+
+    @media(max-width:768px) {
+      .engagement-grid { grid-template-columns:1fr; }
+      .feature-card-grid { grid-template-columns:1fr !important; gap:20px !important; }
+      .feature-card-visual { aspect-ratio: 16 / 10; }
+      .feature-placeholder-badge { font-size:1.5rem; }
+      .feature-placeholder-year { font-size:2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="MVP Law Group home">
+        <img src="images/logos/Logo%20revision%202.png" alt="MVP Law Group APC">
+      </a>
+            <ul class="nav-links" role="list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-dropdown">
+          <span class="nav-link" tabindex="0">Practice Areas <i class="fa-solid fa-chevron-down" style="font-size:10px; margin-left:3px;"></i></span>
+          <div class="dropdown-menu">
+            <a href="estate-planning.html" class="dropdown-item"><i class="fa-regular fa-file-lines" style="width:16px; color:var(--gold);"></i> Estate Planning</a>
+            <a href="probate.html" class="dropdown-item"><i class="fa-solid fa-scale-balanced" style="width:16px; color:var(--gold);"></i> Probate</a>
+            <a href="conservatorships.html" class="dropdown-item"><i class="fa-solid fa-hand-holding-heart" style="width:16px; color:var(--gold);"></i> Conservatorships</a>
+            <a href="special-needs-trust.html" class="dropdown-item"><i class="fa-regular fa-heart" style="width:16px; color:var(--gold);"></i> Special Needs Trusts</a>
+            <a href="bankruptcy.html" class="dropdown-item"><i class="fa-solid fa-shield-halved" style="width:16px; color:var(--gold);"></i> Bankruptcy</a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <span class="nav-link" tabindex="0">About <i class="fa-solid fa-chevron-down" style="font-size:10px; margin-left:3px;"></i></span>
+          <div class="dropdown-menu">
+            <a href="about.html" class="dropdown-item"><i class="fa-solid fa-building-columns" style="width:16px; color:var(--gold);"></i> Our Firm &amp; Team</a>
+            <a href="reviews.html" class="dropdown-item"><i class="fa-solid fa-star" style="width:16px; color:var(--gold);"></i> Client Reviews</a>
+            <a href="press.html" class="dropdown-item"><i class="fa-solid fa-newspaper" style="width:16px; color:var(--gold);"></i> Press &amp; Media</a>
+            <a href="events.html" class="dropdown-item"><i class="fa-solid fa-calendar-days" style="width:16px; color:var(--gold);"></i> Events &amp; Workshops</a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <span class="nav-link" tabindex="0">Resources <i class="fa-solid fa-chevron-down" style="font-size:10px; margin-left:3px;"></i></span>
+          <div class="dropdown-menu">
+            <a href="resources.html" class="dropdown-item"><i class="fa-solid fa-calculator" style="width:16px; color:var(--gold);"></i> Tools &amp; Guides</a>
+            <a href="blog/index.html" class="dropdown-item"><i class="fa-solid fa-pen-nib" style="width:16px; color:var(--gold);"></i> Blog</a>
+          </div>
+        </li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <a href="press.html" class="lang-active">EN</a>
+          <a href="es/index.html">ES</a>
+          <a href="ru/index.html">RU</a>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle light/dark mode" title="Switch theme">
+          <i class="fa-solid fa-sun"></i>
+          <span class="toggle-label">Light</span>
+        </button>
+        <a href="tel:8187887881" class="nav-phone" aria-label="Call us"><i class="fa-solid fa-phone" style="font-size:12px;"></i> (818) 788-7881</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Free Consultation</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" role="dialog" aria-label="Mobile menu">
+  <button class="mobile-nav-close" aria-label="Close menu">&#x2715;</button>
+  <a href="estate-planning.html" class="mobile-nav-link">Estate Planning</a>
+  <a href="probate.html" class="mobile-nav-link">Probate</a>
+  <a href="conservatorships.html" class="mobile-nav-link">Conservatorships</a>
+  <a href="special-needs-trust.html" class="mobile-nav-link">Special Needs Trusts</a>
+  <a href="bankruptcy.html" class="mobile-nav-link">Bankruptcy</a>
+  <a href="about.html" class="mobile-nav-link">About Maria</a>
+  <a href="resources.html" class="mobile-nav-link">Resources</a>
+  <a href="blog/index.html" class="mobile-nav-link">Blog</a>
+  <a href="events.html" class="mobile-nav-link">Events</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <div class="mobile-nav-cta">
+    <a href="tel:8187887881" class="btn btn-primary"><i class="fa-solid fa-phone"></i> (818) 788-7881</a>
+    <a href="contact.html" class="btn btn-outline">Free Consultation</a>
+  </div>
+</div>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html" class="breadcrumb-link">Home</a>
+      <span class="breadcrumb-sep"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i></span>
+      <span class="breadcrumb-current">Press &amp; Media</span>
+    </nav>
+    <div class="page-hero-content reveal">
+      <span class="eyebrow">Press &amp; Media</span>
+      <h1>Speaker Resources &amp; <em>Media Kit</em></h1>
+      <p class="hero-subtitle">Bios, headshots, logos, speaking topics, and a request form to invite Maria V. Primushko, Esq. to your next event, podcast, panel, workshop, or publication. For media inquiries, contact <a href="mailto:mvp@mvplawgroupla.com" style="color:var(--gold);">mvp@mvplawgroupla.com</a> or call <a href="tel:8187887881" style="color:var(--gold);">(818) 788-7881</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 1: HEADSHOT & QUICK FACTS ============ -->
+<section class="content-section bg-white" style="padding:72px 0;">
+  <div class="container">
+    <div class="about-inner reveal">
+
+      <!-- Left: Photo -->
+      <div class="about-image-wrap">
+        <img src="images/headshot01.jpg" alt="Maria V. Primushko, Esq. — Official Headshot" style="width:100%; height:auto; border-radius:var(--radius-lg); display:block; border:3px solid var(--gold-border);">
+        <p style="font-size:0.82rem; color:var(--text-muted); text-align:center; margin-top:12px;"><i class="fa-solid fa-download" style="font-size:10px; margin-right:4px;"></i> Right-click to save headshot</p>
+      </div>
+
+      <!-- Right: Quick Facts -->
+      <div>
+        <span class="section-label">At a Glance</span>
+        <h2 class="section-title" style="margin-top:8px;">Maria V. Primushko, Esq.</h2>
+        <p style="font-size:0.88rem; color:var(--gold); font-weight:500; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:20px;">Founder &amp; Managing Attorney, MVP Law Group, APC</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px 24px; margin-bottom:28px;">
+          <div>
+            <div style="font-size:0.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:2px;">Location</div>
+            <div style="font-size:0.95rem; color:var(--text);">Encino &amp; Calabasas, CA</div>
+          </div>
+          <div>
+            <div style="font-size:0.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:2px;">Bar License</div>
+            <div style="font-size:0.95rem; color:var(--text);"><a href="https://apps.calbar.ca.gov/attorney/Licensee/Detail/252105" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline; text-underline-offset:3px;">CA #252105</a></div>
+          </div>
+          <div>
+            <div style="font-size:0.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:2px;">Avvo Rating</div>
+            <div style="font-size:0.95rem; color:var(--text);"><a href="https://www.avvo.com/attorneys/91316-ca-maria-primushko-1758065.html" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline; text-underline-offset:3px;">10.0 Superb</a></div>
+          </div>
+          <div>
+            <div style="font-size:0.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:2px;">Languages</div>
+            <div style="font-size:0.95rem; color:var(--text);">English, Russian (Staff: Spanish)</div>
+          </div>
+          <div>
+            <div style="font-size:0.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:2px;">Education</div>
+            <div style="font-size:0.95rem; color:var(--text);">J.D., University of West Los Angeles</div>
+          </div>
+          <div>
+            <div style="font-size:0.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:2px;">Practice Areas</div>
+            <div style="font-size:0.95rem; color:var(--text);">Estate Planning, Probate, Elder Law</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:24px;">
+          <div style="font-size:0.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">Affiliations</div>
+          <div style="font-size:0.92rem; color:var(--text-mid); line-height:1.8;">
+            Calabasas Chamber of Commerce (Member) &bull; WealthCounsel &bull; WIFS &bull; Elder Care Matters &bull; LACBA &bull; Lawyers of Distinction
+          </div>
+        </div>
+
+        <a href="#invite" class="btn btn-primary"><i class="fa-solid fa-paper-plane" style="font-size:12px;"></i> Invite Maria to Your Event</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: BIOS (Long / Mid / Short) ============ -->
+<section class="content-section bg-cream" id="bios">
+  <div class="container" style="max-width:860px;">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label">Speaker Bios</span>
+      <h2 class="section-title">About Maria V. Primushko, Esq.</h2>
+    </div>
+    <p class="section-sub reveal" style="text-align:center; max-width:640px; margin:0 auto 36px;">
+      Copy-ready bios in three lengths for event programs, conference listings, podcast intros, and press materials.
+    </p>
+
+    <div class="reveal">
+      <div class="bio-tabs">
+        <button class="bio-tab active" data-bio="long">Long Bio</button>
+        <button class="bio-tab" data-bio="mid">Medium Bio</button>
+        <button class="bio-tab" data-bio="short">Short Bio</button>
+      </div>
+
+      <!-- Long Bio -->
+      <div class="bio-panel active" id="bio-long" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:36px 32px;">
+        <h3 style="font-family:var(--font-heading); font-size:1.2rem; color:var(--text); margin-bottom:16px;">Long Bio <span style="font-size:0.78rem; color:var(--text-muted); font-family:'Josefin Sans',sans-serif; font-weight:400;">&mdash; for keynotes, features, and in-depth profiles</span></h3>
+        <p style="font-size:0.95rem; color:var(--text-mid); line-height:1.8; margin-bottom:16px;">
+          Maria V. Primushko is the founder and managing attorney of MVP Law Group, APC, where she helps California families protect their legacies through estate planning, living trusts, probate, conservatorships, special needs trusts, and bankruptcy relief.
+        </p>
+        <p style="font-size:0.95rem; color:var(--text-mid); line-height:1.8; margin-bottom:16px;">
+          Maria's legal career began at the St. Petersburg District Attorney's Office in Russia in the late 1990s, where she earned a Bachelor's in Jurisprudence. She then moved to Los Angeles, mastered English while raising a newborn, earned her J.D. from the University of West Los Angeles, and passed the California Bar on her first attempt. Her early career in the United States included the Los Angeles City Attorney's Office and volunteer work at Public Counsel, where she developed a deep commitment to serving underrepresented families and individuals navigating the legal system.
+        </p>
+        <p style="font-size:0.95rem; color:var(--text-mid); line-height:1.8; margin-bottom:16px;">
+          Today, Maria is a member of the Calabasas Chamber of Commerce and holds memberships in WealthCounsel, Women in Financial Services (WIFS), Elder Care Matters, and the Los Angeles County Bar Association (LACBA). She has been recognized by Avvo with a 10.0 Superb rating and selected as a member of Lawyers of Distinction.
+        </p>
+        <p style="font-size:0.95rem; color:var(--text-mid); line-height:1.8; margin-bottom:16px;">
+          Maria is a seasoned speaker on estate planning and legacy preservation. Her personal mission is to educate people about the risks of not having an estate plan, and she regularly presents real life examples in community settings to help families understand why preparation matters. She hosts free monthly estate planning workshops across the San Fernando Valley and is a regular speaker at chamber events, senior centers, and professional associations.
+        </p>
+        <p style="font-size:0.95rem; color:var(--text-mid); line-height:1.8;">
+          Outside the office, Maria is a grandmother, mother of three, horse rider, and pet owner. She brings warmth, directness, and a personal understanding of life's unexpected turns to every stage and every client relationship.
+        </p>
+      </div>
+
+      <!-- Mid Bio -->
+      <div class="bio-panel" id="bio-mid" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:36px 32px;">
+        <h3 style="font-family:var(--font-heading); font-size:1.2rem; color:var(--text); margin-bottom:16px;">Medium Bio <span style="font-size:0.78rem; color:var(--text-muted); font-family:'Josefin Sans',sans-serif; font-weight:400;">&mdash; for conference programs, panel intros, and event listings</span></h3>
+        <p style="font-size:0.95rem; color:var(--text-mid); line-height:1.8; margin-bottom:16px;">
+          Maria V. Primushko is the founder of MVP Law Group, APC, where she helps California families protect their legacies through estate planning, living trusts, probate, conservatorships, special needs trusts, and bankruptcy relief. Her legal career began at the St. Petersburg District Attorney's Office in Russia before she moved to Los Angeles, earned her J.D. from the University of West Los Angeles, and passed the California Bar on her first attempt. Early career experience includes the Los Angeles City Attorney's Office and volunteer work at Public Counsel.
+        </p>
+        <p style="font-size:0.95rem; color:var(--text-mid); line-height:1.8; margin-bottom:16px;">
+          Maria is a member of the Calabasas Chamber of Commerce and a member of WealthCounsel, WIFS, and Elder Care Matters. She holds an Avvo 10.0 Superb rating and has been recognized by Lawyers of Distinction. A seasoned speaker on estate planning and legacy preservation, she hosts free monthly workshops across the San Fernando Valley and regularly presents at community events, chambers of commerce, and professional organizations.
+        </p>
+        <p style="font-size:0.95rem; color:var(--text-mid); line-height:1.8;">
+          Outside the office, Maria is a grandmother, mother of three, horse rider, and pet owner.
+        </p>
+      </div>
+
+      <!-- Short Bio -->
+      <div class="bio-panel" id="bio-short" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:36px 32px;">
+        <h3 style="font-family:var(--font-heading); font-size:1.2rem; color:var(--text); margin-bottom:16px;">Short Bio <span style="font-size:0.78rem; color:var(--text-muted); font-family:'Josefin Sans',sans-serif; font-weight:400;">&mdash; for podcast intros, social bios, and one-liners</span></h3>
+        <p style="font-size:0.95rem; color:var(--text-mid); line-height:1.8;">
+          Maria V. Primushko is the founder of MVP Law Group, APC in Woodland Hills, California. She helps families protect their legacies through estate planning, probate, and elder law. Maria is a member of the Calabasas Chamber of Commerce, WealthCounsel, and Women in Financial Services (WIFS), and holds an Avvo 10.0 Superb rating. She is a seasoned speaker who hosts free monthly estate planning workshops across the San Fernando Valley.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: SPEAKING TOPICS ============ -->
+<section class="content-section bg-white" id="topics">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label">Speaking Topics</span>
+      <h2 class="section-title">What Maria Speaks About</h2>
+    </div>
+    <p class="section-sub reveal" style="text-align:center; max-width:640px; margin:0 auto 48px;">
+      Maria tailors her presentations to each audience. Below are her signature topics, available as keynotes, workshops, panel contributions, podcast conversations, or guest articles.
+    </p>
+
+    <div class="grid-2" style="gap:24px;">
+
+      <!-- Estate Planning & Legacy -->
+      <div class="reveal" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px 24px;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <div style="width:42px; height:42px; border-radius:50%; background:var(--gold-pale); display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--gold); flex-shrink:0;"><i class="fa-regular fa-file-lines"></i></div>
+          <h3 style="font-family:var(--font-heading); font-size:1.15rem; color:var(--text);">Estate Planning &amp; Legacy</h3>
+        </div>
+        <div class="topic-pills">
+          <span class="topic-pill">Estate Planning Fundamentals</span>
+          <span class="topic-pill">Living Trusts vs. Wills</span>
+          <span class="topic-pill">Avoiding Probate in California</span>
+          <span class="topic-pill">Asset Protection Strategies</span>
+          <span class="topic-pill">The Cost of Not Having a Plan</span>
+          <span class="topic-pill">Legacy Preservation</span>
+        </div>
+      </div>
+
+      <!-- Family & Elder Law -->
+      <div class="reveal reveal-delay-1" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px 24px;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <div style="width:42px; height:42px; border-radius:50%; background:var(--gold-pale); display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--gold); flex-shrink:0;"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <h3 style="font-family:var(--font-heading); font-size:1.15rem; color:var(--text);">Family &amp; Elder Law</h3>
+        </div>
+        <div class="topic-pills">
+          <span class="topic-pill">Special Needs Trust Planning</span>
+          <span class="topic-pill">Conservatorships &amp; Elder Law</span>
+          <span class="topic-pill">Blended Family Estate Challenges</span>
+          <span class="topic-pill">Protecting Aging Parents</span>
+          <span class="topic-pill">Multigenerational Wealth Transfer</span>
+        </div>
+      </div>
+
+      <!-- Business & Finance -->
+      <div class="reveal" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px 24px;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <div style="width:42px; height:42px; border-radius:50%; background:var(--gold-pale); display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--gold); flex-shrink:0;"><i class="fa-solid fa-briefcase"></i></div>
+          <h3 style="font-family:var(--font-heading); font-size:1.15rem; color:var(--text);">Business &amp; Finance</h3>
+        </div>
+        <div class="topic-pills">
+          <span class="topic-pill">Estate Planning for Business Owners</span>
+          <span class="topic-pill">Bankruptcy: Fresh Start Options</span>
+          <span class="topic-pill">Succession Planning for Small Business</span>
+          <span class="topic-pill">Protecting Business Assets in Divorce</span>
+        </div>
+      </div>
+
+      <!-- Community & Culture -->
+      <div class="reveal reveal-delay-1" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px 24px;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <div style="width:42px; height:42px; border-radius:50%; background:var(--gold-pale); display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--gold); flex-shrink:0;"><i class="fa-solid fa-globe"></i></div>
+          <h3 style="font-family:var(--font-heading); font-size:1.15rem; color:var(--text);">Community &amp; Culture</h3>
+        </div>
+        <div class="topic-pills">
+          <span class="topic-pill">Immigrant Family Legal Planning</span>
+          <span class="topic-pill">Empowering Women Through Legal Preparedness</span>
+          <span class="topic-pill">Teaching the Next Generation About Planning</span>
+          <span class="topic-pill">Why Estate Planning Is an Act of Love</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: LOGOS & ASSETS ============ -->
+<section class="content-section bg-cream" id="assets">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label">Brand Assets</span>
+      <h2 class="section-title">Logos &amp; Headshot</h2>
+    </div>
+    <p class="section-sub reveal" style="text-align:center; max-width:600px; margin:0 auto 40px;">
+      Right-click to save any asset below. For high-resolution vector files, contact <a href="mailto:mvp@mvplawgroupla.com" style="color:var(--gold); text-decoration:underline; text-underline-offset:3px;">mvp@mvplawgroupla.com</a>.
+    </p>
+
+    <div class="grid-3" style="gap:24px;">
+      <div class="asset-card reveal">
+        <div class="asset-preview asset-preview-dark">
+          <img src="images/logos/Logo%20revision%202.png" alt="MVP Law Group Logo on Dark" style="max-height:100px; width:auto;">
+        </div>
+        <div class="asset-info">
+          <div>
+            <div class="asset-info-name">Primary Logo</div>
+            <div class="asset-info-sub">On dark backgrounds</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card reveal reveal-delay-1">
+        <div class="asset-preview asset-preview-light">
+          <img src="images/logos/Logo%20revision%202.png" alt="MVP Law Group Logo on Light" style="max-height:100px; width:auto;">
+        </div>
+        <div class="asset-info">
+          <div>
+            <div class="asset-info-name">Light Background</div>
+            <div class="asset-info-sub">On ivory / cream</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card reveal reveal-delay-2">
+        <div class="asset-preview" style="background:#FFFFFF; border-bottom:1px solid var(--border);">
+          <img src="images/headshot01.jpg" alt="Maria V. Primushko Speaker Headshot" style="max-height:140px; width:auto; border-radius:var(--radius);">
+        </div>
+        <div class="asset-info">
+          <div>
+            <div class="asset-info-name">Speaker Headshot</div>
+            <div class="asset-info-sub">For event materials</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4.5: FEATURED IN ============ -->
+<section class="content-section bg-white">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label">As Featured In</span>
+      <h2 class="section-title">Press &amp; Media Features</h2>
+    </div>
+    <p class="section-sub reveal" style="text-align:center; max-width:640px; margin:0 auto 48px;">
+      Maria has been featured in regional publications and interview series highlighting her work, leadership, and contributions to the Calabasas and greater Los Angeles community.
+    </p>
+
+    <div class="grid-2 reveal feature-card-grid" style="gap:28px; max-width:920px; margin:0 auto;">
+
+      <a class="feature-card" href="https://calabasasstyle.com/community/people-to-watch-in-2020/" target="_blank" rel="noopener">
+        <div class="feature-card-visual">
+          <img src="images/press-calabasas-style-2020.jpg" alt="Maria Primushko featured in Calabasas Style Magazine 2020 People to Watch" loading="lazy">
+        </div>
+        <div class="feature-card-body">
+          <div class="feature-card-meta">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Calabasas Style Magazine &middot; 2020</span>
+          </div>
+          <h3 class="feature-card-title">People to Watch in 2020</h3>
+          <p class="feature-card-desc">Maria recognized as one of the rising leaders shaping the Calabasas community through her legal practice and client advocacy.</p>
+          <span class="feature-card-cta">Read Feature <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </a>
+
+      <a class="feature-card" href="https://calabasasstyle.com/community/women-in-business-2023/" target="_blank" rel="noopener">
+        <div class="feature-card-visual feature-card-visual--placeholder">
+          <div class="feature-placeholder-badge">Calabasas Style</div>
+          <div class="feature-placeholder-year">2023</div>
+          <div class="feature-placeholder-tag">Women in Business</div>
+        </div>
+        <div class="feature-card-body">
+          <div class="feature-card-meta">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Calabasas Style Magazine &middot; 2023</span>
+          </div>
+          <h3 class="feature-card-title">Women in Business 2023</h3>
+          <p class="feature-card-desc">Featured among the women entrepreneurs and professionals driving business and community impact in the Calabasas region.</p>
+          <span class="feature-card-cta">Read Feature <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </a>
+
+      <a class="feature-card" href="https://calabasasstyle.com/" target="_blank" rel="noopener">
+        <div class="feature-card-visual">
+          <img src="images/press-calabasas-style-2025.png" alt="Maria Primushko 'Well, It Depends' estate planning feature in Calabasas Style Magazine 2025" loading="lazy">
+        </div>
+        <div class="feature-card-body">
+          <div class="feature-card-meta">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Calabasas Style Magazine &middot; 2025</span>
+          </div>
+          <h3 class="feature-card-title">Well, It Depends: Estate Planning Explained</h3>
+          <p class="feature-card-desc">Maria returns to Calabasas Style with a featured segment breaking down the essential documents every estate plan needs.</p>
+          <span class="feature-card-cta">Visit Publication <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </a>
+
+      <a class="feature-card" href="https://voyagela.com/interview/inspiring-conversations-with-maria-primushko-of-mvp-law-group-apc/" target="_blank" rel="noopener">
+        <div class="feature-card-visual feature-card-visual--placeholder feature-card-visual--voyage">
+          <div class="feature-placeholder-badge">Voyage LA</div>
+          <div class="feature-placeholder-year"><i class="fa-solid fa-microphone-lines"></i></div>
+          <div class="feature-placeholder-tag">Inspiring Conversations</div>
+        </div>
+        <div class="feature-card-body">
+          <div class="feature-card-meta">
+            <i class="fa-solid fa-microphone-lines"></i>
+            <span>Voyage LA &middot; Interview</span>
+          </div>
+          <h3 class="feature-card-title">Inspiring Conversations with Maria Primushko</h3>
+          <p class="feature-card-desc">An in-depth interview exploring Maria's journey from St. Petersburg to founding MVP Law Group and her mission to protect California families.</p>
+          <span class="feature-card-cta">Read Interview <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: ENGAGEMENT FORMATS ============ -->
+<section class="content-section bg-cream">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label">Availability</span>
+      <h2 class="section-title">How to Feature Maria</h2>
+    </div>
+    <p class="section-sub reveal" style="text-align:center; max-width:640px; margin:0 auto 48px;">
+      Maria brings real-world legal expertise and a warm, approachable style that connects with audiences of all backgrounds. She is available for the following formats.
+    </p>
+
+    <div class="grid-3" style="gap:20px;">
+      <div class="format-card reveal">
+        <div class="format-icon"><i class="fa-solid fa-microphone"></i></div>
+        <h3>Keynote Speaker</h3>
+        <p>Chamber events, galas, conferences, and corporate retreats. 30 to 60-minute presentations with optional Q&amp;A.</p>
+      </div>
+      <div class="format-card reveal reveal-delay-1">
+        <div class="format-icon"><i class="fa-solid fa-podcast"></i></div>
+        <h3>Podcast Guest</h3>
+        <p>Audio and video podcast interviews on estate planning, elder law, entrepreneurship, immigrant success stories, and more.</p>
+      </div>
+      <div class="format-card reveal reveal-delay-2">
+        <div class="format-icon"><i class="fa-solid fa-users"></i></div>
+        <h3>Panel Discussions</h3>
+        <p>Legal, business, and community panels. Maria brings practical perspective alongside fellow professionals and thought leaders.</p>
+      </div>
+      <div class="format-card reveal">
+        <div class="format-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h3>Workshops &amp; Seminars</h3>
+        <p>Free and sponsored estate planning workshops for community groups, senior centers, religious organizations, and associations.</p>
+      </div>
+      <div class="format-card reveal reveal-delay-1">
+        <div class="format-icon"><i class="fa-solid fa-pen-nib"></i></div>
+        <h3>Guest Blogging &amp; Articles</h3>
+        <p>Authored articles for publications, law journals, community newsletters, and online platforms on estate planning topics.</p>
+      </div>
+      <div class="format-card reveal reveal-delay-2">
+        <div class="format-icon"><i class="fa-solid fa-tv"></i></div>
+        <h3>Media &amp; Press</h3>
+        <p>TV, radio, print, and online media commentary on estate planning, probate, bankruptcy, and elder law topics affecting California families.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: SPEAKER REQUEST FORM ============ -->
+<section class="content-section bg-white" id="invite">
+  <div class="container" style="max-width:720px;">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label">Invite Maria</span>
+      <h2 class="section-title">Submit a Speaker &amp; Media Request</h2>
+    </div>
+    <p class="section-sub reveal" style="text-align:center; max-width:600px; margin:0 auto 36px;">
+      Tell us about your event, podcast, publication, or project. We will respond within one business day.
+    </p>
+
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:40px 36px;" class="reveal">
+      <form id="speakerForm" action="https://formspree.io/f/xgonpbwd" method="POST">
+        <input type="hidden" name="form_type" value="Speaker & Media Request — Press Page">
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 20px;">
+          <div>
+            <label class="press-label">Your Name *</label>
+            <input type="text" name="name" required placeholder="Full name" class="press-field">
+          </div>
+          <div>
+            <label class="press-label">Email *</label>
+            <input type="email" name="email" required placeholder="you@example.com" class="press-field">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 20px;">
+          <div>
+            <label class="press-label">Organization</label>
+            <input type="text" name="organization" placeholder="Company, chamber, podcast, or publication" class="press-field">
+          </div>
+          <div>
+            <label class="press-label">Phone</label>
+            <input type="tel" name="phone" placeholder="(555) 555-5555" class="press-field">
+          </div>
+        </div>
+
+        <label class="press-label">What are you inviting Maria to do? *</label>
+        <div class="engagement-grid">
+          <label><input type="checkbox" name="engagement_type" value="Keynote / Speaker"> Keynote / Speaker</label>
+          <label><input type="checkbox" name="engagement_type" value="Podcast Guest"> Podcast Guest</label>
+          <label><input type="checkbox" name="engagement_type" value="Panel Discussion"> Panel Discussion</label>
+          <label><input type="checkbox" name="engagement_type" value="Workshop / Seminar"> Workshop / Seminar</label>
+          <label><input type="checkbox" name="engagement_type" value="Guest Blog / Article"> Guest Blog / Article</label>
+          <label><input type="checkbox" name="engagement_type" value="Media / Press Interview"> Media / Press Interview</label>
+          <label><input type="checkbox" name="engagement_type" value="CLE / Professional Lecture"> CLE / Professional Lecture</label>
+          <label><input type="checkbox" name="engagement_type" value="Teaching / University"> Teaching / University</label>
+          <label><input type="checkbox" name="engagement_type" value="Community Event"> Community Event</label>
+          <label><input type="checkbox" name="engagement_type" value="Other"> Other</label>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 20px;">
+          <div>
+            <label class="press-label">Proposed Date</label>
+            <input type="text" name="proposed_date" placeholder="e.g. June 15, 2026 or flexible" class="press-field">
+          </div>
+          <div>
+            <label class="press-label">Expected Audience Size</label>
+            <input type="text" name="audience_size" placeholder="e.g. 50, 200, online" class="press-field">
+          </div>
+        </div>
+
+        <label class="press-label">Preferred Topic (optional)</label>
+        <select name="preferred_topic" class="press-field" style="cursor:pointer;">
+          <option value="" selected>Select a topic or leave blank</option>
+          <option value="Estate Planning Fundamentals">Estate Planning Fundamentals</option>
+          <option value="Living Trusts vs. Wills">Living Trusts vs. Wills</option>
+          <option value="Avoiding Probate in California">Avoiding Probate in California</option>
+          <option value="Special Needs Trust Planning">Special Needs Trust Planning</option>
+          <option value="Conservatorships & Elder Law">Conservatorships &amp; Elder Law</option>
+          <option value="Asset Protection Strategies">Asset Protection Strategies</option>
+          <option value="Bankruptcy: Fresh Start Options">Bankruptcy: Fresh Start Options</option>
+          <option value="Estate Planning for Business Owners">Estate Planning for Business Owners</option>
+          <option value="Blended Family Estate Challenges">Blended Family Estate Challenges</option>
+          <option value="Immigrant Family Legal Planning">Immigrant Family Legal Planning</option>
+          <option value="Other / Custom Topic">Other / Custom Topic</option>
+        </select>
+
+        <label class="press-label">Details *</label>
+        <textarea name="message" required rows="4" placeholder="Tell us about the event: audience demographics, format, location (in person or virtual), any topic preferences, and anything else helpful..." class="press-field" style="resize:vertical; line-height:1.6;"></textarea>
+
+        <button type="submit" class="btn btn-primary" id="speakerSubmitBtn" style="margin-top:8px; width:100%; text-align:center;"><i class="fa-solid fa-paper-plane" style="font-size:12px;"></i> Submit Request</button>
+        <p style="font-size:0.8rem; color:var(--text-muted); text-align:center; margin-top:10px;"><i class="fa-solid fa-lock" style="font-size:10px; margin-right:4px;"></i> Your information is never shared with third parties.</p>
+      </form>
+
+      <div id="speakerSuccess" style="text-align:center; padding:20px 0; display:none;">
+        <i class="fa-solid fa-circle-check" style="font-size:40px; color:#15803d; margin-bottom:14px; display:block;"></i>
+        <h4 style="font-family:var(--font-heading); font-size:1.15rem; color:var(--text); margin-bottom:6px;">Request Received</h4>
+        <p style="font-size:0.94rem; color:var(--text-mid);">Thank you for your interest. We will review your request and respond within one business day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Need Legal Help for Your Family?</h2>
+    <p>Maria is also available for free, no-obligation estate planning consultations. Protect the people you love.</p>
+    <div class="cta-banner-btns">
+      <a href="contact.html" class="btn btn-primary btn-lg"><i class="fa-regular fa-calendar"></i> Free Consultation</a>
+      <a href="tel:8187887881" class="btn btn-outline btn-lg"><i class="fa-solid fa-phone"></i> (818) 788-7881</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="images/logos/Logo%20revision%202.png" alt="MVP Law Group APC" style="height:132px; width:auto; margin-bottom:16px;">
+        <p class="footer-tagline">Protecting California families through personalized, compassionate legal counsel.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/mvplawLA" class="social-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/mvplaw.la" class="social-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/mvplawla" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.youtube.com/@mvplawla" class="social-link" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://nextdoor.com/pages/mvp-law-group-a-pc-encino-ca/" class="social-link" target="_blank" rel="noopener" aria-label="Nextdoor"><i class="fa-solid fa-house-chimney-window"></i></a>
+          <a href="https://g.page/r/CWjiFyFD2CNrEBM/review" class="social-link" target="_blank" rel="noopener" aria-label="Google Reviews"><i class="fa-brands fa-google"></i></a>
+          <a href="https://www.yelp.com/biz/mvp-law-group-a-pc-encino-4" class="social-link" target="_blank" rel="noopener" aria-label="Yelp"><i class="fa-brands fa-yelp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-heading">Practice Areas</h3>
+        <a href="estate-planning.html" class="footer-link">Estate Planning</a>
+        <a href="probate.html" class="footer-link">Probate</a>
+        <a href="conservatorships.html" class="footer-link">Conservatorships</a>
+        <a href="special-needs-trust.html" class="footer-link">Special Needs Trusts</a>
+        <a href="bankruptcy.html" class="footer-link">Bankruptcy</a>
+      </div>
+      <div>
+        <h3 class="footer-heading">Our Firm</h3>
+        <a href="about.html" class="footer-link">About Us</a>
+        <a href="resources.html" class="footer-link">Resources</a>
+        <a href="reviews.html" class="footer-link">Client Reviews</a>
+        <a href="press.html" class="footer-link">Press &amp; Media</a>
+        <a href="blog/index.html" class="footer-link">Blog</a>
+        <a href="events.html" class="footer-link">Events &amp; Workshops</a>
+        <a href="contact.html" class="footer-link">Contact Us</a>
+      </div>
+      <div>
+        <h3 class="footer-heading">Contact</h3>
+        <div class="footer-contact-item"><i class="fa-solid fa-phone" style="color:var(--gold); flex-shrink:0;"></i><div><a href="tel:8187887881" style="color:#FFFFFF;">(818) 788-7881</a></div></div>
+        <div class="footer-contact-item"><i class="fa-solid fa-location-dot" style="color:var(--gold); flex-shrink:0;"></i><div>6200 Canoga Ave<br>Woodland Hills, CA 91367</div></div>
+        <div class="footer-contact-item"><i class="fa-regular fa-clock" style="color:var(--gold); flex-shrink:0;"></i><div>M &ndash; F: 9 AM &ndash; 5 PM<br>Weekends by appointment</div></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 MVP Law Group, APC. All rights reserved.</div>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="disclaimer.html">Disclaimer</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=2"></script>
+
+<script>
+  // Bio tab switcher
+  document.querySelectorAll('.bio-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.bio-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.bio-panel').forEach(function(p) { p.classList.remove('active'); });
+      tab.classList.add('active');
+      document.getElementById('bio-' + tab.dataset.bio).classList.add('active');
+    });
+  });
+
+  // Speaker form AJAX submit
+  document.getElementById('speakerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = this;
+    var btn = document.getElementById('speakerSubmitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="font-size:12px;"></i> Sending...';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('speakerSuccess').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = 'Something went wrong. Try again.';
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.innerHTML = 'Something went wrong. Try again.';
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Reviews | MVP Law Group, APC | What Our Clients Say</title>
+  <meta name="description" content="Read reviews from real clients of MVP Law Group, APC. Families across Encino, Calabasas, and the San Fernando Valley trust Maria V. Primushko, Esq. for estate planning, trusts, probate, and bankruptcy.">
+  <link rel="canonical" href="https://www.mvplawgroupla.com/reviews.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Client Reviews | MVP Law Group, APC">
+  <meta property="og:description" content="Real reviews from families who trust Maria V. Primushko for estate planning, trusts, and bankruptcy protection.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mvplawgroupla.com/reviews.html">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Josefin+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "MVP Law Group, APC",
+    "url": "https://www.mvplawgroupla.com",
+    "telephone": "+1-818-788-7881",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "6200 Canoga Ave",
+      "addressLocality": "Woodland Hills",
+      "addressRegion": "CA",
+      "postalCode": "91367"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "68",
+      "bestRating": "5"
+    }
+  }
+  </script>
+
+  <style>
+    .review-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      transition: all var(--ease);
+    }
+    .review-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow);
+    }
+    .review-stars {
+      color: var(--gold);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+    .review-text {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+    .review-author {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .review-source {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .review-source i {
+      margin-right: 4px;
+    }
+
+    /* Rating summary */
+    .rating-summary {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .rating-box {
+      text-align: center;
+      padding: 24px 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      min-width: 160px;
+      transition: all var(--ease);
+    }
+    .rating-box:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow);
+    }
+    .rating-box-score {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .rating-box-stars {
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .rating-box-label {
+      font-size: 0.85rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .rating-box-count {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Find us */
+    .find-us-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .find-us-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text);
+      transition: all var(--ease);
+    }
+    .find-us-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+    .find-us-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gold-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .find-us-label {
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+    .find-us-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Filter bar */
+    .review-filter-bar {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .review-filter-btn {
+      padding: 8px 20px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text);
+      transition: all var(--ease);
+    }
+    .review-filter-btn:hover {
+      border-color: var(--gold);
+    }
+    .review-filter-btn.active {
+      background: var(--gold);
+      color: var(--noir);
+      border-color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* Maria quote cards */
+    .maria-quote-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+    }
+    .maria-quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    /* Hero blockquote */
+    .hero-blockquote {
+      background: var(--noir, #0d1b2a);
+      border-left: 4px solid var(--gold);
+      padding: 32px 36px;
+      border-radius: var(--radius-lg);
+      margin-top: 32px;
+    }
+    .hero-blockquote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: #fff;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .hero-blockquote cite {
+      display: block;
+      margin-top: 12px;
+      font-style: normal;
+      font-size: 0.88rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .rating-summary { gap: 12px; }
+      .rating-box { min-width: 0; flex: 1 1 calc(50% - 12px); padding: 18px 14px; }
+      .rating-box-score { font-size: 1.8rem; }
+      .review-filter-bar { gap: 8px; }
+      .review-filter-btn { padding: 7px 14px; font-size: 0.82rem; }
+      .hero-blockquote { padding: 20px 22px; }
+      .maria-quote-card { padding: 28px 20px; }
+      .maria-quote-text { font-size: 1.1rem; }
+      .review-card { padding: 22px 18px; }
+      .find-us-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .rating-box { flex: 1 1 calc(50% - 12px); }
+      .find-us-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="MVP Law Group home">
+        <img src="images/logos/Logo%20revision%202.png" alt="MVP Law Group APC">
+      </a>
+            <ul class="nav-links" role="list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-dropdown">
+          <span class="nav-link" tabindex="0">Practice Areas <i class="fa-solid fa-chevron-down" style="font-size:10px; margin-left:3px;"></i></span>
+          <div class="dropdown-menu">
+            <a href="estate-planning.html" class="dropdown-item"><i class="fa-regular fa-file-lines" style="width:16px; color:var(--gold);"></i> Estate Planning</a>
+            <a href="probate.html" class="dropdown-item"><i class="fa-solid fa-scale-balanced" style="width:16px; color:var(--gold);"></i> Probate</a>
+            <a href="conservatorships.html" class="dropdown-item"><i class="fa-solid fa-hand-holding-heart" style="width:16px; color:var(--gold);"></i> Conservatorships</a>
+            <a href="special-needs-trust.html" class="dropdown-item"><i class="fa-regular fa-heart" style="width:16px; color:var(--gold);"></i> Special Needs Trusts</a>
+            <a href="bankruptcy.html" class="dropdown-item"><i class="fa-solid fa-shield-halved" style="width:16px; color:var(--gold);"></i> Bankruptcy</a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <span class="nav-link" tabindex="0">About <i class="fa-solid fa-chevron-down" style="font-size:10px; margin-left:3px;"></i></span>
+          <div class="dropdown-menu">
+            <a href="about.html" class="dropdown-item"><i class="fa-solid fa-building-columns" style="width:16px; color:var(--gold);"></i> Our Firm &amp; Team</a>
+            <a href="reviews.html" class="dropdown-item"><i class="fa-solid fa-star" style="width:16px; color:var(--gold);"></i> Client Reviews</a>
+            <a href="press.html" class="dropdown-item"><i class="fa-solid fa-newspaper" style="width:16px; color:var(--gold);"></i> Press &amp; Media</a>
+            <a href="events.html" class="dropdown-item"><i class="fa-solid fa-calendar-days" style="width:16px; color:var(--gold);"></i> Events &amp; Workshops</a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <span class="nav-link" tabindex="0">Resources <i class="fa-solid fa-chevron-down" style="font-size:10px; margin-left:3px;"></i></span>
+          <div class="dropdown-menu">
+            <a href="resources.html" class="dropdown-item"><i class="fa-solid fa-calculator" style="width:16px; color:var(--gold);"></i> Tools &amp; Guides</a>
+            <a href="blog/index.html" class="dropdown-item"><i class="fa-solid fa-pen-nib" style="width:16px; color:var(--gold);"></i> Blog</a>
+          </div>
+        </li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <a href="reviews.html" class="lang-active">EN</a>
+          <a href="es/index.html">ES</a>
+          <a href="ru/index.html">RU</a>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle light/dark mode" title="Switch theme">
+          <i class="fa-solid fa-sun"></i>
+          <span class="toggle-label">Light</span>
+        </button>
+        <a href="tel:8187887881" class="nav-phone" aria-label="Call us"><i class="fa-solid fa-phone" style="font-size:12px;"></i> (818) 788-7881</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Free Consultation</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" role="dialog" aria-label="Mobile menu">
+  <button class="mobile-nav-close" aria-label="Close menu">&#x2715;</button>
+  <a href="estate-planning.html" class="mobile-nav-link">Estate Planning</a>
+    <a href="probate.html" class="mobile-nav-link">Probate</a>
+  <a href="conservatorships.html" class="mobile-nav-link">Conservatorships</a>
+<a href="bankruptcy.html" class="mobile-nav-link">Bankruptcy</a>
+  <a href="special-needs-trust.html" class="mobile-nav-link">Special Needs Trusts</a>
+  <a href="about.html" class="mobile-nav-link">About Maria</a>
+  <a href="resources.html" class="mobile-nav-link">Resources</a>
+  <a href="reviews.html" class="mobile-nav-link">Reviews</a>
+  <a href="blog/index.html" class="mobile-nav-link">Blog</a>
+  <a href="events.html" class="mobile-nav-link">Events</a>
+  <a href="press.html" class="mobile-nav-link">Press &amp; Media</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <div class="mobile-nav-cta">
+    <a href="tel:8187887881" class="btn btn-primary"><i class="fa-solid fa-phone"></i> (818) 788-7881</a>
+    <a href="contact.html" class="btn btn-outline">Free Consultation</a>
+  </div>
+</div>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html" class="breadcrumb-link">Home</a>
+      <span class="breadcrumb-sep"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i></span>
+      <span class="breadcrumb-current">Reviews</span>
+    </nav>
+    <div class="page-hero-content reveal">
+      <span class="eyebrow">Client Reviews</span>
+      <h1>68 Families. 4.9 Stars. One Clear Message.</h1>
+      <p class="hero-subtitle">Every review below is from a real client on Google, Yelp, or Avvo. No paid testimonials. No manufactured quotes. Just families who trusted Maria and felt compelled to say so.</p>
+      <blockquote class="hero-blockquote">
+        <p>&ldquo;You are one lawsuit away from losing everything. The only question is whether your family is prepared.&rdquo;</p>
+        <cite>&mdash; Maria V. Primushko, Esq.</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS BAR ============ -->
+<section class="content-section bg-cream">
+  <div class="container">
+    <div class="rating-summary reveal">
+      <div class="rating-box">
+        <div class="rating-box-score">4.9</div>
+        <div class="rating-box-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="rating-box-label"><i class="fa-brands fa-google" style="margin-right:4px;"></i> Google Rating</div>
+        <div class="rating-box-count">68 Reviews</div>
+      </div>
+      <div class="rating-box">
+        <div class="rating-box-score">5.0</div>
+        <div class="rating-box-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="rating-box-label"><i class="fa-brands fa-yelp" style="margin-right:4px;"></i> Yelp Rating</div>
+        <div class="rating-box-count">&nbsp;</div>
+      </div>
+      <div class="rating-box">
+        <div class="rating-box-score">10.0</div>
+        <div class="rating-box-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="rating-box-label">Avvo Superb</div>
+        <div class="rating-box-count">&nbsp;</div>
+      </div>
+      <div class="rating-box">
+        <div class="rating-box-score">100%</div>
+        <div class="rating-box-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="rating-box-label">Would Recommend</div>
+        <div class="rating-box-count">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARIA SPEAKS ============ -->
+<section class="content-section bg-white">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:48px;">
+      <span class="section-label">From Maria</span>
+      <h2 class="section-title">In Her Own Words</h2>
+    </div>
+    <div class="grid-2" style="gap:32px;">
+      <div class="maria-quote-card reveal">
+        <p class="maria-quote-text">&ldquo;You are one lawsuit away from losing everything. The only question is whether your family is prepared.&rdquo;</p>
+        <div class="review-author" style="color:var(--gold);">&mdash; Maria V. Primushko, Esq.</div>
+      </div>
+      <div class="maria-quote-card reveal reveal-delay-1">
+        <p class="maria-quote-text">&ldquo;We have helped families navigate probate and then put proper trusts in place, so whether the estate is modest or worth millions, they are protected moving forward and their loved ones do not have to go through the same process again.&rdquo;</p>
+        <div class="review-author" style="color:var(--gold);">&mdash; Maria V. Primushko, Esq.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FILTERABLE REVIEWS GRID ============ -->
+<section class="content-section bg-cream">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label">In Their Words</span>
+      <h2 class="section-title">Reviews from Real Clients</h2>
+    </div>
+
+    <div class="review-filter-bar reveal" style="margin-top:32px;">
+      <button class="review-filter-btn active" data-filter="all">All</button>
+      <button class="review-filter-btn" data-filter="estate-planning">Estate Planning</button>
+      <button class="review-filter-btn" data-filter="trusts">Trusts</button>
+      <button class="review-filter-btn" data-filter="probate">Probate</button>
+      <button class="review-filter-btn" data-filter="team">Jaslen &amp; Team</button>
+    </div>
+
+    <div class="grid-3" style="gap:24px;">
+
+      <div class="review-card reveal" data-category="estate-planning">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Maria and Jaslen are a great team and very professional. I am very happy to work with MVP Law Group. I was struggling to get this going with other law firms but, immediately after calling, I got a meeting, got direction, and now my family's future is secure.&rdquo;</p>
+        <div class="review-author">Michael Hiller</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-1" data-category="estate-planning probate">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;I was overwhelmed with the process of transferring the deed and the estate planning after my husband passed away, but Maria Primushko, Esq. and her assistant, Jaslen made everything simple and stress free.&rdquo;</p>
+        <div class="review-author">Mioara Puic&#259;</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-2" data-category="estate-planning team">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Maria and Jas were great to work with. They explained everything thoroughly and made the process easy to understand and very professional. Highly recommend their services.&rdquo;</p>
+        <div class="review-author">Linda LT</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal" data-category="estate-planning">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;I had a great experience with Maria Primushko! Clear and simple explanations of the process, very knowledgeable, she is easy to reach! Nice modern office. Highly recommend!&rdquo;</p>
+        <div class="review-author">Susanna Gukasov</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-1" data-category="estate-planning team">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;The MVP team is highly professional, thoughtful, and caring in dealing with our situation. They took us in last minute for a time sensitive matter and saw our request through very expeditiously and thoroughly.&rdquo;</p>
+        <div class="review-author">A Ruiz</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-2" data-category="team">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;MVP Law Group, APC. Very friendly and professional. Jas was always available and answered any questions or concerns that I had.&rdquo;</p>
+        <div class="review-author">Miguel Linares</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal" data-category="estate-planning team">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;I had the pleasure of working with Maria and Jaslen for my estate planning needs, and I can not recommend them highly enough! Maria is an exceptionally intelligent and knowledgeable lawyer who is on top of every detail.&rdquo;</p>
+        <div class="review-author">Boanerges Calderon</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-1" data-category="estate-planning team">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;I really like the professionalism of the lawyer and her assistants; they are responsible in their work and fulfill what was agreed upon.&rdquo;</p>
+        <div class="review-author">HL PLANET PICTURES</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-2" data-category="estate-planning">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;I was looking to do some estate planning and my financial adviser recommended MVP Law Group. My wife and I went to her workshop which was very informative and we both learned a lot. We set up an appointment with her. The process was quick, easy and efficient. She was nice and efficient. I highly recommend her.&rdquo;</p>
+        <div class="review-author">S Cran</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal" data-category="team">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Jaslen Chan was very helpful during my appointment today! She answered every question I had and was very understanding of my situation. I am so glad I worked with her because it solved all the issues I had.&rdquo;</p>
+        <div class="review-author">Kristupas Marinicev</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-1" data-category="trusts">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;I am in the process of working with Maria, with my parents trust. Very impressed with her knowledge and professional guidance and she has been very straight forward through the process. Highly recommend for anyone needing a knowledgeable trust attorney.&rdquo;</p>
+        <div class="review-author">Tiffany Mortensen</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-2" data-category="trusts">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Outstanding service for living trust preparation. I recently worked with Maria Primushko at MVP Law to create a living trust, and I could not be more satisfied with the experience.&rdquo;</p>
+        <div class="review-author">Fred Kohan</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal" data-category="estate-planning team">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Was searching for someone to do my estate planning, and my mom recommended Maria and team. From the start, Maria and Jaslen reached out immediately and answered any questions I might have had. Maria even offered to come to my home.&rdquo;</p>
+        <div class="review-author">Shamaine Ford</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-1" data-category="estate-planning">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Maria and her team were very kind, knowledgeable and guided me through a legal procedure seamlessly! Highly recommend!&rdquo;</p>
+        <div class="review-author">stephanie beaurain</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-2" data-category="estate-planning">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;MVP Law Group are absolutely the best! They did a great job communicating with me throughout the entire process, and got me a very fair settlement. I am extremely grateful!&rdquo;</p>
+        <div class="review-author">Robert Honicky</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal" data-category="trusts">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Everything was explained well and prepared quickly. We feel blessed to have had this amazing experience, detailing our trust. Customers for life!&rdquo;</p>
+        <div class="review-author">Chris Lundie</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-1" data-category="estate-planning team">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Very friendly and professional. Both Maria and Jas were always readily available and answered any questions or concerns that I had regarding estate planning.&rdquo;</p>
+        <div class="review-author">Ang De</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-2" data-category="estate-planning">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;I had a very good experience with Maria and her team. I would not hesitate to work with them again.&rdquo;</p>
+        <div class="review-author">Kaycee Olsen</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal" data-category="estate-planning trusts">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Maria and Jas were incredibly easy to work with. Making arrangements for your or your loved ones final years is such an emotionally taxing affair and they were great about gently guiding us through the process.&rdquo;</p>
+        <div class="review-author">Eminy O'Eminis</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-1" data-category="estate-planning">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Maria Primushko is the best! My family had an immediate situation that warranted legal advice. We called MVP Law Group and a meeting was arranged immediately.&rdquo;</p>
+        <div class="review-author">S</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-2" data-category="estate-planning trusts team">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;I called almost a dozen estate and trust lawyers before I found Attorney Primushko and her legal assistant Jas. They were reliable, trust worthy and easy to work with.&rdquo;</p>
+        <div class="review-author">SUPER FUNKY LENLEN</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal" data-category="estate-planning team">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;I needed legal advice at a very hard time and MVP Law gave me support and understanding. Jas is fantastic, very friendly, and an excellent listener. Maria is so professional and great at explaining your options.&rdquo;</p>
+        <div class="review-author">Allison Vel</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-1" data-category="trusts">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;I highly recommend MVP Law Group. They were very professional and supportive. Maria assisted me with the living trust and I had a great experience.&rdquo;</p>
+        <div class="review-author">Inna Lemeshko</div>
+        <div class="review-source"><i class="fa-brands fa-google"></i> Google Review</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-2" data-category="estate-planning trusts">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;They took care of everything for us and communicated with us every step of the way. I highly recommend Maria and her team for estate planning, trusts, wills, and specifically special needs trusts.&rdquo;</p>
+        <div class="review-author">Daisy N.</div>
+        <div class="review-source"><i class="fa-brands fa-yelp"></i> Yelp Review</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIND US SECTION ============ -->
+<section class="content-section bg-white">
+  <div class="container" style="max-width:900px;">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label">Our Public Presence</span>
+      <h2 class="section-title">Find Us and Leave a Review</h2>
+    </div>
+    <p class="section-sub reveal" style="text-align:center; max-width:560px; margin:0 auto 12px;">
+      We are proud to be visible and accessible on the platforms families use most. Visit any of these to learn more about us or share your experience.
+    </p>
+
+    <div class="find-us-grid reveal">
+      <a href="https://g.page/r/CWjiFyFD2CNrEBM/review" target="_blank" rel="noopener" class="find-us-card">
+        <div class="find-us-icon"><i class="fa-brands fa-google"></i></div>
+        <div>
+          <div class="find-us-label">Google Business Profile</div>
+          <div class="find-us-sub">68 reviews, 4.9 stars</div>
+        </div>
+      </a>
+      <a href="https://www.yelp.com/biz/mvp-law-group-a-pc-encino-4" target="_blank" rel="noopener" class="find-us-card">
+        <div class="find-us-icon"><i class="fa-brands fa-yelp"></i></div>
+        <div>
+          <div class="find-us-label">Yelp</div>
+          <div class="find-us-sub">Estate Planning, Encino</div>
+        </div>
+      </a>
+      <a href="https://www.facebook.com/mvplawLA/reviews" target="_blank" rel="noopener" class="find-us-card">
+        <div class="find-us-icon"><i class="fa-brands fa-facebook-f"></i></div>
+        <div>
+          <div class="find-us-label">Facebook</div>
+          <div class="find-us-sub">Reviews &amp; Recommendations</div>
+        </div>
+      </a>
+      <a href="https://nextdoor.com/pages/mvp-law-group-a-pc-encino-ca/" target="_blank" rel="noopener" class="find-us-card">
+        <div class="find-us-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
+        <div>
+          <div class="find-us-label">Nextdoor</div>
+          <div class="find-us-sub">Neighborhood Recommended</div>
+        </div>
+      </a>
+      <a href="https://www.avvo.com/attorneys/91316-ca-maria-primushko-1758065.html" target="_blank" rel="noopener" class="find-us-card">
+        <div class="find-us-icon"><i class="fa-solid fa-gavel"></i></div>
+        <div>
+          <div class="find-us-label">Avvo</div>
+          <div class="find-us-sub">10.0 Superb Rating</div>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/mvplaw.la" target="_blank" rel="noopener" class="find-us-card">
+        <div class="find-us-icon"><i class="fa-brands fa-instagram"></i></div>
+        <div>
+          <div class="find-us-label">Instagram</div>
+          <div class="find-us-sub">@mvplaw.la</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/company/mvplawla" target="_blank" rel="noopener" class="find-us-card">
+        <div class="find-us-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+        <div>
+          <div class="find-us-label">LinkedIn</div>
+          <div class="find-us-sub">MVP Law Group, APC</div>
+        </div>
+      </a>
+      <a href="https://www.youtube.com/@mvplawla" target="_blank" rel="noopener" class="find-us-card">
+        <div class="find-us-icon"><i class="fa-brands fa-youtube"></i></div>
+        <div>
+          <div class="find-us-label">YouTube</div>
+          <div class="find-us-sub">Legal Tips &amp; Videos</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="cta-banner">
+  <div class="container">
+    <img src="images/headshot01.jpg" alt="Maria V. Primushko, Esq." style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid var(--gold-border); margin:0 auto 20px; display:block;">
+    <h2>Ready to Protect Your Family?</h2>
+    <p>Schedule a free, no-obligation consultation with Maria. We will listen, explain your options, and help you build a plan that fits your family.</p>
+    <div class="cta-banner-btns">
+      <a href="contact.html" class="btn btn-primary btn-lg"><i class="fa-regular fa-calendar"></i> Free Consultation</a>
+      <a href="tel:8187887881" class="btn btn-outline btn-lg"><i class="fa-solid fa-phone"></i> (818) 788-7881</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="images/logos/Logo%20revision%202.png" alt="MVP Law Group APC" style="height:132px; width:auto; margin-bottom:16px;">
+        <p class="footer-tagline">Protecting California families through personalized, compassionate legal counsel.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/mvplawLA" class="social-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/mvplaw.la" class="social-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/mvplawla" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.youtube.com/@mvplawla" class="social-link" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://nextdoor.com/pages/mvp-law-group-a-pc-encino-ca/" class="social-link" target="_blank" rel="noopener" aria-label="Nextdoor"><i class="fa-solid fa-house-chimney-window"></i></a>
+          <a href="https://g.page/r/CWjiFyFD2CNrEBM/review" class="social-link" target="_blank" rel="noopener" aria-label="Google Reviews"><i class="fa-brands fa-google"></i></a>
+          <a href="https://www.yelp.com/biz/mvp-law-group-a-pc-encino-4" class="social-link" target="_blank" rel="noopener" aria-label="Yelp"><i class="fa-brands fa-yelp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-heading">Practice Areas</h3>
+        <a href="estate-planning.html" class="footer-link">Estate Planning</a>
+        <a href="probate.html" class="footer-link">Probate</a>
+        <a href="conservatorships.html" class="footer-link">Conservatorships</a>
+        <a href="special-needs-trust.html" class="footer-link">Special Needs Trusts</a>
+        <a href="bankruptcy.html" class="footer-link">Bankruptcy</a>
+      </div>
+      <div>
+        <h3 class="footer-heading">Our Firm</h3>
+        <a href="about.html" class="footer-link">About Us</a>
+        <a href="resources.html" class="footer-link">Resources</a>
+        <a href="reviews.html" class="footer-link">Client Reviews</a>
+        <a href="blog/index.html" class="footer-link">Blog</a>
+        <a href="events.html" class="footer-link">Events &amp; Workshops</a>
+        <a href="contact.html" class="footer-link">Contact Us</a>
+      </div>
+      <div>
+        <h3 class="footer-heading">Contact</h3>
+        <div class="footer-contact-item"><i class="fa-solid fa-phone" style="color:var(--gold); flex-shrink:0;"></i><div><a href="tel:8187887881" style="color:#FFFFFF;">(818) 788-7881</a></div></div>
+        <div class="footer-contact-item"><i class="fa-solid fa-location-dot" style="color:var(--gold); flex-shrink:0;"></i><div>6200 Canoga Ave<br>Woodland Hills, CA 91367</div></div>
+        <div class="footer-contact-item"><i class="fa-regular fa-clock" style="color:var(--gold); flex-shrink:0;"></i><div>M &ndash; F: 9 AM &ndash; 5 PM<br>Weekends by appointment</div></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 MVP Law Group, APC. All rights reserved.</div>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="disclaimer.html">Disclaimer</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Review filter */
+  document.addEventListener('DOMContentLoaded', function() {
+    var filterBtns = document.querySelectorAll('.review-filter-btn');
+    var cards = document.querySelectorAll('.review-card[data-category]');
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        var filter = this.dataset.filter;
+        cards.forEach(function(card) {
+          if (filter === 'all' || card.dataset.category.indexOf(filter) !== -1) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<script src="js/main.js?v=2"></script>
+
+</body>
+</html>

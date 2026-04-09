@@ -1,520 +1,1155 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="images/logos/image_e43fb0dc-dabb-48f3-a17a-817ce837ff65.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Download free business growth guides, templates, and checklists from Heed Business Solutions. No fluff — just the tools we use with real clients." />
-  <!-- SEO Keywords -->
-  <meta name="keywords" content="business resources downloads, marketing guides, web strategy checklist, free business tools" />
-  <meta name="author" content="Michael Bowers" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://heedbusinesssolutions.com/resources.html" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Resources &amp; Tools | MVP Law Group, APC | Estate Planning Guides, Calculators</title>
+  <meta name="description" content="Free California estate planning guides, probate cost calculator, estate plan risk assessment, and myth-busting resources. Published by Maria V. Primushko, Esq. in Encino and Calabasas.">
+  <link rel="canonical" href="https://www.mvplawgroupla.com/resources.html">
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Resources — Heed Business Solutions | Free Business Tools and Guides" />
-  <meta property="og:description" content="Download free business resources from Heed Business Solutions. Marketing guides, web strategy checklists, and tools for Los Angeles business owners." />
-  <meta property="og:url" content="https://heedbusinesssolutions.com/resources.html" />
-  <meta property="og:image" content="https://heedbusinesssolutions.com/images/logos/image_63845eb1-132b-4180-a8d3-2ceaebd41aa4.png" />
-  <meta property="og:site_name" content="Heed Business Solutions" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:locale:alternate" content="es_ES" />
-  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:title" content="Free Resources & Tools | MVP Law Group, APC">
+  <meta property="og:description" content="Free California estate planning guides, probate cost calculator, estate plan risk assessment, and answers to common legal questions from Maria V. Primushko, Esq.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mvplawgroupla.com/resources.html">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Resources — Heed Business Solutions | Free Business Tools and Guides" />
-  <meta name="twitter:description" content="Download free business resources from Heed Business Solutions. Marketing guides, web strategy checklists, and tools for Los Angeles business owners." />
-  <meta name="twitter:image" content="https://heedbusinesssolutions.com/images/logos/image_f47409d4-5904-41c8-a00e-84279fcd534c.png" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Josefin+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <!-- hreflang -->
-  <link rel="alternate" hreflang="en" href="https://heedbusinesssolutions.com/resources.html" />
-  <link rel="alternate" hreflang="es" href="https://heedbusinesssolutions.com/es/resources.html" />
-  <link rel="alternate" hreflang="ru" href="https://heedbusinesssolutions.com/ru/resources.html" />
-  <link rel="alternate" hreflang="x-default" href="https://heedbusinesssolutions.com/resources.html" />
-  <title>Free Resources — Heed Business Solutions | Business Growth Guides &amp; Templates</title>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Free Resources — Heed Business Solutions",
-  "description": "Free tools and guides for business owners. Download customer persona builders, PPC checklists, and growth roadmaps.",
-  "url": "https://heedbusinesssolutions.com/resources.html",
-  "isPartOf": { "@type": "WebSite", "name": "Heed Business Solutions", "url": "https://heedbusinesssolutions.com" },
-  "inLanguage": "en",
-  "availableLanguage": ["en", "es", "ru"]
-}
-</script>
-
-  <!-- GA4 -->
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome 6.5 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css" />
-<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/23411980.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    /* ---- Interactive Tools ---- */
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      transition: all var(--ease);
+    }
+    .tool-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow);
+    }
+    .tool-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .tool-card p {
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+    .tool-card label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+      margin-top: 18px;
+    }
+    .tool-card input[type="number"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      transition: border-color var(--ease);
+    }
+    .tool-card input[type="number"]:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .calc-result {
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-top: 20px;
+      display: none;
+    }
+    .calc-result.show { display: block; }
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 1rem;
+      color: var(--text-mid);
+    }
+    .calc-row.total {
+      border-top: 2px solid var(--gold);
+      margin-top: 8px;
+      padding-top: 12px;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+    .calc-cta {
+      margin-top: 16px;
+      font-size: 0.96rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* Quiz */
+    .quiz-questions { margin-top: 20px; }
+    .quiz-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+    .quiz-q:last-child { border-bottom: none; }
+    .quiz-q-text {
+      font-size: 1rem;
+      color: var(--text);
+      flex: 1;
+      line-height: 1.6;
+    }
+    .quiz-btns {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .quiz-btn {
+      padding: 6px 18px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--bg);
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: all var(--ease);
+      color: var(--text-mid);
+    }
+    .quiz-btn:hover { border-color: var(--gold); }
+    .quiz-btn.selected-yes {
+      background: var(--gold);
+      color: var(--noir);
+      border-color: var(--gold);
+      font-weight: 600;
+    }
+    .quiz-btn.selected-no {
+      background: var(--noir);
+      color: #fff;
+      border-color: var(--noir);
+      font-weight: 600;
+    }
+    .quiz-result {
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-top: 24px;
+      display: none;
+    }
+    .quiz-result.show { display: block; }
+    .quiz-result h4 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+    .quiz-result p {
+      font-size: 0.96rem;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .risk-high { color: #b91c1c; }
+    .risk-moderate { color: #d97706; }
+    .risk-protected { color: #15803d; }
+
+    /* ---- Guide cards ---- */
+    .guide-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--ease);
+    }
+    .guide-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+    .guide-card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--gold-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 22px;
+      color: var(--gold);
+    }
+    .guide-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .guide-card p {
+      font-size: 0.96rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .guide-card .btn { align-self: flex-start; }
+
+    /* ---- Myth cards ---- */
+    .myth-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--ease);
+      cursor: pointer;
+    }
+    .myth-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow);
+    }
+    .myth-header {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+    }
+    .myth-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #fef2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+      color: #b91c1c;
+    }
+    .myth-card.open .myth-icon {
+      background: #f0fdf4;
+      color: #15803d;
+    }
+    .myth-label {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.4;
+      flex: 1;
+    }
+    .myth-toggle {
+      font-size: 12px;
+      color: var(--text-light);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .myth-card.open .myth-toggle { transform: rotate(180deg); }
+    .myth-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .myth-card.open .myth-body { max-height: 300px; }
+    .myth-body-inner {
+      padding: 0 24px 24px;
+    }
+    .myth-reality-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #15803d;
+      margin-bottom: 6px;
+    }
+    .myth-body-inner p {
+      font-size: 0.96rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* ---- "Already in Trouble" section ---- */
+    .trouble-section {
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .trouble-section h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .trouble-section p {
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1rem;
+    }
+
+    /* ---- Guide modal ---- */
+    .guide-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      padding: 20px;
+    }
+    .guide-modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .guide-modal {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+      max-width: 460px;
+      width: 100%;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s;
+    }
+    .guide-modal-overlay.open .guide-modal {
+      transform: translateY(0);
+    }
+    .guide-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--text-light);
+      line-height: 1;
+    }
+    .guide-modal h3 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .guide-modal .guide-modal-sub {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .guide-modal label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+      margin-top: 14px;
+    }
+    .guide-modal input[type="text"],
+    .guide-modal input[type="email"] {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+    }
+    .guide-modal input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .guide-modal .btn { margin-top: 20px; width: 100%; text-align: center; }
+    .guide-modal .privacy-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 12px;
+      text-align: center;
+    }
+    .guide-modal .success-msg {
+      text-align: center;
+      padding: 20px 0;
+      display: none;
+    }
+    .guide-modal .success-msg.show { display: block; }
+    .guide-modal .success-msg i {
+      font-size: 40px;
+      color: #15803d;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .guide-modal .success-msg h4 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .guide-modal .success-msg p {
+      font-size: 0.94rem;
+      color: var(--text-mid);
+    }
+    .guide-modal form.hidden { display: none; }
+
+    @media (min-width: 769px) {
+      .hero-headshot { display: block !important; }
+    }
+
+    @media (max-width: 768px) {
+      .tool-card { padding: 24px 20px; }
+      .trouble-section { padding: 32px 20px; }
+      .guide-modal { padding: 28px 22px; }
+      .quiz-q { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .page-hero-content { flex-direction: column !important; }
+    }
+  </style>
 </head>
 <body>
-<a href="#main-content" class="skip-nav">Skip to main content</a>
 
-<!-- NAV -->
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="/index.html" class="nav-logo">
-      <img src="images/logos/image_63845eb1-132b-4180-a8d3-2ceaebd41aa4.png" alt="Heed Business Solutions" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <span class="nav-logo-text" style="display:none">Heed<span> Business Consulting</span></span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="/index.html" class="nav-link" data-i18n="nav.home">Home</a></li>
-      <li><a href="/about.html" class="nav-link" data-i18n="nav.about">About</a></li>
-      <li class="nav-item--dropdown">
-        <button class="nav-dropdown-toggle"><span data-i18n="nav.services">Services</span> <i class="fa-solid fa-chevron-down"></i></button>
-        <div class="nav-dropdown-menu">
-          <a href="/services/web-design.html" class="nav-dropdown-item"><i class="fa-solid fa-globe"></i> <span data-i18n="nav.services.web">Web Design &amp; Optimization</span></a>
-          <a href="/services/marketing.html" class="nav-dropdown-item"><i class="fa-solid fa-bullhorn"></i> <span data-i18n="nav.services.marketing">Marketing Services</span></a>
-          <a href="/services/ppc-ads.html" class="nav-dropdown-item"><i class="fa-solid fa-chart-line"></i> <span data-i18n="nav.services.ppc">PPC &amp; Ad Management</span></a>
-          <a href="/services/social-media.html" class="nav-dropdown-item"><i class="fa-solid fa-share-nodes"></i> <span data-i18n="nav.services.social">Social Media Marketing</span></a>
-          <a href="/services/sales-bd.html" class="nav-dropdown-item"><i class="fa-solid fa-handshake"></i> <span data-i18n="nav.services.sales">Sales &amp; Business Development</span></a>
-          <a href="/services/technology.html" class="nav-dropdown-item"><i class="fa-solid fa-microchip"></i> <span data-i18n="nav.services.tech">Technology &amp; Smart Spaces</span></a>
-          <a href="/services/business-sprints.html" class="nav-dropdown-item"><i class="fa-solid fa-rocket"></i> <span data-i18n="nav.services.sprints">Business Consulting Sprints</span></a>
-          <a href="/readiness-score.html" class="nav-dropdown-item"><i class="fa-solid fa-gauge-high"></i> Client Readiness Score</a>
-        </div>
-      </li>
-      <li><a href="/portfolio.html" class="nav-link" data-i18n="nav.portfolio">Portfolio</a></li>
-      <li><a href="/blog.html" class="nav-link" data-i18n="nav.blog">Blog</a></li>
-      <li><a href="/resources.html" class="nav-link active" data-i18n="nav.resources">Resources</a></li>
-            <li><a href="/readiness-score.html">Client Readiness Score</a></li>
-      <li><a href="/contact.html" class="nav-link" data-i18n="nav.contact">Contact</a></li>
-    </ul>
-      <!-- Language Switcher -->
-      <div class="lang-switcher" role="group" aria-label="Select language">
-        <button class="lang-btn active" data-lang="en" title="English">EN</button>
-        <button class="lang-btn" data-lang="es" title="Español">ES</button>
-        <button class="lang-btn" data-lang="ru" title="Русский">RU</button>
-      </div>
-    <div class="nav-cta">
-      <a href="https://calendar.app.google/G6oc9Q7uRibsczeR9" class="btn btn--primary btn--sm" target="_blank" rel="noopener" data-i18n="nav.book">Book a Call</a>
-    </div>
-    <button class="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div>
-</nav>
-<nav class="nav-mobile">
-  <ul class="nav-mobile-links">
-    <li><a href="/index.html" class="nav-mobile-link">Home</a></li>
-    <li><a href="/about.html" class="nav-mobile-link">About</a></li>
-    <li><details class="nav-mobile-accordion"><summary>Services <i class="fa-solid fa-chevron-down"></i></summary>
-      <ul class="nav-mobile-sub">
-        <li><a href="/services/web-design.html" data-i18n="footer.svc.web">Web Design &amp; Optimization</a></li>
-        <li><a href="/services/marketing.html" data-i18n="footer.svc.marketing">Marketing Services</a></li>
-        <li><a href="/services/ppc-ads.html" data-i18n="footer.svc.ppc">PPC &amp; Ad Management</a></li>
-        <li><a href="/services/social-media.html" data-i18n="footer.svc.social">Social Media Marketing</a></li>
-        <li><a href="/services/sales-bd.html" data-i18n="footer.svc.sales">Sales &amp; Business Development</a></li>
-        <li><a href="/services/technology.html" data-i18n="footer.svc.tech">Technology &amp; Smart Spaces</a></li>
-        <li><a href="/services/business-sprints.html" data-i18n="footer.svc.sprints">Business Consulting Sprints</a></li>
-        <li><a href="/services/startup-launch.html" data-i18n="footer.svc.startup">Startup Launch Program</a></li>
-        <li><a href="/services/digital-intelligence.html" data-i18n="footer.svc.digital">Digital Intelligence &amp; SEO</a></li>
-        <li><a href="/readiness-score.html">Client Readiness Score</a></li>
+<!-- ============ NAVIGATION ============ -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="MVP Law Group home">
+        <img src="images/logos/Logo%20revision%202.png" alt="MVP Law Group APC">
+      </a>
+            <ul class="nav-links" role="list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-dropdown">
+          <span class="nav-link" tabindex="0">Practice Areas <i class="fa-solid fa-chevron-down" style="font-size:10px; margin-left:3px;"></i></span>
+          <div class="dropdown-menu">
+            <a href="estate-planning.html" class="dropdown-item"><i class="fa-regular fa-file-lines" style="width:16px; color:var(--gold);"></i> Estate Planning</a>
+            <a href="probate.html" class="dropdown-item"><i class="fa-solid fa-scale-balanced" style="width:16px; color:var(--gold);"></i> Probate</a>
+            <a href="conservatorships.html" class="dropdown-item"><i class="fa-solid fa-hand-holding-heart" style="width:16px; color:var(--gold);"></i> Conservatorships</a>
+            <a href="special-needs-trust.html" class="dropdown-item"><i class="fa-regular fa-heart" style="width:16px; color:var(--gold);"></i> Special Needs Trusts</a>
+            <a href="bankruptcy.html" class="dropdown-item"><i class="fa-solid fa-shield-halved" style="width:16px; color:var(--gold);"></i> Bankruptcy</a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <span class="nav-link" tabindex="0">About <i class="fa-solid fa-chevron-down" style="font-size:10px; margin-left:3px;"></i></span>
+          <div class="dropdown-menu">
+            <a href="about.html" class="dropdown-item"><i class="fa-solid fa-building-columns" style="width:16px; color:var(--gold);"></i> Our Firm &amp; Team</a>
+            <a href="reviews.html" class="dropdown-item"><i class="fa-solid fa-star" style="width:16px; color:var(--gold);"></i> Client Reviews</a>
+            <a href="press.html" class="dropdown-item"><i class="fa-solid fa-newspaper" style="width:16px; color:var(--gold);"></i> Press &amp; Media</a>
+            <a href="events.html" class="dropdown-item"><i class="fa-solid fa-calendar-days" style="width:16px; color:var(--gold);"></i> Events &amp; Workshops</a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <span class="nav-link" tabindex="0">Resources <i class="fa-solid fa-chevron-down" style="font-size:10px; margin-left:3px;"></i></span>
+          <div class="dropdown-menu">
+            <a href="resources.html" class="dropdown-item"><i class="fa-solid fa-calculator" style="width:16px; color:var(--gold);"></i> Tools &amp; Guides</a>
+            <a href="blog/index.html" class="dropdown-item"><i class="fa-solid fa-pen-nib" style="width:16px; color:var(--gold);"></i> Blog</a>
+          </div>
+        </li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
-    </details></li>
-    <li><a href="/portfolio.html" class="nav-mobile-link">Portfolio</a></li>
-    <li><a href="/blog.html" class="nav-mobile-link">Blog</a></li>
-    <li><a href="/resources.html" class="nav-mobile-link active">Resources</a></li>
-            <li><a href="/readiness-score.html">Client Readiness Score</a></li>
-    <li><a href="/contact.html" class="nav-mobile-link">Contact</a></li>
-  </ul>
-  <div class="nav-mobile-cta">
-    <a href="https://calendar.app.google/G6oc9Q7uRibsczeR9" class="btn btn--primary" target="_blank" rel="noopener">Book a Call</a>
-    <a href="/contact.html" class="btn btn--outline">Send a Message</a>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <a href="resources.html" class="lang-active">EN</a>
+          <a href="es/resources.html">ES</a>
+          <a href="ru/resources.html">RU</a>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle light/dark mode" title="Switch theme">
+          <i class="fa-solid fa-sun"></i>
+          <span class="toggle-label">Light</span>
+        </button>
+        <a href="tel:8187887881" class="nav-phone" aria-label="Call us"><i class="fa-solid fa-phone" style="font-size:12px;"></i> (818) 788-7881</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Free Consultation</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
 
-<main id="main-content">
+<!-- Mobile Nav -->
+<div class="mobile-nav" role="dialog" aria-label="Mobile menu">
+  <button class="mobile-nav-close" aria-label="Close menu">&#x2715;</button>
+  <a href="estate-planning.html" class="mobile-nav-link">Estate Planning</a>
+    <a href="probate.html" class="mobile-nav-link">Probate</a>
+  <a href="conservatorships.html" class="mobile-nav-link">Conservatorships</a>
+<a href="bankruptcy.html" class="mobile-nav-link">Bankruptcy</a>
+  <a href="special-needs-trust.html" class="mobile-nav-link">Special Needs Trusts</a>
+  <a href="about.html" class="mobile-nav-link">About Maria</a>
+  <a href="resources.html" class="mobile-nav-link">Resources</a>
+  <a href="blog/index.html" class="mobile-nav-link">Blog</a>
+  <a href="events.html" class="mobile-nav-link">Events</a>
+  <a href="press.html" class="mobile-nav-link">Press &amp; Media</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <div class="mobile-nav-cta">
+    <a href="tel:8187887881" class="btn btn-primary"><i class="fa-solid fa-phone"></i> (818) 788-7881</a>
+    <a href="contact.html" class="btn btn-outline">Free Consultation</a>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <section class="hero hero--sm">
-    <div class="container hero__content hero__content--center">
-      <p class="eyebrow reveal" data-i18n="resources.hero.eyebrow">Free Resources</p>
-      <h1 class="hero__title reveal reveal-delay-1" data-i18n="resources.hero.heading">Tools Built for Firms That Serve High-Value Clients</h1>
-      <p class="hero__lead reveal reveal-delay-2" data-i18n="resources.hero.lead">Every guide, audit, and framework below is built from real client engagements. Download free — no spam, just tools that help you win and retain high-value clients.</p>
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html" class="breadcrumb-link">Home</a>
+      <span class="breadcrumb-sep"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i></span>
+      <span class="breadcrumb-current">Resources</span>
+    </nav>
+    <div class="page-hero-content reveal" style="display:flex; align-items:center; gap:40px;">
+      <div style="flex:1;">
+        <span class="eyebrow">Free Resources</span>
+        <h1>We're Here to Help You <em>Understand</em></h1>
+        <p class="hero-subtitle">Maria has put together these free guides and tools to help you make sense of your options. No jargon, no pressure. Take what you need &mdash; and call us when you're ready.</p>
+      </div>
+      <div style="flex-shrink:0; display:none;" class="hero-headshot">
+        <img src="images/headshot01.jpg" alt="Maria V. Primushko, Esq." style="width:180px; height:180px; border-radius:50%; object-fit:cover; border:3px solid var(--gold-border);">
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- RESOURCES GRID -->
-  <section class="section section--white">
-    <div class="container">
-
-      <div class="section__header section__header--center reveal">
-        <p class="eyebrow" data-i18n="resources.grid.eyebrow">Downloadable Guides &amp; Templates</p>
-        <h2 class="section__title" data-i18n="resources.grid.heading">Build a Stronger Business, One Resource at a Time</h2>
-        <p class="section__lead" data-i18n="resources.grid.lead">Each resource below is built around the frameworks we use daily with clients across Los Angeles. No filler — just the tools that actually move the needle.</p>
+<!-- Quick Nav -->
+<section style="padding:24px 0 0;background:var(--bg);transition:background-color 0.35s ease;">
+  <div class="container">
+    <div class="page-toc reveal">
+      <div class="page-toc-title">Jump To</div>
+      <div class="page-toc-list">
+        <a href="#tools" class="page-toc-link"><i class="fa-solid fa-calculator"></i> Probate Calculator</a>
+        <a href="#quiz" class="page-toc-link"><i class="fa-solid fa-clipboard-check"></i> Risk Assessment</a>
+        <a href="#guides" class="page-toc-link"><i class="fa-solid fa-book-open"></i> Free Guides</a>
+        <a href="#myths" class="page-toc-link"><i class="fa-solid fa-lightbulb"></i> Myth vs. Reality</a>
+        <a href="#fix" class="page-toc-link"><i class="fa-solid fa-wrench"></i> Already in Trouble?</a>
+        <a href="#blog" class="page-toc-link"><i class="fa-solid fa-newspaper"></i> Blog</a>
       </div>
-
-      <div class="resources-grid">
-
-        <!-- Resource 1: Customer Persona Builder -->
-        <!-- Featured: HNW Client Audit -->
-        <div class="resource-card reveal" style="border:2px solid var(--gold);">
-          <div class="resource-card__icon" style="background:var(--gold); color:var(--white);">
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <div class="resource-card__content">
-            <span class="badge badge--gold">Featured Audit</span>
-            <h3 class="resource-card__title">The HNW Client Audit — 12 Points Where Firms Lose High-Value Clients</h3>
-            <p class="resource-card__desc">High-net-worth clients make a decision about your firm before they ever contact you. Most firms lose them in 12 critical moments and never know it. This diagnostic checklist identifies exactly where you are losing high-value prospects — from first Google impression to referral readiness.</p>
-            <div class="resource-form-wrap">
-              <form id="resource-form-hnw" class="resource-form" data-formspree action="https://formspree.io/f/xkoqkkjw" method="POST">
-                <input type="hidden" name="resource" value="HNW Client Audit — 12 Points" />
-                <input type="hidden" name="_subject" value="Resource Download: HNW Client Audit" />
-                <div class="resource-form__fields">
-                  <input type="text" name="name" placeholder="Your Name" required class="form-input" />
-                  <input type="email" name="email" placeholder="Your Email" required class="form-input" />
-                </div>
-                <button type="submit" class="btn btn--primary btn--block"><i class="fa-solid fa-download"></i> Download the HNW Client Audit</button>
-              </form>
-              <div class="form-success" style="display:none;">
-                <div class="form-success__inner">
-                  <i class="fa-solid fa-circle-check"></i>
-                  <p><strong>Check your email.</strong> The HNW Client Audit is on its way.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Featured: GEO Readiness Audit -->
-        <div class="resource-card reveal reveal-delay-1" style="border:2px solid var(--gold);">
-          <div class="resource-card__icon" style="background:var(--gold); color:var(--white);">
-            <i class="fa-solid fa-robot"></i>
-          </div>
-          <div class="resource-card__content">
-            <span class="badge badge--gold">Free Audit</span>
-            <h3 class="resource-card__title">GEO Readiness Audit — How AI Search Engines See Your Business</h3>
-            <p class="resource-card__desc">Find out if ChatGPT, Google AI Overviews, and Perplexity can accurately cite and recommend your business. Our 12-point GEO Readiness Audit evaluates structured data, entity definitions, FAQ coverage, and citation readiness — delivered within 48 hours.</p>
-            <a href="/geo-audit.html" class="btn btn--primary btn--block"><i class="fa-solid fa-arrow-right"></i> Request Your Free GEO Audit</a>
-          </div>
-        </div>
-
-        <div class="resource-card reveal">
-          <div class="resource-card__icon">
-            <i class="fa-solid fa-user-circle"></i>
-          </div>
-          <div class="resource-card__content">
-            <span class="badge badge--gold" data-i18n="resources.card.1.badge">Guide</span>
-            <h3 class="resource-card__title" data-i18n="resources.card.1.title">Customer Persona Builder</h3>
-            <p class="resource-card__desc" data-i18n="resources.card.1.desc">A step-by-step worksheet to define your ideal client in detail — demographics, goals, pain points, and buying behavior. The foundation for everything in your marketing.</p>
-            <div class="resource-form-wrap">
-              <form id="resource-form-1" class="resource-form" data-formspree action="https://formspree.io/f/xkoqkkjw" method="POST">
-                <input type="hidden" name="resource" value="Customer Persona Builder" />
-                <input type="hidden" name="_subject" value="Resource Download: Customer Persona Builder" />
-                <div class="resource-form__fields">
-                  <input type="text" name="name" placeholder="Your Name" required class="form-input" />
-                  <input type="email" name="email" placeholder="Your Email" required class="form-input" />
-                </div>
-                <button type="submit" class="btn btn--primary btn--block" data-i18n="resources.card.1.btn"><i class="fa-solid fa-download"></i> Download Free Guide</button>
-              </form>
-              <div class="form-success" style="display:none;">
-                <div class="form-success__inner">
-                  <i class="fa-solid fa-circle-check"></i>
-                  <p data-i18n="resources.card.1.success"><strong>Check your email!</strong> Customer Persona Builder is on its way.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Resource 2: PPC Checklist -->
-        <div class="resource-card reveal reveal-delay-1">
-          <div class="resource-card__icon">
-            <i class="fa-solid fa-chart-bar"></i>
-          </div>
-          <div class="resource-card__content">
-            <span class="badge badge--blue" data-i18n="resources.card.2.badge">Checklist</span>
-            <h3 class="resource-card__title" data-i18n="resources.card.2.title">PPC Campaign Readiness Checklist</h3>
-            <p class="resource-card__desc" data-i18n="resources.card.2.desc">40+ point pre-launch checklist covering website readiness, messaging alignment, tracking setup, campaign architecture, and creative assets. Don't spend a dollar without this.</p>
-            <div class="resource-form-wrap">
-              <form id="resource-form-2" class="resource-form" data-formspree action="https://formspree.io/f/xkoqkkjw" method="POST">
-                <input type="hidden" name="resource" value="PPC Campaign Readiness Checklist" />
-                <input type="hidden" name="_subject" value="Resource Download: PPC Campaign Readiness Checklist" />
-                <div class="resource-form__fields">
-                  <input type="text" name="name" placeholder="Your Name" required class="form-input" />
-                  <input type="email" name="email" placeholder="Your Email" required class="form-input" />
-                </div>
-                <button type="submit" class="btn btn--primary btn--block" data-i18n="resources.card.2.btn"><i class="fa-solid fa-download"></i> Download Free Checklist</button>
-              </form>
-              <div class="form-success" style="display:none;">
-                <div class="form-success__inner">
-                  <i class="fa-solid fa-circle-check"></i>
-                  <p data-i18n="resources.card.2.success"><strong>Check your email!</strong> PPC Campaign Readiness Checklist is on its way.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Resource 3: Advertising Funnel Blueprint -->
-        <div class="resource-card reveal reveal-delay-2">
-          <div class="resource-card__icon">
-            <i class="fa-solid fa-filter"></i>
-          </div>
-          <div class="resource-card__content">
-            <span class="badge badge--gold" data-i18n="resources.card.3.badge">Guide</span>
-            <h3 class="resource-card__title" data-i18n="resources.card.3.title">Business Advertising Funnel Blueprint</h3>
-            <p class="resource-card__desc" data-i18n="resources.card.3.desc">A visual framework for building a complete top-to-bottom advertising funnel. Includes platform recommendations, budget allocation guidance, and content ideas for each stage.</p>
-            <div class="resource-form-wrap">
-              <form id="resource-form-3" class="resource-form" data-formspree action="https://formspree.io/f/xkoqkkjw" method="POST">
-                <input type="hidden" name="resource" value="Advertising Funnel Blueprint" />
-                <input type="hidden" name="_subject" value="Resource Download: Advertising Funnel Blueprint" />
-                <div class="resource-form__fields">
-                  <input type="text" name="name" placeholder="Your Name" required class="form-input" />
-                  <input type="email" name="email" placeholder="Your Email" required class="form-input" />
-                </div>
-                <button type="submit" class="btn btn--primary btn--block" data-i18n="resources.card.3.btn"><i class="fa-solid fa-download"></i> Download Free Blueprint</button>
-              </form>
-              <div class="form-success" style="display:none;">
-                <div class="form-success__inner">
-                  <i class="fa-solid fa-circle-check"></i>
-                  <p data-i18n="resources.card.3.success"><strong>Check your email!</strong> Business Advertising Funnel Blueprint is on its way.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Resource 4: Website Copy Framework -->
-        <div class="resource-card reveal">
-          <div class="resource-card__icon">
-            <i class="fa-solid fa-globe"></i>
-          </div>
-          <div class="resource-card__content">
-            <span class="badge badge--navy" data-i18n="resources.card.4.badge">Template</span>
-            <h3 class="resource-card__title" data-i18n="resources.card.4.title">Website Copy Framework</h3>
-            <p class="resource-card__desc" data-i18n="resources.card.4.desc">A fill-in-the-blanks website copy framework for your homepage, about page, and services pages. Built around buyer psychology and the customer journey.</p>
-            <div class="resource-form-wrap">
-              <form id="resource-form-4" class="resource-form" data-formspree action="https://formspree.io/f/xkoqkkjw" method="POST">
-                <input type="hidden" name="resource" value="Website Copy Framework" />
-                <input type="hidden" name="_subject" value="Resource Download: Website Copy Framework" />
-                <div class="resource-form__fields">
-                  <input type="text" name="name" placeholder="Your Name" required class="form-input" />
-                  <input type="email" name="email" placeholder="Your Email" required class="form-input" />
-                </div>
-                <button type="submit" class="btn btn--primary btn--block" data-i18n="resources.card.4.btn"><i class="fa-solid fa-download"></i> Download Free Template</button>
-              </form>
-              <div class="form-success" style="display:none;">
-                <div class="form-success__inner">
-                  <i class="fa-solid fa-circle-check"></i>
-                  <p data-i18n="resources.card.4.success"><strong>Check your email!</strong> Website Copy Framework is on its way.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Resource 5: Brand Messaging Template -->
-        <div class="resource-card reveal reveal-delay-1">
-          <div class="resource-card__icon">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-          <div class="resource-card__content">
-            <span class="badge badge--navy" data-i18n="resources.card.5.badge">Template</span>
-            <h3 class="resource-card__title" data-i18n="resources.card.5.title">Brand Messaging Document Template</h3>
-            <p class="resource-card__desc" data-i18n="resources.card.5.desc">A one-page brand messaging template that covers your voice, tone, value proposition, differentiators, and key proof points — ready to share with any designer, writer, or agency.</p>
-            <div class="resource-form-wrap">
-              <form id="resource-form-5" class="resource-form" data-formspree action="https://formspree.io/f/xkoqkkjw" method="POST">
-                <input type="hidden" name="resource" value="Brand Messaging Template" />
-                <input type="hidden" name="_subject" value="Resource Download: Brand Messaging Template" />
-                <div class="resource-form__fields">
-                  <input type="text" name="name" placeholder="Your Name" required class="form-input" />
-                  <input type="email" name="email" placeholder="Your Email" required class="form-input" />
-                </div>
-                <button type="submit" class="btn btn--primary btn--block" data-i18n="resources.card.5.btn"><i class="fa-solid fa-download"></i> Download Free Template</button>
-              </form>
-              <div class="form-success" style="display:none;">
-                <div class="form-success__inner">
-                  <i class="fa-solid fa-circle-check"></i>
-                  <p data-i18n="resources.card.5.success"><strong>Check your email!</strong> Brand Messaging Document Template is on its way.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Resource 6: 90-Day Growth Roadmap -->
-        <div class="resource-card reveal reveal-delay-2">
-          <div class="resource-card__icon">
-            <i class="fa-solid fa-road"></i>
-          </div>
-          <div class="resource-card__content">
-            <span class="badge badge--gold" data-i18n="resources.card.6.badge">Guide</span>
-            <h3 class="resource-card__title" data-i18n="resources.card.6.title">90-Day Business Growth Roadmap</h3>
-            <p class="resource-card__desc" data-i18n="resources.card.6.desc">The exact framework we use in our Business Consulting Sprints — adapted for self-starters. Map your goals, gaps, and the top five actions to take in your next 90 days.</p>
-            <div class="resource-form-wrap">
-              <form id="resource-form-6" class="resource-form" data-formspree action="https://formspree.io/f/xkoqkkjw" method="POST">
-                <input type="hidden" name="resource" value="90-Day Growth Roadmap" />
-                <input type="hidden" name="_subject" value="Resource Download: 90-Day Growth Roadmap" />
-                <div class="resource-form__fields">
-                  <input type="text" name="name" placeholder="Your Name" required class="form-input" />
-                  <input type="email" name="email" placeholder="Your Email" required class="form-input" />
-                </div>
-                <button type="submit" class="btn btn--primary btn--block" data-i18n="resources.card.6.btn"><i class="fa-solid fa-download"></i> Download Free Roadmap</button>
-              </form>
-              <div class="form-success" style="display:none;">
-                <div class="form-success__inner">
-                  <i class="fa-solid fa-circle-check"></i>
-                  <p data-i18n="resources.card.6.success"><strong>Check your email!</strong> 90-Day Business Growth Roadmap is on its way.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /.resources-grid -->
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- BLOG CTA STRIP -->
-  <section class="section section--pale">
-    <div class="container">
+<!-- ============ SECTION 1: INTERACTIVE TOOLS ============ -->
+<section class="content-section bg-cream" id="tools">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label">Interactive Tools</span>
+      <h2 class="section-title">Check Your Situation</h2>
+    </div>
+    <p class="section-sub reveal reveal-delay-1" style="text-align:center; max-width:640px; margin: 0 auto 48px;">
+      These free tools can help you understand where you stand. They are not a substitute for legal advice, but they are a good place to start.
+    </p>
 
-      <div class="section__header section__header--center reveal">
-        <p class="eyebrow" data-i18n="resources.blog.eyebrow">From the Blog</p>
-        <h2 class="section__title" data-i18n="resources.blog.heading">More Free Insights on the Blog</h2>
-        <p class="section__lead" data-i18n="resources.blog.lead">Deep-dive articles on web strategy, paid advertising, social media, and building a business that converts.</p>
+    <div class="grid-2" style="gap:32px;">
+
+      <!-- Probate Cost Calculator -->
+      <div class="tool-card reveal reveal-delay-1">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+          <div style="width:44px; height:44px; border-radius:50%; background:var(--gold-pale); display:flex; align-items:center; justify-content:center; font-size:20px; color:var(--gold);"><i class="fa-solid fa-calculator"></i></div>
+          <h3 style="margin:0;">Probate Cost Calculator</h3>
+        </div>
+        <p>Find out what California probate would cost your family. Enter the estimated total value of the estate (home, accounts, investments) and see the statutory fees.</p>
+        <label for="estateValue">Estimated value of the estate</label>
+        <input type="number" id="estateValue" placeholder="e.g. 1000000" min="0" step="1000">
+        <div style="margin-top:12px;">
+          <button class="btn btn-primary btn-sm" onclick="calculateProbate()">Calculate Fees</button>
+        </div>
+        <div class="calc-result" id="calcResult">
+          <div class="calc-row"><span>Statutory attorney fee</span><span id="attFee"></span></div>
+          <div class="calc-row"><span>Statutory executor fee</span><span id="exeFee"></span></div>
+          <div class="calc-row total"><span>Total combined fees</span><span id="totalFee"></span></div>
+          <p class="calc-cta">Want to avoid these costs? A living trust can help your family skip probate entirely. <a href="contact.html" style="color:var(--gold); font-weight:600;">Talk to Maria about a trust.</a></p>
+        </div>
       </div>
 
-      <div class="blog-grid blog-grid--3">
-
-        <article class="blog-card reveal">
-          <div class="blog-card__badges">
-            <span class="badge badge--blue" data-i18n="resources.blog.card.1.badge1">Blog Post</span>
-            <span class="badge badge--navy" data-i18n="resources.blog.card.1.badge2">PPC</span>
+      <!-- Estate Plan Risk Assessment -->
+      <div class="tool-card reveal reveal-delay-2">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+          <div style="width:44px; height:44px; border-radius:50%; background:var(--gold-pale); display:flex; align-items:center; justify-content:center; font-size:20px; color:var(--gold);"><i class="fa-solid fa-clipboard-question"></i></div>
+          <h3 style="margin:0;">Estate Plan Risk Assessment</h3>
+        </div>
+        <p>Answer 8 quick yes/no questions to see how prepared your family is right now.</p>
+        <div class="quiz-questions" id="quiz">
+          <div class="quiz-q" data-q="0">
+            <span class="quiz-q-text">1. Do you own property in California?</span>
+            <div class="quiz-btns">
+              <button class="quiz-btn" data-val="yes" onclick="quizAnswer(0,'yes',this)">Yes</button>
+              <button class="quiz-btn" data-val="no" onclick="quizAnswer(0,'no',this)">No</button>
+            </div>
           </div>
-          <h3 class="blog-card__title"><a href="/blog/dont-invest-in-paid-ads-if-your-website-sucks.html" data-i18n="resources.blog.card.1.title">Don't Invest in Paid Ads If Your Website Sucks</a></h3>
-          <p class="blog-card__excerpt" data-i18n="resources.blog.card.1.desc">Running paid traffic to a broken website is like pouring water into a bucket full of holes. Here's what to fix first before spending a single dollar on ads.</p>
-          <a href="/blog/dont-invest-in-paid-ads-if-your-website-sucks.html" class="blog-card__link" data-i18n="resources.blog.card.1.link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
-        </article>
-
-        <article class="blog-card reveal reveal-delay-1">
-          <div class="blog-card__badges">
-            <span class="badge badge--gold" data-i18n="resources.blog.card.2.badge1">Guide</span>
-            <span class="badge badge--navy" data-i18n="resources.blog.card.2.badge2">PPC</span>
+          <div class="quiz-q" data-q="1">
+            <span class="quiz-q-text">2. Do you have children under 18?</span>
+            <div class="quiz-btns">
+              <button class="quiz-btn" data-val="yes" onclick="quizAnswer(1,'yes',this)">Yes</button>
+              <button class="quiz-btn" data-val="no" onclick="quizAnswer(1,'no',this)">No</button>
+            </div>
           </div>
-          <h3 class="blog-card__title"><a href="/blog/ppc-campaign-checklist.html" data-i18n="resources.blog.card.2.title">PPC Campaign Readiness Checklist: Before You Spend a Dollar</a></h3>
-          <p class="blog-card__excerpt" data-i18n="resources.blog.card.2.desc">A comprehensive pre-launch checklist to make sure your messaging, landing pages, and tracking are all in place before you run a single ad.</p>
-          <a href="/blog/ppc-campaign-checklist.html" class="blog-card__link" data-i18n="resources.blog.card.2.link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
-        </article>
-
-        <article class="blog-card reveal reveal-delay-2">
-          <div class="blog-card__badges">
-            <span class="badge badge--blue" data-i18n="resources.blog.card.3.badge1">Blog Post</span>
-            <span class="badge badge--navy" data-i18n="resources.blog.card.3.badge2">Branding</span>
+          <div class="quiz-q" data-q="2">
+            <span class="quiz-q-text">3. Are you married or in a domestic partnership?</span>
+            <div class="quiz-btns">
+              <button class="quiz-btn" data-val="yes" onclick="quizAnswer(2,'yes',this)">Yes</button>
+              <button class="quiz-btn" data-val="no" onclick="quizAnswer(2,'no',this)">No</button>
+            </div>
           </div>
-          <h3 class="blog-card__title"><a href="/blog/consistent-brand-messaging-across-platforms.html" data-i18n="resources.blog.card.3.title">The Value of Consistent Brand Messaging Across All Platforms</a></h3>
-          <p class="blog-card__excerpt" data-i18n="resources.blog.card.3.desc">When your brand says different things on different platforms, you're not building trust — you're creating confusion. Here's why consistency is a growth strategy.</p>
-          <a href="/blog/consistent-brand-messaging-across-platforms.html" class="blog-card__link" data-i18n="resources.blog.card.3.link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
-        </article>
-
-      </div>
-
-      <div class="section__footer-cta reveal" style="text-align:center; margin-top:2.5rem;">
-        <a href="/blog.html" class="btn btn--outline btn--lg" data-i18n="resources.blog.viewall">View All Articles <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="quiz-q" data-q="3">
+            <span class="quiz-q-text">4. Do you have a living trust?</span>
+            <div class="quiz-btns">
+              <button class="quiz-btn" data-val="yes" onclick="quizAnswer(3,'yes',this)">Yes</button>
+              <button class="quiz-btn" data-val="no" onclick="quizAnswer(3,'no',this)">No</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="4">
+            <span class="quiz-q-text">5. Have you updated your estate plan in the last 3 years?</span>
+            <div class="quiz-btns">
+              <button class="quiz-btn" data-val="yes" onclick="quizAnswer(4,'yes',this)">Yes</button>
+              <button class="quiz-btn" data-val="no" onclick="quizAnswer(4,'no',this)">No</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="5">
+            <span class="quiz-q-text">6. Do you own a business or have business partners?</span>
+            <div class="quiz-btns">
+              <button class="quiz-btn" data-val="yes" onclick="quizAnswer(5,'yes',this)">Yes</button>
+              <button class="quiz-btn" data-val="no" onclick="quizAnswer(5,'no',this)">No</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="6">
+            <span class="quiz-q-text">7. Do you have a family member with special needs?</span>
+            <div class="quiz-btns">
+              <button class="quiz-btn" data-val="yes" onclick="quizAnswer(6,'yes',this)">Yes</button>
+              <button class="quiz-btn" data-val="no" onclick="quizAnswer(6,'no',this)">No</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="7">
+            <span class="quiz-q-text">8. Are your beneficiary designations up to date?</span>
+            <div class="quiz-btns">
+              <button class="quiz-btn" data-val="yes" onclick="quizAnswer(7,'yes',this)">Yes</button>
+              <button class="quiz-btn" data-val="no" onclick="quizAnswer(7,'no',this)">No</button>
+            </div>
+          </div>
+        </div>
+        <div class="quiz-result" id="quizResult">
+          <h4 id="quizResultTitle"></h4>
+          <p id="quizResultText"></p>
+          <a href="contact.html" class="btn btn-primary btn-sm"><i class="fa-regular fa-calendar"></i> Schedule a Free Review</a>
+        </div>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FINAL CTA -->
-  <section class="section section--navy">
-    <div class="container">
-      <div class="section__header section__header--center reveal">
-        <h2 class="section__title" style="color:#fff;" data-i18n="resources.cta.heading">Want a Done-For-You Partner Instead?</h2>
-        <p class="section__lead" style="color:rgba(255,255,255,0.8);" data-i18n="resources.cta.lead">These resources are great for self-starters. If you'd rather have us execute — from website to ads to sales strategy — let's talk.</p>
-        <div class="hero__actions" style="margin-top:2rem; justify-content:center;">
-          <a href="https://calendar.app.google/G6oc9Q7uRibsczeR9" class="btn btn--primary btn--lg" target="_blank" rel="noopener" data-i18n="resources.cta.btn"><i class="fa-solid fa-calendar-check"></i> Book a Free Strategy Session</a>
-          <a href="/contact.html" class="btn btn--outline btn--lg" style="color:#fff; border-color:rgba(255,255,255,0.4);" data-i18n="resources.cta.btn2">Send a Message</a>
+<!-- ============ SECTION 2: FREE GUIDES ============ -->
+<section class="content-section bg-white">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label" id="guides">Free Guides</span>
+      <h2 class="section-title">Free Guides Provided by the <em style="color:var(--gold);font-style:italic;">MVP Team</em></h2>
+    </div>
+    <p class="section-sub reveal reveal-delay-1" style="text-align:center; max-width:680px; margin: 0 auto 48px;">
+      Each guide is written in plain language. Enter your name and email and we will send it right to your inbox. We never share your information with anyone.
+    </p>
+
+    <div class="grid-3">
+
+      <div class="guide-card reveal reveal-delay-1">
+        <div class="guide-card-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+        <h3>The California Estate Planning Checklist</h3>
+        <p>A step by step checklist of everything your family needs: trusts, wills, powers of attorney, healthcare directives, beneficiary designations, and more.</p>
+        <button class="btn btn-outline btn-sm" onclick="openGuideModal('The California Estate Planning Checklist')"><i class="fa-solid fa-envelope" style="font-size:11px;"></i> Get Your Free Copy</button>
+      </div>
+
+      <div class="guide-card reveal reveal-delay-2">
+        <div class="guide-card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+        <h3>Probate in California: What Your Family Needs to Know</h3>
+        <p>How probate works, what it costs, how long it takes, and the steps you can take today to help your family avoid it entirely.</p>
+        <button class="btn btn-outline btn-sm" onclick="openGuideModal('Probate in California: What Your Family Needs to Know')"><i class="fa-solid fa-envelope" style="font-size:11px;"></i> Get Your Free Copy</button>
+      </div>
+
+      <div class="guide-card reveal reveal-delay-3">
+        <div class="guide-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Asset Protection for Business Owners</h3>
+        <p>How LLCs, irrevocable trusts, and liability shields work together to protect your business and personal assets from lawsuits and creditors.</p>
+        <button class="btn btn-outline btn-sm" onclick="openGuideModal('Asset Protection for Business Owners')"><i class="fa-solid fa-envelope" style="font-size:11px;"></i> Get Your Free Copy</button>
+      </div>
+
+      <div class="guide-card reveal reveal-delay-1">
+        <div class="guide-card-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+        <h3>Special Needs Planning Guide</h3>
+        <p>How to provide for a loved one with disabilities without disqualifying them from SSI, Medi-Cal, or other government benefits. First party, third party, and pooled trust options explained.</p>
+        <button class="btn btn-outline btn-sm" onclick="openGuideModal('Special Needs Planning Guide')"><i class="fa-solid fa-envelope" style="font-size:11px;"></i> Get Your Free Copy</button>
+      </div>
+
+      <div class="guide-card reveal reveal-delay-2">
+        <div class="guide-card-icon"><i class="fa-solid fa-life-ring"></i></div>
+        <h3>Understanding Bankruptcy: Your Options Explained</h3>
+        <p>A clear comparison of Chapter 7 and Chapter 13 bankruptcy in California: eligibility, timeline, what you keep, and how to decide which path is right for you.</p>
+        <button class="btn btn-outline btn-sm" onclick="openGuideModal('Understanding Bankruptcy: Your Options Explained')"><i class="fa-solid fa-envelope" style="font-size:11px;"></i> Get Your Free Copy</button>
+      </div>
+
+      <div class="guide-card reveal reveal-delay-3">
+        <div class="guide-card-icon"><i class="fa-solid fa-people-roof"></i></div>
+        <h3>Planning for Blended Families</h3>
+        <p>How to use trusts and wills to protect your spouse, your children, and your stepchildren. QTIP trusts, separate property, and avoiding unintended disinheritance.</p>
+        <button class="btn btn-outline btn-sm" onclick="openGuideModal('Planning for Blended Families')"><i class="fa-solid fa-envelope" style="font-size:11px;"></i> Get Your Free Copy</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: MYTH VS REALITY ============ -->
+<section class="content-section bg-cream">
+  <div class="container" style="max-width:800px;">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label" id="myths">What People Think vs. What's Actually True</span>
+      <h2 class="section-title">Myth vs. Reality</h2>
+    </div>
+    <p class="section-sub reveal reveal-delay-1" style="text-align:center; max-width:640px; margin: 0 auto 48px;">
+      There is a lot of misinformation out there. Here is what Maria wants you to know.
+    </p>
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+
+      <div class="myth-card reveal" onclick="toggleMyth(this)">
+        <div class="myth-header">
+          <div class="myth-icon"><i class="fa-solid fa-xmark"></i></div>
+          <span class="myth-label">"I'm not wealthy enough for estate planning."</span>
+          <i class="fa-solid fa-chevron-down myth-toggle"></i>
+        </div>
+        <div class="myth-body">
+          <div class="myth-body-inner">
+            <div class="myth-reality-label">Reality</div>
+            <p>Everyone who owns property, has children, or has any assets at all needs an estate plan. Without one, the state of California decides what happens to everything you have built &mdash; and your family will go through probate, which is public, expensive, and slow.</p>
+          </div>
         </div>
       </div>
+
+      <div class="myth-card reveal reveal-delay-1" onclick="toggleMyth(this)">
+        <div class="myth-header">
+          <div class="myth-icon"><i class="fa-solid fa-xmark"></i></div>
+          <span class="myth-label">"A will avoids probate."</span>
+          <i class="fa-solid fa-chevron-down myth-toggle"></i>
+        </div>
+        <div class="myth-body">
+          <div class="myth-body-inner">
+            <div class="myth-reality-label">Reality</div>
+            <p>A will goes <em>through</em> probate. It does not avoid it. Only a living trust allows your assets to transfer to your loved ones without the cost, delay, and public exposure of the probate process.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="myth-card reveal reveal-delay-2" onclick="toggleMyth(this)">
+        <div class="myth-header">
+          <div class="myth-icon"><i class="fa-solid fa-xmark"></i></div>
+          <span class="myth-label">"My spouse automatically gets everything."</span>
+          <i class="fa-solid fa-chevron-down myth-toggle"></i>
+        </div>
+        <div class="myth-body">
+          <div class="myth-body-inner">
+            <div class="myth-reality-label">Reality</div>
+            <p>In California, it depends on whether assets are community property or separate property. Without a plan, your spouse may receive only a portion of your estate, with the rest going to children, parents, or siblings under California's intestacy laws.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="myth-card reveal reveal-delay-3" onclick="toggleMyth(this)">
+        <div class="myth-header">
+          <div class="myth-icon"><i class="fa-solid fa-xmark"></i></div>
+          <span class="myth-label">"Bankruptcy ruins your life."</span>
+          <i class="fa-solid fa-chevron-down myth-toggle"></i>
+        </div>
+        <div class="myth-body">
+          <div class="myth-body-inner">
+            <div class="myth-reality-label">Reality</div>
+            <p>Most people who file for bankruptcy begin rebuilding their credit within 2 years. Bankruptcy is a legal protection designed to give people a fresh start. It is not a failure &mdash; it is a tool, and it works.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="myth-card reveal" onclick="toggleMyth(this)">
+        <div class="myth-header">
+          <div class="myth-icon"><i class="fa-solid fa-xmark"></i></div>
+          <span class="myth-label">"I can do my own trust online."</span>
+          <i class="fa-solid fa-chevron-down myth-toggle"></i>
+        </div>
+        <div class="myth-body">
+          <div class="myth-body-inner">
+            <div class="myth-reality-label">Reality</div>
+            <p>DIY trusts are often unfunded, improperly drafted, or legally invalid. If the trust is not funded (meaning your assets are not retitled into it), it provides no protection at all. Many of our clients come to us after discovering their online trust would not hold up.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="myth-card reveal reveal-delay-1" onclick="toggleMyth(this)">
+        <div class="myth-header">
+          <div class="myth-icon"><i class="fa-solid fa-xmark"></i></div>
+          <span class="myth-label">"Power of attorney lasts after death."</span>
+          <i class="fa-solid fa-chevron-down myth-toggle"></i>
+        </div>
+        <div class="myth-body">
+          <div class="myth-body-inner">
+            <div class="myth-reality-label">Reality</div>
+            <p>A power of attorney expires the moment you pass away. After that, only a successor trustee (if you have a trust) or a court-appointed executor (if you do not) has authority over your affairs. This is one of the most common misunderstandings in estate planning.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-</main>
+<!-- ============ SECTION 4: ALREADY IN TROUBLE? ============ -->
+<section class="content-section bg-white">
+  <div class="container">
+    <div class="trouble-section reveal">
+      <img src="images/headshot01.jpg" alt="Maria V. Primushko, Esq." style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid var(--gold-border); margin:0 auto 20px;">
+      <span class="section-label" id="fix" style="margin-bottom:12px; display:inline-block;">Already in Trouble?</span>
+      <h2>You Are Not Alone &mdash; and It Can Be Fixed</h2>
+      <p>If you created a DIY trust, transferred assets without legal advice, or feel like your plan might have gaps &mdash; you are not alone. Many of our clients come to us after realizing something is not right. The good news: most situations can be fixed. Maria has helped families untangle complicated situations, and she can help you, too.</p>
+      <a href="contact.html" class="btn btn-primary btn-lg"><i class="fa-regular fa-calendar"></i> Let's Review Your Situation</a>
+    </div>
+  </div>
+</section>
 
-<!-- FOOTER -->
+<!-- ============ SECTION 5: RECENT BLOG POSTS ============ -->
+<section class="content-section bg-cream">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label" id="blog">From the Blog</span>
+      <h2 class="section-title">Latest Legal Insights</h2>
+    </div>
+    <p class="section-sub reveal reveal-delay-1" style="text-align:center; max-width:600px; margin: 0 auto 48px;">
+      In depth articles on the estate planning topics that matter most to California families.
+    </p>
+
+    <div class="grid-3">
+
+      <a href="blog/blended-families-estate-planning.html" class="blog-card reveal reveal-delay-1">
+        <div class="blog-card-body">
+          <div class="blog-card-date">March 30, 2026</div>
+          <h3>Blended Families and Estate Planning: Protecting Everyone</h3>
+          <p>QTIP trusts, separate vs. community property, and how to ensure every family member is protected in your estate plan.</p>
+          <div class="blog-card-read">Read Article <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></div>
+        </div>
+      </a>
+
+      <a href="blog/cost-of-no-estate-plan.html" class="blog-card reveal reveal-delay-2">
+        <div class="blog-card-body">
+          <div class="blog-card-date">March 25, 2026</div>
+          <h3>The Real Cost of Not Having an Estate Plan</h3>
+          <p>Probate fees, court costs, family disputes, and lost privacy. Real dollar examples for a $1M estate in California.</p>
+          <div class="blog-card-read">Read Article <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></div>
+        </div>
+      </a>
+
+      <a href="blog/pooled-trusts-vs-individual-snt.html" class="blog-card reveal reveal-delay-3">
+        <div class="blog-card-body">
+          <div class="blog-card-date">March 20, 2026</div>
+          <h3>Pooled Trusts vs. Individual Special Needs Trusts</h3>
+          <p>Comparing pooled trust structures with individual SNTs. Cost, flexibility, and when to use each option.</p>
+          <div class="blog-card-read">Read Article <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></div>
+        </div>
+      </a>
+
+    </div>
+
+    <div style="text-align:center; margin-top:36px;">
+      <a href="blog/index.html" class="btn btn-outline">View All Articles <i class="fa-solid fa-arrow-right" style="font-size:11px; margin-left:4px;"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM FEEDBACK ============ -->
+<section class="content-section bg-white" id="feedback">
+  <div class="container" style="max-width:640px;">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:16px;">
+      <span class="section-label">Team Feedback</span>
+      <h2 class="section-title">Share Your Feedback</h2>
+    </div>
+    <p class="section-sub reveal" style="text-align:center; max-width:520px; margin:0 auto 32px;">
+      Have a suggestion, found something that needs fixing, or want to share an idea? Let us know.
+    </p>
+    <div class="tool-card reveal" style="max-width:540px; margin:0 auto;">
+      <form id="feedbackForm" action="https://formspree.io/f/xgonpbwd" method="POST">
+        <input type="hidden" name="form_type" value="Website Feedback">
+        <label for="feedbackName" style="display:block; font-size:0.95rem; font-weight:500; color:var(--text); margin-bottom:6px;">Your Name</label>
+        <select id="feedbackName" name="name" required style="width:100%; padding:12px 16px; border:1px solid var(--border); border-radius:var(--radius); font-size:1rem; font-family:var(--font-body); background:var(--bg); color:var(--text); margin-bottom:16px; cursor:pointer;">
+          <option value="" disabled selected>Select your name</option>
+          <option value="Maria Primushko">Maria Primushko</option>
+          <option value="Jaslen">Jaslen</option>
+        </select>
+        <label for="feedbackPage" style="display:block; font-size:0.95rem; font-weight:500; color:var(--text); margin-bottom:6px;">Page or Section</label>
+        <input type="text" id="feedbackPage" name="page" placeholder="e.g. Homepage hero, About page, Blog" style="width:100%; padding:12px 16px; border:1px solid var(--border); border-radius:var(--radius); font-size:1rem; font-family:var(--font-body); background:var(--bg); color:var(--text); margin-bottom:16px;">
+        <label for="feedbackType" style="display:block; font-size:0.95rem; font-weight:500; color:var(--text); margin-bottom:6px;">Type</label>
+        <select id="feedbackType" name="feedback_type" style="width:100%; padding:12px 16px; border:1px solid var(--border); border-radius:var(--radius); font-size:1rem; font-family:var(--font-body); background:var(--bg); color:var(--text); margin-bottom:16px; cursor:pointer;">
+          <option value="Suggestion">Suggestion</option>
+          <option value="Bug / Issue">Bug / Issue</option>
+          <option value="Content Change">Content Change</option>
+          <option value="Design Feedback">Design Feedback</option>
+          <option value="New Feature">New Feature Request</option>
+        </select>
+        <label for="feedbackMsg" style="display:block; font-size:0.95rem; font-weight:500; color:var(--text); margin-bottom:6px;">Your Feedback</label>
+        <textarea id="feedbackMsg" name="message" required rows="4" placeholder="Describe what you'd like changed, fixed, or added..." style="width:100%; padding:12px 16px; border:1px solid var(--border); border-radius:var(--radius); font-size:1rem; font-family:var(--font-body); background:var(--bg); color:var(--text); resize:vertical; line-height:1.6;"></textarea>
+        <button type="submit" class="btn btn-primary" id="feedbackSubmitBtn" style="margin-top:20px; width:100%; text-align:center;"><i class="fa-solid fa-paper-plane" style="font-size:12px;"></i> Submit Feedback</button>
+      </form>
+      <div id="feedbackSuccess" style="text-align:center; padding:20px 0; display:none;">
+        <i class="fa-solid fa-circle-check" style="font-size:40px; color:#15803d; margin-bottom:14px; display:block;"></i>
+        <h4 style="font-family:var(--font-heading); font-size:1.15rem; color:var(--text); margin-bottom:6px;">Feedback Received</h4>
+        <p style="font-size:0.94rem; color:var(--text-mid);">Thank you. We will review your feedback and make updates as needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="cta-banner">
+  <div class="container">
+    <img src="images/headshot01.jpg" alt="Maria V. Primushko, Esq." style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid var(--gold-border); margin:0 auto 20px; display:block;">
+    <h2>Ready to Protect Your Family?</h2>
+    <p>Schedule a free, no-obligation consultation with Maria. We will listen, explain your options, and help you build a plan that fits your family.</p>
+    <div class="cta-banner-btns">
+      <a href="contact.html" class="btn btn-primary btn-lg"><i class="fa-regular fa-calendar"></i> Free Consultation</a>
+      <a href="tel:8187887881" class="btn btn-outline btn-lg"><i class="fa-solid fa-phone"></i> (818) 788-7881</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-brand__logo">
-          <img src="images/logos/image_f47409d4-5904-41c8-a00e-84279fcd534c.png" alt="Heed Business Solutions" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <span class="footer-brand__logo-text" style="display:none">Heed<span> Business Consulting</span></span>
-        </div>
-        <p class="footer-brand__desc" data-i18n="footer.tagline">Win high-value clients who expect more. Built in LA.</p>
+      <div>
+        <img src="images/logos/Logo%20revision%202.png" alt="MVP Law Group APC" style="height:132px; width:auto; margin-bottom:16px;">
+        <p class="footer-tagline">Protecting California families through personalized, compassionate legal counsel.</p>
         <div class="footer-social">
-          <a href="#" class="footer-social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="https://www.instagram.com/heedbusinesssolutions" class="footer-social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.facebook.com/heedbusinesssolutions" class="footer-social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.facebook.com/mvplawLA" class="social-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/mvplaw.la" class="social-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/mvplawla" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.youtube.com/@mvplawla" class="social-link" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://nextdoor.com/pages/mvp-law-group-a-pc-encino-ca/" class="social-link" target="_blank" rel="noopener" aria-label="Nextdoor"><i class="fa-solid fa-house-chimney-window"></i></a>
+          <a href="https://g.page/r/CWjiFyFD2CNrEBM/review" class="social-link" target="_blank" rel="noopener" aria-label="Google Reviews"><i class="fa-brands fa-google"></i></a>
+          <a href="https://www.yelp.com/biz/mvp-law-group-a-pc-encino-4" class="social-link" target="_blank" rel="noopener" aria-label="Yelp"><i class="fa-brands fa-yelp"></i></a>
         </div>
       </div>
-      <div class="footer-col">
-        <h5 data-i18n="footer.col.services">Services</h5>
-        <ul class="footer-links">
-          <li><a href="/services/web-design.html" data-i18n="footer.svc.web">Web Design &amp; Optimization</a></li>
-          <li><a href="/services/marketing.html" data-i18n="footer.svc.marketing">Marketing Services</a></li>
-          <li><a href="/services/ppc-ads.html" data-i18n="footer.svc.ppc">PPC &amp; Ad Management</a></li>
-          <li><a href="/services/social-media.html" data-i18n="footer.svc.social">Social Media Marketing</a></li>
-          <li><a href="/services/sales-bd.html" data-i18n="footer.svc.sales">Sales &amp; Business Development</a></li>
-          <li><a href="/services/technology.html" data-i18n="footer.svc.tech">Technology &amp; Smart Spaces</a></li>
-          <li><a href="/services/business-sprints.html" data-i18n="footer.svc.sprints">Business Consulting Sprints</a></li>
-          <li><a href="/services/startup-launch.html" data-i18n="footer.svc.startup">Startup Launch Program</a></li>
-        <li><a href="/services/digital-intelligence.html" data-i18n="footer.svc.digital">Digital Intelligence &amp; SEO</a></li>
-
-        </ul>
+      <div>
+        <h3 class="footer-heading">Practice Areas</h3>
+        <a href="estate-planning.html" class="footer-link">Estate Planning</a>
+        <a href="probate.html" class="footer-link">Probate</a>
+        <a href="conservatorships.html" class="footer-link">Conservatorships</a>
+        <a href="special-needs-trust.html" class="footer-link">Special Needs Trusts</a>
+        <a href="bankruptcy.html" class="footer-link">Bankruptcy</a>
       </div>
-      <div class="footer-col">
-        <h5 data-i18n="footer.col.company">Company</h5>
-        <ul class="footer-links">
-          <li><a href="/about.html" data-i18n="footer.co.about">About</a></li>
-          <li><a href="/services.html" data-i18n="footer.co.services">All Services</a></li>
-          <li><a href="/portfolio.html" data-i18n="footer.co.portfolio">Portfolio</a></li>
-          <li><a href="/blog.html" data-i18n="footer.co.blog">Blog</a></li>
-          <li><a href="/resources.html" data-i18n="footer.co.resources">Resources</a></li>
-            <li><a href="/readiness-score.html">Client Readiness Score</a></li>
-          <li><a href="/contact.html" data-i18n="footer.co.contact">Contact</a></li>
-            <li><a href="/accessibility.html" data-i18n="footer.co.accessibility">Accessibility</a></li>
-        </ul>
+      <div>
+        <h3 class="footer-heading">Our Firm</h3>
+        <a href="about.html" class="footer-link">About Us</a>
+        <a href="resources.html" class="footer-link">Resources</a>
+        <a href="blog/index.html" class="footer-link">Blog</a>
+        <a href="events.html" class="footer-link">Events &amp; Workshops</a>
+        <a href="contact.html" class="footer-link">Contact Us</a>
+        <a href="contact.html" class="footer-link">Free Consultation</a>
       </div>
-      <div class="footer-col">
-        <h5 data-i18n="footer.col.contact">Contact</h5>
-        <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:3103630826">310-363-0826</a></div>
-        <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:reachus@heedbusinesssolutions.com">reachus@heedbusinesssolutions.com</a></div>
-        <div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i><span>Los Angeles, CA</span></div>
-        <div class="footer-contact-item"><i class="fa-solid fa-calendar-check"></i><a href="https://calendar.app.google/G6oc9Q7uRibsczeR9" target="_blank" rel="noopener">Book a Call</a></div>
+      <div>
+        <h3 class="footer-heading">Contact</h3>
+        <div class="footer-contact-item"><i class="fa-solid fa-phone" style="color:var(--gold); flex-shrink:0;"></i><div><a href="tel:8187887881" style="color:#FFFFFF;">(818) 788-7881</a></div></div>
+        <div class="footer-contact-item"><i class="fa-solid fa-location-dot" style="color:var(--gold); flex-shrink:0;"></i><div>6200 Canoga Ave<br>Woodland Hills, CA 91367</div></div>
+        <div class="footer-contact-item"><i class="fa-regular fa-clock" style="color:var(--gold); flex-shrink:0;"></i><div>M &ndash; F: 9 AM &ndash; 5 PM<br>Weekends by appointment</div></div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p data-i18n="footer.rights">&copy; 2025 Heed Business Solutions. All rights reserved.</p>
-      <div class="footer-legal">
-        <a href="/privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
-        <a href="/terms.html">Terms of Service</a>
-      </div>
+      <div>&copy; 2026 MVP Law Group, APC. All rights reserved.</div>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="disclaimer.html">Disclaimer</a><a href="contact.html">Contact</a></div>
     </div>
   </div>
 </footer>
 
-<div class="mobile-float-cta">
-  <a href="https://calendar.app.google/G6oc9Q7uRibsczeR9" class="btn btn--primary btn--lg" target="_blank" rel="noopener"><i class="fa-solid fa-calendar-check"></i> Book a Free Strategy Session</a>
+<!-- ============ GUIDE DOWNLOAD MODAL ============ -->
+<div class="guide-modal-overlay" id="guideModalOverlay" onclick="closeGuideModal(event)">
+  <div class="guide-modal" onclick="event.stopPropagation()">
+    <button class="guide-modal-close" onclick="closeGuideModal()">&times;</button>
+    <form id="guideForm" action="https://formspree.io/f/xgonpbwd" method="POST">
+      <h3 id="guideModalTitle">Get Your Free Guide</h3>
+      <p class="guide-modal-sub">Enter your name and email below and we will send it right to your inbox.</p>
+      <input type="hidden" name="guide" id="guideHiddenField" value="">
+      <label for="guideName">Your Name</label>
+      <input type="text" id="guideName" name="name" required placeholder="First and last name">
+      <label for="guideEmail">Email Address</label>
+      <input type="email" id="guideEmail" name="email" required placeholder="you@example.com">
+      <button type="submit" class="btn btn-primary" id="guideSubmitBtn"><i class="fa-solid fa-envelope" style="font-size:12px;"></i> Send Me the Guide</button>
+      <p class="privacy-note"><i class="fa-solid fa-lock" style="font-size:10px; margin-right:4px;"></i> Your information is never shared. Ever.</p>
+    </form>
+    <div class="success-msg" id="guideSuccess">
+      <i class="fa-solid fa-circle-check"></i>
+      <h4>Check Your Inbox</h4>
+      <p>Your guide is on its way. If you do not see it within a few minutes, check your spam folder.</p>
+    </div>
+  </div>
 </div>
 
-<script src="js/main.js"></script>
-<script src="js/i18n.js"></script>
-<elevenlabs-convai agent-id="agent_5101k2e60d7tf19tf1ty92kjcnvx"></elevenlabs-convai>
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+<script src="js/main.js?v=2"></script>
+
+<script>
+  /* ======== PROBATE COST CALCULATOR ======== */
+  function calculateProbate() {
+    var val = parseFloat(document.getElementById('estateValue').value);
+    if (isNaN(val) || val <= 0) return;
+
+    var fee = 0;
+    var remaining = val;
+
+    // California Probate Code 10810 fee schedule
+    if (remaining > 0) { var tier = Math.min(remaining, 100000); fee += tier * 0.04; remaining -= tier; }
+    if (remaining > 0) { var tier = Math.min(remaining, 100000); fee += tier * 0.03; remaining -= tier; }
+    if (remaining > 0) { var tier = Math.min(remaining, 800000); fee += tier * 0.02; remaining -= tier; }
+    if (remaining > 0) { var tier = Math.min(remaining, 9000000); fee += tier * 0.01; remaining -= tier; }
+    if (remaining > 0) { fee += remaining * 0.005; }
+
+    var fmt = function(n) { return '$' + n.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0}); };
+
+    document.getElementById('attFee').textContent = fmt(fee);
+    document.getElementById('exeFee').textContent = fmt(fee);
+    document.getElementById('totalFee').textContent = fmt(fee * 2);
+    document.getElementById('calcResult').classList.add('show');
+  }
+
+  /* ======== ESTATE PLAN RISK QUIZ ======== */
+  var quizAnswers = [null, null, null, null, null, null, null, null];
+
+  function quizAnswer(idx, val, btn) {
+    quizAnswers[idx] = val;
+    // Update button styles
+    var row = btn.closest('.quiz-q');
+    var btns = row.querySelectorAll('.quiz-btn');
+    btns.forEach(function(b) { b.classList.remove('selected-yes', 'selected-no'); });
+    btn.classList.add(val === 'yes' ? 'selected-yes' : 'selected-no');
+
+    // Check if all answered
+    var allAnswered = quizAnswers.every(function(a) { return a !== null; });
+    if (allAnswered) {
+      var yesCount = quizAnswers.filter(function(a) { return a === 'yes'; }).length;
+      var resultDiv = document.getElementById('quizResult');
+      var titleEl = document.getElementById('quizResultTitle');
+      var textEl = document.getElementById('quizResultText');
+
+      if (yesCount <= 3) {
+        titleEl.innerHTML = '<span class="risk-high"><i class="fa-solid fa-triangle-exclamation"></i> High Risk</span>';
+        textEl.textContent = 'Based on your answers, your family may be significantly exposed. Without proper planning, your loved ones could face probate, contested assets, or court-appointed guardianship. The good news is that this can be addressed. A consultation with Maria can help you understand exactly where the gaps are and what to do next.';
+      } else if (yesCount <= 5) {
+        titleEl.innerHTML = '<span class="risk-moderate"><i class="fa-solid fa-circle-exclamation"></i> Moderate Risk</span>';
+        textEl.textContent = 'You have some protections in place, but there may be gaps that could cause problems for your family. Common issues include outdated beneficiary designations, unfunded trusts, or missing healthcare directives. A quick review with Maria can identify what needs attention.';
+      } else {
+        titleEl.innerHTML = '<span class="risk-protected"><i class="fa-solid fa-shield-halved"></i> Well Protected</span>';
+        textEl.textContent = 'It looks like you have taken meaningful steps to protect your family. That is wonderful. Even well-prepared plans benefit from periodic review, especially after major life changes like marriage, divorce, new children, or property purchases. Maria offers complimentary plan reviews to make sure everything is still current.';
+      }
+
+      resultDiv.classList.add('show');
+      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  /* ======== MYTH TOGGLE ======== */
+  function toggleMyth(card) {
+    card.classList.toggle('open');
+  }
+
+  /* ======== GUIDE MODAL ======== */
+  function openGuideModal(guideName) {
+    document.getElementById('guideHiddenField').value = guideName;
+    document.getElementById('guideModalTitle').textContent = guideName;
+    document.getElementById('guideForm').classList.remove('hidden');
+    document.getElementById('guideSuccess').classList.remove('show');
+    document.getElementById('guideName').value = '';
+    document.getElementById('guideEmail').value = '';
+    document.getElementById('guideSubmitBtn').disabled = false;
+    document.getElementById('guideSubmitBtn').innerHTML = '<i class="fa-solid fa-envelope" style="font-size:12px;"></i> Send Me the Guide';
+    document.getElementById('guideModalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeGuideModal(e) {
+    if (e && e.target !== document.getElementById('guideModalOverlay')) return;
+    document.getElementById('guideModalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Handle guide form submit via fetch
+  document.getElementById('guideForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = this;
+    var btn = document.getElementById('guideSubmitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="font-size:12px;"></i> Sending...';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res) {
+      if (res.ok) {
+        form.classList.add('hidden');
+        document.getElementById('guideSuccess').classList.add('show');
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = 'Something went wrong. Try again.';
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.innerHTML = 'Something went wrong. Try again.';
+    });
+  });
+
+  // Close modal on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeGuideModal();
+  });
+
+  /* ======== FEEDBACK FORM ======== */
+  document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = this;
+    var btn = document.getElementById('feedbackSubmitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="font-size:12px;"></i> Sending...';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('feedbackSuccess').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = 'Something went wrong. Try again.';
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.innerHTML = 'Something went wrong. Try again.';
+    });
+  });
+</script>
+
 </body>
 </html>
