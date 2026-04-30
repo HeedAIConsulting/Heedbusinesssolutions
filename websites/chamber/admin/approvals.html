@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Approvals · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div>
+          <div class="admin-page-head__sub">Workflows</div>
+          <h1>Approvals queue</h1>
+          <p class="text-muted">7 items waiting for your review. AI has pre-screened each.</p>
+        </div>
+        <div class="flex gap-3">
+          <button class="btn btn--outline">Bulk approve safe items</button>
+          <button class="btn btn--gold">AI auto-process</button>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="admin-card" style="padding:24px;">
+          <div class="flex justify-between mb-3" style="flex-wrap:wrap;gap:12px;">
+            <div>
+              <span class="admin-pill admin-pill--blue">New listing</span>
+              <h3 style="margin:8px 0;font-size:1.2rem;">Cryohealthcare West Valley</h3>
+              <p class="text-muted text-sm">Submitted by Jennifer K. · 2 hours ago · Health & Wellness · Bronze tier</p>
+            </div>
+            <div class="admin-actions">
+              <button class="approve" style="padding:8px 16px;">Approve</button>
+              <button class="reject" style="padding:8px 16px;">Reject</button>
+              <button style="padding:8px 16px;">Request changes</button>
+            </div>
+          </div>
+          <div style="background:var(--cream);border-radius:8px;padding:16px;font-size:.92rem;">
+            <strong>AI summary:</strong> New member Cryohealthcare submitted a complete listing with valid contact info, professional photos, and accurate category placement. Business license verified via state registry. Recommend approval.
+            <div class="mt-2"><span class="admin-pill admin-pill--green">✓ License verified</span> <span class="admin-pill admin-pill--green">✓ Address checked</span> <span class="admin-pill admin-pill--green">✓ No conflicts</span></div>
+          </div>
+        </div>
+
+        <div class="admin-card" style="padding:24px;">
+          <div class="flex justify-between mb-3" style="flex-wrap:wrap;gap:12px;">
+            <div>
+              <span class="admin-pill admin-pill--gold">Guest post pitch</span>
+              <h3 style="margin:8px 0;font-size:1.2rem;">"Three lessons from running a Reseda restaurant for 20 years"</h3>
+              <p class="text-muted text-sm">From Maria Alvarez · 6 hours ago · ~1,200 words · Member since 2008</p>
+            </div>
+            <div class="admin-actions">
+              <button class="approve" style="padding:8px 16px;">Approve</button>
+              <button class="reject" style="padding:8px 16px;">Decline</button>
+              <button style="padding:8px 16px;">Read pitch</button>
+            </div>
+          </div>
+          <div style="background:var(--cream);border-radius:8px;padding:16px;font-size:.92rem;">
+            <strong>Pitch summary:</strong> Maria shares specific operational lessons from 20 years running El Camino Real. Includes anonymized financials, vendor advice, and a section on staff retention. Original work, no promotional content. AI-rated as high quality and on-brand.
+            <div class="mt-2"><span class="admin-pill admin-pill--green">✓ Original</span> <span class="admin-pill admin-pill--green">✓ On-topic</span> <span class="admin-pill admin-pill--green">✓ Member in good standing</span></div>
+          </div>
+        </div>
+
+        <div class="admin-card" style="padding:24px;">
+          <div class="flex justify-between mb-3" style="flex-wrap:wrap;gap:12px;">
+            <div>
+              <span class="admin-pill admin-pill--gold">Premium upgrade</span>
+              <h3 style="margin:8px 0;font-size:1.2rem;">Ethos Fitness — Single Guide Premium</h3>
+              <p class="text-muted text-sm">$99/mo recurring · Square-tokenized · 1 day ago</p>
+            </div>
+            <div class="admin-actions">
+              <button class="approve" style="padding:8px 16px;">Activate</button>
+              <button style="padding:8px 16px;">Review</button>
+            </div>
+          </div>
+          <div style="background:var(--cream);border-radius:8px;padding:16px;font-size:.92rem;">
+            <strong>Payment confirmed.</strong> Square charged $99 successfully. Member assigned to Wellness Guide premium slot. Awaiting your activation.
+          </div>
+        </div>
+
+        <div class="admin-card" style="padding:24px;">
+          <div class="flex justify-between mb-3" style="flex-wrap:wrap;gap:12px;">
+            <div>
+              <span class="admin-pill admin-pill--gray">Member-to-Member Deal</span>
+              <h3 style="margin:8px 0;font-size:1.2rem;">15% off all services for fellow Chamber members</h3>
+              <p class="text-muted text-sm">Submitted by Serenity Valley Spa · 1 day ago · Expires Dec 2026</p>
+            </div>
+            <div class="admin-actions">
+              <button class="approve" style="padding:8px 16px;">Publish</button>
+              <button class="reject" style="padding:8px 16px;">Reject</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card" style="padding:24px;">
+          <div class="flex justify-between mb-3" style="flex-wrap:wrap;gap:12px;">
+            <div>
+              <span class="admin-pill admin-pill--gold">Sponsorship</span>
+              <h3 style="margin:8px 0;font-size:1.2rem;">Networking Mixer — Valley Master Plumbing</h3>
+              <p class="text-muted text-sm">$1,500 paid · Square confirmation · 2 days ago</p>
+            </div>
+            <div class="admin-actions">
+              <button class="approve" style="padding:8px 16px;">Confirm</button>
+              <button style="padding:8px 16px;">Review</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div data-admin="ai"></div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="admin.js"></script>
+<script>AdminShell.mount({active:'approvals'});</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Login · West Valley Chamber</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+.auth-shell { min-height:80vh; display:grid; grid-template-columns:1fr 1fr; }
+.auth-left { background: linear-gradient(135deg, var(--navy-deep), var(--slate)); color:#fff; padding:64px 48px; display:flex; flex-direction:column; justify-content:center; }
+.auth-right { background:var(--paper); padding:64px 48px; display:flex; align-items:center; justify-content:center; }
+.auth-form { width:100%; max-width:380px; }
+@media (max-width:900px) { .auth-shell { grid-template-columns:1fr; } .auth-left { padding:48px 24px; } }
+</style>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<div class="auth-shell">
+  <div class="auth-left">
+    <a href="../index.html" style="color:var(--gold);font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">← Back to public site</a>
+    <h1 style="color:#fff;margin:24px 0 16px;font-size:2.4rem;">Chamber Desktop Assistant</h1>
+    <p style="color:rgba(255,255,255,.85);font-size:1.1rem;line-height:1.7;">Manage every program, member, event, and dollar through one AI-powered console. Built so a 2-person staff can run a 450-member organization.</p>
+    <div style="margin-top:48px;border-top:1px solid rgba(255,255,255,0.18);padding-top:32px;">
+      <h4 style="color:var(--gold);font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;">Today on your dashboard</h4>
+      <ul style="list-style:none;padding:0;margin-top:16px;display:flex;flex-direction:column;gap:8px;">
+        <li>✅ 3 listings pending approval</li>
+        <li>🎫 28 RSVPs to confirm for tomorrow's breakfast</li>
+        <li>💰 $4,250 in payments processed yesterday</li>
+        <li>📝 2 guest-post pitches awaiting review</li>
+        <li>🤖 Concierge handled 142 questions overnight</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="auth-right">
+    <form class="auth-form" id="staff-login">
+      <h2 style="font-size:1.5rem;margin-bottom:8px;">Staff sign in</h2>
+      <p class="text-muted mb-5">Restricted to Chamber staff &amp; volunteers with assigned roles.</p>
+      <div class="form-group"><label>Staff email</label><input type="email" required placeholder="you@wvwcc.org"></div>
+      <div class="form-group"><label>Password</label><input type="password" required></div>
+      <div class="form-group">
+        <label>Two-factor code</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="123 456">
+        <div class="help-text">From your authenticator app.</div>
+      </div>
+      <button type="submit" class="btn btn--primary btn--block btn--lg">Sign in</button>
+      <div class="text-center text-sm text-muted mt-4">
+        Lost access? <a href="#">Contact admin</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="../js/partials.js"></script>
+<script>
+ChamberPartials.mount({active:'', depth:1});
+document.getElementById('staff-login').addEventListener('submit', e => {
+  e.preventDefault();
+  window.location.href = '../admin/index.html';
+});
+</script>
+
+</body>
+</html>

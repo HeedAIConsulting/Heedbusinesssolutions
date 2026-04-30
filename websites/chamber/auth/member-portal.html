@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Portal · West Valley Chamber</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+.portal-shell { display:grid; grid-template-columns:240px 1fr; min-height:80vh; gap:0; }
+.portal-side { background:var(--paper); border-right:1px solid var(--line); padding:24px 0; }
+.portal-side a { display:flex; align-items:center; gap:10px; padding:.7rem 1.5rem; color:var(--slate); font-weight:500; font-size:.92rem; }
+.portal-side a:hover, .portal-side a.active { background:var(--cream); color:var(--navy); border-left:3px solid var(--gold); padding-left:calc(1.5rem - 3px); }
+.portal-main { padding:32px 40px; background:var(--cream); }
+.stat { background:var(--paper); border:1px solid var(--line); border-radius:var(--r-md); padding:20px; }
+.stat-num { font-family:var(--serif); font-weight:700; font-size:1.8rem; color:var(--navy); }
+.stat-lbl { font-size:.82rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+@media (max-width:900px) { .portal-shell { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<div class="portal-shell">
+  <aside class="portal-side">
+    <div style="padding:0 24px 16px;border-bottom:1px solid var(--line);margin-bottom:16px;">
+      <div style="font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Logged in as</div>
+      <div style="font-weight:700;color:var(--navy);margin-top:4px;">Fogo de Chão</div>
+      <span class="tier tier--gold mt-2">Gold Member</span>
+    </div>
+    <a href="#" class="active">📊 Dashboard</a>
+    <a href="#listing">✏️ My Listing</a>
+    <a href="#leads">📥 Leads &amp; Inquiries</a>
+    <a href="#events">🎫 Events &amp; RSVPs</a>
+    <a href="#deals">🎟️ Member Deals</a>
+    <a href="#guides">📖 Guide Listings</a>
+    <a href="#billing">💳 Billing</a>
+    <a href="#analytics">📈 Analytics</a>
+    <a href="#team">👥 Team Access</a>
+    <a href="#settings">⚙️ Settings</a>
+    <a href="../index.html" style="margin-top:32px;color:var(--red);">↩ Sign out</a>
+  </aside>
+
+  <main class="portal-main">
+    <div class="flex justify-between items-center mb-5">
+      <div>
+        <div style="font-family:var(--mono);font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;">Member Dashboard</div>
+        <h1 style="font-size:2rem;margin-top:4px;">Welcome back, Fogo de Chão</h1>
+      </div>
+      <a href="../sponsor.html#premium-listings" class="btn btn--gold">Upgrade to Platinum</a>
+    </div>
+
+    <div class="grid grid-4 mb-5">
+      <div class="stat"><div class="stat-num">847</div><div class="stat-lbl">Listing views (30d)</div></div>
+      <div class="stat"><div class="stat-num">42</div><div class="stat-lbl">Lead inquiries</div></div>
+      <div class="stat"><div class="stat-num">18</div><div class="stat-lbl">Concierge referrals</div></div>
+      <div class="stat"><div class="stat-num">$2,340</div><div class="stat-lbl">Attributed revenue</div></div>
+    </div>
+
+    <div class="grid" style="grid-template-columns:2fr 1fr;gap:20px;">
+      <div class="card" style="padding:24px;">
+        <h3 style="font-size:1.1rem;margin-bottom:16px;">Recent leads</h3>
+        <table>
+          <thead><tr><th>Name</th><th>Source</th><th>Type</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Sarah K.</td><td>AI Concierge</td><td>Reservation inquiry</td><td><span class="chip chip--green">New</span></td></tr>
+            <tr><td>Mark V.</td><td>Restaurant Guide</td><td>Private dining</td><td><span class="chip chip--blue">Replied</span></td></tr>
+            <tr><td>Jenna R.</td><td>Member Profile</td><td>Catering quote</td><td><span class="chip">Closed</span></td></tr>
+            <tr><td>Tom D.</td><td>AI Concierge</td><td>Reservation inquiry</td><td><span class="chip chip--green">New</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="padding:24px;">
+        <h3 style="font-size:1.1rem;margin-bottom:16px;">Upcoming events</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="padding:12px;background:var(--cream);border-radius:8px;">
+            <div style="font-weight:600;color:var(--navy);">Tomahawk &amp; Tequila</div>
+            <div class="text-sm text-muted mt-1">May 7 · You're hosting · 36 RSVPs</div>
+          </div>
+          <div style="padding:12px;background:var(--cream);border-radius:8px;">
+            <div style="font-weight:600;color:var(--navy);">Food &amp; Wine 2026</div>
+            <div class="text-sm text-muted mt-1">Sept 16 · You're a Wine Pavilion sponsor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt-5" style="padding:24px;">
+      <h3 style="font-size:1.1rem;margin-bottom:16px;">Quick actions</h3>
+      <div class="flex gap-3" style="flex-wrap:wrap;">
+        <a href="#" class="btn btn--outline">Edit listing</a>
+        <a href="#" class="btn btn--outline">Post a member deal</a>
+        <a href="#" class="btn btn--outline">RSVP to event</a>
+        <a href="#" class="btn btn--outline">Add team member</a>
+        <a href="#" class="btn btn--outline">Download invoice</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="../js/partials.js"></script>
+<script>ChamberPartials.mount({active:'', depth:1});</script>
+
+</body>
+</html>

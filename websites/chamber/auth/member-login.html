@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Login · West Valley Chamber</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+.auth-shell { min-height:80vh; display:grid; grid-template-columns:1fr 1fr; }
+.auth-left { background: linear-gradient(135deg, var(--navy), var(--blue)); color:#fff; padding:64px 48px; display:flex; flex-direction:column; justify-content:center; }
+.auth-right { background:var(--paper); padding:64px 48px; display:flex; align-items:center; justify-content:center; }
+.auth-form { width:100%; max-width:380px; }
+@media (max-width:900px) { .auth-shell { grid-template-columns:1fr; } .auth-left { padding:48px 24px; } }
+</style>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<div class="auth-shell">
+  <div class="auth-left">
+    <a href="../index.html" style="color:var(--gold);font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">← Back to chamber site</a>
+    <h1 style="color:#fff;margin:24px 0 16px;font-size:2.4rem;">Welcome back, member.</h1>
+    <p style="color:rgba(255,255,255,.85);font-size:1.1rem;line-height:1.7;">Manage your directory listing, track lead inquiries, RSVP to events, post member deals, and pay your dues — all from one portal.</p>
+    <div style="margin-top:48px;border-top:1px solid rgba(255,255,255,0.18);padding-top:32px;">
+      <h4 style="color:var(--gold);font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;">In your portal</h4>
+      <ul style="list-style:none;padding:0;margin-top:16px;display:flex;flex-direction:column;gap:8px;">
+        <li>📊 Lead-attribution dashboard</li>
+        <li>✏️ Edit your listing &amp; photo gallery</li>
+        <li>🎫 Manage event RSVPs &amp; tickets</li>
+        <li>💸 Billing &amp; payment history</li>
+        <li>🤝 Post Member-to-Member Deals</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="auth-right">
+    <form class="auth-form" id="login">
+      <h2 style="font-size:1.5rem;margin-bottom:8px;">Member sign in</h2>
+      <p class="text-muted mb-5">Use your member email.</p>
+      <div class="form-group"><label>Email</label><input type="email" required placeholder="you@yourbusiness.com"></div>
+      <div class="form-group"><label>Password</label><input type="password" required></div>
+      <div class="flex justify-between items-center mb-4">
+        <label style="display:flex;gap:6px;align-items:center;font-weight:400;font-size:.88rem;">
+          <input type="checkbox"> Remember me
+        </label>
+        <a href="#" class="text-sm">Forgot password?</a>
+      </div>
+      <button type="submit" class="btn btn--gold btn--block btn--lg">Sign in</button>
+      <div class="text-center text-sm text-muted mt-4">
+        Not yet a member? <a href="../join.html">Join the Chamber →</a>
+      </div>
+      <div class="divider"></div>
+      <button type="button" class="btn btn--outline btn--block">Sign in with Google</button>
+    </form>
+  </div>
+</div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="../js/partials.js"></script>
+<script>
+ChamberPartials.mount({active:'', depth:1});
+document.getElementById('login').addEventListener('submit', e => {
+  e.preventDefault();
+  window.location.href = 'member-portal.html';
+});
+</script>
+
+</body>
+</html>

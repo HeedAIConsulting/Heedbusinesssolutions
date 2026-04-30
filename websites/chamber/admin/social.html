@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+<style>
+.platform-tabs { display:flex; gap:4px; padding:4px; background:var(--cream); border-radius:var(--r-md); border:1px solid var(--line); width:fit-content; }
+.platform-tabs button { padding:.5rem 1rem; background:transparent; color:var(--slate); font-weight:500; font-size:.88rem; border-radius:var(--r-sm); }
+.platform-tabs button.active { background:var(--paper); color:var(--navy); box-shadow:var(--shadow-sm); }
+.post-preview { background:var(--paper); border:1px solid var(--line); border-radius:var(--r-md); padding:16px; }
+.post-preview__media { aspect-ratio:1; background:linear-gradient(135deg,var(--gold-soft),var(--gold)); border-radius:var(--r-sm); display:flex;align-items:center;justify-content:center;font-size:3rem; }
+</style>
+</head>
+<body>
+
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div>
+          <div class="admin-page-head__sub">Content</div>
+          <h1>Social Media Manager</h1>
+          <p class="text-muted">Plan, draft, schedule, and analyze across Instagram, Facebook, LinkedIn, and X — with AI-generated content.</p>
+        </div>
+        <div class="flex gap-3">
+          <button class="btn btn--outline">📅 Calendar view</button>
+          <a href="#" class="btn btn--gold">+ New post</a>
+        </div>
+      </div>
+
+      <div class="admin-stat-grid">
+        <div class="admin-stat"><div class="admin-stat__label">Followers (combined)</div><div class="admin-stat__num">23,840</div><div class="admin-stat__delta admin-stat__delta--up">▲ 412 this month</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Engagement Rate</div><div class="admin-stat__num">4.8%</div><div class="admin-stat__delta admin-stat__delta--up">▲ 0.6 pp</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Scheduled posts</div><div class="admin-stat__num">12</div><div class="admin-stat__delta">Next 14 days</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Click-throughs</div><div class="admin-stat__num">1,283</div><div class="admin-stat__delta admin-stat__delta--up">▲ 18%</div></div>
+      </div>
+
+      <div class="admin-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="admin-card">
+          <div class="admin-card__head">
+            <div class="admin-card__title">AI Content Studio</div>
+            <span class="admin-pill admin-pill--gold">Powered by Claude</span>
+          </div>
+          <div class="admin-card__body">
+            <p class="text-sm text-muted mb-3">Tell the AI what you want to post about. It'll write platform-tailored captions, suggest hashtags, and propose a graphic.</p>
+            <textarea rows="4" placeholder='Try: "Promote next Tuesday\'s breakfast with John Reilly speaking on AI in real estate" or "Spotlight Cryohealthcare\'s ribbon cutting tomorrow"' style="width:100%;padding:.75rem .9rem;border:1.5px solid var(--line);border-radius:var(--r-md);"></textarea>
+            <div class="flex gap-3 mt-3">
+              <button class="btn btn--gold">Generate posts</button>
+              <select style="padding:.6rem .85rem;border:1.5px solid var(--line);border-radius:var(--r-md);"><option>All platforms</option><option>Instagram</option><option>Facebook</option><option>LinkedIn</option><option>X</option></select>
+              <select style="padding:.6rem .85rem;border:1.5px solid var(--line);border-radius:var(--r-md);"><option>Tone: Professional</option><option>Tone: Friendly</option><option>Tone: Promotional</option></select>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="post-preview">
+              <div class="flex gap-3">
+                <div class="platform-tabs">
+                  <button class="active">📷 IG</button>
+                  <button>📘 FB</button>
+                  <button>💼 LI</button>
+                  <button>🐦 X</button>
+                </div>
+              </div>
+              <div class="grid" style="grid-template-columns:140px 1fr;gap:16px;margin-top:16px;">
+                <div class="post-preview__media">🥩</div>
+                <div>
+                  <p style="font-size:.92rem;line-height:1.6;">🔥 TOMAHAWK & TEQUILA tomorrow at @fogodechao_woodlandhills! Premium cuts, premium agave, your fellow Chamber members. RSVP at the link in our bio. ⁣<br><br>#WestValley #WoodlandHills #ChamberOfCommerce #SmallBusinessLA #NetworkingLA</p>
+                  <div class="text-xs text-muted mt-3">Generated · 2 hashtag groups · Optimized for IG (4-5pm posting)</div>
+                </div>
+              </div>
+              <div class="flex gap-2 mt-3" style="flex-wrap:wrap;">
+                <button class="btn btn--ghost btn--sm">↻ Regenerate</button>
+                <button class="btn btn--outline btn--sm">Edit</button>
+                <button class="btn btn--gold btn--sm">Schedule</button>
+                <button class="btn btn--primary btn--sm">Publish now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card__head">
+            <div class="admin-card__title">Upcoming queue</div>
+            <a href="#" class="text-sm">Calendar →</a>
+          </div>
+          <div class="admin-card__body" style="display:flex;flex-direction:column;gap:12px;font-size:.92rem;">
+            <div style="padding:14px;background:var(--cream);border-radius:8px;border-left:3px solid var(--gold);">
+              <div class="flex justify-between mb-1"><strong>Tomahawk & Tequila promo</strong><span class="admin-pill admin-pill--gold">IG · FB · LI</span></div>
+              <div class="text-xs text-muted">Tomorrow at 8:00 AM · 3 platforms · drafted</div>
+            </div>
+            <div style="padding:14px;background:var(--cream);border-radius:8px;border-left:3px solid var(--blue);">
+              <div class="flex justify-between mb-1"><strong>WH Camera 70th anniversary</strong><span class="admin-pill admin-pill--blue">IG · FB</span></div>
+              <div class="text-xs text-muted">May 8, 2026 · 9:00 AM · approved</div>
+            </div>
+            <div style="padding:14px;background:var(--cream);border-radius:8px;border-left:3px solid #1F7A3A;">
+              <div class="flex justify-between mb-1"><strong>Member spotlight: Cryohealthcare</strong><span class="admin-pill admin-pill--green">All platforms</span></div>
+              <div class="text-xs text-muted">May 13, 2026 · 11:00 AM · auto-tied to ribbon cutting</div>
+            </div>
+            <div style="padding:14px;background:var(--cream);border-radius:8px;border-left:3px solid var(--muted);">
+              <div class="flex justify-between mb-1"><strong>Food & Wine — early bird tickets</strong><span class="admin-pill">Drafting</span></div>
+              <div class="text-xs text-muted">AI suggested · approve to schedule</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card mt-5">
+        <div class="admin-card__head"><div class="admin-card__title">Connected platforms</div></div>
+        <div class="admin-card__body">
+          <div class="grid grid-4">
+            <div style="padding:16px;background:var(--cream);border-radius:8px;text-align:center;"><div style="font-size:2rem;">📷</div><strong>Instagram</strong><div class="text-sm text-muted">@wvwccc · 9.2k</div><span class="admin-pill admin-pill--green mt-2">Connected</span></div>
+            <div style="padding:16px;background:var(--cream);border-radius:8px;text-align:center;"><div style="font-size:2rem;">📘</div><strong>Facebook</strong><div class="text-sm text-muted">/wvwcc · 8.4k</div><span class="admin-pill admin-pill--green mt-2">Connected</span></div>
+            <div style="padding:16px;background:var(--cream);border-radius:8px;text-align:center;"><div style="font-size:2rem;">💼</div><strong>LinkedIn</strong><div class="text-sm text-muted">company · 4.8k</div><span class="admin-pill admin-pill--green mt-2">Connected</span></div>
+            <div style="padding:16px;background:var(--cream);border-radius:8px;text-align:center;"><div style="font-size:2rem;">𝕏</div><strong>X / Twitter</strong><div class="text-sm text-muted">@wvwcc · 1.4k</div><span class="admin-pill admin-pill--green mt-2">Connected</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div data-admin="ai"></div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="admin.js"></script>
+<script>AdminShell.mount({active:'social'});</script>
+</body>
+</html>

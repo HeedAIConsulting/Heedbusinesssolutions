@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate · West Valley Chamber Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/chamber.css">
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Donate</div>
+    <h1>Support the Chamber Foundation</h1>
+    <p>The West Valley Chamber Foundation is a 501(c)(3) supporting Adopt-a-School, scholarships, the Community Choice Awards, and grants to small Valley businesses recovering from disasters. Donations are tax-deductible.</p>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="grid" style="grid-template-columns:1.5fr 1fr;gap:32px;">
+      <div class="card" style="padding:32px;">
+        <h2 style="font-size:1.4rem;margin-bottom:24px;">Make a donation</h2>
+        <form id="donate-form">
+          <div class="form-group">
+            <label>Choose an amount</label>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+              <button type="button" class="btn btn--outline amt-btn" data-amt="25">$25</button>
+              <button type="button" class="btn btn--outline amt-btn" data-amt="100">$100</button>
+              <button type="button" class="btn btn--gold amt-btn" data-amt="250">$250</button>
+              <button type="button" class="btn btn--outline amt-btn" data-amt="500">$500</button>
+              <button type="button" class="btn btn--outline amt-btn" data-amt="1000">$1,000</button>
+              <button type="button" class="btn btn--outline amt-btn" data-amt="2500">$2,500</button>
+              <button type="button" class="btn btn--outline amt-btn" data-amt="5000">$5,000</button>
+              <button type="button" class="btn btn--outline amt-btn" data-amt="custom">Custom</button>
+            </div>
+          </div>
+          <div class="form-group" id="custom-amt" style="display:none;">
+            <label>Enter amount</label>
+            <input type="number" min="1" placeholder="$">
+          </div>
+          <div class="form-group">
+            <label>Direct your gift</label>
+            <select>
+              <option>Greatest need (Foundation General Fund)</option>
+              <option>Adopt-a-School</option>
+              <option>Scholarship Fund</option>
+              <option>Small Business Disaster Relief</option>
+              <option>Senior Programs</option>
+              <option>Community Choice Awards</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="display:flex;gap:8px;align-items:center;font-weight:400;">
+              <input type="checkbox"> <span>Make this a monthly recurring donation</span>
+            </label>
+          </div>
+          <h3 style="margin:24px 0 12px;font-size:1.05rem;">Donor info</h3>
+          <div class="form-row">
+            <div class="form-group"><label>First name *</label><input type="text" required></div>
+            <div class="form-group"><label>Last name *</label><input type="text" required></div>
+          </div>
+          <div class="form-group"><label>Email (for receipt) *</label><input type="email" required></div>
+          <div class="form-group">
+            <label style="display:flex;gap:8px;align-items:center;font-weight:400;">
+              <input type="checkbox"> <span>Donate in honor / memory of someone</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label style="display:flex;gap:8px;align-items:center;font-weight:400;">
+              <input type="checkbox"> <span>Make my donation anonymous</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn--gold btn--lg btn--block">Donate <span id="d-amt">$250</span> via Square</button>
+          <p class="text-xs text-muted text-center mt-3">501(c)(3) · EIN 47-XXXXXXX · Receipt sent immediately</p>
+        </form>
+      </div>
+
+      <aside>
+        <div class="card" style="padding:24px;">
+          <h3 style="font-size:1.05rem;margin-bottom:12px;">Where it goes</h3>
+          <div class="text-sm" style="line-height:1.7;">
+            <div class="flex justify-between"><span>Adopt-a-School</span><strong>32%</strong></div>
+            <div style="height:6px;background:var(--line);border-radius:3px;margin:4px 0 12px;"><div style="width:32%;height:100%;background:var(--gold);border-radius:3px;"></div></div>
+            <div class="flex justify-between"><span>Scholarships</span><strong>25%</strong></div>
+            <div style="height:6px;background:var(--line);border-radius:3px;margin:4px 0 12px;"><div style="width:25%;height:100%;background:var(--blue);border-radius:3px;"></div></div>
+            <div class="flex justify-between"><span>Disaster Relief</span><strong>20%</strong></div>
+            <div style="height:6px;background:var(--line);border-radius:3px;margin:4px 0 12px;"><div style="width:20%;height:100%;background:var(--navy);border-radius:3px;"></div></div>
+            <div class="flex justify-between"><span>Senior Programs</span><strong>15%</strong></div>
+            <div style="height:6px;background:var(--line);border-radius:3px;margin:4px 0 12px;"><div style="width:15%;height:100%;background:#1F7A3A;border-radius:3px;"></div></div>
+            <div class="flex justify-between"><span>Operations</span><strong>8%</strong></div>
+            <div style="height:6px;background:var(--line);border-radius:3px;margin:4px 0 12px;"><div style="width:8%;height:100%;background:var(--muted);border-radius:3px;"></div></div>
+          </div>
+        </div>
+
+        <div class="card mt-4" style="padding:24px;">
+          <h3 style="font-size:1.05rem;margin-bottom:12px;">Other ways to give</h3>
+          <ul style="padding-left:1.2rem;color:var(--slate);font-size:.92rem;line-height:1.7;">
+            <li>Stock or crypto donations</li>
+            <li>Donor-advised fund grants</li>
+            <li>Estate giving / planned giving</li>
+            <li>Corporate sponsorship match</li>
+          </ul>
+          <a href="contact.html" class="btn btn--outline btn--sm btn--block mt-3">Contact development →</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="js/partials.js"></script>
+<script src="js/chamber.js"></script>
+<script>
+ChamberPartials.mount({});
+let amt = 250;
+document.querySelectorAll('.amt-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.amt-btn').forEach(x => { x.classList.remove('btn--gold'); x.classList.add('btn--outline'); });
+    b.classList.add('btn--gold'); b.classList.remove('btn--outline');
+    if (b.dataset.amt === 'custom') {
+      document.getElementById('custom-amt').style.display = 'block';
+    } else {
+      document.getElementById('custom-amt').style.display = 'none';
+      amt = parseInt(b.dataset.amt, 10);
+      document.getElementById('d-amt').textContent = '$' + amt.toLocaleString();
+    }
+  });
+});
+document.getElementById('donate-form').addEventListener('submit', e => { e.preventDefault(); alert('In production: Square charge + 501(c)(3) tax receipt emailed. Demo mode.'); });
+</script>
+
+</body>
+</html>

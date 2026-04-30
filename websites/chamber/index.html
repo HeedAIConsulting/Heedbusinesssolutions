@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Valley ~ Warner Center Chamber of Commerce</title>
+<meta name="description" content="Since 1930, the West Valley ~ Warner Center Chamber of Commerce has connected Tarzana, Woodland Hills, Reseda and the Warner Center business community.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/chamber.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__top">
+    <div class="container">
+      <div class="site-header__top-meta">
+        <span><i>📞</i> (818) 347-4737</span>
+        <span><i>📍</i> Serving Tarzana · Woodland Hills · Reseda · Warner Center</span>
+        <span><i>🕒</i> Est. 1930</span>
+      </div>
+      <div class="site-header__top-actions">
+        <a href="auth/member-login.html">Member Login</a>
+        <span style="color:rgba(255,255,255,0.3);">·</span>
+        <a href="auth/staff-login.html">Staff</a>
+        <span style="color:rgba(255,255,255,0.3);">·</span>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="site-header__main">
+      <a href="index.html" class="brand">
+        <div class="brand__seal">WV</div>
+        <div class="brand__text">
+          <div class="brand__name">West Valley ~ Warner Center</div>
+          <div class="brand__sub">Chamber of Commerce · Since 1930</div>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">The Chamber</a>
+        <a href="members/directory.html">Directory</a>
+        <a href="events/index.html">Events</a>
+        <a href="guides/index.html">Guides</a>
+        <a href="community/index.html">Community</a>
+        <a href="blog/index.html">Blog</a>
+        <a href="join.html" class="btn btn--gold btn--sm nav-cta">Join Now</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__inner">
+      <div>
+        <span class="eyebrow eyebrow--navy">Connecting business & community since 1930</span>
+        <h1>The West Valley's <span>community engine</span> is now AI-powered.</h1>
+        <p class="hero__lead">Discover member businesses, plug into events, find resources for every stage of life, and connect to the people who keep the West Valley thriving — all with help from your always-on Chamber Concierge.</p>
+        <div class="hero__actions">
+          <a href="members/directory.html" class="btn btn--gold btn--lg">Browse Member Directory</a>
+          <a href="join.html" class="btn btn--outline btn--lg" style="border-color:rgba(255,255,255,0.5);color:#fff;">Become a Member</a>
+        </div>
+        <div class="hero__stats">
+          <div><div class="hero__stat-num">450+</div><div class="hero__stat-lbl">Member Businesses</div></div>
+          <div><div class="hero__stat-num">95</div><div class="hero__stat-lbl">Years Serving</div></div>
+          <div><div class="hero__stat-num">200+</div><div class="hero__stat-lbl">Events Per Year</div></div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <h4>Ask the Chamber Concierge</h4>
+        <div class="hero-stack">
+          <div class="hero-stack__item">
+            <div class="hero-stack__icon">🍴</div>
+            <div><div class="hero-stack__title">Find a member restaurant for date night</div><div class="hero-stack__desc">Filtered by neighborhood, ambiance, price.</div></div>
+          </div>
+          <div class="hero-stack__item">
+            <div class="hero-stack__icon">🛠️</div>
+            <div><div class="hero-stack__title">Hire a vetted plumber, fast</div><div class="hero-stack__desc">Member-recommended home pros, available now.</div></div>
+          </div>
+          <div class="hero-stack__item">
+            <div class="hero-stack__icon">📅</div>
+            <div><div class="hero-stack__title">What's happening this weekend?</div><div class="hero-stack__desc">Curated events for families, members, and visitors.</div></div>
+          </div>
+          <div class="hero-stack__item">
+            <div class="hero-stack__icon">🎓</div>
+            <div><div class="hero-stack__title">After-school programs near me</div><div class="hero-stack__desc">From the Parent Resource Guide.</div></div>
+          </div>
+        </div>
+        <button class="btn btn--primary btn--block mt-4" onclick="document.querySelector('.ai-widget__btn').click();">Open Concierge ›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Featured Resources</span>
+      <h2>Mind-blowing community guides</h2>
+      <p>Eight full-featured resource guides, curated by the Chamber and powered by member businesses. Searchable, sortable, and always up to date.</p>
+    </div>
+    <div class="grid grid-4" id="guides-grid"></div>
+    <div class="text-center mt-6"><a href="guides/index.html" class="btn btn--primary btn--lg">Browse all 8 guides ›</a></div>
+  </div>
+</section>
+
+<section class="section bg-paper">
+  <div class="container">
+    <div class="grid grid-2" style="align-items:center;gap:64px;">
+      <div>
+        <span class="eyebrow">Coming up</span>
+        <h2 style="margin-bottom:16px;">Events to plug you in</h2>
+        <p class="lead" style="margin-bottom:24px;">From breakfast meetings to ribbon cuttings to our flagship Food &amp; Wine Event, the Chamber's calendar is the West Valley's social calendar.</p>
+        <a href="events/index.html" class="btn btn--primary">See full calendar ›</a>
+      </div>
+      <div id="featured-events" class="grid" style="gap:16px;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-navy">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow eyebrow--navy">Our Leaders</span>
+      <h2 style="color:#fff;">Backed by the businesses who built this Valley</h2>
+      <p style="color:rgba(255,255,255,0.85);">Six tiers of partnership. Every dollar reinvested in the community.</p>
+    </div>
+    <div class="grid grid-4" id="leaders-grid"></div>
+    <div class="text-center mt-6"><a href="sponsor.html" class="btn btn--gold">Become a Leader ›</a></div>
+  </div>
+</section>
+
+<section class="section bg-sand">
+  <div class="container">
+    <div class="grid grid-3" style="gap:32px;">
+      <div class="card" style="padding:32px;">
+        <div style="font-size:2rem;">🤝</div>
+        <h3 style="margin:16px 0 8px;">Members</h3>
+        <p>Get listed in the directory, market your business through guides and events, and connect with 450+ businesses across the West Valley.</p>
+        <a href="join.html" class="btn btn--outline btn--sm mt-3">Join the Chamber ›</a>
+      </div>
+      <div class="card" style="padding:32px;">
+        <div style="font-size:2rem;">📣</div>
+        <h3 style="margin:16px 0 8px;">Sponsors</h3>
+        <p>Premium directory placement, guide sponsorships, event presenting sponsorships — built into a transparent, automated system.</p>
+        <a href="sponsor.html" class="btn btn--outline btn--sm mt-3">Sponsorship menu ›</a>
+      </div>
+      <div class="card" style="padding:32px;">
+        <div style="font-size:2rem;">🌟</div>
+        <h3 style="margin:16px 0 8px;">Community</h3>
+        <p>Free for residents. Find a doctor, hire a contractor, plan a birthday party, attend a festival — your Valley, made simple.</p>
+        <a href="ai-concierge.html" class="btn btn--outline btn--sm mt-3">Talk to the Concierge ›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-paper">
+  <div class="container">
+    <div class="grid grid-2" style="align-items:center;gap:64px;">
+      <div>
+        <span class="eyebrow">Latest from the Valley</span>
+        <h2 style="margin-bottom:16px;">Valley Biz Buzz</h2>
+        <p class="lead">News, member spotlights, and stories from across Tarzana, Woodland Hills, Reseda, and Warner Center.</p>
+        <a href="blog/index.html" class="btn btn--outline mt-3">Read the blog ›</a>
+        <p class="mt-4 text-sm text-muted">Want to contribute? <a href="blog/guest-post.html">Submit a guest post →</a></p>
+      </div>
+      <div class="grid" style="gap:16px;">
+        <a href="blog/post-2026-q1-economic-outlook.html" class="card" style="text-decoration:none;color:inherit;display:flex;gap:16px;padding:16px;">
+          <div style="width:96px;height:96px;background:linear-gradient(135deg,var(--blue-soft),var(--gold-soft));border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📊</div>
+          <div>
+            <div class="card__meta"><span>Insights</span><span>·</span><span>Apr 18, 2026</span></div>
+            <div class="card__title">2026 Q1 West Valley economic outlook</div>
+            <div class="card__excerpt">Office vacancies tighten, hospitality rebounds, and small business optimism climbs.</div>
+          </div>
+        </a>
+        <a href="blog/post-spotlight-wh-camera.html" class="card" style="text-decoration:none;color:inherit;display:flex;gap:16px;padding:16px;">
+          <div style="width:96px;height:96px;background:linear-gradient(135deg,var(--gold-soft),var(--sand));border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📸</div>
+          <div>
+            <div class="card__meta"><span>Member Spotlight</span><span>·</span><span>Apr 12, 2026</span></div>
+            <div class="card__title">70 years through a different lens — WH Camera</div>
+            <div class="card__excerpt">How a family-run shop built a national following without leaving Topanga Canyon.</div>
+          </div>
+        </a>
+        <a href="blog/post-ai-concierge-launch.html" class="card" style="text-decoration:none;color:inherit;display:flex;gap:16px;padding:16px;">
+          <div style="width:96px;height:96px;background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--gold);">🤖</div>
+          <div>
+            <div class="card__meta"><span>News</span><span>·</span><span>Apr 30, 2026</span></div>
+            <div class="card__title">Introducing the Chamber AI Concierge</div>
+            <div class="card__excerpt">Your 24/7 guide to every business, event, and resource in the West Valley.</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="card" style="padding:48px;text-align:center;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;border:none;">
+      <span class="eyebrow eyebrow--navy">Newsletter</span>
+      <h2 style="color:#fff;margin:8px 0 12px;">The West Valley Weekly</h2>
+      <p style="color:rgba(255,255,255,0.85);max-width:540px;margin:0 auto 24px;">One email each Friday. The week's events, member spotlights, and what to do this weekend.</p>
+      <form style="max-width:480px;margin:0 auto;display:flex;gap:8px;flex-wrap:wrap;">
+        <input type="email" placeholder="you@email.com" required style="flex:1;min-width:220px;padding:12px 16px;border-radius:8px;border:none;font-size:1rem;">
+        <button type="submit" class="btn btn--gold">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <div class="brand">
+          <div class="brand__seal">WV</div>
+          <div class="brand__text">
+            <div class="brand__name" style="color:#fff;">West Valley ~ Warner Center</div>
+            <div class="brand__sub">Chamber of Commerce · Since 1930</div>
+          </div>
+        </div>
+        <p class="mt-4">Connecting the businesses and residents of Tarzana, Woodland Hills, Reseda, and the Warner Center for nearly a century.</p>
+        <div class="social-links mt-4">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="X / Twitter">𝕏</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+      <div>
+        <h4>Members</h4>
+        <ul>
+          <li><a href="join.html">Join Now</a></li>
+          <li><a href="members/directory.html">Directory</a></li>
+          <li><a href="benefits.html">Benefits</a></li>
+          <li><a href="member-deals.html">Member Deals</a></li>
+          <li><a href="auth/member-login.html">Member Login</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="guides/index.html">All Guides</a></li>
+          <li><a href="guides/restaurant.html">Restaurant Guide</a></li>
+          <li><a href="guides/parent-resource.html">Parent Guide</a></li>
+          <li><a href="guides/home-maintenance.html">Home Services</a></li>
+          <li><a href="ai-concierge.html">AI Concierge</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Engage</h4>
+        <ul>
+          <li><a href="events/index.html">Events</a></li>
+          <li><a href="sponsor.html">Sponsor</a></li>
+          <li><a href="advertise.html">Advertise</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="blog/guest-post.html">Guest Post</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">The Chamber</a></li>
+          <li><a href="community/index.html">Community</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="accessibility.html">Accessibility</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <div>© 2026 West Valley ~ Warner Center Chamber of Commerce. All rights reserved.</div>
+      <div>Site rebuilt by <a href="https://heedbusinesssolutions.com" style="color:var(--gold);">Heed Business Solutions</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.CHAMBER_API_BASE = window.location.hostname === 'localhost' ? 'http://localhost:3001/api' : '/api';
+</script>
+<script src="js/chamber.js"></script>
+<script>
+// Hydrate guides
+fetch('data/guides.json').then(r => r.json()).then(guides => {
+  const featured = guides.filter(g => g.featured).slice(0, 4);
+  const html = featured.map(g => `
+    <a href="guides/${g.slug}.html" class="card" style="text-decoration:none;color:inherit;display:block;">
+      <div style="height:140px;background:linear-gradient(135deg, var(--${g.color === 'gold' ? 'gold-soft' : g.color === 'green' ? 'blue-soft' : 'blue-soft'}), var(--${g.color === 'gold' ? 'gold' : g.color === 'green' ? 'gold-soft' : 'gold-soft'}));display:flex;align-items:center;justify-content:center;font-size:2.4rem;">
+        ${g.icon === 'utensils' ? '🍽️' : g.icon === 'users' ? '👨‍👩‍👧‍👦' : g.icon === 'leaf' ? '🌿' : g.icon === 'tools' ? '🔧' : g.icon === 'briefcase' ? '💼' : '📍'}
+      </div>
+      <div class="card__body">
+        <span class="chip chip--${g.color === 'gold' ? 'gold' : 'blue'}">${g.category}</span>
+        <h3 class="card__title mt-3">${g.title}</h3>
+        <p class="card__excerpt">${g.tagline}</p>
+      </div>
+    </a>
+  `).join('');
+  document.getElementById('guides-grid').innerHTML = html;
+});
+
+// Hydrate featured events
+fetch('data/events.json').then(r => r.json()).then(events => {
+  const featured = events.filter(e => e.featured).slice(0, 3);
+  const html = featured.map(e => {
+    const d = new Date(e.date + 'T12:00:00');
+    return `
+      <a href="events/index.html#${e.id}" class="card" style="text-decoration:none;color:inherit;display:flex;gap:16px;padding:16px;align-items:center;">
+        <div style="background:var(--navy);color:var(--gold);border-radius:8px;padding:10px 14px;text-align:center;flex-shrink:0;min-width:64px;">
+          <div style="font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;">${d.toLocaleString('en', { month: 'short' })}</div>
+          <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;line-height:1;">${d.getDate()}</div>
+        </div>
+        <div style="flex:1;min-width:0;">
+          <div class="card__title" style="font-size:1.05rem;">${e.title}</div>
+          <div class="card__meta"><span>${e.time}</span><span>·</span><span>${e.location}</span></div>
+          ${e.price > 0 ? `<span class="chip chip--gold">$${e.price}</span>` : '<span class="chip chip--green">Free</span>'}
+        </div>
+      </a>`;
+  }).join('');
+  document.getElementById('featured-events').innerHTML = html;
+});
+
+// Hydrate leaders by tier
+fetch('data/members.json').then(r => r.json()).then(members => {
+  const tiers = ['platinum', 'gold', 'silver', 'bronze'];
+  const leaders = tiers.flatMap(t => members.filter(m => m.tier === t).slice(0, 2)).slice(0, 8);
+  const html = leaders.map(m => `
+    <a href="members/profile.html?id=${m.id}" class="card" style="text-decoration:none;color:inherit;text-align:center;padding:24px;background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);">
+      <div style="width:64px;height:64px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-family:var(--serif);font-weight:700;margin:0 auto 12px;">${m.logo}</div>
+      <div style="color:#fff;font-weight:600;font-size:.95rem;line-height:1.3;margin-bottom:6px;">${m.name}</div>
+      <span class="tier tier--${m.tier}">${m.tier}</span>
+    </a>
+  `).join('');
+  document.getElementById('leaders-grid').innerHTML = html;
+});
+</script>
+
+</body>
+</html>

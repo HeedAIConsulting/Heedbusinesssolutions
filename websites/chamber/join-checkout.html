@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Membership Checkout · Chamber</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/chamber.css">
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="join.html">Join</a> / Checkout</div>
+    <h1>Welcome — let's get you set up</h1>
+    <p>Two minutes. Square handles payment. Membership begins immediately.</p>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="grid" style="grid-template-columns:1.5fr 1fr;gap:32px;">
+      <div class="card" style="padding:32px;">
+        <h2 style="font-size:1.3rem;margin-bottom:24px;">Business details</h2>
+        <form id="join-form">
+          <div class="form-row">
+            <div class="form-group"><label>Business name *</label><input type="text" required></div>
+            <div class="form-group"><label>Category *</label>
+              <select required>
+                <option>Healthcare</option><option>Hospitality</option><option>Restaurant</option>
+                <option>Retail</option><option>Professional Services</option><option>Real Estate</option>
+                <option>Home Services</option><option>Health & Wellness</option><option>Technology</option>
+                <option>Family & Kids</option><option>Recreation</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label>Business address *</label><input type="text" required></div>
+          <div class="form-row">
+            <div class="form-group"><label>Neighborhood *</label>
+              <select required><option>Tarzana</option><option>Woodland Hills</option><option>Reseda</option><option>Warner Center</option><option>Other West Valley</option></select>
+            </div>
+            <div class="form-group"><label>Year founded</label><input type="number" min="1800" max="2026"></div>
+          </div>
+          <div class="form-group"><label>Public phone *</label><input type="tel" required></div>
+          <div class="form-group"><label>Website</label><input type="url" placeholder="https://"></div>
+          <div class="form-group"><label>Tagline (one sentence)</label><input type="text" maxlength="120"></div>
+
+          <h3 style="margin:32px 0 16px;font-size:1.1rem;">Primary contact</h3>
+          <div class="form-row">
+            <div class="form-group"><label>First name *</label><input type="text" required></div>
+            <div class="form-group"><label>Last name *</label><input type="text" required></div>
+          </div>
+          <div class="form-group"><label>Title *</label><input type="text" required></div>
+          <div class="form-group"><label>Email *</label><input type="email" required></div>
+
+          <h3 style="margin:32px 0 16px;font-size:1.1rem;">Payment</h3>
+          <div class="card" style="padding:20px;background:var(--cream);border:1px dashed var(--line);">
+            <div class="text-sm text-muted mb-2">Powered by</div>
+            <div style="font-weight:700;color:var(--navy);font-size:1.2rem;margin-bottom:12px;">◼ Square</div>
+            <div style="background:#fff;padding:14px;border:1px solid var(--line);border-radius:8px;font-family:var(--mono);color:var(--muted);font-size:.9rem;">
+              Card · •••• •••• •••• 4242 · 04/27 · ✓
+              <div class="text-xs mt-2" style="color:var(--green);">▲ Square Web Payments SDK + recurring billing token in production</div>
+            </div>
+          </div>
+
+          <div class="form-group mt-4">
+            <label style="display:flex;gap:8px;align-items:flex-start;font-weight:400;">
+              <input type="checkbox" required style="margin-top:4px;">
+              <span class="text-sm">I agree to the Chamber's <a href="terms.html">Terms</a>, <a href="privacy.html">Privacy Policy</a>, and <a href="bylaws.html">Bylaws</a>.</span>
+            </label>
+            <label style="display:flex;gap:8px;align-items:flex-start;font-weight:400;margin-top:8px;">
+              <input type="checkbox" checked style="margin-top:4px;">
+              <span class="text-sm">Auto-renew annually. Cancel anytime in your member portal.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn--gold btn--lg btn--block">Pay <span id="amt">$0</span> & Activate Membership</button>
+        </form>
+      </div>
+
+      <aside>
+        <div class="card" style="padding:24px;position:sticky;top:120px;">
+          <h3 style="font-size:1.05rem;margin-bottom:16px;">Order summary</h3>
+          <div id="tier-summary"></div>
+          <div class="divider"></div>
+          <div class="flex justify-between text-sm"><span>Membership</span><span id="sum-mem">$0</span></div>
+          <div class="flex justify-between text-sm"><span>One-time setup</span><span>$0</span></div>
+          <div class="flex justify-between text-sm"><span>Service fee (3%)</span><span id="sum-fee">$0</span></div>
+          <div class="divider"></div>
+          <div class="flex justify-between" style="font-weight:700;"><span>Today's charge</span><span id="sum-total" style="color:var(--gold-deep);font-size:1.2rem;">$0</span></div>
+
+          <div class="mt-5" style="background:var(--gold-soft);padding:14px;border-radius:8px;font-size:.85rem;color:var(--navy);">
+            <strong>What happens next:</strong>
+            <ol style="margin:6px 0 0 18px;padding:0;">
+              <li>Payment processed via Square</li>
+              <li>Receipt emailed</li>
+              <li>Member portal account created</li>
+              <li>Directory listing live within 24h</li>
+            </ol>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="js/partials.js"></script>
+<script src="js/chamber.js"></script>
+<script>
+ChamberPartials.mount({});
+
+const tiers = {
+  friend: { name:'Friend', price:120, color:'friend' },
+  supporter: { name:'Supporter', price:300, color:'supporter' },
+  bronze: { name:'Bronze', price:600, color:'bronze' },
+  silver: { name:'Silver', price:1200, color:'silver' },
+  gold: { name:'Gold', price:2500, color:'gold' },
+  platinum: { name:'Platinum', price:6000, color:'platinum' }
+};
+
+const tierKey = new URLSearchParams(location.search).get('tier') || 'silver';
+const tier = tiers[tierKey] || tiers.silver;
+const fee = tier.price * 0.03;
+const total = tier.price + fee;
+
+document.getElementById('tier-summary').innerHTML = `
+  <span class="tier tier--${tier.color}">${tier.name}</span>
+  <div style="font-weight:600;color:var(--navy);margin-top:8px;">${tier.name} Membership</div>
+  <div class="text-sm text-muted mt-1">Annual · auto-renews ${new Date(Date.now()+365*86400000).toLocaleDateString()}</div>
+`;
+document.getElementById('sum-mem').textContent = '$' + tier.price.toFixed(2);
+document.getElementById('sum-fee').textContent = '$' + fee.toFixed(2);
+document.getElementById('sum-total').textContent = '$' + total.toFixed(2);
+document.getElementById('amt').textContent = '$' + total.toFixed(2);
+
+document.getElementById('join-form').addEventListener('submit', e => {
+  e.preventDefault();
+  alert('In production: Square card tokenization → POST /api/memberships/subscribe → create account → email welcome kit. Demo mode.');
+});
+</script>
+
+</body>
+</html>

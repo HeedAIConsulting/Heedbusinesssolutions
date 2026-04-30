@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Directory · West Valley ~ Warner Center Chamber</title>
+<meta name="description" content="Search the West Valley Chamber's member directory by category, neighborhood, and tier.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+.dir-toolbar { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:12px; padding:16px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); margin-bottom:24px; }
+.dir-toolbar input, .dir-toolbar select { padding:.6rem .85rem; border:1.5px solid var(--line); border-radius:var(--r-md); background:var(--paper); }
+.dir-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:20px; }
+.member-card { background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); padding:24px; transition:var(--transition); position:relative; }
+.member-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.member-card--featured { border:2px solid var(--gold); background:linear-gradient(180deg, var(--gold-soft) 0%, var(--paper) 30%); }
+.member-card--featured::before { content:'★ Featured'; position:absolute; top:-1px; right:16px; background:var(--gold); color:var(--navy); padding:3px 10px; border-radius:0 0 var(--r-sm) var(--r-sm); font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-family:var(--mono); }
+.member-card__logo { width:56px; height:56px; border-radius:var(--r-md); background:var(--navy); color:var(--gold); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:1.4rem; font-weight:700; flex-shrink:0; }
+.dir-toolbar { grid-template-columns: 2fr 1fr 1fr 1fr; }
+@media (max-width:900px) { .dir-toolbar { grid-template-columns: 1fr 1fr; } }
+@media (max-width:500px) { .dir-toolbar { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Member Directory</div>
+    <h1>Member Directory</h1>
+    <p>450+ businesses across Tarzana, Woodland Hills, Reseda, and Warner Center — every one of them a verified Chamber member.</p>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="dir-toolbar">
+      <input type="search" id="search" placeholder="Search by name, service, or keyword…">
+      <select id="filter-cat">
+        <option value="">All categories</option>
+      </select>
+      <select id="filter-hood">
+        <option value="">All neighborhoods</option>
+        <option>Tarzana</option><option>Woodland Hills</option><option>Reseda</option><option>Warner Center</option>
+      </select>
+      <select id="filter-tier">
+        <option value="">All tiers</option>
+        <option>platinum</option><option>gold</option><option>silver</option><option>bronze</option><option>supporter</option><option>friend</option>
+      </select>
+    </div>
+    <div id="result-count" class="text-muted text-sm mb-4"></div>
+    <div class="dir-grid" id="dir-grid"></div>
+  </div>
+</section>
+
+<section class="section bg-navy">
+  <div class="container text-center">
+    <span class="eyebrow eyebrow--navy">Premium Listing</span>
+    <h2 style="color:#fff;">Stand out in the directory</h2>
+    <p style="color:rgba(255,255,255,.85);max-width:580px;margin:16px auto 32px;">Premium listings get top placement, the gold "Featured" badge, photo galleries, video, lead-capture forms, and inclusion in our Resource Guides.</p>
+    <a href="../sponsor.html#premium-listings" class="btn btn--gold btn--lg">See Premium Plans ›</a>
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="../js/partials.js"></script>
+<script src="../js/chamber.js"></script>
+<script>
+ChamberPartials.mount({ active:'members', depth:1 });
+
+let all = [];
+fetch('../data/members.json').then(r=>r.json()).then(data => {
+  all = data;
+  const cats = [...new Set(data.map(m=>m.category))].sort();
+  const sel = document.getElementById('filter-cat');
+  cats.forEach(c => { const o = document.createElement('option'); o.textContent = c; sel.appendChild(o); });
+  render();
+});
+
+['search','filter-cat','filter-hood','filter-tier'].forEach(id => document.getElementById(id).addEventListener('input', render));
+
+function render() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const cat = document.getElementById('filter-cat').value;
+  const hood = document.getElementById('filter-hood').value;
+  const tier = document.getElementById('filter-tier').value;
+
+  const tierOrder = { platinum:0, gold:1, silver:2, bronze:3, supporter:4, friend:5 };
+  let filtered = all.filter(m => {
+    if (q && !(m.name+(m.tagline||'')+(m.tags||[]).join(' ')+m.category).toLowerCase().includes(q)) return false;
+    if (cat && m.category!==cat) return false;
+    if (hood && m.neighborhood!==hood) return false;
+    if (tier && m.tier!==tier) return false;
+    return true;
+  }).sort((a,b) => (tierOrder[a.tier]-tierOrder[b.tier]) || a.name.localeCompare(b.name));
+
+  document.getElementById('result-count').textContent = `${filtered.length} of ${all.length} members`;
+
+  document.getElementById('dir-grid').innerHTML = filtered.map(m => `
+    <a href="profile.html?id=${m.id}" class="member-card ${m.featured?'member-card--featured':''}" style="text-decoration:none;color:inherit;display:block;">
+      <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:12px;">
+        <div class="member-card__logo">${m.logo}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-weight:700;color:var(--navy);font-size:1.05rem;line-height:1.3;">${m.name}</div>
+          <div class="text-sm text-muted mt-1">${m.category} · ${m.neighborhood}</div>
+        </div>
+      </div>
+      <p style="font-size:.9rem;color:var(--slate-mid);margin-bottom:14px;line-height:1.5;">${m.tagline || ''}</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span class="tier tier--${m.tier}">${m.tier}</span>
+        ${m.phone ? `<span class="text-xs text-muted">${m.phone}</span>` : ''}
+      </div>
+    </a>
+  `).join('') || '<div class="card" style="padding:32px;text-align:center;grid-column:1/-1;">No members match your filters.</div>';
+}
+</script>
+
+</body>
+</html>

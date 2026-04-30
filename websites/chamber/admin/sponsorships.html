@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sponsorships · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="admin.js"></script>
+<script src="_stub.js"></script>
+<script>
+AdminStub.render({
+  active: 'sponsorships',
+  sub: 'Programs',
+  title: 'Sponsorships',
+  body: `
+    <div class="admin-stat-grid">
+      <div class="admin-stat"><div class="admin-stat__label">YTD sponsorship revenue</div><div class="admin-stat__num">$94,500</div><div class="admin-stat__delta admin-stat__delta--up">▲ 31% YoY</div></div>
+      <div class="admin-stat"><div class="admin-stat__label">Active sponsors</div><div class="admin-stat__num">42</div></div>
+      <div class="admin-stat"><div class="admin-stat__label">Open packages</div><div class="admin-stat__num">7</div></div>
+      <div class="admin-stat"><div class="admin-stat__label">Pipeline value</div><div class="admin-stat__num">$48,000</div></div>
+    </div>
+    <div class="admin-card">
+      <div class="admin-card__head"><div class="admin-card__title">Open sponsorships</div></div>
+      <div class="admin-card__body admin-card__body--p0">
+        <table class="admin-table">
+          <thead><tr><th>Event / Program</th><th>Tier</th><th>Price</th><th>Status</th><th>Sponsor</th><th>Actions</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Food & Wine 2026 — Wine Pavilion #2</strong></td><td><span class="tier tier--silver">Silver</span></td><td>$5,000</td><td><span class="admin-pill admin-pill--gold">Open</span></td><td>—</td><td class="admin-actions"><button>Promote</button><button>Pitch</button></td></tr>
+            <tr><td><strong>Food & Wine 2026 — Wine Pavilion #3</strong></td><td><span class="tier tier--silver">Silver</span></td><td>$5,000</td><td><span class="admin-pill admin-pill--gold">Open</span></td><td>—</td><td class="admin-actions"><button>Promote</button></td></tr>
+            <tr><td><strong>Food & Wine — Presenting</strong></td><td><span class="tier tier--platinum">Platinum</span></td><td>$25,000</td><td><span class="admin-pill admin-pill--green">SOLD</span></td><td>Providence Tarzana</td><td class="admin-actions"><button>Confirm details</button></td></tr>
+            <tr><td><strong>Young Pros Network May</strong></td><td><span class="tier tier--bronze">Bronze</span></td><td>$1,500</td><td><span class="admin-pill admin-pill--blue">In conversation</span></td><td>Warner CPA Group</td><td class="admin-actions"><button>Follow up</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>`
+});
+</script>
+</body>
+</html>

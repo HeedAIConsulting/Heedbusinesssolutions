@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Chamber · West Valley ~ Warner Center</title>
+<meta name="description" content="Become a Chamber member. Six tiers, transparent benefits, and instant onboarding.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/chamber.css">
+<style>
+.tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+@media (max-width:900px) { .tiers { grid-template-columns:1fr; } }
+.tier-card { background:var(--paper); border:1.5px solid var(--line); border-radius:var(--r-lg); padding:32px; position:relative; display:flex; flex-direction:column; }
+.tier-card--featured { border:2px solid var(--gold); transform:scale(1.02); box-shadow:var(--shadow-lg); }
+.tier-card--featured::before { content:'★ MOST POPULAR'; position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--navy); padding:4px 16px; border-radius:var(--r-full); font-size:.7rem; font-weight:700; letter-spacing:.06em; font-family:var(--mono); }
+.tier-card__price { font-family:var(--serif); font-size:2.8rem; font-weight:700; color:var(--navy); margin:8px 0; }
+.tier-card__price span { font-size:1rem; color:var(--muted); font-weight:400; }
+.tier-card ul { list-style:none; margin:24px 0; padding:0; }
+.tier-card li { padding:8px 0; padding-left:28px; position:relative; font-size:.95rem; color:var(--slate); }
+.tier-card li::before { content:'✓'; position:absolute; left:0; top:8px; color:var(--green); font-weight:700; }
+.tier-card li.no::before { content:'✕'; color:var(--muted); }
+.tier-card li.no { color:var(--muted); text-decoration:line-through; }
+</style>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Join</div>
+    <h1>Join the Chamber</h1>
+    <p>Six tiers, transparent benefits, instant onboarding. Pay annually or monthly. Cancel anytime.</p>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="text-center mb-6">
+      <div class="inline-block" style="display:inline-flex;background:var(--paper);border-radius:var(--r-full);padding:4px;border:1px solid var(--line);">
+        <button class="btn btn--primary btn--sm" style="border-radius:var(--r-full);">Annual (save 17%)</button>
+        <button class="btn btn--ghost btn--sm" style="border-radius:var(--r-full);">Monthly</button>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier-card">
+        <span class="tier tier--friend">Friend</span>
+        <div class="tier-card__price">$120<span>/yr</span></div>
+        <p class="text-sm text-muted">For solo professionals and supporters of the Chamber.</p>
+        <ul>
+          <li>Standard directory listing</li>
+          <li>Newsletter inclusion</li>
+          <li>Member-rate event tickets</li>
+          <li>Vote at annual meeting</li>
+          <li class="no">Premium guide listings</li>
+          <li class="no">Featured directory spot</li>
+        </ul>
+        <a href="join-checkout.html?tier=friend" class="btn btn--outline btn--block">Choose Friend</a>
+      </div>
+
+      <div class="tier-card">
+        <span class="tier tier--supporter">Supporter</span>
+        <div class="tier-card__price">$300<span>/yr</span></div>
+        <p class="text-sm text-muted">Solo proprietors and small-team businesses.</p>
+        <ul>
+          <li>Standard directory + photos</li>
+          <li>Member Deal slot</li>
+          <li>2 free events per year</li>
+          <li>Newsletter inclusion</li>
+          <li>Connection Circle access</li>
+          <li class="no">Premium guide listings</li>
+        </ul>
+        <a href="join-checkout.html?tier=supporter" class="btn btn--outline btn--block">Choose Supporter</a>
+      </div>
+
+      <div class="tier-card">
+        <span class="tier tier--bronze">Bronze</span>
+        <div class="tier-card__price">$600<span>/yr</span></div>
+        <p class="text-sm text-muted">Established businesses ready to engage actively.</p>
+        <ul>
+          <li>Enhanced directory listing</li>
+          <li>1 guide listing (any guide)</li>
+          <li>4 free events per year</li>
+          <li>Quarterly social media feature</li>
+          <li>Ribbon-cutting eligible</li>
+          <li class="no">Featured directory spot</li>
+        </ul>
+        <a href="join-checkout.html?tier=bronze" class="btn btn--outline btn--block">Choose Bronze</a>
+      </div>
+
+      <div class="tier-card tier-card--featured">
+        <span class="tier tier--silver">Silver</span>
+        <div class="tier-card__price">$1,200<span>/yr</span></div>
+        <p class="text-sm text-muted">Mid-sized businesses, professional services, and growing teams.</p>
+        <ul>
+          <li>Enhanced directory + photo gallery</li>
+          <li>2 guide premium listings</li>
+          <li>8 free events + Food &amp; Wine seat</li>
+          <li>Monthly social media feature</li>
+          <li>AI Concierge inclusion (priority 3)</li>
+          <li>Member-deal spotlight</li>
+        </ul>
+        <a href="join-checkout.html?tier=silver" class="btn btn--gold btn--block">Choose Silver</a>
+      </div>
+
+      <div class="tier-card">
+        <span class="tier tier--gold">Gold</span>
+        <div class="tier-card__price">$2,500<span>/yr</span></div>
+        <p class="text-sm text-muted">Established firms ready to lead.</p>
+        <ul>
+          <li>Featured directory listing</li>
+          <li>4 guide premium listings</li>
+          <li>15 free events + Food &amp; Wine table half</li>
+          <li>Featured weekly in newsletter</li>
+          <li>AI Concierge inclusion (priority 2)</li>
+          <li>Annual member spotlight blog post</li>
+        </ul>
+        <a href="join-checkout.html?tier=gold" class="btn btn--outline btn--block">Choose Gold</a>
+      </div>
+
+      <div class="tier-card">
+        <span class="tier tier--platinum">Platinum</span>
+        <div class="tier-card__price">$6,000<span>/yr</span></div>
+        <p class="text-sm text-muted">Hospital, hotel, and flagship-brand sponsors.</p>
+        <ul>
+          <li>Top-of-directory featured</li>
+          <li>Unlimited guide listings (priority)</li>
+          <li>Unlimited events + F&amp;W full table</li>
+          <li>Hero rotation on homepage</li>
+          <li>AI Concierge inclusion (priority 1)</li>
+          <li>Logo on every page footer</li>
+        </ul>
+        <a href="join-checkout.html?tier=platinum" class="btn btn--outline btn--block">Choose Platinum</a>
+      </div>
+    </div>
+
+    <div class="card mt-6" style="padding:32px;text-align:center;">
+      <h3 style="font-size:1.2rem;margin-bottom:8px;">Not sure which tier?</h3>
+      <p class="text-muted mb-3">Talk to our membership director — 15-minute call, no commitment.</p>
+      <a href="contact.html" class="btn btn--primary">Schedule a call →</a>
+    </div>
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="js/partials.js"></script>
+<script src="js/chamber.js"></script>
+<script>ChamberPartials.mount({});</script>
+
+</body>
+</html>

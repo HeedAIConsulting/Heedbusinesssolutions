@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Member Profile · Chamber</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="page-hero" id="hero">
+  <div class="container page-hero__inner">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="directory.html">Directory</a> / <span id="bc-name">Member</span></div>
+    <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
+      <div id="m-logo" style="width:96px;height:96px;border-radius:var(--r-lg);background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.4rem;font-weight:700;flex-shrink:0;">M</div>
+      <div>
+        <div id="m-tier" class="mb-2"></div>
+        <h1 id="m-name" style="margin-bottom:6px;">Member</h1>
+        <p id="m-cat" style="color:rgba(255,255,255,.85);"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="grid" style="grid-template-columns:2fr 1fr;gap:32px;">
+      <div>
+        <div class="card" style="padding:32px;">
+          <h2 style="font-size:1.4rem;margin-bottom:16px;">About</h2>
+          <p id="m-about" class="lead"></p>
+          <div id="m-tags" style="margin-top:16px;display:flex;gap:6px;flex-wrap:wrap;"></div>
+        </div>
+
+        <div class="card mt-4" style="padding:32px;">
+          <h2 style="font-size:1.4rem;margin-bottom:16px;">Photo Gallery</h2>
+          <div class="grid grid-3" style="gap:8px;">
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--blue-soft),var(--gold-soft));border-radius:8px;"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--gold-soft),var(--sand));border-radius:8px;"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--sand),var(--blue-soft));border-radius:8px;"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--blue-soft),var(--navy));border-radius:8px;"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--navy),var(--gold));border-radius:8px;"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--gold),var(--gold-soft));border-radius:8px;"></div>
+          </div>
+        </div>
+
+        <div class="card mt-4" style="padding:32px;">
+          <h2 style="font-size:1.4rem;margin-bottom:16px;">Member Deals</h2>
+          <div class="card" style="padding:16px;background:var(--gold-soft);border-color:var(--gold);">
+            <div class="flex items-center gap-3">
+              <div style="font-size:2rem;">🎟️</div>
+              <div>
+                <div style="font-weight:700;color:var(--navy);">15% off for fellow Chamber members</div>
+                <div class="text-sm text-muted">Show your member ID at checkout. Expires Dec 2026.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-4" style="padding:32px;">
+          <h2 style="font-size:1.4rem;margin-bottom:16px;">Reviews</h2>
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+            <div style="font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--gold-deep);">4.8</div>
+            <div>
+              <div style="color:var(--gold);">★★★★★</div>
+              <div class="text-sm text-muted">Based on 47 verified reviews</div>
+            </div>
+          </div>
+          <div class="card" style="padding:16px;margin-bottom:12px;background:var(--cream);">
+            <div style="color:var(--gold);">★★★★★</div>
+            <p class="mt-2" style="font-size:.92rem;">"Showed up on time, fair price, fixed it right the first time. They'll be our go-to from now on."</p>
+            <div class="text-xs text-muted mt-2">— Lisa M., Tarzana resident · 3 weeks ago</div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card" style="padding:24px;position:sticky;top:120px;">
+          <h3 style="font-size:1.05rem;margin-bottom:16px;">Contact</h3>
+          <div id="m-contact" style="display:flex;flex-direction:column;gap:10px;"></div>
+
+          <div class="divider"></div>
+
+          <h3 style="font-size:1.05rem;margin-bottom:12px;">Send a message</h3>
+          <form id="lead-form">
+            <div class="form-group"><label>Name</label><input type="text" required></div>
+            <div class="form-group"><label>Email</label><input type="email" required></div>
+            <div class="form-group"><label>Message</label><textarea rows="3" required></textarea></div>
+            <button type="submit" class="btn btn--gold btn--block">Send Inquiry</button>
+          </form>
+
+          <div class="divider"></div>
+
+          <a href="#" class="btn btn--outline btn--block">+ Add to my favorites</a>
+          <a href="#" class="btn btn--ghost btn--block mt-2">Share / Copy link</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="../js/partials.js"></script>
+<script src="../js/chamber.js"></script>
+<script>
+ChamberPartials.mount({ active:'members', depth:1 });
+
+const id = new URLSearchParams(location.search).get('id');
+fetch('../data/members.json').then(r=>r.json()).then(data => {
+  const m = data.find(x => x.id===id) || data[0];
+  document.getElementById('page-title').textContent = `${m.name} · Member · Chamber`;
+  document.getElementById('bc-name').textContent = m.name;
+  document.getElementById('m-name').textContent = m.name;
+  document.getElementById('m-cat').textContent = `${m.category} · ${m.neighborhood}`;
+  document.getElementById('m-logo').textContent = m.logo;
+  document.getElementById('m-tier').innerHTML = `<span class="tier tier--${m.tier}">${m.tier} Member</span>`;
+  document.getElementById('m-about').textContent = m.tagline || '';
+  document.getElementById('m-tags').innerHTML = (m.tags||[]).map(t=>`<span class="chip chip--blue">#${t}</span>`).join('');
+
+  const c = document.getElementById('m-contact');
+  if (m.phone) c.innerHTML += `<div>📞 <a href="tel:${m.phone.replace(/[^0-9]/g,'')}">${m.phone}</a></div>`;
+  if (m.address) c.innerHTML += `<div>📍 ${m.address}</div>`;
+  if (m.website) c.innerHTML += `<div>🌐 <a href="${m.website}" target="_blank" rel="noopener">Visit website ↗</a></div>`;
+});
+document.getElementById('lead-form').addEventListener('submit', e => {
+  e.preventDefault();
+  alert('Inquiry sent. In production: POST /api/members/lead → emails the business + logs in admin console.');
+});
+</script>
+
+</body>
+</html>

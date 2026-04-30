@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guides · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div><div class="admin-page-head__sub">Programs</div><h1>Resource Guides</h1></div>
+        <div class="flex gap-3"><button class="btn btn--outline">Reorder sections</button><a href="#" class="btn btn--gold">+ New guide</a></div>
+      </div>
+
+      <div class="admin-stat-grid">
+        <div class="admin-stat"><div class="admin-stat__label">Active guides</div><div class="admin-stat__num">8</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Total listings</div><div class="admin-stat__num">487</div><div class="admin-stat__delta admin-stat__delta--up">▲ 23</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Premium listings</div><div class="admin-stat__num">87</div><div class="admin-stat__delta admin-stat__delta--up">▲ 9</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Premium MRR</div><div class="admin-stat__num">$8,613</div></div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card__head"><div class="admin-card__title">Guides</div></div>
+        <div class="admin-card__body admin-card__body--p0">
+          <table class="admin-table" id="g-table"></table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div data-admin="ai"></div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="admin.js"></script>
+<script>
+AdminShell.mount({active:'guides'});
+fetch('../data/guides.json').then(r=>r.json()).then(data => {
+  const rows = data.map(g => `
+    <tr>
+      <td><strong>${g.title}</strong><div class="text-xs text-muted">${g.tagline}</div></td>
+      <td>${g.category}</td>
+      <td>${g.sections.length}</td>
+      <td>${g.premiumSlots} slots</td>
+      <td>${Math.floor(Math.random()*1500)+200}</td>
+      <td><span class="admin-pill admin-pill--green">Live</span></td>
+      <td class="admin-actions"><button>Edit</button><button>Listings</button></td>
+    </tr>`).join('');
+  document.getElementById('g-table').innerHTML = `
+    <thead><tr><th>Guide</th><th>Category</th><th>Sections</th><th>Premium</th><th>Views (30d)</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>${rows}</tbody>`;
+});
+</script>
+</body>
+</html>

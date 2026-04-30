@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Concierge · West Valley Chamber</title>
+<meta name="description" content="Your 24/7 AI guide to the West Valley — find members, events, resources and answers in seconds.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/chamber.css">
+<style>
+.concierge-shell { max-width:980px; margin:0 auto; background:var(--paper); border:1px solid var(--line); border-radius:var(--r-xl); overflow:hidden; box-shadow:var(--shadow-lg); display:grid; grid-template-rows:auto 1fr auto; height:78vh; min-height:560px; }
+.concierge-shell__head { background:linear-gradient(135deg, var(--navy), var(--blue)); color:#fff; padding:24px 32px; display:flex; gap:16px; align-items:center; }
+.concierge-shell__avatar { width:56px; height:56px; border-radius:50%; background:var(--gold); color:var(--navy); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:1.4rem; }
+.concierge-shell__body { padding:24px 32px; overflow-y:auto; background:var(--cream); display:flex; flex-direction:column; gap:14px; }
+.concierge-shell__input { background:var(--paper); border-top:1px solid var(--line); padding:16px 24px; display:flex; gap:12px; }
+.concierge-shell__input input { flex:1; padding:14px 18px; border:1.5px solid var(--line); border-radius:var(--r-md); }
+.concierge-shell__input input:focus { outline:none; border-color:var(--blue); }
+.cmsg { padding:.85rem 1.1rem; border-radius:var(--r-md); max-width:75%; line-height:1.55; }
+.cmsg--bot { background:var(--paper); border:1px solid var(--line); align-self:flex-start; border-bottom-left-radius:4px; }
+.cmsg--user { background:var(--navy); color:#fff; align-self:flex-end; border-bottom-right-radius:4px; }
+.cards { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; align-self:flex-start; max-width:90%; }
+.cards a { background:var(--paper); border:1px solid var(--line); border-radius:var(--r-md); padding:12px 14px; color:var(--ink); text-decoration:none; transition:var(--transition); }
+.cards a:hover { border-color:var(--gold); box-shadow:var(--shadow-sm); }
+.cards a strong { color:var(--navy); display:block; font-size:.95rem; }
+.cards a span { color:var(--muted); font-size:.78rem; }
+.suggest { display:flex; flex-wrap:wrap; gap:8px; align-self:flex-start; }
+.suggest button { padding:.5rem .9rem; background:var(--blue-soft); color:var(--navy); border-radius:var(--r-full); font-weight:500; font-size:.85rem; }
+.suggest button:hover { background:var(--navy); color:var(--gold); }
+</style>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> / AI Concierge</div>
+    <h1>Chamber AI Concierge</h1>
+    <p>Always on duty. Trained on every member, event, and resource in the West Valley. Free for everyone, no login required.</p>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="concierge-shell">
+      <div class="concierge-shell__head">
+        <div class="concierge-shell__avatar">CC</div>
+        <div style="flex:1;">
+          <div style="font-family:var(--serif);font-weight:600;font-size:1.2rem;">Chamber Concierge</div>
+          <div style="font-size:.85rem;color:rgba(255,255,255,.75);">Powered by Claude · Connected to 450+ member businesses</div>
+        </div>
+        <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:rgba(255,255,255,.85);">
+          <span class="ai-widget__pulse"></span> Online
+        </span>
+      </div>
+
+      <div class="concierge-shell__body" id="msgs">
+        <div class="cmsg cmsg--bot">
+          Welcome to the West Valley ~ Warner Center Chamber. I help residents find the right business, get to the right event, or get answers about the community. What are you looking for today?
+        </div>
+        <div class="suggest">
+          <button data-prompt="I need a date-night restaurant for this Saturday">🍷 Date-night restaurant</button>
+          <button data-prompt="My water heater is leaking — who can come today?">🚨 Plumbing emergency</button>
+          <button data-prompt="Find a Montessori preschool in Tarzana">🎓 Find a preschool</button>
+          <button data-prompt="What's happening at the Chamber this week?">📅 This week's events</button>
+          <button data-prompt="I want to buy a Food and Wine table">🎟️ Sponsor an event</button>
+          <button data-prompt="Help me join the Chamber">🤝 Join the Chamber</button>
+        </div>
+      </div>
+
+      <form class="concierge-shell__input" id="cf">
+        <input type="text" id="ci" placeholder="Ask the Chamber Concierge anything…" autocomplete="off" autofocus>
+        <button type="submit" class="btn btn--gold">Send</button>
+      </form>
+    </div>
+
+    <div class="grid grid-3 mt-6">
+      <div class="card" style="padding:24px;">
+        <div style="font-size:1.6rem;">🔎</div>
+        <h3 style="margin:12px 0 8px;font-size:1.1rem;">Trained on the Chamber</h3>
+        <p class="text-sm">Member directory, events calendar, all 8 resource guides, dining database, and community FAQ — all indexed and live-searched.</p>
+      </div>
+      <div class="card" style="padding:24px;">
+        <div style="font-size:1.6rem;">🎯</div>
+        <h3 style="margin:12px 0 8px;font-size:1.1rem;">Smart routing</h3>
+        <p class="text-sm">Recommendations always prioritize Premium Sponsors → Members → Friends. Non-members appear only when no member fits.</p>
+      </div>
+      <div class="card" style="padding:24px;">
+        <div style="font-size:1.6rem;">📈</div>
+        <h3 style="margin:12px 0 8px;font-size:1.1rem;">Member analytics</h3>
+        <p class="text-sm">Every recommendation tracked. Members see who clicked, called, or booked — a free lead-attribution system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="js/partials.js"></script>
+<script src="js/chamber.js"></script>
+<script>
+ChamberPartials.mount({});
+
+const msgs = document.getElementById('msgs');
+const form = document.getElementById('cf');
+const input = document.getElementById('ci');
+
+function add(role, text) {
+  const el = document.createElement('div');
+  el.className = `cmsg cmsg--${role}`;
+  el.textContent = text;
+  msgs.appendChild(el);
+  msgs.scrollTop = msgs.scrollHeight;
+  return el;
+}
+
+function addCards(cards) {
+  const wrap = document.createElement('div');
+  wrap.className = 'cards';
+  wrap.innerHTML = cards.map(c => `<a href="${c.href||'#'}"><strong>${c.title}</strong><span>${c.meta||''}</span></a>`).join('');
+  msgs.appendChild(wrap);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+document.querySelectorAll('.suggest button').forEach(b => {
+  b.addEventListener('click', () => { input.value = b.dataset.prompt; form.requestSubmit(); });
+});
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const text = input.value.trim();
+  if (!text) return;
+  add('user', text);
+  input.value = '';
+  const t = add('bot', '…');
+  try {
+    const r = await fetch(`${window.CHAMBER_API_BASE}/concierge`, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({ message: text, page: 'concierge-page' })
+    });
+    const data = await r.json();
+    t.remove();
+    if (data.reply) add('bot', data.reply);
+    if (data.cards && data.cards.length) addCards(data.cards);
+  } catch (err) {
+    t.textContent = "I'm having trouble reaching the Chamber's directory right now. Please try the Member Directory or Events page from the menu — I'll be back online shortly.";
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leads · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div><div class="admin-page-head__sub">Membership</div><h1>Lead-attribution dashboard</h1>
+        <p class="text-muted">Every lead the Chamber site routed to a member, scored and tracked.</p></div>
+      </div>
+
+      <div class="admin-stat-grid">
+        <div class="admin-stat"><div class="admin-stat__label">Leads (30d)</div><div class="admin-stat__num">689</div><div class="admin-stat__delta admin-stat__delta--up">▲ 23%</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">From Concierge</div><div class="admin-stat__num">412</div><div class="admin-stat__delta">60% of total</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">From Guides</div><div class="admin-stat__num">198</div><div class="admin-stat__delta">29%</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Conversion rate (avg)</div><div class="admin-stat__num">12.4%</div><div class="admin-stat__delta admin-stat__delta--up">▲ 1.2 pp</div></div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card__head"><div class="admin-card__title">Recent leads</div></div>
+        <div class="admin-card__body admin-card__body--p0">
+          <table class="admin-table">
+            <thead><tr><th>Lead</th><th>Source</th><th>Routed to</th><th>Type</th><th>Status</th><th>Estimated value</th></tr></thead>
+            <tbody>
+              <tr><td>Sarah K.</td><td><span class="admin-pill admin-pill--gold">AI Concierge</span></td><td>Fogo de Chão</td><td>Reservation (8-top)</td><td><span class="admin-pill admin-pill--green">Booked</span></td><td>$680</td></tr>
+              <tr><td>Mark V.</td><td>Restaurant Guide</td><td>Fogo de Chão</td><td>Private dining</td><td><span class="admin-pill admin-pill--blue">Replied</span></td><td>$2,400</td></tr>
+              <tr><td>Lisa M.</td><td><span class="admin-pill admin-pill--gold">AI Concierge</span></td><td>Valley Master Plumbing</td><td>Water heater repair</td><td><span class="admin-pill admin-pill--green">Booked</span></td><td>$1,250</td></tr>
+              <tr><td>Tom D.</td><td>Member Profile</td><td>Serenity Valley Spa</td><td>Couples massage</td><td><span class="admin-pill admin-pill--green">Booked</span></td><td>$340</td></tr>
+              <tr><td>Jenna R.</td><td>Parent Guide</td><td>KinderGym Kids</td><td>Tour scheduled</td><td><span class="admin-pill admin-pill--blue">Pending</span></td><td>$2,100</td></tr>
+              <tr><td>Adam S.</td><td><span class="admin-pill admin-pill--gold">AI Concierge</span></td><td>Cool Valley HVAC</td><td>AC inspection</td><td><span class="admin-pill admin-pill--blue">Pending</span></td><td>$890</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<div data-admin="ai"></div>
+<script>window.CHAMBER_API_BASE=window.location.hostname==='localhost'?'http://localhost:3001/api':'/api';</script>
+<script src="admin.js"></script><script>AdminShell.mount({active:'leads'});</script>
+</body>
+</html>
