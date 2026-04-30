@@ -1,52 +1,58 @@
 @echo off
-REM ============================================================
-REM  WVWC Chamber site — one-click preview launcher (Windows)
-REM  Double-click this file to start the local preview server.
-REM ============================================================
-
+setlocal
 cd /d "%~dp0"
 
 echo.
 echo  ============================================================
-echo   West Valley Chamber — Local Preview
+echo   West Valley ~ Warner Center Chamber - Local Preview
 echo  ============================================================
 echo.
-echo  Starting server at http://localhost:5500/
-echo  Browser will open automatically.
-echo  Press Ctrl+C to stop.
-echo.
 
-REM Try Python first
-where python >nul 2>nul
-if %ERRORLEVEL% EQU 0 (
-    start "" http://localhost:5500/
-    python -m http.server 5500
-    goto :end
+:: Check Node.js
+where node >nul 2>nul
+if errorlevel 1 (
+    echo  [!] Node.js is required.
+    echo      Download from https://nodejs.org/  ^(LTS version^)
+    echo      Then double-click this file again.
+    echo.
+    pause
+    exit /b 1
 )
 
-REM Fall back to py launcher
-where py >nul 2>nul
-if %ERRORLEVEL% EQU 0 (
-    start "" http://localhost:5500/
-    py -m http.server 5500
-    goto :end
+:: Show Node version
+for /f "tokens=*" %%v in ('node --version') do set NODE_VER=%%v
+echo  [+] Node.js %NODE_VER% detected
+
+:: Install deps if missing
+if not exist "node_modules\express" (
+    echo  [+] Installing dependencies ^(one-time, ~30 sec^)...
+    call npm install --silent --no-audit --no-fund
+    if errorlevel 1 (
+        echo.
+        echo  [!] npm install failed. Check your internet connection.
+        pause
+        exit /b 1
+    )
+    echo  [+] Dependencies installed.
 )
 
-REM Fall back to Node + npx
-where npx >nul 2>nul
-if %ERRORLEVEL% EQU 0 (
-    start "" http://localhost:5500/
-    npx --yes serve -l 5500 .
-    goto :end
+:: Optional .env hint
+if not exist ".env" (
+    echo  [i] No .env file found - AI runs in demo mode.
+    echo      To activate live AI: copy .env.example to .env and add ANTHROPIC_API_KEY.
 )
 
 echo.
-echo  Could not find Python or Node.js on this PC.
-echo  Install one of:
-echo    - Python:  https://www.python.org/downloads/  (check "Add to PATH")
-echo    - Node.js: https://nodejs.org/
-echo  Then double-click this file again.
+echo  [+] Opening browser to http://localhost:5500/
+echo  [+] Starting server. Press Ctrl+C in this window to stop.
 echo.
+
+:: Open browser shortly after starting
+start "" /b cmd /c "timeout /t 2 /nobreak >nul && start http://localhost:5500/"
+
+:: Run server (blocks until Ctrl+C)
+node server.js
+
+echo.
+echo  Server stopped.
 pause
-
-:end

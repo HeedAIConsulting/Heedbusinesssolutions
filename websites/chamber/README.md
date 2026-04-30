@@ -157,26 +157,35 @@ added later as an option.
 
 ---
 
-## Running locally
+## Running locally — ONE step
 
-### 1. Backend (already exists, with Chamber routes added)
+The site is fully self-contained. Frontend, backend, and AI concierge all run
+from one Node process on one port.
+
+### Windows
+Double-click **`start-preview.bat`** in this folder.
+
+### Mac / Linux
 ```bash
-cd backend
-npm install
-ANTHROPIC_API_KEY=sk-ant-... node server.js
+bash start-preview.sh
 ```
-Server runs on `http://localhost:3001`.
 
-### 2. Frontend (any static server)
-```bash
-cd websites/chamber
-python3 -m http.server 5500
-```
-Open `http://localhost:5500/`.
+That's it. The launcher:
+1. Verifies Node.js is installed (LTS recommended).
+2. Runs `npm install` if needed (~30 sec, one time).
+3. Starts the server on **http://localhost:5500/**.
+4. Opens your default browser to the homepage.
 
-The frontend's `js/chamber.js` and `js/partials.js` automatically point to
-`http://localhost:3001/api` when served from localhost, and to `/api` in
-production.
+### To activate live AI (optional)
+By default the AI Concierge runs in smart-mock mode — it returns real member
+recommendations based on keyword matching, with no API key required.
+
+To upgrade to full Claude responses:
+1. Copy `.env.example` to `.env` in this folder.
+2. Add your `ANTHROPIC_API_KEY` (get one at https://console.anthropic.com).
+3. Restart the launcher.
+
+The startup banner will show `AI: ✓ LIVE (Claude connected)`.
 
 ---
 

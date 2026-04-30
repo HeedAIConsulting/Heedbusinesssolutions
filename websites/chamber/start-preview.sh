@@ -1,31 +1,43 @@
 #!/usr/bin/env bash
 # ============================================================
-#  WVWC Chamber site — one-click preview launcher (Mac/Linux)
-#  Run:  bash start-preview.sh
+#  WVWC Chamber site — one-click preview (Mac/Linux)
+#  Usage:  bash start-preview.sh
 # ============================================================
 set -e
 cd "$(dirname "$0")"
 
 echo
-echo " ============================================================"
-echo "  West Valley Chamber — Local Preview"
-echo " ============================================================"
-echo
-echo "  Starting server at http://localhost:5500/"
-echo "  Browser will open automatically."
-echo "  Press Ctrl+C to stop."
+echo " ════════════════════════════════════════════════════════════"
+echo "  West Valley ~ Warner Center Chamber — Local Preview"
+echo " ════════════════════════════════════════════════════════════"
 echo
 
-# Open browser in background after server starts
-( sleep 1; (open http://localhost:5500/ 2>/dev/null) || (xdg-open http://localhost:5500/ 2>/dev/null) || true ) &
-
-if command -v python3 >/dev/null 2>&1; then
-  python3 -m http.server 5500
-elif command -v python >/dev/null 2>&1; then
-  python -m http.server 5500
-elif command -v npx >/dev/null 2>&1; then
-  npx --yes serve -l 5500 .
-else
-  echo "  Could not find Python or Node.js. Install one and retry."
+# Check Node
+if ! command -v node >/dev/null 2>&1; then
+  echo "  [!] Node.js required. Install LTS from https://nodejs.org/"
   exit 1
 fi
+echo "  [+] Node.js $(node --version) detected"
+
+# Install deps if missing
+if [ ! -d "node_modules/express" ]; then
+  echo "  [+] Installing dependencies (one-time, ~30 sec)..."
+  npm install --silent --no-audit --no-fund
+  echo "  [+] Dependencies installed."
+fi
+
+# .env hint
+if [ ! -f ".env" ]; then
+  echo "  [i] No .env file — AI runs in demo mode."
+  echo "      To go live: cp .env.example .env  (then add ANTHROPIC_API_KEY)"
+fi
+
+echo
+echo "  [+] Opening browser to http://localhost:5500/"
+echo "  [+] Starting server. Press Ctrl+C to stop."
+echo
+
+# Background-open the browser
+( sleep 2; (open http://localhost:5500/ 2>/dev/null) || (xdg-open http://localhost:5500/ 2>/dev/null) || true ) &
+
+node server.js
