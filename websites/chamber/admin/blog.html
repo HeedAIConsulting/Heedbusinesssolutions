@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog & Buzz · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div>
+          <div class="admin-page-head__sub">Content</div>
+          <h1>Blog & Valley Biz Buzz</h1>
+        </div>
+        <div class="flex gap-3">
+          <button class="btn btn--outline">📥 Pitch queue (2)</button>
+          <a href="#" class="btn btn--gold">+ New post</a>
+        </div>
+      </div>
+
+      <div class="admin-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="admin-card">
+          <div class="admin-card__head"><div class="admin-card__title">AI Content Generator</div><span class="admin-pill admin-pill--gold">Powered by Claude</span></div>
+          <div class="admin-card__body">
+            <div class="form-group">
+              <label>What's the post about?</label>
+              <input type="text" placeholder='e.g., "Spotlight on Cryohealthcare — interview with founder"' style="width:100%;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:8px;">
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Type</label>
+                <select><option>News</option><option>Member Spotlight</option><option>Insights</option><option>How-To</option><option>Event Recap</option><option>Guest Post</option></select>
+              </div>
+              <div class="form-group"><label>Length</label>
+                <select><option>Short (500–800 words)</option><option>Standard (800–1,200)</option><option>Long-form (1,200–2,000)</option></select>
+              </div>
+            </div>
+            <div class="form-group"><label>Source materials (optional)</label>
+              <textarea rows="3" placeholder="Paste interview notes, press release, or any source content"></textarea>
+            </div>
+            <div class="flex gap-3">
+              <button class="btn btn--gold">Generate full draft</button>
+              <button class="btn btn--outline">Generate outline</button>
+              <button class="btn btn--outline">Generate headlines (10)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card__head"><div class="admin-card__title">Pitch queue</div></div>
+          <div class="admin-card__body">
+            <div style="padding:14px;background:var(--cream);border-radius:8px;margin-bottom:12px;">
+              <div class="flex justify-between mb-2"><strong>Three lessons from running a Reseda restaurant</strong><span class="admin-pill admin-pill--gold">Pending</span></div>
+              <div class="text-sm text-muted">Maria Alvarez · El Camino Real Tacos · 6h ago</div>
+              <div class="flex gap-2 mt-3"><button class="btn btn--gold btn--sm">Approve</button><button class="btn btn--outline btn--sm">Read</button><button class="btn btn--ghost btn--sm">Decline</button></div>
+            </div>
+            <div style="padding:14px;background:var(--cream);border-radius:8px;">
+              <div class="flex justify-between mb-2"><strong>Burnout in primary care: a Tarzana physician's view</strong><span class="admin-pill admin-pill--gold">Pending</span></div>
+              <div class="text-sm text-muted">Dr. Raj Patel · Tarzana Family Medical · 2d ago</div>
+              <div class="flex gap-2 mt-3"><button class="btn btn--gold btn--sm">Approve</button><button class="btn btn--outline btn--sm">Read</button><button class="btn btn--ghost btn--sm">Decline</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card mt-5">
+        <div class="admin-card__head">
+          <div class="admin-card__title">All posts</div>
+          <div style="display:flex;gap:8px;">
+            <select style="padding:.4rem .6rem;border:1px solid var(--line);border-radius:6px;font-size:.85rem;"><option>All statuses</option><option>Published</option><option>Draft</option><option>Scheduled</option><option>Pending</option></select>
+            <select style="padding:.4rem .6rem;border:1px solid var(--line);border-radius:6px;font-size:.85rem;"><option>All authors</option><option>Staff</option><option>Guest</option></select>
+          </div>
+        </div>
+        <div class="admin-card__body admin-card__body--p0">
+          <table class="admin-table">
+            <thead><tr><th>Title</th><th>Author</th><th>Type</th><th>Status</th><th>Views</th><th>Date</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Introducing the Chamber AI Concierge</strong></td><td>Heed Business Solutions</td><td>News</td><td><span class="admin-pill admin-pill--green">Published</span></td><td>2,418</td><td>Apr 30</td><td class="admin-actions"><button>Edit</button><button>Promote</button></td></tr>
+              <tr><td><strong>2026 Q1 West Valley economic outlook</strong></td><td>Diane R.</td><td>Insights</td><td><span class="admin-pill admin-pill--green">Published</span></td><td>1,124</td><td>Apr 18</td><td class="admin-actions"><button>Edit</button><button>Promote</button></td></tr>
+              <tr><td><strong>70 years through a different lens — WH Camera</strong></td><td>Sarah M.</td><td>Member Spotlight</td><td><span class="admin-pill admin-pill--green">Published</span></td><td>892</td><td>Apr 12</td><td class="admin-actions"><button>Edit</button><button>Promote</button></td></tr>
+              <tr><td><strong>Inside the 20th Annual Food & Wine</strong></td><td>Diane R.</td><td>Events</td><td><span class="admin-pill admin-pill--gold">Scheduled</span></td><td>—</td><td>May 12</td><td class="admin-actions"><button>Edit</button><button>Reschedule</button></td></tr>
+              <tr><td><strong>How AI is changing chamber-of-commerce work</strong></td><td>Diane R.</td><td>Insights</td><td><span class="admin-pill admin-pill--gray">Draft</span></td><td>—</td><td>—</td><td class="admin-actions"><button>Edit</button><button>Publish</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div data-admin="ai"></div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="admin.js"></script>
+<script>AdminShell.mount({active:'blog'});</script>
+</body>
+</html>

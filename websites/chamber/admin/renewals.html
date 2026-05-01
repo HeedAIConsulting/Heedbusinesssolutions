@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renewals · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="admin.js"></script>
+<script src="_stub.js"></script>
+<script>
+AdminStub.render({
+  active: 'renewals',
+  sub: 'Membership',
+  title: 'Renewals',
+  body: `
+    <div class="admin-stat-grid">
+      <div class="admin-stat"><div class="admin-stat__label">Due in 30 days</div><div class="admin-stat__num">42</div></div>
+      <div class="admin-stat"><div class="admin-stat__label">Auto-renewing</div><div class="admin-stat__num">38</div><div class="admin-stat__delta admin-stat__delta--up">90%</div></div>
+      <div class="admin-stat"><div class="admin-stat__label">Overdue</div><div class="admin-stat__num">12</div><div class="admin-stat__delta admin-stat__delta--down">$3,200 outstanding</div></div>
+      <div class="admin-stat"><div class="admin-stat__label">Retention rate (12mo)</div><div class="admin-stat__num">94.2%</div><div class="admin-stat__delta admin-stat__delta--up">▲ 2.1 pp</div></div>
+    </div>
+    <div class="admin-card">
+      <div class="admin-card__head"><div class="admin-card__title">Renewals due</div><button class="btn btn--gold btn--sm">AI dunning sequence</button></div>
+      <div class="admin-card__body admin-card__body--p0">
+        <table class="admin-table">
+          <thead><tr><th>Member</th><th>Tier</th><th>Due</th><th>Status</th><th>Last contacted</th><th>Actions</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Tarzana Bookkeeping</strong></td><td><span class="tier tier--bronze">Bronze</span></td><td>Apr 23 (7d ago)</td><td><span class="admin-pill admin-pill--red">Overdue</span></td><td>2 reminders sent</td><td class="admin-actions"><button>Email</button><button>Call</button></td></tr>
+            <tr><td><strong>SoCal Native Garden Co.</strong></td><td><span class="tier tier--supporter">Supporter</span></td><td>Apr 26 (4d ago)</td><td><span class="admin-pill admin-pill--red">Overdue</span></td><td>1 reminder sent</td><td class="admin-actions"><button>Email</button></td></tr>
+            <tr><td><strong>Mantee Mediterranean</strong></td><td><span class="tier tier--silver">Silver</span></td><td>May 8</td><td><span class="admin-pill admin-pill--gold">Reminder due</span></td><td>—</td><td class="admin-actions"><button>Email</button></td></tr>
+            <tr><td><strong>Marriott Warner Center</strong></td><td><span class="tier tier--platinum">Platinum</span></td><td>May 12</td><td><span class="admin-pill admin-pill--green">Auto-renewing</span></td><td>—</td><td class="admin-actions"><button>View</button></td></tr>
+            <tr><td><strong>KinderGym Kids</strong></td><td><span class="tier tier--bronze">Bronze</span></td><td>May 14</td><td><span class="admin-pill admin-pill--blue">Card on file</span></td><td>—</td><td class="admin-actions"><button>View</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>`
+});
+</script>
+</body>
+</html>

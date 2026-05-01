@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resource Guides · West Valley Chamber</title>
+<meta name="description" content="Eight full-featured West Valley resource guides — restaurants, parents, spas, home services, business solutions, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+.guide-card { background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; transition:var(--transition); display:flex; flex-direction:column; }
+.guide-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+.guide-card__hero { aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; font-size:3rem; }
+.guide-card__hero--blue { background:linear-gradient(135deg, var(--blue-soft), var(--navy)); color:var(--gold); }
+.guide-card__hero--gold { background:linear-gradient(135deg, var(--gold-soft), var(--gold)); color:var(--navy); }
+.guide-card__hero--green { background:linear-gradient(135deg, #D6F0DD, #1F7A3A); color:#fff; }
+.guide-card__hero--navy { background:linear-gradient(135deg, var(--navy), var(--blue)); color:var(--gold); }
+</style>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Guides</div>
+    <h1>The West Valley Resource Library</h1>
+    <p>Eight curated guides connecting our community to the businesses that serve them best. Updated weekly. Always free for residents.</p>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="grid grid-3" id="guides-grid"></div>
+
+    <div class="card mt-6" style="padding:32px;background:var(--navy);color:#fff;border:none;display:grid;grid-template-columns:2fr 1fr;gap:32px;align-items:center;">
+      <div>
+        <span class="eyebrow eyebrow--navy">For Members</span>
+        <h2 style="color:#fff;margin:8px 0 12px;">Get listed in every guide your business fits</h2>
+        <p style="color:rgba(255,255,255,.85);">Standard listings are included with membership. Premium placements get top-of-guide visibility, photos, video, lead-capture forms, and inclusion in our AI Concierge's recommendations.</p>
+      </div>
+      <a href="../sponsor.html#premium-listings" class="btn btn--gold btn--lg">Premium Listing Plans ›</a>
+    </div>
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="../js/partials.js"></script>
+<script src="../js/chamber.js"></script>
+<script>
+ChamberPartials.mount({ active:'guides', depth:1 });
+
+const icons = { utensils:'🍽️', users:'👨‍👩‍👧‍👦', leaf:'🌿', tools:'🔧', briefcase:'💼', heart:'❤️', ring:'💍', map:'🗺️' };
+
+fetch('../data/guides.json').then(r=>r.json()).then(guides => {
+  document.getElementById('guides-grid').innerHTML = guides.map(g => `
+    <a href="${g.slug}.html" class="guide-card" style="text-decoration:none;color:inherit;">
+      <div class="guide-card__hero guide-card__hero--${g.color}">${icons[g.icon] || '📍'}</div>
+      <div style="padding:24px;flex:1;display:flex;flex-direction:column;">
+        <span class="chip chip--${g.color === 'gold' ? 'gold' : 'blue'}" style="align-self:flex-start;">${g.category}</span>
+        <h3 style="margin:12px 0 8px;font-size:1.2rem;">${g.title}</h3>
+        <p style="color:var(--slate-mid);font-size:.92rem;margin-bottom:16px;flex:1;">${g.tagline}</p>
+        <div class="text-xs text-muted" style="margin-bottom:8px;">Sections: ${g.sections.slice(0,3).join(' · ')} +${g.sections.length-3} more</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="color:var(--navy);font-weight:600;font-size:.92rem;">Open guide →</span>
+          <span class="chip chip--gold">${g.sponsorTier} sponsorships</span>
+        </div>
+      </div>
+    </a>
+  `).join('');
+});
+</script>
+
+</body>
+</html>

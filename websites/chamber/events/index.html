@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events · West Valley ~ Warner Center Chamber of Commerce</title>
+<meta name="description" content="Networking breakfasts, ribbon cuttings, mixers, and signature events from the West Valley ~ Warner Center Chamber.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+  .events-toolbar { display:flex; gap:12px; flex-wrap:wrap; align-items:center; padding:16px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); margin-bottom:24px; }
+  .events-toolbar input, .events-toolbar select { padding:.6rem .85rem; border:1.5px solid var(--line); border-radius:var(--r-md); background:var(--paper); }
+  .view-toggle { display:flex; gap:0; margin-left:auto; }
+  .view-toggle button { padding:.6rem 1rem; background:var(--paper); border:1.5px solid var(--line); font-weight:600; color:var(--slate-mid); }
+  .view-toggle button:first-child { border-radius:var(--r-md) 0 0 var(--r-md); }
+  .view-toggle button:last-child { border-radius:0 var(--r-md) var(--r-md) 0; border-left:none; }
+  .view-toggle button.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+  .event-row { display:grid; grid-template-columns:80px 1fr auto; gap:20px; padding:18px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); margin-bottom:12px; align-items:center; transition:var(--transition); }
+  .event-row:hover { box-shadow:var(--shadow-md); }
+  .event-date { background:var(--navy); color:var(--gold); border-radius:var(--r-md); padding:8px 4px; text-align:center; }
+  .event-date__m { font-family:var(--mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; }
+  .event-date__d { font-family:var(--serif); font-size:1.6rem; font-weight:700; line-height:1; margin:2px 0 1px; }
+  .event-date__w { font-size:.65rem; color:rgba(255,255,255,.6); text-transform:uppercase; }
+  .event-meta { font-size:.85rem; color:var(--muted); display:flex; gap:14px; flex-wrap:wrap; }
+  .calendar { display:grid; grid-template-columns:repeat(7,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; }
+  .calendar__head { background:var(--navy); color:#fff; padding:12px; text-align:center; font-family:var(--mono); font-size:.78rem; text-transform:uppercase; letter-spacing:.1em; }
+  .calendar__cell { background:var(--paper); padding:8px; min-height:100px; }
+  .calendar__cell--muted { background:var(--cream); color:var(--muted); }
+  .calendar__date { font-weight:700; font-size:.9rem; color:var(--navy); margin-bottom:4px; }
+  .calendar__event { font-size:.72rem; background:var(--gold-soft); color:var(--gold-deep); border-left:3px solid var(--gold); padding:3px 5px; border-radius:3px; margin-bottom:3px; cursor:pointer; }
+  .calendar__event--free { background:#D6F0DD; color:var(--green); border-left-color:var(--green); }
+  .events-list { display:none; }
+  .events-list.is-active { display:block; }
+  .calendar-view { display:none; }
+  .calendar-view.is-active { display:block; }
+</style>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Events</div>
+    <h1>Events</h1>
+    <p>Plug into the Valley. From breakfast meetings to ribbon cuttings to our signature Food &amp; Wine Event — there's something every week.</p>
+    <div class="mt-4" style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="#" class="btn btn--gold">Subscribe to Calendar (iCal)</a>
+      <a href="submit.html" class="btn btn--outline" style="border-color:rgba(255,255,255,.5);color:#fff;">Submit an Event</a>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="events-toolbar">
+      <input type="search" id="search" placeholder="Search events…" style="flex:1;min-width:220px;">
+      <select id="filter-cat">
+        <option value="">All categories</option>
+        <option>Networking</option><option>Mixer</option><option>Breakfast</option>
+        <option>Ribbon Cutting</option><option>Signature</option><option>Festival</option>
+        <option>Member Milestone</option><option>Governance</option>
+      </select>
+      <select id="filter-aud">
+        <option value="">Open to anyone</option>
+        <option>Public</option><option>Members</option><option>Board</option>
+      </select>
+      <select id="filter-price">
+        <option value="">Any price</option>
+        <option value="free">Free</option>
+        <option value="paid">Ticketed</option>
+      </select>
+      <div class="view-toggle">
+        <button data-view="list" class="active">📋 List</button>
+        <button data-view="cal">📅 Calendar</button>
+      </div>
+    </div>
+
+    <div class="events-list is-active" id="list-view"></div>
+
+    <div class="calendar-view" id="cal-view">
+      <div class="flex items-center justify-between mb-4">
+        <h3 id="cal-title" style="margin:0;"></h3>
+        <div class="flex gap-2">
+          <button class="btn btn--ghost" id="cal-prev">‹ Prev</button>
+          <button class="btn btn--ghost" id="cal-next">Next ›</button>
+        </div>
+      </div>
+      <div class="calendar" id="calendar"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-navy">
+  <div class="container text-center">
+    <span class="eyebrow eyebrow--navy">Sponsorship</span>
+    <h2 style="color:#fff;">Sponsor an event. Reach the West Valley.</h2>
+    <p style="color:rgba(255,255,255,.85);max-width:580px;margin:16px auto 32px;">From $500 ribbon cutting hosts to $25,000 Food &amp; Wine presenting sponsorships — every event has tiered, transparent sponsorship menus.</p>
+    <a href="../sponsor.html" class="btn btn--gold btn--lg">View sponsorship menu ›</a>
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="../js/partials.js"></script>
+<script src="../js/chamber.js"></script>
+<script>
+ChamberPartials.mount({ active:'events', depth:1 });
+
+let allEvents = [];
+fetch('../data/events.json').then(r=>r.json()).then(events => {
+  allEvents = events.sort((a,b)=>a.date.localeCompare(b.date));
+  render();
+  renderCalendar(new Date(2026, 4, 1)); // May 2026
+});
+
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('filter-cat').addEventListener('change', render);
+document.getElementById('filter-aud').addEventListener('change', render);
+document.getElementById('filter-price').addEventListener('change', render);
+
+document.querySelectorAll('.view-toggle button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.view-toggle button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById('list-view').classList.toggle('is-active', b.dataset.view==='list');
+    document.getElementById('cal-view').classList.toggle('is-active', b.dataset.view==='cal');
+  });
+});
+
+function render() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const cat = document.getElementById('filter-cat').value;
+  const aud = document.getElementById('filter-aud').value;
+  const price = document.getElementById('filter-price').value;
+
+  const filtered = allEvents.filter(e => {
+    if (q && !(e.title+e.summary+e.location).toLowerCase().includes(q)) return false;
+    if (cat && e.category!==cat) return false;
+    if (aud && e.audience!==aud) return false;
+    if (price==='free' && e.price>0) return false;
+    if (price==='paid' && e.price===0) return false;
+    return true;
+  });
+
+  if (!filtered.length) {
+    document.getElementById('list-view').innerHTML = '<div class="card" style="padding:32px;text-align:center;"><p>No events match your filters.</p></div>';
+    return;
+  }
+
+  document.getElementById('list-view').innerHTML = filtered.map(e => {
+    const d = new Date(e.date+'T12:00:00');
+    return `
+      <div class="event-row" id="${e.id}">
+        <div class="event-date">
+          <div class="event-date__m">${d.toLocaleString('en',{month:'short'})}</div>
+          <div class="event-date__d">${d.getDate()}</div>
+          <div class="event-date__w">${d.toLocaleString('en',{weekday:'short'})}</div>
+        </div>
+        <div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:6px;">
+            <span class="chip chip--blue">${e.category}</span>
+            <span class="chip">${e.audience}</span>
+            ${e.price>0 ? `<span class="chip chip--gold">$${e.price}</span>` : '<span class="chip chip--green">Free</span>'}
+            ${e.featured ? '<span class="chip chip--gold">★ Featured</span>' : ''}
+          </div>
+          <h3 style="font-size:1.15rem;margin-bottom:6px;">${e.title}</h3>
+          <p style="margin-bottom:8px;color:var(--slate-mid);font-size:.92rem;">${e.summary}</p>
+          <div class="event-meta">
+            <span>🕒 ${e.time}</span>
+            <span>📍 ${e.location}, ${e.neighborhood}</span>
+            <span>👤 ${e.host || ''}</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${e.price>0
+            ? `<a href="checkout.html?event=${e.id}" class="btn btn--gold btn--sm">Buy Tickets</a>`
+            : `<a href="checkout.html?event=${e.id}" class="btn btn--primary btn--sm">RSVP</a>`}
+          <a href="#" class="btn btn--ghost btn--sm">+ Add to Calendar</a>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+let calCursor = new Date(2026, 4, 1);
+function renderCalendar(date) {
+  calCursor = date;
+  const year = date.getFullYear(), month = date.getMonth();
+  document.getElementById('cal-title').textContent = date.toLocaleString('en',{month:'long', year:'numeric'});
+  const first = new Date(year, month, 1).getDay();
+  const days = new Date(year, month+1, 0).getDate();
+  const prevDays = new Date(year, month, 0).getDate();
+  const dows = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  let html = dows.map(d=>`<div class="calendar__head">${d}</div>`).join('');
+
+  for (let i=first-1;i>=0;i--) html += `<div class="calendar__cell calendar__cell--muted"><div class="calendar__date">${prevDays-i}</div></div>`;
+  for (let d=1;d<=days;d++) {
+    const ds = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const events = allEvents.filter(e=>e.date===ds);
+    html += `<div class="calendar__cell"><div class="calendar__date">${d}</div>${events.map(e=>`<div class="calendar__event ${e.price===0?'calendar__event--free':''}" title="${e.title}" onclick="document.querySelector('[data-view=list]').click(); document.getElementById('${e.id}').scrollIntoView({behavior:'smooth'});">${e.title.length>22?e.title.slice(0,22)+'…':e.title}</div>`).join('')}</div>`;
+  }
+  const total = first + days;
+  const trail = (7 - total%7) % 7;
+  for (let i=1;i<=trail;i++) html += `<div class="calendar__cell calendar__cell--muted"><div class="calendar__date">${i}</div></div>`;
+  document.getElementById('calendar').innerHTML = html;
+}
+
+document.getElementById('cal-prev').onclick = () => renderCalendar(new Date(calCursor.getFullYear(), calCursor.getMonth()-1, 1));
+document.getElementById('cal-next').onclick = () => renderCalendar(new Date(calCursor.getFullYear(), calCursor.getMonth()+1, 1));
+</script>
+
+</body>
+</html>

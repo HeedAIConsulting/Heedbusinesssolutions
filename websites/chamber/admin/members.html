@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Members · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div>
+          <div class="admin-page-head__sub">Membership</div>
+          <h1>Members</h1>
+        </div>
+        <div class="flex gap-3">
+          <button class="btn btn--outline">Export CSV</button>
+          <button class="btn btn--outline">Send to all</button>
+          <a href="#" class="btn btn--gold">+ Add member</a>
+        </div>
+      </div>
+
+      <div class="admin-stat-grid">
+        <div class="admin-stat"><div class="admin-stat__label">Total Members</div><div class="admin-stat__num">453</div><div class="admin-stat__delta admin-stat__delta--up">▲ 12 MoM</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Platinum / Gold</div><div class="admin-stat__num">48</div><div class="admin-stat__delta admin-stat__delta--up">▲ 3 this month</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Premium Listings</div><div class="admin-stat__num">87</div><div class="admin-stat__delta admin-stat__delta--up">▲ 9</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Churn (30d)</div><div class="admin-stat__num">2.1%</div><div class="admin-stat__delta admin-stat__delta--down">▼ 0.4 pp</div></div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card__head" style="gap:12px;flex-wrap:wrap;">
+          <div class="admin-card__title">All members</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <select style="padding:.4rem .6rem;border:1px solid var(--line);border-radius:6px;font-size:.85rem;"><option>All tiers</option><option>Platinum</option><option>Gold</option><option>Silver</option><option>Bronze</option><option>Supporter</option><option>Friend</option></select>
+            <select style="padding:.4rem .6rem;border:1px solid var(--line);border-radius:6px;font-size:.85rem;"><option>All neighborhoods</option><option>Tarzana</option><option>Woodland Hills</option><option>Reseda</option><option>Warner Center</option></select>
+            <select style="padding:.4rem .6rem;border:1px solid var(--line);border-radius:6px;font-size:.85rem;"><option>All statuses</option><option>Active</option><option>Pending</option><option>Lapsed</option></select>
+            <input type="search" placeholder="Search members…" style="padding:.4rem .6rem;border:1px solid var(--line);border-radius:6px;font-size:.85rem;">
+          </div>
+        </div>
+        <div class="admin-card__body admin-card__body--p0">
+          <table class="admin-table" id="members-table"></table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div data-admin="ai"></div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="admin.js"></script>
+<script>
+AdminShell.mount({active:'members'});
+fetch('../data/members.json').then(r=>r.json()).then(data => {
+  const rows = data.map(m => `
+    <tr>
+      <td><strong>${m.name}</strong><div class="text-xs text-muted">${m.tagline||''}</div></td>
+      <td>${m.category}</td>
+      <td>${m.neighborhood}</td>
+      <td><span class="tier tier--${m.tier}">${m.tier}</span></td>
+      <td><span class="admin-pill admin-pill--green">Active</span></td>
+      <td class="admin-actions">
+        <button>View</button><button>Edit</button><button>Email</button>
+      </td>
+    </tr>`).join('');
+  document.getElementById('members-table').innerHTML = `
+    <thead><tr><th>Member</th><th>Category</th><th>Neighborhood</th><th>Tier</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>${rows}</tbody>
+  `;
+});
+</script>
+</body>
+</html>

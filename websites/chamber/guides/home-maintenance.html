@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Maintenance & Repair Guide · West Valley Chamber</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+.guide-hero { background: linear-gradient(135deg, var(--navy), var(--slate)); color:#fff; padding:80px 0; }
+.guide-hero h1 { color:#fff; }
+.guide-nav { display:flex; gap:8px; flex-wrap:wrap; padding:16px; background:var(--paper); border-radius:var(--r-lg); margin-bottom:24px; position:sticky; top:64px; z-index:50; box-shadow:var(--shadow-sm); border:1px solid var(--line); }
+.guide-nav a { padding:.5rem .9rem; border-radius:var(--r-full); background:var(--cream); color:var(--slate); font-weight:600; font-size:.88rem; }
+.guide-nav a:hover, .guide-nav a.active { background:var(--navy); color:var(--gold); }
+.featured-listing { background:linear-gradient(135deg,var(--cream),#fff); border:2px solid var(--navy); border-radius:var(--r-lg); padding:24px; margin-bottom:24px; display:grid; grid-template-columns:140px 1fr auto; gap:24px; align-items:center; position:relative; }
+.featured-listing::before { content:'★ Premium Sponsor'; position:absolute; top:-12px; left:24px; background:var(--gold); color:var(--navy); padding:4px 12px; border-radius:var(--r-full); font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-family:var(--mono); }
+.featured-listing__img { width:140px; height:140px; border-radius:var(--r-md); background:linear-gradient(135deg,var(--navy),var(--slate)); display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:3rem; }
+.standard-listing { background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); padding:20px; display:flex; gap:16px; align-items:center; }
+.standard-listing:hover { box-shadow:var(--shadow-sm); border-color:var(--navy); }
+.standard-listing__img { width:80px; height:80px; border-radius:var(--r-md); background:linear-gradient(135deg,var(--cream),var(--gold-soft)); display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0; }
+.listings-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+.urgent-cta { background:#FFF5F0; border:1.5px solid #B33A3A; padding:16px; border-radius:var(--r-lg); margin-bottom:24px; display:flex; gap:16px; align-items:center; }
+@media (max-width:700px){ .listings-grid{grid-template-columns:1fr;} .featured-listing{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="guide-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Guides</a> / Home Maintenance</div>
+    <div class="grid grid-2" style="align-items:center;gap:32px;">
+      <div>
+        <span class="eyebrow" style="background:var(--gold);color:var(--navy);">Home Services Guide</span>
+        <h1 style="margin:12px 0 16px;">Vetted local pros for every fix</h1>
+        <p style="font-size:1.15rem;color:rgba(255,255,255,.9);">Plumbers, electricians, roofers, HVAC, landscapers — all licensed, all Chamber members, all backed by neighbor reviews.</p>
+      </div>
+      <div class="card" style="padding:24px;">
+        <h3 style="font-size:1.05rem;margin-bottom:12px;color:var(--navy);">🚨 Emergency? Open Concierge</h3>
+        <p class="text-sm text-muted mb-3">We'll triage your problem and connect you with the right available pro.</p>
+        <button class="btn btn--gold btn--block" onclick="document.querySelector('.ai-widget__btn').click();">Open Concierge</button>
+        <div class="mt-3 text-xs text-muted">Try: "Burst pipe in Tarzana" · "AC stopped working" · "Roof leak"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="urgent-cta">
+      <div style="font-size:2rem;">🚨</div>
+      <div style="flex:1;">
+        <strong style="color:#B33A3A;">After-hours emergency?</strong>
+        <span class="text-sm text-muted"> Concierge has the on-call list of every member who responds 24/7. Tap the button above.</span>
+      </div>
+    </div>
+
+    <div class="guide-nav">
+      <a href="#plumbing" class="active">Plumbing</a>
+      <a href="#electrical">Electrical</a>
+      <a href="#hvac">HVAC</a>
+      <a href="#roofing">Roofing</a>
+      <a href="#landscaping">Landscaping</a>
+      <a href="#pest">Pest Control</a>
+      <a href="#handyman">Handyman</a>
+      <a href="#remodel">Remodel & Build</a>
+    </div>
+
+    <div id="plumbing">
+      <h2 style="margin-bottom:8px;">Plumbing</h2>
+      <p class="lead" style="margin-bottom:24px;">Licensed, insured, Chamber-vetted. Most offer same-day service.</p>
+
+      <div class="featured-listing">
+        <div class="featured-listing__img">🔧</div>
+        <div>
+          <div class="flex gap-2 mb-2"><span class="tier tier--gold">Gold Sponsor</span><span class="chip">Lic. #985432</span><span class="chip chip--green">24/7</span></div>
+          <h3 style="font-size:1.4rem;margin-bottom:6px;">Valley Master Plumbing</h3>
+          <p style="color:var(--slate-mid);margin-bottom:8px;">Family-owned for 28 years. Drain cleaning, water heaters, repipes, and emergency leak response. Member discount: 10% off labor.</p>
+          <div class="text-sm text-muted">📍 Reseda · 📞 (818) 555-0166 · ⭐ 4.8 (412 reviews)</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;"><a href="#" class="btn btn--gold">Request Quote</a><a href="tel:8185550166" class="btn btn--outline btn--sm">📞 Call Now</a></div>
+      </div>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">💧</div><div style="flex:1;"><h4 style="font-size:1.05rem;">West Valley Plumbing Co.</h4><div class="text-sm text-muted mb-2">Drains · Repipes · Reseda</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🚿</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana Plumb & Drain</h4><div class="text-sm text-muted mb-2">Tankless heaters · Tarzana</div></div></div>
+      </div>
+    </div>
+
+    <div id="electrical" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Electrical</h2>
+      <div class="listings-grid mt-4">
+        <div class="standard-listing"><div class="standard-listing__img">⚡</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Bright Spark Electric</h4><div class="text-sm text-muted">Panel upgrades · EV chargers · Tarzana</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">💡</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Warner Electric Co.</h4><div class="text-sm text-muted">Commercial & residential · Warner Center</div></div></div>
+      </div>
+    </div>
+
+    <div id="hvac" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">HVAC</h2>
+      <div class="listings-grid mt-4">
+        <div class="standard-listing"><div class="standard-listing__img">❄️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Cool Valley HVAC</h4><div class="text-sm text-muted">A/C · Heat · Air quality · Reseda</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🌡️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Topanga Climate Control</h4><div class="text-sm text-muted">Heat pumps & mini-splits · Woodland Hills</div></div></div>
+      </div>
+    </div>
+
+    <div id="landscaping" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Landscaping</h2>
+      <div class="listings-grid mt-4">
+        <div class="standard-listing"><div class="standard-listing__img">🌳</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Verde Valley Landscapes</h4><div class="text-sm text-muted">Drought-tolerant design · Tarzana</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🌵</div><div style="flex:1;"><h4 style="font-size:1.05rem;">SoCal Native Garden Co.</h4><div class="text-sm text-muted">Sustainable · Woodland Hills</div></div></div>
+      </div>
+    </div>
+
+    <div class="card mt-6" style="padding:32px;background:var(--navy);color:#fff;border:none;text-align:center;">
+      <h2 style="color:#fff;margin:8px 0 12px;">Home services pros — claim your spot</h2>
+      <p style="color:rgba(255,255,255,.85);max-width:560px;margin:0 auto 24px;">The Home Maintenance Guide drives more lead inquiries than any other Chamber resource. Premium placement plus AI Concierge inclusion = more booked jobs.</p>
+      <a href="../sponsor.html#premium-listings" class="btn btn--gold btn--lg">Premium Listing Plans ›</a>
+    </div>
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="../js/partials.js"></script>
+<script src="../js/chamber.js"></script>
+<script>ChamberPartials.mount({active:'guides', depth:1});</script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Staff Assistant · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+<style>
+.chat-shell { display:grid; grid-template-columns:280px 1fr; height:calc(100vh - 60px); background:var(--paper); border-radius:var(--r-lg); border:1px solid var(--line); overflow:hidden; }
+.chat-history { background:var(--cream); border-right:1px solid var(--line); overflow-y:auto; padding:12px; }
+.chat-history h4 { font-family:var(--mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); padding:8px 12px; margin-top:8px; }
+.chat-history a { display:block; padding:8px 12px; border-radius:6px; color:var(--slate); font-size:.88rem; line-height:1.4; }
+.chat-history a:hover, .chat-history a.active { background:var(--paper); color:var(--navy); }
+.chat-shell__main { display:flex; flex-direction:column; }
+.chat-shell__msgs { flex:1; padding:24px 32px; overflow-y:auto; display:flex; flex-direction:column; gap:14px; background:var(--cream); }
+.chat-shell__input { padding:16px 24px; border-top:1px solid var(--line); display:flex; gap:12px; background:var(--paper); }
+.chat-shell__input input { flex:1; padding:.85rem 1.1rem; border:1.5px solid var(--line); border-radius:var(--r-md); }
+.cmsg { padding:.85rem 1.1rem; border-radius:var(--r-md); max-width:75%; line-height:1.55; }
+.cmsg--bot { background:var(--paper); border:1px solid var(--line); align-self:flex-start; border-bottom-left-radius:4px; }
+.cmsg--user { background:var(--navy); color:#fff; align-self:flex-end; border-bottom-right-radius:4px; }
+.tools-bar { padding:12px 24px; background:var(--paper); border-top:1px solid var(--line); display:flex; gap:8px; flex-wrap:wrap; }
+.tools-bar button { padding:.4rem .8rem; background:var(--cream); border:1px solid var(--line); border-radius:var(--r-full); font-size:.82rem; color:var(--slate); }
+.tools-bar button:hover { background:var(--blue-soft); color:var(--navy); border-color:var(--blue); }
+</style>
+</head>
+<body>
+
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content" style="padding:0;">
+      <div class="chat-shell">
+        <aside class="chat-history">
+          <button class="btn btn--gold btn--sm btn--block">+ New conversation</button>
+          <h4>Today</h4>
+          <a href="#" class="active">Draft this week's newsletter</a>
+          <a href="#">Approve pending listings</a>
+          <a href="#">Plan Food & Wine sponsor outreach</a>
+          <h4>This week</h4>
+          <a href="#">Member churn analysis</a>
+          <a href="#">Generate 30-day social calendar</a>
+          <a href="#">Q2 board report draft</a>
+          <a href="#">Member dunning sequence</a>
+          <h4>Earlier</h4>
+          <a href="#">Find prospects in HVAC category</a>
+          <a href="#">Spring Mixer copy variations</a>
+        </aside>
+
+        <div class="chat-shell__main">
+          <div style="padding:16px 32px;border-bottom:1px solid var(--line);background:var(--paper);">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--serif);">AI</div>
+              <div>
+                <div style="font-family:var(--serif);font-weight:600;color:var(--navy);">Chamber Staff Assistant</div>
+                <div class="text-sm text-muted">Connected to: Members DB · Events · Billing · Square · Mailchimp · Social</div>
+              </div>
+              <div style="margin-left:auto;display:flex;gap:6px;">
+                <span class="admin-pill admin-pill--green">● Online</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-shell__msgs" id="msgs">
+            <div class="cmsg cmsg--bot">Hi Diane — what would you like to get done? I can draft, schedule, approve, look up data, write emails, generate reports, or just answer questions.</div>
+            <div class="cmsg cmsg--user">Draft this Friday's newsletter</div>
+            <div class="cmsg cmsg--bot">Drafted. Headline: "70 years and counting — and the West Valley's first AI Concierge launches this week." Sections: Member Spotlight (WH Camera), AI Concierge launch, this week's events (Tomahawk &amp; Tequila, ribbon cuttings), Member Deal of the Week (Serenity Spa 15%), Foundation update. Open it in the Newsletter editor or I can send a preview to your inbox.<br><br>Want me to:<br>1. Open the draft in the editor<br>2. Email a preview<br>3. Schedule for Friday 9am send<br>4. Suggest 3 alternative headlines</div>
+            <div class="cmsg cmsg--user">Schedule for Friday 9am and email me a preview now.</div>
+            <div class="cmsg cmsg--bot">Done. Newsletter scheduled for Friday May 2, 9:00 AM PT (12,847 subscribers, segmented: 9,210 members get the member edition, 3,637 community get the public edition). Preview sent to diane@wvwcc.org just now. The send queue is on your dashboard if you want to review the segments.</div>
+            <div class="cmsg cmsg--user">What needs my attention before end of day?</div>
+            <div class="cmsg cmsg--bot">Three things ranked by urgency:<br><br>1. <strong>Approve Cryohealthcare listing</strong> — they're cutting ribbon May 13, want to be in the directory by next week. AI pre-screen is clean. (1 click)<br><br>2. <strong>Tarzana Bookkeeping renewal overdue 7 days</strong> — they were Bronze last year, paid every renewal for 6 years. Recommend personal email vs. dunning sequence. I can draft. (2 min)<br><br>3. <strong>Food &amp; Wine — only 1 of 4 Wine Pavilion sponsors sold</strong> — at this pace we miss budget by $15k. Suggest emailing the 12 wineries that bought tables last year. I can draft outreach. (4 min)<br><br>Everything else can wait until tomorrow.</div>
+          </div>
+
+          <div class="tools-bar">
+            <button>📝 Draft content</button>
+            <button>📊 Generate report</button>
+            <button>📅 Schedule event</button>
+            <button>✉️ Send to members</button>
+            <button>🔍 Look up data</button>
+            <button>✅ Bulk approve</button>
+            <button>💸 Create invoice</button>
+            <button>📣 Schedule social</button>
+          </div>
+
+          <form class="chat-shell__input" id="cf">
+            <input type="text" placeholder="Ask anything or type a command…" id="ci" autofocus>
+            <button type="submit" class="btn btn--gold">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="admin.js"></script>
+<script>
+AdminShell.mount({active:'ai'});
+const msgs = document.getElementById('msgs');
+const form = document.getElementById('cf');
+const input = document.getElementById('ci');
+
+function add(role, text) {
+  const el = document.createElement('div');
+  el.className = `cmsg cmsg--${role}`;
+  el.textContent = text;
+  msgs.appendChild(el);
+  msgs.scrollTop = msgs.scrollHeight;
+  return el;
+}
+
+document.querySelectorAll('.tools-bar button').forEach(b => {
+  b.addEventListener('click', () => { input.value = b.textContent.trim() + ' '; input.focus(); });
+});
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const text = input.value.trim();
+  if (!text) return;
+  add('user', text);
+  input.value = '';
+  const t = add('bot', '…');
+  try {
+    const r = await fetch(`${window.CHAMBER_API_BASE}/staff-assistant`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ message: text })
+    });
+    const data = await r.json();
+    t.remove();
+    add('bot', data.reply || 'Done.');
+  } catch (err) {
+    t.textContent = "Connection issue — but in production I would have completed that task. The backend route is /api/staff-assistant.";
+  }
+});
+
+// Hide the floating assistant on this page since we have the full chat
+document.querySelector('.ai-assistant')?.remove();
+</script>
+</body>
+</html>

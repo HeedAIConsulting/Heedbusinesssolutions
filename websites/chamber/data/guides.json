@@ -1,0 +1,102 @@
+[
+  {
+    "id": "parent-resource",
+    "title": "The Complete West Valley Parent Resource Guide",
+    "slug": "parent-resource",
+    "tagline": "Everything parents need — from preschools to pediatricians to weekend plans.",
+    "category": "Family",
+    "icon": "users",
+    "color": "blue",
+    "featured": true,
+    "sections": ["Schools & Preschools", "Pediatric Healthcare", "After-School Programs", "Birthday Parties", "Tutoring", "Special Needs Resources"],
+    "sponsorTier": "Gold",
+    "premiumSlots": 8
+  },
+  {
+    "id": "restaurant",
+    "title": "Dine West Valley — The Insider's Restaurant Guide",
+    "slug": "restaurant",
+    "tagline": "From hidden gems to the Valley's signature steakhouses, sushi temples, and date-night staples.",
+    "category": "Food & Drink",
+    "icon": "utensils",
+    "color": "gold",
+    "featured": true,
+    "sections": ["Date Night", "Family Friendly", "Happy Hour", "Brunch", "Outdoor Dining", "Late Night", "Catering"],
+    "sponsorTier": "Platinum",
+    "premiumSlots": 12
+  },
+  {
+    "id": "spa",
+    "title": "The Wellness & Spa Guide",
+    "slug": "spa",
+    "tagline": "Day spas, medspas, recovery suites, and wellness sanctuaries across the West Valley.",
+    "category": "Wellness",
+    "icon": "leaf",
+    "color": "green",
+    "featured": true,
+    "sections": ["Day Spas", "Medspas & Aesthetics", "Recovery & Cryo", "Massage Therapy", "Yoga & Meditation", "Skincare"],
+    "sponsorTier": "Gold",
+    "premiumSlots": 6
+  },
+  {
+    "id": "home-maintenance",
+    "title": "Home Maintenance & Repair Guide",
+    "slug": "home-maintenance",
+    "tagline": "Vetted, member-recommended pros for everything from a leaky faucet to a full remodel.",
+    "category": "Home Services",
+    "icon": "tools",
+    "color": "navy",
+    "featured": true,
+    "sections": ["Plumbing", "Electrical", "HVAC", "Roofing", "Landscaping", "Pest Control", "Handyman", "Remodel & Build"],
+    "sponsorTier": "Platinum",
+    "premiumSlots": 10
+  },
+  {
+    "id": "business-solutions",
+    "title": "Business Solutions Guide",
+    "slug": "business-solutions",
+    "tagline": "Trusted local providers for everything you need to run, grow, and scale a West Valley business.",
+    "category": "Business",
+    "icon": "briefcase",
+    "color": "navy",
+    "sections": ["Marketing & Web", "Accounting & Tax", "Legal", "HR & Payroll", "IT & Cybersecurity", "Insurance", "Commercial Real Estate"],
+    "sponsorTier": "Platinum",
+    "premiumSlots": 10
+  },
+  {
+    "id": "senior",
+    "title": "Senior Living & Resources Guide",
+    "slug": "senior",
+    "tagline": "Independent and assisted living, in-home care, medical, legal, and lifestyle resources for seniors and caregivers.",
+    "category": "Family",
+    "icon": "heart",
+    "color": "blue",
+    "sections": ["Senior Living Communities", "In-Home Care", "Memory Care", "Medical & Specialists", "Estate Planning", "Senior Activities"],
+    "sponsorTier": "Gold",
+    "premiumSlots": 8
+  },
+  {
+    "id": "wedding",
+    "title": "West Valley Wedding Guide",
+    "slug": "wedding",
+    "tagline": "Venues, photographers, florists, caterers — your full vendor list, all chamber members.",
+    "category": "Events",
+    "icon": "ring",
+    "color": "gold",
+    "sections": ["Venues", "Photographers", "Florists", "Catering", "Officiants", "Music & DJs", "Beauty"],
+    "sponsorTier": "Platinum",
+    "premiumSlots": 10
+  },
+  {
+    "id": "newcomer",
+    "title": "Newcomer's Guide to the West Valley",
+    "slug": "newcomer",
+    "tagline": "Just moved in? Here's how to set up utilities, find a doctor, register kids for school, and feel local fast.",
+    "category": "Community",
+    "icon": "map",
+    "color": "blue",
+    "sections": ["Utilities & Services", "Schools & Districts", "Healthcare", "DMV & Local Government", "Things to Do", "Get Involved"],
+    "sponsorTier": "Gold",
+    "premiumSlots": 6
+  }
+]

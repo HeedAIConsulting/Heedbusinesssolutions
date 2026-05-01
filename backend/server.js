@@ -3,12 +3,21 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 const FirecrawlApp = require('@mendable/firecrawl-js').default;
 const Anthropic = require('@anthropic-ai/sdk');
+const attachChamberRoutes = require('./chamber-routes');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // ── CORS ──
-const allowedOrigins = [process.env.ALLOWED_ORIGIN, 'http://localhost:3000', 'http://localhost:3001'].filter(Boolean);
+const allowedOrigins = [
+  process.env.ALLOWED_ORIGIN,
+  process.env.CHAMBER_ORIGIN,
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:5173',
+  'http://localhost:8080',
+  'http://127.0.0.1:5500'
+].filter(Boolean);
 app.use(cors({
   origin: function(origin, cb) {
     if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
@@ -292,6 +301,9 @@ Return ONLY the JSON array, no markdown, no backticks, no explanation.`;
     res.status(500).json({ error: 'Prospect search failed.', details: err.message });
   }
 });
+
+// ── Mount Chamber routes ──
+attachChamberRoutes(app);
 
 // ── Health check ──
 app.get('/', (req, res) => {
