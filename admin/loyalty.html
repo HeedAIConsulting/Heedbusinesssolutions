@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loyalty Program · Diana's Console</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div>
+          <div class="admin-page-head__sub">West Valley Loyalty Card · participating members and redemptions</div>
+          <h1>Loyalty Program</h1>
+        </div>
+      </div>
+      <div class="admin-stat-grid">
+        <div class="admin-stat"><div class="admin-stat__label">Cards issued</div><div class="admin-stat__num">2,340</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Active offers</div><div class="admin-stat__num">12</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Redemptions (MTD)</div><div class="admin-stat__num">487</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Top business</div><div class="admin-stat__num" style="font-size:1.2rem;">Fogo de Chão</div></div>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card__head"><div class="admin-card__title">Participating members &amp; offers</div><a href="../loyalty.html" target="_blank" class="text-sm">View public page →</a></div>
+        <div class="admin-card__body admin-card__body--p0">
+          <table class="admin-table">
+            <thead><tr><th>Business</th><th>Offer</th><th>Redemptions (90d)</th><th>Avg. order</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Fogo de Chão</strong></td><td>10% off lunch Mon-Fri</td><td>122</td><td>$48</td><td class="admin-actions"><button>Edit offer</button><button>Pause</button></td></tr>
+              <tr><td><strong>WH Camera</strong></td><td>5% off + free sensor cleaning</td><td>34</td><td>$280</td><td class="admin-actions"><button>Edit offer</button><button>Pause</button></td></tr>
+              <tr><td><strong>Tarzana Skin &amp; Wellness</strong></td><td>Free 30-min consult + 15% off</td><td>27</td><td>$165</td><td class="admin-actions"><button>Edit offer</button><button>Pause</button></td></tr>
+              <tr><td><strong>The Drain Co.</strong></td><td>$25 off first call</td><td>19</td><td>$210</td><td class="admin-actions"><button>Edit offer</button><button>Pause</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="admin.js"></script>
+<script src="_stub.js"></script>
+<script>
+AdminShell.mount({ active: 'loyalty' });
+</script>
+</body>
+</html>

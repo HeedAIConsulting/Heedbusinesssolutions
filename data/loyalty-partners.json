@@ -1,0 +1,14 @@
+[
+  { "id": "fogo-de-chao", "business": "Fogo de Chão Brazilian Steakhouse", "category": "Dining", "neighborhood": "Woodland Hills", "offer": "10% off lunch with West Valley Loyalty Card", "terms": "Mon–Fri lunch only. Not combinable with other offers.", "active": true },
+  { "id": "wh-camera", "business": "Woodland Hills Camera & Telescopes", "category": "Retail", "neighborhood": "Woodland Hills", "offer": "5% off accessories + free sensor cleaning with any camera body", "terms": "Cardholder must present at point of sale.", "active": true },
+  { "id": "marriott-warner", "business": "Warner Center Marriott", "category": "Hospitality", "neighborhood": "Warner Center", "offer": "$10 off entrée at Allegro restaurant + 15% off room rates for cardholder family bookings", "terms": "Direct booking only.", "active": true },
+  { "id": "tarzana-skin-wellness", "business": "Tarzana Skin & Wellness", "category": "Spa", "neighborhood": "Tarzana", "offer": "Free 30-min consultation + 15% off first treatment", "terms": "New clients only.", "active": true },
+  { "id": "providence-tarzana", "business": "Providence Cedars-Sinai Tarzana", "category": "Healthcare", "neighborhood": "Tarzana", "offer": "Free annual wellness screening for cardholders 65+", "terms": "By appointment. Subject to availability.", "active": true },
+  { "id": "ethos-fitness", "business": "Ethos Fitness", "category": "Fitness", "neighborhood": "Tarzana", "offer": "First month free + no enrollment fee", "terms": "12-month commitment.", "active": true },
+  { "id": "leisure-care-westpoint", "business": "Leisure Care Westpoint", "category": "Senior Living", "neighborhood": "Tarzana", "offer": "$500 move-in credit for cardholder referrals", "terms": "Referrer must hold an active loyalty card.", "active": true },
+  { "id": "drain-co", "business": "The Drain Co.", "category": "Home Services", "neighborhood": "Reseda", "offer": "$25 off first service call", "terms": "Min. service charge $99. One per household.", "active": true },
+  { "id": "porsche-woodland-hills", "business": "Porsche Woodland Hills", "category": "Auto", "neighborhood": "Woodland Hills", "offer": "Complimentary detail with any service over $500", "terms": "Schedule online with code WVCHAMBER.", "active": true },
+  { "id": "first-banks", "business": "First Banks", "category": "Financial", "neighborhood": "Woodland Hills", "offer": "Waived monthly fee on Business Premier checking for first 12 months", "terms": "Available to new business banking customers only.", "active": true },
+  { "id": "ring-planet", "business": "Ring Planet", "category": "Retail", "neighborhood": "Tarzana", "offer": "10% off any custom ring design", "terms": "Excludes loose stones.", "active": true },
+  { "id": "u-frame-it", "business": "U Frame It Gallery", "category": "Retail", "neighborhood": "Woodland Hills", "offer": "20% off custom framing for cardholders", "terms": "One frame per visit.", "active": true }
+]

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education &amp; Learning Guide · Schools, Tutors, Test Prep · West Valley Chamber</title>
+<meta name="description" content="The West Valley education guide — schools, preschools, tutors, SAT/ACT prep, music lessons, STEM camps, ESL, college counseling, and special-needs schools across Tarzana, Woodland Hills, Reseda, and Encino.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+.guide-hero { background: linear-gradient(135deg, var(--blue), var(--navy)); color:#fff; padding:80px 0; position:relative; overflow:hidden; }
+.guide-hero::before { content:''; position:absolute; inset:0; background-image: radial-gradient(circle at 80% 0%, rgba(201,162,39,0.18), transparent 50%); pointer-events:none; }
+.guide-hero h1 { color:#fff; }
+.guide-hero > .container { position:relative; z-index:2; }
+.guide-nav { display:flex; gap:8px; flex-wrap:wrap; padding:16px; background:var(--paper); border-radius:var(--r-lg); margin-bottom:24px; position:sticky; top:64px; z-index:50; box-shadow:var(--shadow-sm); border:1px solid var(--line); }
+.guide-nav a { padding:.5rem .9rem; border-radius:var(--r-full); background:var(--cream); color:var(--slate); font-weight:600; font-size:.88rem; }
+.guide-nav a:hover, .guide-nav a.active { background:var(--navy); color:var(--gold); }
+.featured-listing { background:linear-gradient(135deg,var(--blue-soft),#fff); border:2px solid var(--blue); border-radius:var(--r-lg); padding:24px; margin-bottom:24px; display:grid; grid-template-columns:140px 1fr auto; gap:24px; align-items:center; position:relative; }
+.featured-listing::before { content:'★ Premium Sponsor'; position:absolute; top:-12px; left:24px; background:var(--gold); color:var(--navy); padding:4px 12px; border-radius:var(--r-full); font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-family:var(--mono); }
+.featured-listing__img { width:140px; height:140px; border-radius:var(--r-md); background:linear-gradient(135deg,var(--blue),var(--navy)); display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:3rem; }
+.standard-listing { background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); padding:18px; display:flex; gap:16px; align-items:flex-start; transition:var(--transition); }
+.standard-listing:hover { box-shadow:var(--shadow-sm); border-color:var(--blue); transform:translateY(-1px); }
+.standard-listing__img { width:64px; height:64px; border-radius:var(--r-md); background:linear-gradient(135deg, var(--blue-soft), var(--gold-soft)); display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0; }
+.listings-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+.listings-grid--3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+.editorial { background:var(--paper); border-left:4px solid var(--gold); padding:24px 28px; border-radius:0 var(--r-lg) var(--r-lg) 0; margin:24px 0; box-shadow:var(--shadow-sm); }
+.editorial h3 { font-size:1.15rem; color:var(--navy); margin-bottom:8px; }
+.editorial p { color:var(--slate-mid); margin-bottom:0; }
+.faq-item { border:1px solid var(--line); border-radius:var(--r-md); margin-bottom:12px; background:var(--paper); }
+.faq-item summary { padding:16px 20px; cursor:pointer; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center; }
+.faq-item summary::after { content:'+'; font-size:1.4rem; color:var(--gold-deep); }
+.faq-item[open] summary::after { content:'−'; }
+.faq-item p { padding:0 20px 20px; color:var(--slate-mid); margin:0; }
+.compare-table { width:100%; border-collapse:collapse; background:var(--paper); border-radius:var(--r-md); overflow:hidden; box-shadow:var(--shadow-sm); }
+.compare-table th, .compare-table td { padding:14px 16px; text-align:left; font-size:.92rem; }
+.compare-table th { background:var(--blue-soft); color:var(--navy); font-family:var(--mono); font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; }
+.compare-table tr { border-bottom:1px solid var(--line); }
+.tip-card { background:var(--blue-soft); border:1px solid var(--blue); border-radius:var(--r-md); padding:18px; }
+.tip-card h4 { color:var(--navy); margin-bottom:6px; font-size:1rem; }
+.tip-card p { font-size:.9rem; color:var(--slate-mid); margin:0; }
+@media (max-width: 800px) { .listings-grid, .listings-grid--3 { grid-template-columns: 1fr; } .featured-listing { grid-template-columns: 1fr; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "West Valley Education & Learning Guide",
+  "description": "Comprehensive directory of schools, preschools, tutors, test prep, music & arts lessons, STEM, ESL, college counseling, and special-needs schools across Tarzana, Woodland Hills, Reseda, and Encino.",
+  "numberOfItems": 26,
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "item": { "@type": "EducationalOrganization", "name": "Sherman Oaks Center for Enriched Studies", "address": { "@type": "PostalAddress", "streetAddress": "18605 Erwin St", "addressLocality": "Tarzana", "addressRegion": "CA", "postalCode": "91335" } } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "EducationalOrganization", "name": "Westmark School", "address": { "@type": "PostalAddress", "streetAddress": "5461 Louise Ave", "addressLocality": "Encino", "addressRegion": "CA" } } },
+    { "@type": "ListItem", "position": 3, "item": { "@type": "EducationalOrganization", "name": "California State University, Northridge", "address": { "@type": "PostalAddress", "streetAddress": "18111 Nordhoff St", "addressLocality": "Northridge", "addressRegion": "CA" } } },
+    { "@type": "ListItem", "position": 4, "item": { "@type": "EducationalOrganization", "name": "Mathnasium of Tarzana" } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Best public high school in the West Valley?", "acceptedAnswer": { "@type": "Answer", "text": "Sherman Oaks Center for Enriched Studies (SOCES) on Erwin St in Tarzana — LAUSD's largest magnet, 4-12, top 5% in California. El Camino Real Charter and Taft Charter are also strong. Granada Hills Charter is the gold standard for lottery families willing to commute." } },
+    { "@type": "Question", "name": "When do private school applications open?", "acceptedAnswer": { "@type": "Answer", "text": "Most West Valley private schools open applications in October. Westmark, Calvary, Louisville, and Harvard-Westlake have January deadlines. Tour calendars open in September; book Saturdays first — they fill in days." } },
+    { "@type": "Question", "name": "Average SAT prep cost in the Valley?", "acceptedAnswer": { "@type": "Answer", "text": "Group classes: $1,200-$1,800. 1-on-1: $130-$220/hr. A+ Test Prep WH and Russian School of Math both run free diagnostic exams. Mathnasium of Tarzana includes SAT math prep in the regular monthly tuition." } },
+    { "@type": "Question", "name": "Where do my kids learn coding?", "acceptedAnswer": { "@type": "Answer", "text": "CodeKids Robotics in Warner Center (ages 8+), iD Tech at CSUN summer, Code Ninjas Tarzana, and Theater of Arts STEM Academy. CSUN's Saturday Math Circle is free for advanced 6-12th graders." } },
+    { "@type": "Question", "name": "Best ESL school for adults in Reseda?", "acceptedAnswer": { "@type": "Answer", "text": "LAUSD Adult School at Pierce College (free), Valley ESL Center on Sherman Way (small classes), and Berlitz Encino (intensive corporate). LAUSD has waiting lists; start in August for fall." } },
+    { "@type": "Question", "name": "Schools for learning differences?", "acceptedAnswer": { "@type": "Answer", "text": "Westmark School (Encino) is the gold standard for grades 2-12 with dyslexia, ADHD, executive-function differences. Summit View (Encino), Bridges Academy (Studio City). Public option: SOCES Specialized Pathways." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="guide-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Guides</a> / Education</div>
+    <div class="grid grid-2" style="align-items:center;gap:32px;">
+      <div>
+        <span class="eyebrow" style="background:var(--gold);color:var(--navy);">Education Guide</span>
+        <h1 style="margin:12px 0 16px;">From preschool to PhD — every learning option in one map</h1>
+        <p style="font-size:1.15rem;color:rgba(255,255,255,.92);max-width:560px;">Schools, tutors, test prep, music &amp; arts, STEM, ESL, special-needs schools, college counselors. The Valley's full education ecosystem — including the LAUSD magnets that quietly outperform private schools.</p>
+        <div class="hero__stats" style="margin-top:24px;">
+          <div><div class="hero__stat-num">54</div><div class="hero__stat-lbl">Education Providers</div></div>
+          <div><div class="hero__stat-num">8</div><div class="hero__stat-lbl">Categories</div></div>
+          <div><div class="hero__stat-num">K–PhD</div><div class="hero__stat-lbl">Every Stage</div></div>
+        </div>
+        <div class="flex gap-3 mt-5" style="flex-wrap:wrap;">
+          <a href="#schools-public" class="btn btn--gold">Browse Schools</a>
+          <a href="#test-prep" class="btn btn--outline" style="border-color:#fff;color:#fff;">Test Prep</a>
+        </div>
+      </div>
+      <div class="card" style="padding:24px;">
+        <h3 style="font-size:1.05rem;margin-bottom:12px;color:var(--navy);">🤖 Education Concierge</h3>
+        <p class="text-sm text-muted mb-3">Tell us your kid's grade, neighborhood, and goal — we'll match the right school, tutor, or program.</p>
+        <button class="btn btn--primary btn--block" onclick="document.querySelector('.ai-widget__btn').click();">Open Concierge</button>
+        <div class="mt-3 text-xs text-muted">Try: "SAT tutor near Tarzana" · "Gifted preschool" · "Coding camp summer 2026"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream" style="padding:48px 0;">
+  <div class="container">
+
+    <div class="editorial">
+      <h3>How West Valley parents actually navigate the education map</h3>
+      <p>The Valley's education scene splits into three tiers: (1) LAUSD's strongest magnets and charters — SOCES, Granada Hills, El Camino — that compete with private schools academically, (2) private schools concentrated along Mulholland and Ventura Blvd, (3) supplementary programs (tutors, music, STEM) that fill weekday afternoons. We've organized this guide to help you stack from any starting point. Every Chamber-member listing offers Chamber-family discounts — typically 10–20% off intro classes or first months.</p>
+    </div>
+
+    <div class="guide-nav">
+      <a href="#schools-public" class="active">Public &amp; Magnets</a>
+      <a href="#schools-private">Private Schools</a>
+      <a href="#preschool">Preschool</a>
+      <a href="#test-prep">Tutoring &amp; Test Prep</a>
+      <a href="#music-arts">Music &amp; Arts</a>
+      <a href="#stem">STEM &amp; Coding</a>
+      <a href="#esl">ESL &amp; Languages</a>
+      <a href="#special-needs">Special Needs</a>
+      <a href="#college">College Counseling</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <!-- ==================== PUBLIC + MAGNET ==================== -->
+    <div id="schools-public">
+      <h2 style="margin-bottom:8px;">Public Schools, Charters &amp; Magnets</h2>
+      <p class="lead" style="margin-bottom:24px;">The West Valley's public-school landscape is unusually strong because of LAUSD's magnet program. SOCES, Granada Hills, and El Camino routinely send graduates to UC, Stanford, and the Ivies.</p>
+
+      <div class="featured-listing">
+        <div class="featured-listing__img">🎓</div>
+        <div>
+          <div class="flex gap-2 mb-2" style="flex-wrap:wrap;"><span class="cm-badge">Chamber Partner</span><span class="tier tier--gold">Featured Magnet</span><span class="chip">Grades 4–12</span><span class="chip chip--green">LAUSD</span></div>
+          <h3 style="font-size:1.4rem;margin-bottom:6px;">Sherman Oaks Center for Enriched Studies (SOCES)</h3>
+          <p style="color:var(--slate-mid);margin-bottom:8px;">LAUSD's largest 4–12 highly-gifted/highly-able magnet, with a 1,800-student campus on Erwin Street. Stronger than most West Valley private schools academically — and tuition-free. Lottery-based; open enrollment runs October–November via the LAUSD eChoices portal.</p>
+          <div class="text-sm text-muted">📍 18605 Erwin St, Tarzana · 📞 (818) 758-5600 · 🌐 soces-lausd.net · 🚌 LAUSD bus from 91364, 91367, 91335, 91356</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="https://soces-lausd.net" class="btn btn--gold">Visit Site</a>
+          <a href="#" class="btn btn--ghost btn--sm">Tour calendar →</a>
+        </div>
+      </div>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🦁</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Taft Charter High School</h4><div class="text-sm text-muted mb-2">9–12 Charter · 5461 Winnetka Ave · Woodland Hills</div><div class="flex gap-2"><span class="chip">IB program</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📐</div><div style="flex:1;"><h4 style="font-size:1.05rem;">El Camino Real Charter HS</h4><div class="text-sm text-muted mb-2">9–12 · 5440 Valley Circle Blvd · Woodland Hills</div><div class="flex gap-2"><span class="chip">STEM focus</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏆</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Granada Hills Charter</h4><div class="text-sm text-muted mb-2">TK–12 · 10535 Zelzah Ave · Granada Hills (15 min)</div><div class="flex gap-2"><span class="chip">CA top 1%</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🌳</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Topanga Charter Academy <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">K–8 · 7625 Reseda Blvd · Reseda</div><div class="flex gap-2"><span class="chip">Tuition-free</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎒</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana Elementary STEAM</h4><div class="text-sm text-muted mb-2">K–5 · 5726 Topeka Dr · Tarzana</div><div class="flex gap-2"><span class="chip">LAUSD STEAM magnet</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📚</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Hale Charter Academy</h4><div class="text-sm text-muted mb-2">6–8 · 23830 Califa St · Woodland Hills</div></div></div>
+      </div>
+
+      <div class="ad-slot mt-6" style="margin-top:32px;">📣 School Sponsor slot — open enrollment season high traffic · <a href="../sponsor.html" style="margin-left:8px;color:var(--navy);">Reserve →</a></div>
+    </div>
+
+    <!-- ==================== PRIVATE SCHOOLS ==================== -->
+    <div id="schools-private" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Private Schools (K–12)</h2>
+      <p class="lead" style="margin-bottom:24px;">The Valley has its own elite private cluster — Calvary, Westmark, Louisville, Harvard-Westlake. Tuitions $14k–$54k.</p>
+
+      <table class="compare-table">
+        <thead><tr><th>School</th><th>Grades</th><th>Tuition (2026-27)</th><th>Specialty</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Calvary Christian School <span class="cm-badge">Member</span></strong></td><td>K–8</td><td>$14,500</td><td>Faith-based · 18:1 ratio</td></tr>
+          <tr><td><strong>Louisville High School</strong></td><td>9–12 (girls)</td><td>$26,400</td><td>All-girls Catholic college prep</td></tr>
+          <tr><td><strong>Westmark School</strong></td><td>2–12</td><td>$48,500</td><td>Learning differences · dyslexia</td></tr>
+          <tr><td><strong>Harvard-Westlake (Studio City)</strong></td><td>7–12</td><td>$53,800</td><td>Elite college prep · 100% college accept</td></tr>
+          <tr><td><strong>Our Lady of Grace</strong></td><td>K–8</td><td>$8,700</td><td>Parish-affiliated Catholic</td></tr>
+          <tr><td><strong>Bridges Academy (Studio City)</strong></td><td>4–12</td><td>$54,200</td><td>Twice-exceptional learners</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ==================== PRESCHOOL ==================== -->
+    <div id="preschool" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Preschool &amp; Early Learning</h2>
+      <p class="lead" style="margin-bottom:24px;">Reggio, Montessori, co-op, faith-based, bilingual. Most West Valley preschools open tour calendars in October.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🌱</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Sunrise Children's Academy <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Reggio · bilingual · Tarzana · 18345 Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🌸</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Valley Montessori School <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">AMI-certified · Tarzana · 19120 Burbank Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎨</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Little Sprouts Co-op <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Parent participation · Warner Center</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🐝</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Honey Bee Academy</h4><div class="text-sm text-muted mb-2">Bilingual · Reseda</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🌳</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Topanga Tots Nature School</h4><div class="text-sm text-muted mb-2">Forest-school · Woodland Hills</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🦋</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Stepping Stones Preschool <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Faith-based · Tarzana · 5448 Reseda Blvd</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== TUTORING ==================== -->
+    <div id="test-prep" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Tutoring &amp; Test Prep</h2>
+      <p class="lead" style="margin-bottom:24px;">Reading help, math acceleration, SAT/ACT, AP, ISEE/SSAT (private school admissions).</p>
+
+      <div class="featured-listing">
+        <div class="featured-listing__img">📐</div>
+        <div>
+          <div class="flex gap-2 mb-2" style="flex-wrap:wrap;"><span class="cm-badge">Chamber Member</span><span class="tier tier--gold">Gold Sponsor</span><span class="chip">K–12</span><span class="chip chip--green">Free Diagnostic</span></div>
+          <h3 style="font-size:1.4rem;margin-bottom:6px;">Mathnasium of Tarzana</h3>
+          <p style="color:var(--slate-mid);margin-bottom:8px;">K–12 math, in-person and online. Diagnostic-driven curriculum, 2x weekly sessions. Includes SAT math prep at no extra cost. Owner Dr. Anita Krishnan was an LAUSD math coach for 12 years before opening the Tarzana center in 2017. Chamber-member rate: waived enrollment fee ($150 value), 10% off second child.</p>
+          <div class="text-sm text-muted">📍 18717 Ventura Blvd, Tarzana · 📞 (818) 705-0150 · ⭐ 4.9 (213 reviews) · 🅿️ Free lot</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="#" class="btn btn--gold">Free Diagnostic</a>
+          <a href="#" class="btn btn--ghost btn--sm">View tracks →</a>
+        </div>
+      </div>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">📝</div><div style="flex:1;"><h4 style="font-size:1.05rem;">A+ Test Prep WH <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">SAT/ACT · 21000 Victory Blvd</div><div class="flex gap-2"><span class="chip">Free diagnostic</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📚</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Reading Tree Tutors <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Pre-K–5 · Orton-Gillingham · Reseda</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎯</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Sylvan Learning Tarzana</h4><div class="text-sm text-muted mb-2">K–12 · Reading, math, writing</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🧮</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Russian School of Math</h4><div class="text-sm text-muted mb-2">K–12 · Tarzana · Conceptual depth</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🔬</div><div style="flex:1;"><h4 style="font-size:1.05rem;">AP Science Tutors WH</h4><div class="text-sm text-muted mb-2">AP Bio/Chem/Physics · Burbank Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎓</div><div style="flex:1;"><h4 style="font-size:1.05rem;">ISEE/SSAT Prep Studio Encino</h4><div class="text-sm text-muted mb-2">Private-school entrance exams</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== MUSIC & ARTS ==================== -->
+    <div id="music-arts" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Music &amp; Arts Lessons</h2>
+      <p class="lead" style="margin-bottom:24px;">Piano, guitar, voice, theater, fine art, dance — the Valley's after-school art ecosystem.</p>
+      <div class="listings-grid--3">
+        <div class="standard-listing"><div class="standard-listing__img">🎹</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Valley Music Academy <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Private lessons · Tarzana</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎸</div><div style="flex:1;"><h4 style="font-size:1.05rem;">School of Rock Woodland Hills</h4><div class="text-sm text-muted mb-2">Ages 4+ · Burbank Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎤</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Reseda Vocal Studio <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Voice · audition prep</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎭</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Valley Performing Arts Studio</h4><div class="text-sm text-muted mb-2">Drama · musical theater · WH</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎨</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Studio for the Young Artist <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Ages 4–14 · Tarzana · Drawing &amp; painting</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🩰</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Westside Ballet — Valley</h4><div class="text-sm text-muted mb-2">Ages 3+ · Tarzana</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🥁</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Drum Lab Encino</h4><div class="text-sm text-muted mb-2">All ages · Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎻</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Pacific Strings Reseda</h4><div class="text-sm text-muted mb-2">Violin, cello · Suzuki method</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📷</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Woodland Hills Camera Photo Workshops <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Teen photography · 5348 Topanga Canyon Blvd</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== STEM ==================== -->
+    <div id="stem" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">STEM, Coding &amp; Robotics</h2>
+      <p class="lead" style="margin-bottom:24px;">Coding, robotics, engineering camps. CSUN's outreach programs are gold and most are free.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🤖</div><div style="flex:1;"><h4 style="font-size:1.05rem;">CodeKids Robotics <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Ages 8+ · Warner Center · Owensmouth Ave</div><div class="flex gap-2"><span class="chip">FIRST Lego League</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">💻</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Code Ninjas Tarzana</h4><div class="text-sm text-muted mb-2">Ages 5–14 · Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🚀</div><div style="flex:1;"><h4 style="font-size:1.05rem;">iD Tech @ CSUN <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Summer camp · 18111 Nordhoff St</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🔬</div><div style="flex:1;"><h4 style="font-size:1.05rem;">CSUN Saturday Math Circle</h4><div class="text-sm text-muted mb-2">Free · Grades 6–12 · CSUN campus</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">⚙️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Engineering for Kids WH</h4><div class="text-sm text-muted mb-2">Ages 4–14 · 22500 Erwin St</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🌱</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Mad Science Valley Chapter</h4><div class="text-sm text-muted mb-2">After-school + birthdays · Mobile</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== ESL ==================== -->
+    <div id="esl" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">ESL &amp; Language Schools</h2>
+      <p class="lead" style="margin-bottom:24px;">English for adults, Spanish, Hebrew, Russian, Mandarin, Armenian — the Valley reflects its languages.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🌐</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Valley ESL Center <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Adult ESL · Reseda · Sherman Way</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📖</div><div style="flex:1;"><h4 style="font-size:1.05rem;">LAUSD Adult School @ Pierce</h4><div class="text-sm text-muted mb-2">Free ESL · Woodland Hills · 6201 Winnetka Ave</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🇪🇸</div><div style="flex:1;"><h4 style="font-size:1.05rem;">¡Habla! Spanish for Kids <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Ages 3–12 · Tarzana</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🇮🇱</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Hebrew Language Studio Encino</h4><div class="text-sm text-muted mb-2">All ages · 17050 Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🇨🇳</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Mandarin Matters WH</h4><div class="text-sm text-muted mb-2">After-school · weekend</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🇦🇲</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Armenian Language Center Tarzana</h4><div class="text-sm text-muted mb-2">Eastern + Western · all ages</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== SPECIAL NEEDS ==================== -->
+    <div id="special-needs" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Special Needs Schools &amp; Support</h2>
+      <p class="lead" style="margin-bottom:24px;">Schools, ABA providers, OT/PT/speech, and the regional-center navigators every Valley parent needs.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🌟</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Westmark School</h4><div class="text-sm text-muted mb-2">Grades 2–12 · Encino · 5461 Louise Ave</div><div class="flex gap-2"><span class="chip">Dyslexia</span><span class="chip">ADHD</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🧩</div><div style="flex:1;"><h4 style="font-size:1.05rem;">ABA Solutions Tarzana <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Autism services · Regional Center</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🗣️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Reseda Speech &amp; Language</h4><div class="text-sm text-muted mb-2">Ages 2–18 · 7301 Reseda Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🌈</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Summit View School (Help Group)</h4><div class="text-sm text-muted mb-2">Grades 1–8 · Encino</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🤲</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Pediatric Therapy Network</h4><div class="text-sm text-muted mb-2">OT/PT · sensory gym · WH</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📋</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Bridges Academy Studio City</h4><div class="text-sm text-muted mb-2">Grades 4–12 · Twice-exceptional</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== COLLEGE COUNSELING ==================== -->
+    <div id="college" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">College Counseling &amp; Application Prep</h2>
+      <p class="lead" style="margin-bottom:24px;">Independent counselors, essay coaches, UC and private-college specialists.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🎓</div><div style="flex:1;"><h4 style="font-size:1.05rem;">CollegeBound WH Counseling <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Grades 9–12 · UC + private specialists · Burbank Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">✍️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Essay Studio Encino</h4><div class="text-sm text-muted mb-2">Personal statement · supplements</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📊</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Valley College Pathway</h4><div class="text-sm text-muted mb-2">Test-prep + counseling combo · Tarzana</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🧭</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Pierce College Transfer Center</h4><div class="text-sm text-muted mb-2">Free · 6201 Winnetka Ave · UC TAG</div></div></div>
+      </div>
+    </div>
+
+    <!-- LOCAL TIPS -->
+    <div style="margin-top:64px;">
+      <h2 style="margin-bottom:16px;">Insider Tips</h2>
+      <div class="listings-grid--3">
+        <div class="tip-card"><h4>📅 LAUSD eChoices opens Oct 1</h4><p>Apply to up to 5 magnets in priority order. SOCES, El Camino, and Granada Hills have the longest waitlists.</p></div>
+        <div class="tip-card"><h4>🎟️ CSUN free Saturday programs</h4><p>Math Circle (free, gr. 6-12), Mini-Med (free, weekend health-science). Registration opens August.</p></div>
+        <div class="tip-card"><h4>📚 LAPL free tutoring</h4><p>The Tarzana branch runs free K-8 homework help Tuesdays &amp; Wednesdays 4-7pm. No signup, walk-in.</p></div>
+        <div class="tip-card"><h4>💰 Chamber-family discounts</h4><p>Most members on this guide offer 10-20% off intro classes or first months for Chamber-member families. Mention "WVWCCC".</p></div>
+        <div class="tip-card"><h4>🎻 LACMA free art classes</h4><p>Free Sundays for kids 17 &amp; under. Worth the 25-min Encino-LACMA drive twice a month.</p></div>
+        <div class="tip-card"><h4>🎓 Pierce College dual-enroll</h4><p>HS juniors/seniors can take free Pierce courses for college credit. Application Aug. Massive cost-saver.</p></div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div id="faq" style="margin-top:64px;">
+      <h2 style="margin-bottom:16px;">Education FAQ</h2>
+      <details class="faq-item" open><summary>Best public high school in the West Valley?</summary><p>Sherman Oaks Center for Enriched Studies (SOCES) on Erwin St in Tarzana — LAUSD's largest magnet, 4-12, top 5% in California. El Camino Real Charter and Taft Charter are also strong. Granada Hills Charter is the gold standard for lottery families willing to commute.</p></details>
+      <details class="faq-item"><summary>When do private school applications open?</summary><p>Most West Valley private schools open applications in October. Westmark, Calvary, Louisville, and Harvard-Westlake have January deadlines. Tour calendars open in September.</p></details>
+      <details class="faq-item"><summary>Average SAT prep cost in the Valley?</summary><p>Group classes: $1,200-$1,800. 1-on-1: $130-$220/hr. A+ Test Prep WH and Russian School of Math both run free diagnostic exams.</p></details>
+      <details class="faq-item"><summary>Where do my kids learn coding?</summary><p>CodeKids Robotics in Warner Center, iD Tech at CSUN, Code Ninjas Tarzana, Theater of Arts STEM Academy. CSUN's Saturday Math Circle is free for advanced 6-12th graders.</p></details>
+      <details class="faq-item"><summary>Best ESL school for adults in Reseda?</summary><p>LAUSD Adult School at Pierce College (free), Valley ESL Center on Sherman Way, Berlitz Encino. LAUSD has waiting lists; start in August.</p></details>
+      <details class="faq-item"><summary>Schools for learning differences?</summary><p>Westmark School (Encino) is the gold standard for grades 2-12. Summit View (Encino), Bridges Academy (Studio City). Public option: SOCES Specialized Pathways.</p></details>
+    </div>
+
+    <!-- CTA -->
+    <div class="card mt-6" style="margin-top:48px;padding:40px;background:var(--navy);color:#fff;border:none;text-align:center;">
+      <span class="eyebrow eyebrow--navy">For Education Members</span>
+      <h2 style="color:#fff;margin:8px 0 12px;">Reach West Valley families during open enrollment</h2>
+      <p style="color:rgba(255,255,255,.85);max-width:620px;margin:0 auto 24px;">Premium listings include AI Concierge inclusion, downloadable tour schedules, lead-capture forms, and inclusion in our quarterly Family Resource Faire mailing (5,400 households). Starting at $99/mo. Education Guide title sponsorship: $5,400/yr.</p>
+      <div class="flex gap-3" style="justify-content:center;flex-wrap:wrap;">
+        <a href="../sponsor.html#premium-listings" class="btn btn--gold btn--lg">Premium Listing Plans ›</a>
+        <a href="../advertise.html" class="btn btn--outline btn--lg" style="border-color:#fff;color:#fff;">Sponsor This Guide</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="../js/partials.js"></script>
+<script src="../js/chamber.js"></script>
+<script>
+ChamberPartials.mount({active:'guides', depth:1});
+document.querySelectorAll('.guide-nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.guide-nav a').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

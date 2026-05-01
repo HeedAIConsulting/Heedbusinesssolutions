@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Business Profile · Chamber</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+.profile-hero__badges { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.profile-cta-card { padding:24px; background:linear-gradient(135deg, var(--gold-soft), var(--paper)); border:2px solid var(--gold); }
+.profile-cta-card h3 { color:var(--navy); font-size:1.05rem; margin-bottom:6px; }
+.fact-row { display:flex; gap:10px; align-items:flex-start; padding:8px 0; border-top:1px solid var(--line-soft); font-size:.92rem; }
+.fact-row:first-child { border-top:none; }
+.fact-row__label { font-family:var(--mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:var(--slate); width:90px; flex-shrink:0; padding-top:2px; }
+.fact-row__value { flex:1; color:var(--ink); }
+</style>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="page-hero" id="hero">
+  <div class="container page-hero__inner">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="directory.html">Directory</a> / <span id="bc-name">Business</span></div>
+    <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
+      <div id="m-logo" style="width:96px;height:96px;border-radius:var(--r-lg);background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.4rem;font-weight:700;flex-shrink:0;">M</div>
+      <div>
+        <div id="m-badges" class="profile-hero__badges"></div>
+        <h1 id="m-name" style="margin-bottom:6px;">Business</h1>
+        <p id="m-cat" style="color:rgba(255,255,255,.85);"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="grid" style="grid-template-columns:2fr 1fr;gap:32px;">
+      <div>
+        <div class="card" style="padding:32px;">
+          <h2 style="font-size:1.4rem;margin-bottom:16px;">About</h2>
+          <p id="m-about" class="lead"></p>
+          <div id="m-facts" style="margin-top:18px;"></div>
+          <div id="m-tags" style="margin-top:16px;display:flex;gap:6px;flex-wrap:wrap;"></div>
+        </div>
+
+        <div class="card mt-4" id="m-cta-community-card" style="padding:32px; display:none;">
+          <span class="eyebrow">For business owners</span>
+          <h2 style="font-size:1.4rem;margin:8px 0 12px;">Is this your business?</h2>
+          <p style="color:var(--slate-mid);margin-bottom:20px;">Chamber members get the gold "Chamber Member" badge on their listing, premium placement in search, listing in our Resource Guides, member-to-member deals, and access to Connection Circles. Joining is fast — claim your listing in minutes.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="../join.html" class="btn btn--gold">Become a Chamber Member ›</a>
+            <a href="../sponsor.html#premium-listings" class="btn btn--outline">See Premium Listings</a>
+          </div>
+        </div>
+
+        <div class="card mt-4" id="m-gallery-card" style="padding:32px;">
+          <h2 style="font-size:1.4rem;margin-bottom:16px;">Photo Gallery</h2>
+          <div class="grid grid-3" style="gap:8px;">
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--blue-soft),var(--gold-soft));border-radius:8px;"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--gold-soft),var(--sand));border-radius:8px;"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--sand),var(--blue-soft));border-radius:8px;"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--blue-soft),var(--navy));border-radius:8px;"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--navy),var(--gold));border-radius:8px;"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--gold),var(--gold-soft));border-radius:8px;"></div>
+          </div>
+        </div>
+
+        <div class="card mt-4" id="m-deals-card" style="padding:32px;">
+          <h2 style="font-size:1.4rem;margin-bottom:16px;">Member Deals</h2>
+          <div class="card" style="padding:16px;background:var(--gold-soft);border-color:var(--gold);">
+            <div class="flex items-center gap-3">
+              <div style="font-size:2rem;">🎟️</div>
+              <div>
+                <div style="font-weight:700;color:var(--navy);">15% off for fellow Chamber members</div>
+                <div class="text-sm text-muted">Show your member ID at checkout. Expires Dec 2026.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-4" id="m-reviews-card" style="padding:32px;">
+          <h2 style="font-size:1.4rem;margin-bottom:16px;">Reviews</h2>
+          <div id="m-reviews-summary" style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+            <div id="m-rating-num" style="font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--gold-deep);">4.8</div>
+            <div>
+              <div id="m-rating-stars" style="color:var(--gold);">★★★★★</div>
+              <div id="m-rating-meta" class="text-sm text-muted">Based on 47 verified reviews</div>
+            </div>
+          </div>
+          <div class="card" style="padding:16px;margin-bottom:12px;background:var(--cream);">
+            <div style="color:var(--gold);">★★★★★</div>
+            <p class="mt-2" style="font-size:.92rem;">"Showed up on time, fair price, fixed it right the first time. They'll be our go-to from now on."</p>
+            <div class="text-xs text-muted mt-2">— Lisa M., Tarzana resident · 3 weeks ago</div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card" id="m-side-card" style="padding:24px;position:sticky;top:120px;">
+          <h3 style="font-size:1.05rem;margin-bottom:16px;">Contact</h3>
+          <div id="m-contact" style="display:flex;flex-direction:column;gap:10px;"></div>
+
+          <div class="divider"></div>
+
+          <h3 style="font-size:1.05rem;margin-bottom:12px;">Send a message</h3>
+          <form id="lead-form">
+            <div class="form-group"><label>Name</label><input type="text" required></div>
+            <div class="form-group"><label>Email</label><input type="email" required></div>
+            <div class="form-group"><label>Message</label><textarea rows="3" required></textarea></div>
+            <button type="submit" class="btn btn--gold btn--block">Send Inquiry</button>
+          </form>
+
+          <div class="divider"></div>
+
+          <a href="#" class="btn btn--outline btn--block">+ Add to my favorites</a>
+          <a href="#" class="btn btn--ghost btn--block mt-2">Share / Copy link</a>
+        </div>
+
+        <div class="card mt-4 profile-cta-card" id="m-side-cta" style="display:none;">
+          <h3>Get listed like this</h3>
+          <p class="text-sm" style="color:var(--slate-mid);margin-bottom:14px;">Join 800+ West Valley businesses that trust the Chamber to bring them visibility, leads, and community.</p>
+          <a href="../join.html" class="btn btn--gold btn--block">Become a Member</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="../js/partials.js"></script>
+<script src="../js/chamber.js"></script>
+<script>
+window.ChamberPartials.mount({ active: 'members', depth: 1 });
+
+function escapeHTML(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function setText(id, t) { const el = document.getElementById(id); if (el) el.textContent = t; }
+function setHTML(id, h) { const el = document.getElementById(id); if (el) el.innerHTML = h; }
+
+const id = new URLSearchParams(location.search).get('id');
+
+fetch('../data/directory.json').then(r => r.json()).then(data => {
+  const m = (id && data.find(x => x.id === id)) || data[0];
+  if (!m) return;
+
+  document.getElementById('page-title').textContent =
+    `${m.name} · ${m.chamberMember ? 'Chamber Member' : 'Community Business'} · Chamber`;
+  setText('bc-name', m.name);
+  setText('m-name', m.name);
+  setText('m-cat', [m.category, m.neighborhood].filter(Boolean).join(' · '));
+  setText('m-logo', m.logo || (m.name || '?').charAt(0).toUpperCase());
+
+  // Hero badges
+  const badges = [];
+  if (m.chamberMember) {
+    badges.push('<span class="cm-badge cm-badge--lg">Chamber Member</span>');
+  } else {
+    badges.push('<span class="cm-badge" style="background:var(--blue-soft);border-color:var(--blue-soft);color:var(--navy);">Community Business</span>');
+  }
+  if (m.tier && m.tier !== 'member' && m.tier !== 'community') {
+    badges.push(`<span class="tier tier--${escapeHTML(m.tier)}">${escapeHTML(m.tier)} Tier</span>`);
+  }
+  setHTML('m-badges', badges.join(''));
+
+  // About
+  const about = m.tagline || m.specialties ||
+    (m.features && m.features.length ? m.features.join(' · ') :
+      (m.chamberMember
+        ? `${m.name} is a proud member of the West Valley ~ Warner Center Chamber of Commerce.`
+        : `${m.name} is one of the businesses we track for the West Valley community directory.`));
+  setText('m-about', about);
+
+  // Quick facts
+  const facts = [];
+  if (m.subcategory)  facts.push(['Specialty', m.subcategory]);
+  if (m.priceRange)   facts.push(['Price', m.priceRange]);
+  if (m.hours)        facts.push(['Hours', m.hours]);
+  if (m.address)      facts.push(['Address', m.address]);
+  if (m.contactName)  facts.push(['Contact', m.contactName]);
+  setHTML('m-facts', facts.map(([k, v]) =>
+    `<div class="fact-row"><div class="fact-row__label">${escapeHTML(k)}</div><div class="fact-row__value">${escapeHTML(v)}</div></div>`
+  ).join(''));
+
+  // Tags
+  const tags = (m.tags && m.tags.length) ? m.tags : (m.features || []).slice(0, 6);
+  setHTML('m-tags', tags.map(t => `<span class="chip chip--blue">#${escapeHTML(t)}</span>`).join(''));
+
+  // Contact column
+  const c = document.getElementById('m-contact');
+  let contactHTML = '';
+  if (m.phone)    contactHTML += `<div>📞 <a href="tel:${m.phone.replace(/[^0-9+]/g, '')}">${escapeHTML(m.phone)}</a></div>`;
+  if (m.email)    contactHTML += `<div>✉️ <a href="mailto:${escapeHTML(m.email)}">${escapeHTML(m.email)}</a></div>`;
+  if (m.address)  contactHTML += `<div>📍 ${escapeHTML(m.address)}</div>`;
+  if (m.website)  contactHTML += `<div>🌐 <a href="${escapeHTML(m.website)}" target="_blank" rel="noopener">Visit website ↗</a></div>`;
+  if (!contactHTML) contactHTML = '<div class="text-sm text-muted">Contact details not yet on file. Reach out through the form below.</div>';
+  c.innerHTML = contactHTML;
+
+  // Rating block: only show if we actually have a rating
+  if (m.rating) {
+    const full = Math.round(m.rating);
+    setText('m-rating-num', m.rating.toFixed(1));
+    setText('m-rating-stars', '★★★★★'.slice(0, full) + '☆☆☆☆☆'.slice(0, 5 - full));
+    setText('m-rating-meta', m.reviewCount ? `Based on ${m.reviewCount.toLocaleString()} reviews` : 'Verified business reviews');
+  } else if (!m.chamberMember) {
+    // Hide reviews card entirely for non-rated community entries
+    const rc = document.getElementById('m-reviews-card');
+    if (rc) rc.style.display = 'none';
+  }
+
+  // Member-deals card: only show for chamber members
+  if (!m.chamberMember) {
+    const dc = document.getElementById('m-deals-card');
+    if (dc) dc.style.display = 'none';
+  }
+
+  // CTA: show "Become a member" CTA for community businesses
+  if (!m.chamberMember) {
+    const ctaCard = document.getElementById('m-cta-community-card');
+    if (ctaCard) ctaCard.style.display = '';
+    const sideCta = document.getElementById('m-side-cta');
+    if (sideCta) sideCta.style.display = '';
+  }
+}).catch(err => {
+  console.error('Failed to load directory:', err);
+});
+
+document.getElementById('lead-form').addEventListener('submit', e => {
+  e.preventDefault();
+  alert('Inquiry sent. In production: POST /api/members/lead → emails the business + logs in admin console.');
+});
+</script>
+
+</body>
+</html>

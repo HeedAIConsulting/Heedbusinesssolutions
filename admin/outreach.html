@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outreach · Diana's Console</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div>
+          <div class="admin-page-head__sub">AI-generated email sequences for prospective members · approve or send</div>
+          <h1>Outreach</h1>
+        </div>
+      </div>
+      <div class="admin-grid" style="grid-template-columns:1fr 2fr;">
+        <div class="admin-card">
+          <div class="admin-card__head"><div class="admin-card__title">Quick actions</div></div>
+          <div class="admin-card__body" style="display:flex;flex-direction:column;gap:8px;">
+            <button class="btn btn--gold">+ Generate sequence for new prospect</button>
+            <button class="btn btn--outline">Import prospects from CSV</button>
+            <button class="btn btn--outline">Find prospects via AI Concierge logs</button>
+            <button class="btn btn--outline">Reactivate lapsed members (14 found)</button>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__head"><div class="admin-card__title">In progress sequences (12)</div></div>
+          <div class="admin-card__body admin-card__body--p0">
+            <table class="admin-table">
+              <thead><tr><th>Prospect</th><th>Stage</th><th>Next send</th><th>Reply?</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Ventura Ridge Realty</strong><br><span class="text-xs text-muted">Real estate · Tarzana</span></td><td>Email 2 of 3</td><td>Mon May 4</td><td>—</td><td class="admin-actions"><button>Edit draft</button><button>Approve send</button></td></tr>
+                <tr><td><strong>Petite Patisserie</strong><br><span class="text-xs text-muted">Restaurant · Reseda</span></td><td>Email 3 of 3</td><td>Wed May 6</td><td>—</td><td class="admin-actions"><button>Edit draft</button><button>Approve send</button></td></tr>
+                <tr><td><strong>Sunset Pediatrics</strong><br><span class="text-xs text-muted">Healthcare · Woodland Hills</span></td><td>Email 1 of 3</td><td>Today 2pm</td><td>—</td><td class="admin-actions"><button>Edit draft</button><button>Approve send</button></td></tr>
+                <tr><td><strong>De Soto Dental</strong><br><span class="text-xs text-muted">Healthcare · Reseda</span></td><td>Replied 👋</td><td>Diana to respond</td><td>Yes — interested in mixer</td><td class="admin-actions"><button class="approve">Open thread</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="admin.js"></script>
+<script src="_stub.js"></script>
+<script>
+AdminShell.mount({ active: 'outreach' });
+</script>
+</body>
+</html>

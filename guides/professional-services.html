@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Services Guide · Lawyers, CPAs, Advisors · West Valley Chamber</title>
+<meta name="description" content="Attorneys, CPAs, financial advisors, insurance brokers, real-estate professionals, and business consultants — Chamber-vetted West Valley professionals across Tarzana, Woodland Hills, Reseda, and Warner Center.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+.guide-hero { background: linear-gradient(135deg, var(--navy), var(--blue)); color:#fff; padding:80px 0; position:relative; overflow:hidden; }
+.guide-hero::before { content:''; position:absolute; inset:0; background-image: radial-gradient(circle at 80% 0%, rgba(201,162,39,0.18), transparent 50%); pointer-events:none; }
+.guide-hero h1 { color:#fff; }
+.guide-hero > .container { position:relative; z-index:2; }
+.guide-nav { display:flex; gap:8px; flex-wrap:wrap; padding:16px; background:var(--paper); border-radius:var(--r-lg); margin-bottom:24px; position:sticky; top:64px; z-index:50; box-shadow:var(--shadow-sm); border:1px solid var(--line); }
+.guide-nav a { padding:.5rem .9rem; border-radius:var(--r-full); background:var(--cream); color:var(--slate); font-weight:600; font-size:.88rem; }
+.guide-nav a:hover, .guide-nav a.active { background:var(--navy); color:var(--gold); }
+.featured-listing { background:linear-gradient(135deg,var(--blue-soft),#fff); border:2px solid var(--blue); border-radius:var(--r-lg); padding:24px; margin-bottom:24px; display:grid; grid-template-columns:140px 1fr auto; gap:24px; align-items:center; position:relative; }
+.featured-listing::before { content:'★ Premium Sponsor'; position:absolute; top:-12px; left:24px; background:var(--gold); color:var(--navy); padding:4px 12px; border-radius:var(--r-full); font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-family:var(--mono); }
+.featured-listing__img { width:140px; height:140px; border-radius:var(--r-md); background:linear-gradient(135deg,var(--navy),var(--blue)); display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:3rem; }
+.standard-listing { background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); padding:18px; display:flex; gap:16px; align-items:flex-start; transition:var(--transition); }
+.standard-listing:hover { box-shadow:var(--shadow-sm); border-color:var(--blue); transform:translateY(-1px); }
+.standard-listing__img { width:64px; height:64px; border-radius:var(--r-md); background:linear-gradient(135deg,var(--blue-soft),var(--gold-soft)); display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0; }
+.listings-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+.listings-grid--3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+.editorial { background:var(--paper); border-left:4px solid var(--blue); padding:24px 28px; border-radius:0 var(--r-lg) var(--r-lg) 0; margin:24px 0; box-shadow:var(--shadow-sm); }
+.editorial h3 { font-size:1.15rem; color:var(--navy); margin-bottom:8px; }
+.editorial p { color:var(--slate-mid); margin-bottom:0; }
+.faq-item { border:1px solid var(--line); border-radius:var(--r-md); margin-bottom:12px; background:var(--paper); }
+.faq-item summary { padding:16px 20px; cursor:pointer; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center; }
+.faq-item summary::after { content:'+'; font-size:1.4rem; color:var(--gold-deep); }
+.faq-item[open] summary::after { content:'−'; }
+.faq-item p { padding:0 20px 20px; color:var(--slate-mid); margin:0; }
+.tip-card { background:var(--blue-soft); border:1px solid var(--blue); border-radius:var(--r-md); padding:18px; }
+.tip-card h4 { color:var(--navy); margin-bottom:6px; font-size:1rem; }
+.tip-card p { font-size:.9rem; color:var(--slate-mid); margin:0; }
+.case-study { background:linear-gradient(135deg, var(--navy), var(--blue)); color:#fff; border-radius:var(--r-lg); padding:32px; margin:24px 0; }
+.case-study h3 { color:#fff; margin-bottom:8px; }
+.case-study .quote { font-family:var(--serif); font-size:1.2rem; font-style:italic; line-height:1.5; margin:16px 0; color:rgba(255,255,255,.92); }
+.case-study .attribution { font-size:.85rem; color:var(--gold); font-weight:600; }
+@media (max-width: 800px) { .listings-grid, .listings-grid--3 { grid-template-columns: 1fr; } .featured-listing { grid-template-columns: 1fr; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "West Valley Professional Services Guide",
+  "description": "Attorneys, CPAs, financial advisors, insurance brokers, real-estate professionals and business consultants in Tarzana, Woodland Hills, Reseda and Warner Center.",
+  "numberOfItems": 28,
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "item": { "@type": "AccountingService", "name": "Warner Center CPA Group", "telephone": "(818) 555-0190", "address": { "@type": "PostalAddress", "addressLocality": "Warner Center", "addressRegion": "CA" } } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "LegalService", "name": "Valley Business Law Group", "address": { "@type": "PostalAddress", "addressLocality": "Tarzana" } } },
+    { "@type": "ListItem", "position": 3, "item": { "@type": "FinancialService", "name": "Topanga CPA & Wealth" } },
+    { "@type": "ListItem", "position": 4, "item": { "@type": "RealEstateAgent", "name": "West Valley Realty Group", "telephone": "(818) 555-0102" } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Best estate-planning attorney in Woodland Hills?", "acceptedAnswer": { "@type": "Answer", "text": "Topanga Estate Planning is the most-referred Chamber-member firm — they handle wills, living trusts, and probate. Average fee for a basic family trust: $2,800-$4,500. Free 30-min consult for Chamber members." } },
+    { "@type": "Question", "name": "How do I choose a CPA?", "acceptedAnswer": { "@type": "Answer", "text": "Three things: (1) Do they specialize in your industry? (2) Are they year-round or only tax-season? (3) Do they push you a quarterly KPI dashboard? Warner Center CPA Group, Topanga CPA &amp; Wealth, and Tarzana Bookkeeping all offer free Chamber-member consults." } },
+    { "@type": "Question", "name": "Best real-estate agent in Tarzana?", "acceptedAnswer": { "@type": "Answer", "text": "West Valley Realty Group is the largest member firm by 91356 transactions. Compass Tarzana, Coldwell Banker, and Rodeo Realty all have strong Tarzana teams. Always interview 2-3 before listing." } },
+    { "@type": "Question", "name": "Fee-only vs commission financial advisor — which?", "acceptedAnswer": { "@type": "Answer", "text": "Fee-only advisors (CFP, fiduciary) are better for retirement &amp; tax planning. Commission-based advisors are fine for insurance/annuity needs. The Chamber's 'Wealth Roundtable' lists which is which for every member firm." } },
+    { "@type": "Question", "name": "Average cost of a basic LLC formation?", "acceptedAnswer": { "@type": "Answer", "text": "$1,200-$1,800 with a Chamber-member attorney including operating agreement, EIN, and S-corp election review. CA $800 franchise tax is separate. DIY services like LegalZoom miss tax-election counseling." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="guide-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Guides</a> / Professional Services</div>
+    <div class="grid grid-2" style="align-items:center;gap:32px;">
+      <div>
+        <span class="eyebrow" style="background:var(--gold);color:var(--navy);">Professional Services Guide</span>
+        <h1 style="margin:12px 0 16px;">The trusted-professionals rolodex</h1>
+        <p style="font-size:1.15rem;color:rgba(255,255,255,.92);max-width:560px;">Attorneys, CPAs, financial advisors, insurance brokers, real-estate pros, business consultants. Chamber-vetted, neighbor-recommended, and the people other professionals send their families to.</p>
+        <div class="hero__stats" style="margin-top:24px;">
+          <div><div class="hero__stat-num">70</div><div class="hero__stat-lbl">Vetted Pros</div></div>
+          <div><div class="hero__stat-num">8</div><div class="hero__stat-lbl">Categories</div></div>
+          <div><div class="hero__stat-num">FREE</div><div class="hero__stat-lbl">Member consults</div></div>
+        </div>
+        <div class="flex gap-3 mt-5" style="flex-wrap:wrap;">
+          <a href="#attorneys" class="btn btn--gold">Find an Attorney</a>
+          <a href="#cpas" class="btn btn--outline" style="border-color:#fff;color:#fff;">Find a CPA</a>
+        </div>
+      </div>
+      <div class="card" style="padding:24px;">
+        <h3 style="font-size:1.05rem;margin-bottom:12px;color:var(--navy);">🤖 Pro-Services Concierge</h3>
+        <p class="text-sm text-muted mb-3">Tell us what you need: tax help, contract review, real-estate sale, insurance audit. We'll match.</p>
+        <button class="btn btn--primary btn--block" onclick="document.querySelector('.ai-widget__btn').click();">Open Concierge</button>
+        <div class="mt-3 text-xs text-muted">Try: "Estate planning attorney" · "CPA for my LLC" · "Selling my Tarzana home"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream" style="padding:48px 0;">
+  <div class="container">
+
+    <div class="editorial">
+      <h3>Why this guide is the safest place to start</h3>
+      <p>Because every professional listed has been (1) vetted by the Chamber's Professional Standards Committee, (2) referenced by at least three other Chamber members in the last 24 months, and (3) holds an active, in-good-standing license. We update quarterly. Premium listings (gold-bordered) carry deeper bios, case studies, and lead-capture forms — and the placement fee subsidizes the Chamber's pro-bono legal &amp; tax help-line for veterans and seniors.</p>
+    </div>
+
+    <div class="guide-nav">
+      <a href="#attorneys" class="active">Attorneys</a>
+      <a href="#cpas">CPAs &amp; Tax</a>
+      <a href="#advisors">Financial Advisors</a>
+      <a href="#insurance">Insurance Brokers</a>
+      <a href="#real-estate">Real Estate</a>
+      <a href="#title">Title &amp; Escrow</a>
+      <a href="#consultants">Business Consultants</a>
+      <a href="#bankers">Bankers &amp; Lenders</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <!-- ==================== ATTORNEYS ==================== -->
+    <div id="attorneys">
+      <h2 style="margin-bottom:8px;">Attorneys</h2>
+      <p class="lead" style="margin-bottom:24px;">Estate planning, business formation, employment, IP, real-estate, family. Chamber members offer free 30-min consults — start here.</p>
+
+      <div class="featured-listing">
+        <div class="featured-listing__img">⚖️</div>
+        <div>
+          <div class="flex gap-2 mb-2" style="flex-wrap:wrap;"><span class="cm-badge">Chamber Member</span><span class="tier tier--platinum">Platinum Sponsor</span><span class="chip">CA Bar #189442</span><span class="chip chip--green">Free 30 min</span></div>
+          <h3 style="font-size:1.4rem;margin-bottom:6px;">Valley Business Law Group</h3>
+          <p style="color:var(--slate-mid);margin-bottom:8px;">Business formation, contracts, employment, M&amp;A under $10M. Six-attorney firm; managing partner Sarah Lin chairs the Chamber's Legal Committee. Free 30-min consult for Chamber members; flat-fee LLC formation $1,200 (vs $2,400 typical). Specialty industries: medical practices, restaurants, professional service firms.</p>
+          <div class="text-sm text-muted">📍 18345 Ventura Blvd, Tarzana · 📞 (818) 555-0125 · ⭐ 5.0 (48 reviews) · ⏱️ Same-week consults</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="#" class="btn btn--gold">Free Consult</a>
+          <a href="#" class="btn btn--ghost btn--sm">Practice areas →</a>
+        </div>
+      </div>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">📜</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Topanga Estate Planning <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Wills · trusts · probate · 22500 Burbank Blvd, Woodland Hills</div><div class="flex gap-2"><span class="chip">Family trusts $2,800-$4,500</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">👨‍⚖️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">West Valley Employment Law <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Employer-side · Reseda · 7625 Reseda Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">©️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana IP &amp; Trademark</h4><div class="text-sm text-muted mb-2">Trademarks · copyrights · 18345 Ventura</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🤝</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Warner Center M&amp;A Counsel <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Buy-side / sell-side · Owensmouth Ave</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏠</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Real Estate Law Tarzana</h4><div class="text-sm text-muted mb-2">Title · landlord/tenant · 18717 Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">👨‍👩‍👧</div><div style="flex:1;"><h4 style="font-size:1.05rem;">West Valley Family Law <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Divorce · custody · prenups · Burbank Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🚗</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Reseda Personal Injury</h4><div class="text-sm text-muted mb-2">Auto · slip-and-fall · Sherman Way</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📋</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Immigration Pros Tarzana <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Green cards · citizenship · Ventura Blvd</div></div></div>
+      </div>
+
+      <div class="ad-slot mt-6" style="margin-top:32px;">📣 Attorney Sponsor slot — 22 inquiries/month avg · <a href="../sponsor.html" style="margin-left:8px;color:var(--navy);">Reserve →</a></div>
+    </div>
+
+    <!-- ==================== CPAS ==================== -->
+    <div id="cpas" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">CPAs &amp; Tax Professionals</h2>
+      <p class="lead" style="margin-bottom:24px;">Year-round CPAs, EAs, bookkeepers. Tax-season-only providers excluded — you want someone who answers calls in May.</p>
+
+      <div class="featured-listing">
+        <div class="featured-listing__img">📊</div>
+        <div>
+          <div class="flex gap-2 mb-2" style="flex-wrap:wrap;"><span class="cm-badge">Chamber Member</span><span class="tier tier--gold">Gold Sponsor</span><span class="chip">14 CPAs</span><span class="chip chip--green">Year-round</span></div>
+          <h3 style="font-size:1.4rem;margin-bottom:6px;">Warner Center CPA Group</h3>
+          <p style="color:var(--slate-mid);margin-bottom:8px;">Tax, audit, advisory for small business and high-income individuals. Specializes in real-estate professionals, medical practices, restaurant groups, and S-corp owners. QuickBooks &amp; Xero certified. Free 30-min Chamber consult; first-year tax return discounted 15% for switchers; quarterly one-page KPI dashboard included with bookkeeping clients.</p>
+          <div class="text-sm text-muted">📍 21800 Oxnard St, Warner Center · 📞 (818) 555-0190 · 👥 14 staff CPAs · ⭐ 4.9 (167 reviews)</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="#" class="btn btn--gold">Free Consult</a>
+          <a href="tel:8185550190" class="btn btn--ghost btn--sm">📞 Call</a>
+        </div>
+      </div>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">💼</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana Bookkeeping <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">QuickBooks · 18399 Ventura Blvd · $350-650/mo</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📈</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Topanga CPA &amp; Wealth <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">CPAs + CFPs · Woodland Hills · One-stop</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🧮</div><div style="flex:1;"><h4 style="font-size:1.05rem;">West Valley Tax Advisors</h4><div class="text-sm text-muted mb-2">EA-led · Reseda · 7301 Reseda Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📅</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Year-Round Tax Pros <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Quarterly check-ins · Tarzana</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏥</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Medical Practice CPA Group</h4><div class="text-sm text-muted mb-2">Physicians + dentists · Encino</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🍽️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Hospitality Tax Tarzana</h4><div class="text-sm text-muted mb-2">Restaurant + tip reporting</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== ADVISORS ==================== -->
+    <div id="advisors" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Financial Advisors</h2>
+      <p class="lead" style="margin-bottom:24px;">Retirement planning, investment management, tax-deferred strategies. Fee-only fiduciaries called out below.</p>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">📊</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Topanga Wealth Partners <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Fee-only fiduciary · CFP · Woodland Hills</div><div class="flex gap-2"><span class="chip">$1M+ assets</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">💰</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Valley Wealth Strategies</h4><div class="text-sm text-muted mb-2">Fee-only · Reseda · Retirement planning</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📈</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Edward Jones — Tarzana Office <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Commission-based · 18717 Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🛡️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Northwestern Mutual Warner Center</h4><div class="text-sm text-muted mb-2">Insurance &amp; investments combo</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏦</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Merrill Lynch — Encino</h4><div class="text-sm text-muted mb-2">High-net-worth · 17321 Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">💼</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Westwood Financial WH <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Small-biz 401(k) specialty</div></div></div>
+      </div>
+
+      <div class="case-study">
+        <h3>Member Case Study</h3>
+        <p class="quote">"After 18 years with the same broker, we did the Chamber's Wealth Roundtable. Found out we were paying 1.4% in hidden fund-level fees. Switched to a fee-only fiduciary on the list. Net savings projected: $312k over 20 yrs."</p>
+        <div class="attribution">— Anonymous Chamber-member family, Woodland Hills (used with permission)</div>
+      </div>
+    </div>
+
+    <!-- ==================== INSURANCE ==================== -->
+    <div id="insurance" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Insurance Brokers</h2>
+      <p class="lead" style="margin-bottom:24px;">Independent brokers (multi-carrier) called out — they almost always beat the captive agents on premium.</p>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🏠</div><div style="flex:1;"><h4 style="font-size:1.05rem;">West Valley Insurance Group <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Personal &amp; commercial · 5+ carriers · 6310 Topanga Canyon</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🚗</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana Auto Insurance Co.</h4><div class="text-sm text-muted mb-2">Auto + home bundles · Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🛡️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana Cyber Insurance Brokers <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Cyber liability · small-business specialty</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">⚕️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Sierra Health Benefits West <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Group health · Reseda</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎯</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Pro Liability Brokers WH</h4><div class="text-sm text-muted mb-2">E&amp;O for professionals</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🌳</div><div style="flex:1;"><h4 style="font-size:1.05rem;">CA Wildfire Insurance Specialists</h4><div class="text-sm text-muted mb-2">FAIR Plan navigators · Topanga + hillside</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== REAL ESTATE ==================== -->
+    <div id="real-estate" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Real Estate Professionals</h2>
+      <p class="lead" style="margin-bottom:24px;">Listing agents, buyers' specialists, and the relocation pros. The Tarzana market is its own animal — interview locals.</p>
+
+      <div class="featured-listing">
+        <div class="featured-listing__img">🏡</div>
+        <div>
+          <div class="flex gap-2 mb-2" style="flex-wrap:wrap;"><span class="cm-badge">Chamber Member</span><span class="tier tier--gold">Gold Sponsor</span><span class="chip">DRE #01825492</span></div>
+          <h3 style="font-size:1.4rem;margin-bottom:6px;">West Valley Realty Group</h3>
+          <p style="color:var(--slate-mid);margin-bottom:8px;">Specializing in Woodland Hills, Tarzana, and Encino homes — 480+ closed transactions in the 91356/91364/91367 trifecta in 2024-25. Founder Alex Rivera chairs the Chamber's Real Estate Committee. Chamber-member sellers get 0.25% reduced listing fee plus complimentary professional staging.</p>
+          <div class="text-sm text-muted">📍 22500 Ventura Blvd, Woodland Hills · 📞 (818) 555-0102 · ⭐ 4.9 (231 reviews) · 🏆 Top 1% LA agents 2024</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="#" class="btn btn--gold">Free Home Eval</a>
+          <a href="tel:8185550102" class="btn btn--ghost btn--sm">📞 Call</a>
+        </div>
+      </div>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🏘️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Compass — Tarzana</h4><div class="text-sm text-muted mb-2">18345 Ventura Blvd · luxury &amp; estates</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏠</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Coldwell Banker Reseda <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">7301 Reseda Blvd · entry-mid market</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏛️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Rodeo Realty WH</h4><div class="text-sm text-muted mb-2">22500 Ventura Blvd · luxury</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🌅</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Sotheby's International — Encino</h4><div class="text-sm text-muted mb-2">17321 Ventura Blvd · Hidden Hills, Calabasas</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📍</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Keller Williams Warner Center <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">21800 Oxnard St · Big team, full service</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏢</div><div style="flex:1;"><h4 style="font-size:1.05rem;">West Valley Realty Commercial <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Investment, retail, office leasing</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== TITLE ==================== -->
+    <div id="title" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Title &amp; Escrow</h2>
+      <p class="lead" style="margin-bottom:24px;">Speed and accuracy — your transaction's pivot point. Every title company below has Chamber-member buyers' fee discount.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">📋</div><div style="flex:1;"><h4 style="font-size:1.05rem;">First American Title — WH <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">21800 Oxnard St · Warner Center</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🔐</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Fidelity National Title — Tarzana</h4><div class="text-sm text-muted mb-2">18345 Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📑</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Stewart Title Reseda</h4><div class="text-sm text-muted mb-2">7301 Reseda Blvd · 5-day close avg</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🤝</div><div style="flex:1;"><h4 style="font-size:1.05rem;">West Valley Escrow Co. <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Independent · Burbank Blvd</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== CONSULTANTS ==================== -->
+    <div id="consultants" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Business Consultants</h2>
+      <p class="lead" style="margin-bottom:24px;">Fractional CFOs, ops, marketing strategy, exit planning. The "what do I do now" pros.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">📊</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Valley Fractional CFO Group <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">$3M-$50M revenue companies · WH</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎯</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana Strategy Partners</h4><div class="text-sm text-muted mb-2">Marketing strategy · brand · 18345 Ventura</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🚀</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Heed Business Solutions <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">AI/website/lead-gen · Woodland Hills</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏆</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Exit Planning Pros — Warner Ctr</h4><div class="text-sm text-muted mb-2">Owner-exit + valuation</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">⚙️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Operations Coach Reseda</h4><div class="text-sm text-muted mb-2">Process &amp; ops for &lt;50 employees</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">👨‍🏫</div><div style="flex:1;"><h4 style="font-size:1.05rem;">SBDC @ Pierce College</h4><div class="text-sm text-muted mb-2">Free counseling · 6201 Winnetka Ave</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== BANKERS ==================== -->
+    <div id="bankers" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Bankers &amp; Lenders</h2>
+      <p class="lead" style="margin-bottom:24px;">Private bankers, SBA lenders, mortgage brokers. The folks who get returned calls.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🏦</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Bank of the Sierra — WH <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">SBA preferred lender · Top 10 LA County</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">💳</div><div style="flex:1;"><h4 style="font-size:1.05rem;">City National Bank — Warner Ctr</h4><div class="text-sm text-muted mb-2">Private + business banking</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">💵</div><div style="flex:1;"><h4 style="font-size:1.05rem;">US Bank Tarzana <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Practice loans · medical financing</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏠</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Caliber Home Loans — WH</h4><div class="text-sm text-muted mb-2">Mortgage broker · jumbo + conventional</div></div></div>
+      </div>
+    </div>
+
+    <!-- TIPS -->
+    <div style="margin-top:64px;">
+      <h2 style="margin-bottom:16px;">How to Hire a Pro</h2>
+      <div class="listings-grid--3">
+        <div class="tip-card"><h4>📞 Always 3 calls</h4><p>Even on a $300 task. Chamber-member pros expect this; the conversation reveals fit better than the quote.</p></div>
+        <div class="tip-card"><h4>🤝 Verify the license</h4><p>CA Bar number, CSLB, DRE — every license is publicly searchable. We list license #s on Premium listings.</p></div>
+        <div class="tip-card"><h4>📅 Annual check-in</h4><p>Once a year, your CPA + attorney + insurance broker should sit down with you for 60 min. Chamber hosts free Q4 group meetings.</p></div>
+        <div class="tip-card"><h4>⏱️ 24-hr response test</h4><p>If they don't return your initial call in one business day, they won't return your urgent call either. Move on.</p></div>
+        <div class="tip-card"><h4>📑 Engagement letters</h4><p>Always required. If they don't send one, don't proceed. Real pros never skip this.</p></div>
+        <div class="tip-card"><h4>💼 Specialty matters</h4><p>A great divorce attorney is a mediocre business attorney. Hire the specialty, not the brand.</p></div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div id="faq" style="margin-top:64px;">
+      <h2 style="margin-bottom:16px;">Pro-Services FAQ</h2>
+      <details class="faq-item" open><summary>Best estate-planning attorney in Woodland Hills?</summary><p>Topanga Estate Planning is the most-referred Chamber-member firm — wills, living trusts, probate. Average fee for a basic family trust: $2,800-$4,500. Free 30-min consult for Chamber members.</p></details>
+      <details class="faq-item"><summary>How do I choose a CPA?</summary><p>Three things: (1) Industry specialty? (2) Year-round availability? (3) Quarterly KPI dashboard? Warner Center CPA Group, Topanga CPA &amp; Wealth, and Tarzana Bookkeeping all offer free Chamber consults.</p></details>
+      <details class="faq-item"><summary>Best real-estate agent in Tarzana?</summary><p>West Valley Realty Group is the largest member firm by 91356 transactions. Compass Tarzana, Coldwell Banker, Rodeo Realty all have strong teams. Always interview 2-3.</p></details>
+      <details class="faq-item"><summary>Fee-only vs commission financial advisor?</summary><p>Fee-only (CFP, fiduciary) is better for retirement &amp; tax planning. Commission-based is fine for insurance/annuity needs. The Chamber's Wealth Roundtable lists which is which for every member firm.</p></details>
+      <details class="faq-item"><summary>Average cost of a basic LLC formation?</summary><p>$1,200-$1,800 with a Chamber-member attorney including operating agreement, EIN, and S-corp election review. CA $800 franchise tax is separate.</p></details>
+    </div>
+
+    <!-- CTA -->
+    <div class="card mt-6" style="margin-top:48px;padding:40px;background:var(--navy);color:#fff;border:none;text-align:center;">
+      <span class="eyebrow eyebrow--navy">For Professional Service Members</span>
+      <h2 style="color:#fff;margin:8px 0 12px;">Be the professional Chamber members refer first</h2>
+      <p style="color:rgba(255,255,255,.85);max-width:620px;margin:0 auto 24px;">Premium Pro-Services listings include downloadable resources (sample contracts, audit checklists), case studies, license verification badges, lead-capture forms, and AI Concierge inclusion. Highest-converting placement on the Chamber site by 2025 member survey ($1.6M+ in tracked referrals). Title sponsorship: $7,800/yr.</p>
+      <div class="flex gap-3" style="justify-content:center;flex-wrap:wrap;">
+        <a href="../sponsor.html#premium-listings" class="btn btn--gold btn--lg">Premium Listing Plans ›</a>
+        <a href="../advertise.html" class="btn btn--outline btn--lg" style="border-color:#fff;color:#fff;">Sponsor This Guide</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="../js/partials.js"></script>
+<script src="../js/chamber.js"></script>
+<script>
+ChamberPartials.mount({active:'guides', depth:1});
+document.querySelectorAll('.guide-nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.guide-nav a').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

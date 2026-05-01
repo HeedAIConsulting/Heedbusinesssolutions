@@ -1,0 +1,24 @@
+{
+  "lists": [
+    { "id": "weekly", "name": "The West Valley Weekly", "cadence": "Friday mornings", "audience": "All", "description": "Roundup of events, member spotlights, and what to do this weekend across Tarzana, Woodland Hills, Reseda & Warner Center.", "subscribers": 4218 },
+    { "id": "parents", "name": "Valley Parents", "cadence": "Monthly (1st Thursday)", "audience": "Parents", "description": "Schools, kid activities, pediatric and family services from chamber members.", "subscribers": 1109 },
+    { "id": "dining", "name": "Dine SFV", "cadence": "Bi-weekly Sundays", "audience": "Foodies", "description": "Restaurant openings, member deals, chef interviews, weekend brunch picks.", "subscribers": 2305 },
+    { "id": "business", "name": "Valley Biz Brief", "cadence": "Weekly Tuesdays", "audience": "Business owners", "description": "Small-business tips, regulation updates, AI tools, peer profiles.", "subscribers": 1873 },
+    { "id": "wellness", "name": "Wellness Network Digest", "cadence": "Monthly (3rd Tuesday)", "audience": "Health-focused", "description": "Spas, fitness, healthcare, and integrative-medicine member spotlights.", "subscribers": 854 },
+    { "id": "events", "name": "This Week in the Valley", "cadence": "Sundays", "audience": "All", "description": "Every Chamber and member event in the next 7 days.", "subscribers": 3210 },
+    { "id": "sponsors", "name": "Sponsor Insider", "cadence": "Quarterly", "audience": "Sponsors only", "description": "Performance reports, upcoming high-visibility opportunities, and tier benefits walkthrough.", "subscribers": 87 },
+    { "id": "realestate", "name": "Valley Real Estate", "cadence": "Monthly", "audience": "Real estate", "description": "Listings, market data, member realtor spotlights, lender deals.", "subscribers": 612 }
+  ],
+  "archive": [
+    { "slug": "2025-11-21-ai-real-world-use-cases", "list": "weekly", "title": "We are always one step ahead of our time", "subtitle": "AI: Real-world use cases for chambers", "date": "2025-11-21", "author": "Diana Williams" },
+    { "slug": "2025-11-14-thanksgiving-mixer", "list": "weekly", "title": "Thanksgiving Mixer + November ribbon cuttings", "date": "2025-11-14", "author": "Diana Williams" },
+    { "slug": "2025-12-19-christmas-party-recap", "list": "weekly", "title": "Christmas party recap + a peek at 2026", "date": "2025-12-19", "author": "Diana Williams" },
+    { "slug": "2026-01-09-state-of-the-chamber", "list": "weekly", "title": "State of the Chamber — 2026 priorities", "date": "2026-01-09", "author": "Diana Williams" },
+    { "slug": "2026-02-13-valentines-deals", "list": "dining", "title": "Where to take your love (Dine SFV February)", "date": "2026-02-13", "author": "The Chamber Team" },
+    { "slug": "2026-02-26-volunteer-showcase", "list": "weekly", "title": "Two opportunities to showcase your business", "date": "2026-02-26", "author": "Felicia Paust" },
+    { "slug": "2026-03-12-vapi-festival-preview", "list": "events", "title": "VAPI Cultural Festival May 2 — call for sponsors", "date": "2026-03-12", "author": "Felicia Paust" },
+    { "slug": "2026-04-04-q1-economic-outlook", "list": "business", "title": "Q1 West Valley economic outlook", "date": "2026-04-04", "author": "The Chamber Team" },
+    { "slug": "2026-04-25-may-events-roundup", "list": "events", "title": "May events roundup — VAPI Fest, Mountaingate breakfast & more", "date": "2026-04-25", "author": "Felicia Paust" },
+    { "slug": "2026-05-01-grateful-hearts-callout", "list": "weekly", "title": "Grateful Hearts season is here — volunteer call", "date": "2026-05-01", "author": "Diana Williams" }
+  ]
+}

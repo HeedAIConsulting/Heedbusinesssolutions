@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Billing · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div>
+          <div class="admin-page-head__sub">Operations</div>
+          <h1>Billing & Square</h1>
+          <p class="text-muted">All transactions, payouts, and recurring subscriptions in one place.</p>
+        </div>
+        <div class="flex gap-3">
+          <button class="btn btn--outline">Export CSV</button>
+          <button class="btn btn--outline">QuickBooks sync</button>
+          <a href="#" class="btn btn--gold">Send invoice</a>
+        </div>
+      </div>
+
+      <div class="admin-stat-grid">
+        <div class="admin-stat"><div class="admin-stat__label">Revenue (MTD)</div><div class="admin-stat__num">$48,290</div><div class="admin-stat__delta admin-stat__delta--up">▲ 18% MoM</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Net (after Square)</div><div class="admin-stat__num">$46,847</div><div class="admin-stat__delta">2.99% + 30¢</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Recurring MRR</div><div class="admin-stat__num">$22,540</div><div class="admin-stat__delta admin-stat__delta--up">▲ $1,840</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Outstanding (overdue)</div><div class="admin-stat__num">$3,200</div><div class="admin-stat__delta admin-stat__delta--down">7 members</div></div>
+      </div>
+
+      <div class="admin-grid" style="grid-template-columns:2fr 1fr;">
+        <div class="admin-card">
+          <div class="admin-card__head">
+            <div class="admin-card__title">Recent transactions</div>
+            <div style="display:flex;gap:8px;">
+              <select style="padding:.4rem .6rem;border:1px solid var(--line);border-radius:6px;font-size:.85rem;"><option>All sources</option><option>Membership</option><option>Event</option><option>Sponsorship</option><option>Premium Listing</option><option>Donation</option><option>Ad</option></select>
+              <select style="padding:.4rem .6rem;border:1px solid var(--line);border-radius:6px;font-size:.85rem;"><option>Last 30 days</option><option>This month</option><option>Last quarter</option><option>YTD</option></select>
+            </div>
+          </div>
+          <div class="admin-card__body admin-card__body--p0">
+            <table class="admin-table">
+              <thead><tr><th>Date</th><th>Member / Source</th><th>Type</th><th>Amount</th><th>Net</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td class="text-sm">Apr 30 · 9:18a</td><td><strong>Marriott Warner Center</strong></td><td>Membership renewal</td><td>$6,000.00</td><td>$5,820.00</td><td><span class="admin-pill admin-pill--green">Settled</span></td></tr>
+                <tr><td class="text-sm">Apr 30 · 7:42a</td><td><strong>Ethos Fitness</strong></td><td>Premium Listing</td><td>$99.00</td><td>$96.04</td><td><span class="admin-pill admin-pill--green">Settled</span></td></tr>
+                <tr><td class="text-sm">Apr 29 · 6:12p</td><td><strong>Various (5 tickets)</strong></td><td>Tomahawk & Tequila</td><td>$225.00</td><td>$218.27</td><td><span class="admin-pill admin-pill--green">Settled</span></td></tr>
+                <tr><td class="text-sm">Apr 29 · 3:08p</td><td><strong>Valley Master Plumbing</strong></td><td>Mixer Sponsorship</td><td>$1,500.00</td><td>$1,455.21</td><td><span class="admin-pill admin-pill--green">Settled</span></td></tr>
+                <tr><td class="text-sm">Apr 29 · 11:44a</td><td><strong>Tarzana Family Dental</strong></td><td>Newsletter Ad</td><td>$450.00</td><td>$436.27</td><td><span class="admin-pill admin-pill--green">Settled</span></td></tr>
+                <tr><td class="text-sm">Apr 28</td><td><strong>Anonymous donor</strong></td><td>Donation</td><td>$1,000.00</td><td>$970.10</td><td><span class="admin-pill admin-pill--green">Settled</span></td></tr>
+                <tr><td class="text-sm">Apr 28</td><td><strong>WH Camera & Telescopes</strong></td><td>Membership renewal</td><td>$2,500.00</td><td>$2,425.20</td><td><span class="admin-pill admin-pill--green">Settled</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="admin-grid" style="gap:20px;">
+          <div class="admin-card">
+            <div class="admin-card__head"><div class="admin-card__title">Square account</div></div>
+            <div class="admin-card__body" style="font-size:.92rem;">
+              <div class="flex justify-between mb-2"><span>Status</span><span class="admin-pill admin-pill--green">Connected</span></div>
+              <div class="flex justify-between mb-2"><span>Available balance</span><strong>$8,420.18</strong></div>
+              <div class="flex justify-between mb-2"><span>Next payout</span><strong>Tomorrow 8a</strong></div>
+              <div class="flex justify-between mb-2"><span>Bank account</span><span class="text-muted">•••• 4892</span></div>
+              <div class="divider"></div>
+              <button class="btn btn--outline btn--block btn--sm">Square dashboard ↗</button>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__head"><div class="admin-card__title">Heed revenue share</div></div>
+            <div class="admin-card__body" style="font-size:.92rem;">
+              <p class="text-muted text-sm" style="margin-bottom:12px;">Heed Business Solutions earns 5% of all transactions in exchange for the platform.</p>
+              <div class="flex justify-between mb-2"><span>This month</span><strong>$2,414.50</strong></div>
+              <div class="flex justify-between mb-2"><span>Year to date</span><strong>$18,720</strong></div>
+              <div class="flex justify-between mb-2"><span>Auto-remit</span><span class="admin-pill admin-pill--green">On</span></div>
+              <a href="#" class="text-sm">View agreement →</a>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__head"><div class="admin-card__title">Overdue invoices</div></div>
+            <div class="admin-card__body" style="font-size:.92rem;">
+              <div class="flex justify-between mb-2"><span>Tarzana Bookkeeping</span><strong style="color:var(--red);">$600 · 7d</strong></div>
+              <div class="flex justify-between mb-2"><span>SoCal Native Garden</span><strong style="color:var(--red);">$300 · 4d</strong></div>
+              <button class="btn btn--gold btn--block btn--sm mt-3">Send AI dunning sequence</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div data-admin="ai"></div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="admin.js"></script>
+<script>AdminShell.mount({active:'billing'});</script>
+</body>
+</html>

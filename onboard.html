@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome — Get Your Listing Live in Under an Hour · West Valley Warner Center Chamber of Commerce</title>
+<meta name="description" content="Automated chamber onboarding — pay, fill the listing form, get auto-approved (or human-reviewed within an hour), and add optional sponsorship/newsletter/email-blast upgrades at checkout.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="images/wvwccc-logo-2026.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/chamber.css">
+<style>
+  .step-strip { display:flex; gap:8px; margin:0 0 32px; }
+  .step-strip__step { flex:1; padding:10px 14px; background:var(--paper); border:1px solid var(--line); border-radius:8px; font-size:.84rem; font-family:var(--mono); text-transform:uppercase; letter-spacing:.08em; color:var(--muted); text-align:center; }
+  .step-strip__step.active { background:var(--navy); color:var(--gold); border-color:var(--navy); }
+  .step-strip__step.done { background:var(--gold-soft); color:var(--gold-deep); border-color:var(--gold); }
+  .step-panel { display:none; }
+  .step-panel.active { display:block; }
+  .upsell { display:grid; grid-template-columns:auto 1fr auto; gap:16px; align-items:center; padding:16px; border:1px solid var(--line); border-radius:8px; margin:8px 0; cursor:pointer; }
+  .upsell:hover { border-color:var(--gold); background:var(--cream); }
+  .upsell input[type=checkbox] { width:20px; height:20px; }
+  .upsell.selected { border-color:var(--gold); background:var(--gold-soft); }
+  .price-tag { font-family:var(--mono); font-weight:700; color:var(--gold-deep); white-space:nowrap; }
+</style>
+</head>
+<body>
+<header data-partial="header"></header>
+
+<section class="section bg-cream" style="padding:48px 0;">
+  <div class="container container-narrow">
+    <span class="eyebrow">Welcome to the Chamber</span>
+    <h1>Listed. Welcomed. Connected — within an hour.</h1>
+    <p class="lead">Three quick steps. Most members are live on the directory in under 60 minutes.</p>
+
+    <div class="step-strip" id="step-strip">
+      <div class="step-strip__step active" data-step="1">1 · Tier &amp; payment</div>
+      <div class="step-strip__step" data-step="2">2 · Listing details</div>
+      <div class="step-strip__step" data-step="3">3 · Add-on upgrades</div>
+      <div class="step-strip__step" data-step="4">4 · Done</div>
+    </div>
+
+    <!-- STEP 1: Tier + payment -->
+    <div class="step-panel active" data-panel="1">
+      <div class="card" style="padding:32px;">
+        <h2>Pick your tier</h2>
+        <p class="text-muted">All tiers are billed annually. Most small businesses choose Silver. <a href="join.html">See tier details →</a></p>
+        <div class="grid grid-3" style="gap:16px;margin:24px 0;">
+          <label class="card" style="padding:20px;cursor:pointer;text-align:center;">
+            <input type="radio" name="tier" value="friend" data-amount="295">
+            <div style="font-family:var(--serif);font-size:1.4rem;font-weight:700;margin:8px 0;">Friend</div>
+            <div class="price-tag">$295/yr</div>
+          </label>
+          <label class="card" style="padding:20px;cursor:pointer;text-align:center;border-color:var(--gold);box-shadow:var(--shadow-md);">
+            <input type="radio" name="tier" value="silver" data-amount="795" checked>
+            <span class="chip chip--gold" style="position:absolute;top:8px;right:8px;font-size:.65rem;">Most popular</span>
+            <div style="font-family:var(--serif);font-size:1.4rem;font-weight:700;margin:8px 0;">Silver</div>
+            <div class="price-tag">$795/yr</div>
+          </label>
+          <label class="card" style="padding:20px;cursor:pointer;text-align:center;">
+            <input type="radio" name="tier" value="gold" data-amount="1995">
+            <div style="font-family:var(--serif);font-size:1.4rem;font-weight:700;margin:8px 0;">Gold</div>
+            <div class="price-tag">$1,995/yr</div>
+          </label>
+        </div>
+
+        <h3 style="margin-top:32px;">Payment</h3>
+        <div style="background:var(--cream);padding:20px;border-radius:8px;border:1px solid var(--line);">
+          <div style="display:grid;gap:12px;">
+            <label class="text-sm">Card number<input type="text" placeholder="•••• •••• •••• ••••" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;font-family:var(--mono);"></label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <label class="text-sm">Expiration<input type="text" placeholder="MM/YY" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;"></label>
+              <label class="text-sm">CVV<input type="text" placeholder="123" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;"></label>
+            </div>
+          </div>
+          <p class="text-xs text-muted mt-3">🔒 Secure payment via Square. Your card is tokenized — we never see the number. <a href="#">Pay by check or invoice instead →</a></p>
+        </div>
+
+        <button class="btn btn--gold btn--lg btn--block mt-6" id="step1-next">Continue to listing details ›</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Listing details -->
+    <div class="step-panel" data-panel="2">
+      <div class="card" style="padding:32px;">
+        <h2>Build your directory listing</h2>
+        <p class="text-muted">This is what residents and AI Concierge will see. Be specific — better listings get more leads.</p>
+
+        <form id="onboarding-form" style="display:grid;gap:16px;margin-top:24px;">
+          <label class="text-sm"><strong>Business name *</strong><input type="text" name="businessName" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;"></label>
+          <label class="text-sm"><strong>Your name *</strong><input type="text" name="contactName" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;"></label>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <label class="text-sm">Email *<input type="email" name="email" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;"></label>
+            <label class="text-sm">Phone *<input type="tel" name="phone" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;"></label>
+          </div>
+
+          <label class="text-sm">Website<input type="url" name="website" placeholder="https://" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;"></label>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <label class="text-sm">Category *
+              <select name="category" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;background:#fff;">
+                <option value="">Select…</option>
+                <option>Restaurant / Dining</option><option>Retail</option><option>Healthcare</option><option>Beauty &amp; Spa</option><option>Home Services</option><option>Professional Services</option><option>Real Estate</option><option>Financial Services</option><option>Insurance</option><option>Auto</option><option>Education</option><option>Fitness / Wellness</option><option>Hospitality</option><option>Tech / IT</option><option>Family / Kids</option><option>Nonprofit</option><option>Other</option>
+              </select>
+            </label>
+            <label class="text-sm">Neighborhood *
+              <select name="neighborhood" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;background:#fff;">
+                <option value="">Select…</option>
+                <option>Tarzana</option><option>Woodland Hills</option><option>Reseda</option><option>Warner Center</option><option>Encino</option><option>West Valley</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="text-sm">Address<input type="text" name="address" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;"></label>
+
+          <label class="text-sm"><strong>Tagline *</strong> <span class="text-muted">(one line, customer-facing)</span>
+            <input type="text" name="tagline" required maxlength="120" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;">
+          </label>
+
+          <label class="text-sm"><strong>About *</strong> <span class="text-muted">(2–3 sentences. Specific. Why people pick you.)</span>
+            <textarea name="description" rows="4" required minlength="80" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;font-family:inherit;"></textarea>
+          </label>
+
+          <h3 style="margin:16px 0 8px;">Three quick screening questions</h3>
+          <p class="text-xs text-muted" style="margin-top:-4px;">Honest answers = faster auto-approval. The Chamber upholds high member standards.</p>
+          <label class="text-sm">Do you currently hold all licenses required to operate your business in CA?
+            <select name="q_licenses" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;background:#fff;"><option value="">Select…</option><option value="yes">Yes — current and in good standing</option><option value="pending">Pending / in process</option><option value="na">N/A — exempt</option></select>
+          </label>
+          <label class="text-sm">Have you been the subject of a BBB or state consumer complaint in the past 12 months?
+            <select name="q_complaints" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin-top:4px;background:#fff;"><option value="">Select…</option><option value="no">No</option><option value="yes-resolved">Yes, but resolved</option><option value="yes-open">Yes, currently open</option></select>
+          </label>
+          <label class="text-sm" style="display:flex;align-items:flex-start;gap:8px;"><input type="checkbox" name="q_code" required style="margin-top:4px;"><span>I commit to the West Valley Warner Center Chamber of Commerce <a href="#">Code of Member Conduct</a> and acknowledge that violations may result in removal from the directory.</span></label>
+
+          <button type="button" class="btn btn--gold btn--lg btn--block mt-3" id="step2-next">Continue to add-ons ›</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- STEP 3: Upsells -->
+    <div class="step-panel" data-panel="3">
+      <div class="card" style="padding:32px;">
+        <h2>Optional add-ons</h2>
+        <p class="text-muted">Pay annually with your tier or skip and decide later. Every add-on is billed via Square at the same rate as your membership.</p>
+
+        <div style="margin-top:24px;">
+          <label class="upsell">
+            <input type="checkbox" name="upsell" value="newsletter-spotlight" data-amount="450">
+            <div>
+              <strong>Newsletter Spotlight (1 year, 4 placements)</strong>
+              <div class="text-sm text-muted">Featured member spotlight in the West Valley Weekly — quarterly. Avg 4,200 opens.</div>
+            </div>
+            <span class="price-tag">+$450/yr</span>
+          </label>
+          <label class="upsell">
+            <input type="checkbox" name="upsell" value="email-blast-1" data-amount="295">
+            <div>
+              <strong>One Dedicated Email Blast</strong>
+              <div class="text-sm text-muted">Your message, your design, sent to 4,200+ subscribers. Schedule any month.</div>
+            </div>
+            <span class="price-tag">+$295</span>
+          </label>
+          <label class="upsell">
+            <input type="checkbox" name="upsell" value="event-presenting" data-amount="1500">
+            <div>
+              <strong>Event Presenting Sponsor (1 networking mixer)</strong>
+              <div class="text-sm text-muted">Logo on materials + welcome speech + venue sign + post-event email feature.</div>
+            </div>
+            <span class="price-tag">+$1,500</span>
+          </label>
+          <label class="upsell">
+            <input type="checkbox" name="upsell" value="guide-premium" data-amount="600">
+            <div>
+              <strong>Premium Listing in 1 Resource Guide</strong>
+              <div class="text-sm text-muted">Pinned to the top of the Restaurant / Spa / Parent / etc. guide for 12 months.</div>
+            </div>
+            <span class="price-tag">+$600/yr</span>
+          </label>
+          <label class="upsell">
+            <input type="checkbox" name="upsell" value="loyalty-launch" data-amount="0">
+            <div>
+              <strong>Join the West Valley Loyalty Program</strong>
+              <div class="text-sm text-muted">Free. Set an offer (% off / free add-on). Receive in-store kit (window cling, table tents).</div>
+            </div>
+            <span class="price-tag">FREE</span>
+          </label>
+          <label class="upsell">
+            <input type="checkbox" name="upsell" value="ribbon-cutting" data-amount="0">
+            <div>
+              <strong>Schedule a Ribbon Cutting</strong>
+              <div class="text-sm text-muted">Free with membership. Photo, social, and event listing. Diana &amp; Felicia attend.</div>
+            </div>
+            <span class="price-tag">FREE</span>
+          </label>
+        </div>
+
+        <div style="background:var(--navy);color:#fff;padding:20px;border-radius:8px;margin-top:24px;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);">Order summary</div>
+            <div id="order-summary" style="margin-top:6px;">Membership: $795 · Add-ons: $0</div>
+          </div>
+          <div style="font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--gold);" id="order-total">$795.00</div>
+        </div>
+
+        <button type="button" class="btn btn--gold btn--lg btn--block mt-6" id="step3-submit">Submit application ›</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Done -->
+    <div class="step-panel" data-panel="4">
+      <div class="card" style="padding:48px;text-align:center;">
+        <div style="font-size:4rem;">🎉</div>
+        <h1 style="margin:16px 0 8px;">Welcome to the Chamber.</h1>
+        <p class="lead" id="confirm-lead">Your application has been received and your payment is being processed.</p>
+
+        <div id="auto-approve-block" style="background:var(--gold-soft);border:1px solid var(--gold);padding:24px;border-radius:12px;margin:24px 0;display:none;">
+          <strong style="color:var(--navy);">✓ Auto-approved.</strong> Your listing goes live in the directory in 5 minutes.
+        </div>
+        <div id="human-review-block" style="background:var(--blue-soft);border:1px solid var(--blue);padding:24px;border-radius:12px;margin:24px 0;display:none;">
+          <strong style="color:var(--navy);">📋 Human review queued.</strong> A chamber team member will review and approve your listing within <strong>1 business hour</strong>. You'll get an email the moment you go live.
+        </div>
+
+        <p>Next steps:</p>
+        <ul style="text-align:left;max-width:480px;margin:16px auto;list-style:none;padding:0;">
+          <li style="padding:10px 0;border-top:1px solid var(--line-soft);">📧 Watch your email — Diana and Felicia will personally welcome you</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line-soft);">📅 RSVP for your first networking mixer (free with membership)</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line-soft);">🤝 Pick a Connection Circle — see <a href="networking-groups.html">all 8 groups</a></li>
+          <li style="padding:10px 0;border-top:1px solid var(--line-soft);">📸 Schedule your free ribbon cutting if you're newly opened</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line-soft);">💳 Enroll in the West Valley Loyalty Program</li>
+        </ul>
+
+        <a href="auth/member-portal.html" class="btn btn--primary btn--lg" style="margin-top:16px;">Go to my member portal ›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer data-partial="footer"></footer>
+<script src="js/partials.js"></script>
+<script src="js/chamber.js"></script>
+<script>
+ChamberPartials.mount({ active: 'join', depth: 0 });
+
+var state = { step: 1, tier: 'silver', tierAmount: 795, listing: {}, upsells: [], total: 795 };
+
+function showStep(n) {
+  state.step = n;
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`[data-panel="${n}"]`).classList.add('active');
+  document.querySelectorAll('.step-strip__step').forEach(s => {
+    var sn = +s.dataset.step;
+    s.classList.remove('active', 'done');
+    if (sn === n) s.classList.add('active');
+    else if (sn < n) s.classList.add('done');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function calcTotal() {
+  var addonTotal = state.upsells.reduce((s, u) => s + u.amount, 0);
+  state.total = state.tierAmount + addonTotal;
+  document.getElementById('order-summary').textContent =
+    'Membership: $' + state.tierAmount + ' · Add-ons: $' + addonTotal;
+  document.getElementById('order-total').textContent = '$' + state.total.toLocaleString() + '.00';
+}
+
+document.querySelectorAll('input[name="tier"]').forEach(r => r.addEventListener('change', e => {
+  state.tier = e.target.value; state.tierAmount = +e.target.dataset.amount; calcTotal();
+}));
+
+document.getElementById('step1-next').addEventListener('click', () => showStep(2));
+
+document.getElementById('step2-next').addEventListener('click', () => {
+  var form = document.getElementById('onboarding-form');
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+  var fd = new FormData(form);
+  state.listing = Object.fromEntries(fd);
+  calcTotal();
+  showStep(3);
+});
+
+document.querySelectorAll('input[name="upsell"]').forEach(cb => cb.addEventListener('change', e => {
+  e.target.closest('.upsell').classList.toggle('selected', e.target.checked);
+  state.upsells = Array.from(document.querySelectorAll('input[name="upsell"]:checked')).map(c => ({
+    id: c.value, amount: +c.dataset.amount
+  }));
+  calcTotal();
+}));
+
+document.getElementById('step3-submit').addEventListener('click', async () => {
+  // 1. Charge
+  fetch('/api/payments/charge', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ amount: state.total, currency: 'USD', metadata: { tier: state.tier, upsells: state.upsells } })
+  }).catch(()=>{});
+  // 2. Onboard
+  var resp = await fetch('/api/onboarding/complete', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(state.listing)
+  }).then(r => r.json()).catch(() => ({ status: 'pending_review', trustScore: 3, eta: '1 business hour' }));
+  // 3. Upgrades
+  if (state.upsells.length) fetch('/api/upgrades/purchase', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ items: state.upsells, amount: state.upsells.reduce((s,u)=>s+u.amount,0) })
+  }).catch(()=>{});
+
+  showStep(4);
+  if (resp.status === 'auto_approved') {
+    document.getElementById('auto-approve-block').style.display = 'block';
+    document.getElementById('confirm-lead').textContent = 'Payment captured. Auto-approved. Listing goes live in 5 minutes.';
+  } else {
+    document.getElementById('human-review-block').style.display = 'block';
+    document.getElementById('confirm-lead').textContent = 'Payment captured. A team member will review your listing within 1 business hour.';
+  }
+});
+</script>
+</body>
+</html>

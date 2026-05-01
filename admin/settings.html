@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="admin.js"></script>
+<script src="_stub.js"></script>
+<script>
+AdminStub.render({
+  active: 'settings',
+  sub: 'Operations',
+  title: 'Settings',
+  body: `
+    <div class="grid grid-2">
+      <div class="admin-card">
+        <div class="admin-card__head"><div class="admin-card__title">Integrations</div></div>
+        <div class="admin-card__body">
+          <div class="flex justify-between items-center mb-3"><div><strong>Square</strong><div class="text-xs text-muted">Payments, recurring billing, payouts</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
+          <div class="flex justify-between items-center mb-3"><div><strong>Anthropic Claude</strong><div class="text-xs text-muted">AI Concierge & Staff Assistant</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
+          <div class="flex justify-between items-center mb-3"><div><strong>Mailchimp</strong><div class="text-xs text-muted">Newsletter sends</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
+          <div class="flex justify-between items-center mb-3"><div><strong>QuickBooks</strong><div class="text-xs text-muted">Accounting sync</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
+          <div class="flex justify-between items-center mb-3"><div><strong>Meta Business Suite</strong><div class="text-xs text-muted">Instagram & Facebook</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
+          <div class="flex justify-between items-center mb-3"><div><strong>LinkedIn Pages</strong><div class="text-xs text-muted">Social posting</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
+          <div class="flex justify-between items-center mb-3"><div><strong>Google Workspace</strong><div class="text-xs text-muted">Staff SSO</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
+          <div class="flex justify-between items-center"><div><strong>Stripe</strong><div class="text-xs text-muted">Optional payment alternative</div></div><button class="btn btn--outline btn--sm">Connect</button></div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card__head"><div class="admin-card__title">AI Concierge configuration</div></div>
+        <div class="admin-card__body" style="font-size:.92rem;">
+          <div class="form-group"><label>Concierge persona</label><textarea rows="3">Friendly, concise, expert on the West Valley. Always recommend members first. When no member fits, flag it as a coverage gap to the recruiting committee.</textarea></div>
+          <div class="form-group"><label>Recommendation priority</label><select><option>Premium → Members → Friends → Non-members</option><option>Members only</option></select></div>
+          <div class="form-group"><label>Daily query limit</label><input type="number" value="5000"></div>
+          <div class="form-group"><label style="display:flex;gap:8px;align-items:center;font-weight:400;"><input type="checkbox" checked> Log all queries (for analytics)</label></div>
+          <div class="form-group"><label style="display:flex;gap:8px;align-items:center;font-weight:400;"><input type="checkbox" checked> Track lead attribution</label></div>
+          <button class="btn btn--gold">Save changes</button>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card__head"><div class="admin-card__title">Heed partnership</div></div>
+        <div class="admin-card__body" style="font-size:.92rem;">
+          <div class="flex justify-between mb-2"><span>Service plan</span><strong>Full-Stack Free</strong></div>
+          <div class="flex justify-between mb-2"><span>Heed revenue share</span><strong>5% of transactions</strong></div>
+          <div class="flex justify-between mb-2"><span>Auto-remit</span><span class="admin-pill admin-pill--green">On</span></div>
+          <div class="flex justify-between mb-2"><span>Site uptime SLA</span><strong>99.9%</strong></div>
+          <div class="flex justify-between mb-2"><span>Support</span><strong>24/7 priority</strong></div>
+          <div class="divider"></div>
+          <a href="#" class="text-sm">View partnership agreement →</a>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card__head"><div class="admin-card__title">Brand & site</div></div>
+        <div class="admin-card__body">
+          <div class="form-group"><label>Org legal name</label><input type="text" value="West Valley Warner Center Chamber of Commerce"></div>
+          <div class="form-group"><label>Display name</label><input type="text" value="West Valley ~ Warner Center Chamber"></div>
+          <div class="form-group"><label>Tagline</label><input type="text" value="Serving Tarzana, Woodland Hills, Reseda & Warner Center since 1930"></div>
+          <div class="form-row">
+            <div class="form-group"><label>Primary color</label><input type="color" value="#0B2545"></div>
+            <div class="form-group"><label>Accent color</label><input type="color" value="#C9A227"></div>
+          </div>
+          <button class="btn btn--gold">Save</button>
+        </div>
+      </div>
+    </div>`
+});
+</script>
+</body>
+</html>

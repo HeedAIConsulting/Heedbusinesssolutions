@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valley Biz Buzz · The Chamber Blog</title>
+<meta name="description" content="Member spotlights, valley news, business tips, event recaps, community stories, and government advocacy from the West Valley Warner Center Chamber of Commerce.">
+<meta property="og:title" content="Valley Biz Buzz — Stories from the West Valley">
+<meta property="og:description" content="25 posts across 6 categories.">
+<meta property="og:image" content="https://www.woodlandhillscc.net/images/wvwccc-og.png">
+<link rel="canonical" href="https://www.woodlandhillscc.net/blog/">
+<link rel="icon" href="../images/wvwccc-logo-2026.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+</head>
+<body>
+<header data-partial="header"></header>
+
+<section class="hero" style="padding:64px 0;">
+  <div class="container">
+    <div style="text-align:center;max-width:880px;margin:0 auto;">
+      <span class="eyebrow eyebrow--navy">Stories from across the West Valley</span>
+      <h1>Valley Biz <span style="color:var(--gold);">Buzz</span></h1>
+      <p class="hero__lead" style="margin:0 auto 32px;">Member spotlights · valley news · event recaps · business tips · community · advocacy. All by The Chamber Team.</p>
+      <p><a href="guest-post.html" class="btn btn--gold">Submit a guest post ›</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;justify-content:center;" id="cat-filter">
+      <button class="chip chip--gold" data-cat="all">All</button>
+      <button class="chip chip--blue" data-cat="Member Spotlight">Member Spotlight</button>
+      <button class="chip chip--blue" data-cat="Valley News">Valley News</button>
+      <button class="chip chip--blue" data-cat="Chamber Events Recap">Events</button>
+      <button class="chip chip--blue" data-cat="Business Tips">Business Tips</button>
+      <button class="chip chip--blue" data-cat="Community">Community</button>
+      <button class="chip chip--blue" data-cat="Government & Advocacy">Advocacy</button>
+    </div>
+    <input type="search" id="blog-search" placeholder="Search the blog…" style="width:100%;max-width:600px;margin:0 auto 32px;display:block;padding:14px 18px;border-radius:10px;border:1px solid var(--line);font-size:1rem;">
+
+    <div class="grid grid-3" id="posts-grid" style="gap:24px;"></div>
+  </div>
+</section>
+
+<footer data-partial="footer"></footer>
+<script src="../js/partials.js"></script>
+<script src="../js/chamber.js"></script>
+<script>
+ChamberPartials.mount({ active: 'blog', depth: 1 });
+
+const POSTS = [
+  {
+    "slug": "recap-state-of-the-chamber-2026",
+    "title": "Recap: State of the Chamber 2026",
+    "category": "Chamber Events Recap",
+    "date": "2026-04-22",
+    "excerpt": "Diana Williams's annual address at the Warner Center Marriott — the highlights, the priorities, and the surprise announcement.",
+    "icon": "🎤",
+    "featured": true
+  },
+  {
+    "slug": "lifestyle-emergency-home-pros",
+    "title": "Save these numbers: West Valley home pros for actual emergencies",
+    "category": "Community",
+    "date": "2026-04-22",
+    "excerpt": "A laminated list — the chamber-member home pros who answer the phone on Saturdays.",
+    "icon": "🚨",
+    "featured": true
+  },
+  {
+    "slug": "sherman-way-streetscape-grant",
+    "title": "Sherman Way streetscape — chamber wins a $2M grant",
+    "category": "Valley News",
+    "date": "2026-04-15",
+    "excerpt": "A federal Reconnecting Communities grant brings $2M for sidewalks, lighting, and trees on Sherman Way between De Soto and Reseda.",
+    "icon": "🌳",
+    "featured": true
+  },
+  {
+    "slug": "spotlight-ring-planet",
+    "title": "Ring Planet — three generations of Tarzana jewelers",
+    "category": "Member Spotlight",
+    "date": "2026-04-08",
+    "excerpt": "A Ventura Blvd shop that has fitted three generations of Valley engagements.",
+    "icon": "💍",
+    "featured": true
+  },
+  {
+    "slug": "tip-hiring-locally-2026",
+    "title": "Hiring locally in 2026: where Valley businesses are actually finding people",
+    "category": "Business Tips",
+    "date": "2026-04-01",
+    "excerpt": "Indeed isn't working. Neither is LinkedIn. Here's where chamber members are actually finding their best hires.",
+    "icon": "👋",
+    "featured": true
+  },
+  {
+    "slug": "recap-vapi-festival-2025",
+    "title": "Recap: Valley Asian Pacific Islander Cultural Festival 2025",
+    "category": "Chamber Events Recap",
+    "date": "2026-03-25",
+    "excerpt": "Two days of food, music, and 22,000 attendees at Pierce College.",
+    "icon": "🎭",
+    "featured": true
+  },
+  {
+    "slug": "lifestyle-where-to-spa-day",
+    "title": "A grown-up spa day in the West Valley (without driving to Beverly Hills)",
+    "category": "Community",
+    "date": "2026-03-19",
+    "excerpt": "You don't need to drive to Beverly Hills for a real spa day. The West Valley has options.",
+    "icon": "💆‍♀️",
+    "featured": false
+  },
+  {
+    "slug": "advocacy-small-business-compliance-2026",
+    "title": "2026 small-business compliance changes you actually have to know",
+    "category": "Government & Advocacy",
+    "date": "2026-03-12",
+    "excerpt": "Three California changes effective 2026 that every chamber member needs to plan for.",
+    "icon": "📋",
+    "featured": false
+  },
+  {
+    "slug": "tarzana-treatment-centers-40-years",
+    "title": "Tarzana Treatment Centers turns 40",
+    "category": "Valley News",
+    "date": "2026-03-04",
+    "excerpt": "Four decades of behavioral health care on De Soto, with a renewed focus on adolescent mental health.",
+    "icon": "🌟",
+    "featured": false
+  },
+  {
+    "slug": "spotlight-tim-gaspar-insurance",
+    "title": "The insurance broker who reads every policy",
+    "category": "Member Spotlight",
+    "date": "2026-02-24",
+    "excerpt": "How Tim Gaspar Insurance built a 1,800-client West Valley book on a single principle.",
+    "icon": "📋",
+    "featured": false
+  },
+  {
+    "slug": "lifestyle-weekend-with-kids",
+    "title": "A perfect Saturday in the West Valley with kids under 10",
+    "category": "Community",
+    "date": "2026-02-17",
+    "excerpt": "A 9am-to-5pm itinerary that won't exhaust your kids or your wallet.",
+    "icon": "🎈",
+    "featured": false
+  },
+  {
+    "slug": "tip-google-business-profile-2026",
+    "title": "The 2026 Google Business Profile checklist",
+    "category": "Business Tips",
+    "date": "2026-02-10",
+    "excerpt": "A 12-point checklist every West Valley business should run through this quarter.",
+    "icon": "🔍",
+    "featured": false
+  },
+  {
+    "slug": "metro-west-valley-corridor-update",
+    "title": "Metro's West Valley corridor study reaches a decision point",
+    "category": "Valley News",
+    "date": "2026-02-04",
+    "excerpt": "After eight years of study, Metro's board is finally choosing a route. The chamber has filed a formal position.",
+    "icon": "🚇",
+    "featured": false
+  },
+  {
+    "slug": "lifestyle-best-valley-brunch",
+    "title": "The 8 best brunches in the West Valley right now",
+    "category": "Community",
+    "date": "2026-01-30",
+    "excerpt": "A no-frills, locally-grounded brunch ranking. Spoiler: the best one isn't in Tarzana.",
+    "icon": "🥞",
+    "featured": false
+  },
+  {
+    "slug": "topanga-mall-tenant-changes",
+    "title": "Westfield Topanga's 2026 tenant turnover",
+    "category": "Valley News",
+    "date": "2026-01-21",
+    "excerpt": "Three new openings, two closures, and what it means for the West Valley's flagship retail center.",
+    "icon": "🛍️",
+    "featured": false
+  },
+  {
+    "slug": "spotlight-fogo-de-chao",
+    "title": "The most reliable steakhouse in the West Valley",
+    "category": "Member Spotlight",
+    "date": "2026-01-13",
+    "excerpt": "Fogo de Chão has hosted more Chamber holiday parties, anniversaries, and \"we got the deal\" celebrations than any restaurant in Warner Center.",
+    "icon": "🥩",
+    "featured": false
+  },
+  {
+    "slug": "advocacy-cd-3-priorities-2026",
+    "title": "CD-3 priorities for 2026 — what we're asking Councilmember Blumenfield for",
+    "category": "Government & Advocacy",
+    "date": "2026-01-07",
+    "excerpt": "The chamber's formal advocacy agenda for Council District 3, presented at the December board meeting.",
+    "icon": "🏛️",
+    "featured": false
+  },
+  {
+    "slug": "tip-newsletter-open-rates",
+    "title": "How to get your business newsletter from 8% open rate to 35%",
+    "category": "Business Tips",
+    "date": "2025-12-16",
+    "excerpt": "The chamber boosted its own open rate by 27 points in 2025. Here's exactly how.",
+    "icon": "✉️",
+    "featured": false
+  },
+  {
+    "slug": "spotlight-marriott-warner-center",
+    "title": "The Warner Center Marriott's second act",
+    "category": "Member Spotlight",
+    "date": "2025-12-09",
+    "excerpt": "How a 30-year-old hotel reinvented itself as the West Valley's living room.",
+    "icon": "🏨",
+    "featured": false
+  },
+  {
+    "slug": "recap-october-mixer-belmont",
+    "title": "Recap: August mixer at Belmont Village Senior Living",
+    "category": "Chamber Events Recap",
+    "date": "2025-12-04",
+    "excerpt": "Eighty members, a sunset on the rooftop, and three deals signed by Friday.",
+    "icon": "🥂",
+    "featured": false
+  },
+  {
+    "slug": "tip-ai-tools-small-business",
+    "title": "Five AI tools that actually save Valley small businesses time",
+    "category": "Business Tips",
+    "date": "2025-11-25",
+    "excerpt": "No hype. Just five AI tools chamber members are using right now to save 5–10 hours per week.",
+    "icon": "🤖",
+    "featured": false
+  },
+  {
+    "slug": "spotlight-providence-tarzana",
+    "title": "A hospital that grew up with the Valley — Providence Cedars-Sinai Tarzana",
+    "category": "Member Spotlight",
+    "date": "2025-11-18",
+    "excerpt": "From a 50-bed community hospital in 1973 to one of California's top cardiac centers — without losing the small-hospital ethos.",
+    "icon": "🏥",
+    "featured": false
+  },
+  {
+    "slug": "recap-grateful-hearts-2025",
+    "title": "Recap: Grateful Hearts Day 2025 — the most volunteers ever",
+    "category": "Chamber Events Recap",
+    "date": "2025-11-12",
+    "excerpt": "Over 200 volunteers, 1,800 meals served, and one of the best chamber-driven community events of the year.",
+    "icon": "❤️",
+    "featured": false
+  },
+  {
+    "slug": "warner-center-2035-plan-update",
+    "title": "The Warner Center 2035 plan, four years in: what's actually built",
+    "category": "Valley News",
+    "date": "2025-11-10",
+    "excerpt": "Four years into the 2035 specific plan, Warner Center has added 1,400 housing units, 320,000 square feet of office, and one major park.",
+    "icon": "🏗️",
+    "featured": false
+  },
+  {
+    "slug": "spotlight-wh-camera",
+    "title": "70 years through a different lens — WH Camera & Telescopes",
+    "category": "Member Spotlight",
+    "date": "2025-11-04",
+    "excerpt": "How a family-run shop on Topanga Canyon Blvd built a national following without leaving the West Valley.",
+    "icon": "📸",
+    "featured": false
+  }
+];
+const grid = document.getElementById('posts-grid');
+const search = document.getElementById('blog-search');
+let activeCat = 'all';
+let activeQ = '';
+
+function render() {
+  const filtered = POSTS.filter(p => {
+    if (activeCat !== 'all' && p.category !== activeCat) return false;
+    if (activeQ && !(p.title + ' ' + p.excerpt).toLowerCase().includes(activeQ)) return false;
+    return true;
+  });
+  grid.innerHTML = filtered.map(p => `
+    <a href="post-${p.slug}.html" class="card" style="text-decoration:none;color:inherit;display:block;">
+      <div style="height:160px;background:linear-gradient(135deg,var(--blue-soft),var(--gold-soft));display:flex;align-items:center;justify-content:center;font-size:2.6rem;">${p.icon}</div>
+      <div class="card__body">
+        <span class="chip chip--blue">${p.category}</span>
+        <h3 class="card__title mt-3">${p.title}</h3>
+        <p class="card__meta">${new Date(p.date).toLocaleDateString('en',{month:'short',day:'numeric',year:'numeric'})} · The Chamber Team</p>
+        <p class="card__excerpt">${p.excerpt}</p>
+      </div>
+    </a>`).join('') || '<p class="text-muted" style="grid-column:1/-1;text-align:center;">No posts match your filter.</p>';
+}
+
+document.querySelectorAll('#cat-filter button').forEach(b => b.addEventListener('click', () => {
+  activeCat = b.dataset.cat;
+  document.querySelectorAll('#cat-filter button').forEach(x => x.className = 'chip chip--blue');
+  b.className = 'chip chip--gold';
+  render();
+}));
+search.addEventListener('input', e => { activeQ = e.target.value.toLowerCase(); render(); });
+render();
+</script>
+</body>
+</html>

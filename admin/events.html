@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div>
+          <div class="admin-page-head__sub">Programs</div>
+          <h1>Events</h1>
+        </div>
+        <div class="flex gap-3">
+          <button class="btn btn--outline">Export attendees</button>
+          <a href="#" class="btn btn--gold">+ Create event</a>
+        </div>
+      </div>
+
+      <div class="admin-stat-grid">
+        <div class="admin-stat"><div class="admin-stat__label">Upcoming</div><div class="admin-stat__num">23</div><div class="admin-stat__delta">Next 60 days</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">RSVPs (30d)</div><div class="admin-stat__num">487</div><div class="admin-stat__delta admin-stat__delta--up">▲ 16% MoM</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Ticket Revenue (MTD)</div><div class="admin-stat__num">$12,840</div><div class="admin-stat__delta admin-stat__delta--up">▲ 22%</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Sponsorships Sold</div><div class="admin-stat__num">$28,500</div><div class="admin-stat__delta">YTD</div></div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card__head">
+          <div class="admin-card__title">Upcoming events</div>
+          <div style="display:flex;gap:8px;">
+            <select style="padding:.4rem .6rem;border:1px solid var(--line);border-radius:6px;font-size:.85rem;"><option>All categories</option><option>Networking</option><option>Mixer</option><option>Breakfast</option><option>Ribbon Cutting</option><option>Signature</option></select>
+            <select style="padding:.4rem .6rem;border:1px solid var(--line);border-radius:6px;font-size:.85rem;"><option>All statuses</option><option>Published</option><option>Draft</option><option>Sold out</option></select>
+          </div>
+        </div>
+        <div class="admin-card__body admin-card__body--p0">
+          <table class="admin-table" id="events-table"></table>
+        </div>
+      </div>
+
+      <div class="admin-grid mt-5" style="grid-template-columns:1fr 1fr;">
+        <div class="admin-card">
+          <div class="admin-card__head"><div class="admin-card__title">Sponsorship pipeline</div></div>
+          <div class="admin-card__body">
+            <div class="flex justify-between mb-2"><strong>Food & Wine 2026</strong><span class="admin-pill admin-pill--gold">$78,500 / $120,000</span></div>
+            <div style="height:8px;background:var(--line);border-radius:4px;overflow:hidden;"><div style="width:65%;height:100%;background:var(--gold);"></div></div>
+            <div class="text-xs text-muted mt-2">Platinum sold · 3 of 4 Gold sold · Wine Pavilion sponsors needed</div>
+            <div class="divider"></div>
+            <div class="flex justify-between mb-2"><strong>Networking Mixer (Winnetka Bowl)</strong><span class="admin-pill admin-pill--green">$1,500 / $1,500 ✓</span></div>
+            <div style="height:8px;background:var(--line);border-radius:4px;overflow:hidden;"><div style="width:100%;height:100%;background:var(--green);"></div></div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card__head"><div class="admin-card__title">AI Event Suggestions</div></div>
+          <div class="admin-card__body" style="font-size:.92rem;">
+            <p>Based on attendance, venue availability, and member sentiment, the AI suggests:</p>
+            <ul style="padding-left:1.2rem;color:var(--slate);line-height:1.8;margin-top:8px;">
+              <li>📅 Add a <strong>second monthly breakfast</strong> — current sells out 4 days in advance</li>
+              <li>🎯 Schedule a <strong>Real Estate luncheon</strong> — 18 members in that category, no targeted event</li>
+              <li>🌟 <strong>Holiday Open House</strong> — mid-November is your highest-engagement period</li>
+              <li>👶 <strong>Family Resource Fair</strong> — Parent Guide is your #2 most-trafficked guide</li>
+            </ul>
+            <a href="ai-assistant.html" class="btn btn--primary btn--sm mt-3">Plan with AI →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div data-admin="ai"></div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="admin.js"></script>
+<script>
+AdminShell.mount({active:'events'});
+fetch('../data/events.json').then(r=>r.json()).then(data => {
+  const rows = data.sort((a,b)=>a.date.localeCompare(b.date)).map(e => {
+    const d = new Date(e.date+'T12:00:00');
+    const status = e.featured ? '<span class="admin-pill admin-pill--gold">Featured</span>' : '<span class="admin-pill admin-pill--green">Published</span>';
+    return `
+      <tr>
+        <td><strong>${e.title}</strong><div class="text-xs text-muted">${e.host || ''}</div></td>
+        <td>${d.toLocaleDateString('en',{month:'short',day:'numeric'})}<div class="text-xs text-muted">${e.time}</div></td>
+        <td>${e.location}<div class="text-xs text-muted">${e.neighborhood}</div></td>
+        <td>${e.category}</td>
+        <td>${e.price>0 ? '$'+e.price : 'Free'}</td>
+        <td>${Math.floor(Math.random()*40)+10} / ${Math.floor(Math.random()*30)+50}</td>
+        <td>${status}</td>
+        <td class="admin-actions"><button>Edit</button><button>Promote</button><button>Attendees</button></td>
+      </tr>`;
+  }).join('');
+  document.getElementById('events-table').innerHTML = `
+    <thead><tr><th>Event</th><th>Date</th><th>Location</th><th>Category</th><th>Price</th><th>RSVPs</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>${rows}</tbody>
+  `;
+});
+</script>
+</body>
+</html>

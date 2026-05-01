@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Blasts · Diana's Console</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div>
+          <div class="admin-page-head__sub">Dedicated single-send emails purchased by members</div>
+          <h1>Email Blasts</h1>
+        </div>
+      </div>
+      <div class="admin-grid" style="grid-template-columns:1fr 2fr;">
+        <div class="admin-card">
+          <div class="admin-card__head"><div class="admin-card__title">Schedule a blast</div></div>
+          <div class="admin-card__body">
+            <p class="text-sm">Members can purchase a dedicated email blast at $295 ($595 for non-members) or $1,500 for an event presenting blast.</p>
+            <button class="btn btn--gold mt-3">+ New blast (member purchase)</button>
+            <button class="btn btn--outline mt-2">+ Chamber-direct blast</button>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__head"><div class="admin-card__title">Upcoming &amp; recent</div></div>
+          <div class="admin-card__body admin-card__body--p0">
+            <table class="admin-table">
+              <thead><tr><th>Subject</th><th>Sender</th><th>Send date</th><th>Recipients</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td><strong>VAPI Festival May 2 — last call to RSVP</strong></td><td>Chamber direct</td><td>Apr 30 9am</td><td>4,218</td><td><span class="admin-pill admin-pill--green">Sent · 51% opens</span></td></tr>
+                <tr><td><strong>Cryohealthcare ribbon cutting May 13</strong></td><td>Cryohealthcare (paid)</td><td>May 6 10am</td><td>4,218</td><td><span class="admin-pill admin-pill--gold">Scheduled</span></td></tr>
+                <tr><td><strong>Mother's Day at Fogo de Chão</strong></td><td>Fogo de Chão (paid)</td><td>May 8 9am</td><td>2,305 (Dine SFV)</td><td><span class="admin-pill admin-pill--gold">Scheduled · pending review</span></td></tr>
+                <tr><td><strong>State of the Chamber 2026 keynote</strong></td><td>Chamber direct</td><td>Apr 22 7am</td><td>4,218</td><td><span class="admin-pill admin-pill--green">Sent · 47% opens</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="admin.js"></script>
+<script src="_stub.js"></script>
+<script>
+AdminShell.mount({ active: 'blasts' });
+</script>
+</body>
+</html>

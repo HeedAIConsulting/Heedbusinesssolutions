@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff & Roles · Chamber Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="admin.js"></script>
+<script src="_stub.js"></script>
+<script>
+AdminStub.render({
+  active: 'staff',
+  sub: 'Operations',
+  title: 'Staff & Roles',
+  body: `
+    <div class="admin-page-head" style="margin-top:-16px;margin-bottom:24px;">
+      <div></div>
+      <a href="#" class="btn btn--gold">+ Invite staff member</a>
+    </div>
+    <div class="admin-card">
+      <div class="admin-card__head"><div class="admin-card__title">Staff & volunteers</div></div>
+      <div class="admin-card__body admin-card__body--p0">
+        <table class="admin-table">
+          <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Permissions</th><th>2FA</th><th>Last login</th><th>Actions</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Diana Williams</strong></td><td>diana@woodlandhillscc.net</td><td>Executive Director</td><td>Full admin</td><td><span class="admin-pill admin-pill--green">On</span></td><td>1m ago</td><td class="admin-actions"><button>Edit</button></td></tr>
+            <tr><td><strong>Mark T.</strong></td><td>mark@wvwcc.org</td><td>Programs Director</td><td>Events, Sponsorships, Approvals</td><td><span class="admin-pill admin-pill--green">On</span></td><td>2h ago</td><td class="admin-actions"><button>Edit</button></td></tr>
+            <tr><td><strong>Lisa P.</strong></td><td>lisa@wvwcc.org</td><td>Member Services</td><td>Members, Renewals, Approvals</td><td><span class="admin-pill admin-pill--green">On</span></td><td>5h ago</td><td class="admin-actions"><button>Edit</button></td></tr>
+            <tr><td><strong>Carlos R.</strong></td><td>carlos@wvwcc.org</td><td>Marketing Volunteer</td><td>Social, Newsletter, Blog</td><td><span class="admin-pill admin-pill--gold">Off — required</span></td><td>2d ago</td><td class="admin-actions"><button>Edit</button></td></tr>
+            <tr><td><strong>Heed Support</strong></td><td>support@heedbusinesssolutions.com</td><td>Vendor (Heed)</td><td>Read-only + Settings</td><td><span class="admin-pill admin-pill--green">On</span></td><td>3d ago</td><td class="admin-actions"><button>Edit</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="admin-card mt-5">
+      <div class="admin-card__head"><div class="admin-card__title">Activity audit log</div></div>
+      <div class="admin-card__body" style="font-family:var(--mono);font-size:.82rem;color:var(--slate-mid);line-height:1.8;">
+        <div>11:42:18 · diana@woodlandhillscc.net · approved listing #c-cryohealthcare</div>
+        <div>11:38:02 · diana@woodlandhillscc.net · scheduled newsletter "May 2 issue"</div>
+        <div>10:21:45 · mark@wvwcc.org · created event "Networking Mixer at Winnetka Bowl"</div>
+        <div>09:08:12 · lisa@wvwcc.org · sent renewal reminder to 4 members</div>
+        <div>08:14:55 · system · Square auto-payout $4,820.18 → bank ••••4892</div>
+      </div>
+    </div>`
+});
+</script>
+</body>
+</html>

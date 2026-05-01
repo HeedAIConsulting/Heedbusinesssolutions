@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://heedbusinesssolutions.com/sitemap.xml
+Disallow: /admin/
+Disallow: /onboard.html
+Disallow: /auth/
+Disallow: /raw/
+Disallow: /scripts/
+Disallow: /backend/
+Disallow: /_archive_heed/
+Sitemap: https://www.woodlandhillscc.net/sitemap.xml

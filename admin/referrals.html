@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Referrals · Diana's Console</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-shell">
+  <div data-admin="side"></div>
+  <main class="admin-main">
+    <div data-admin="top"></div>
+    <div class="admin-content">
+      <div class="admin-page-head">
+        <div>
+          <div class="admin-page-head__sub">Member-to-member referral program · pending and credited</div>
+          <h1>Referrals</h1>
+        </div>
+      </div>
+      <div class="admin-stat-grid">
+        <div class="admin-stat"><div class="admin-stat__label">Pending</div><div class="admin-stat__num">9</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Joined (this Q)</div><div class="admin-stat__num">14</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Credits issued</div><div class="admin-stat__num">$1,400</div></div>
+        <div class="admin-stat"><div class="admin-stat__label">Top referrer</div><div class="admin-stat__num" style="font-size:1.2rem;">Tim Gaspar</div></div>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card__head"><div class="admin-card__title">Open referrals</div></div>
+        <div class="admin-card__body admin-card__body--p0">
+          <table class="admin-table">
+            <thead><tr><th>Referrer</th><th>Referred Business</th><th>Status</th><th>Submitted</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>Tim Gaspar Insurance</td><td>Acuity Eye Care · Tarzana</td><td><span class="admin-pill admin-pill--gold">Outreach in progress</span></td><td class="text-muted text-sm">2d ago</td><td class="admin-actions"><button>Send AI outreach</button><button>Mark joined</button></td></tr>
+              <tr><td>WH Camera</td><td>Frame &amp; Co · Reseda</td><td><span class="admin-pill admin-pill--blue">First call done</span></td><td class="text-muted text-sm">5d ago</td><td class="admin-actions"><button>Schedule follow-up</button><button>Mark joined</button></td></tr>
+              <tr><td>Joint Matters</td><td>Allegro Physical Therapy · Woodland Hills</td><td><span class="admin-pill admin-pill--green">Meeting Friday</span></td><td class="text-muted text-sm">1w ago</td><td class="admin-actions"><button>Mark joined</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="admin.js"></script>
+<script src="_stub.js"></script>
+<script>
+AdminShell.mount({ active: 'referrals' });
+</script>
+</body>
+</html>

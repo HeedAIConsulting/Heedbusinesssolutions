@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Solutions Guide · B2B Services in the West Valley · Chamber</title>
+<meta name="description" content="Marketing, accounting, legal, IT, HR, insurance, commercial real estate, and banking — Chamber-vetted West Valley B2B providers your peers already trust.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+.guide-hero { background: linear-gradient(135deg, var(--navy), var(--blue)); color:#fff; padding:80px 0; position:relative; overflow:hidden; }
+.guide-hero::before { content:''; position:absolute; inset:0; background-image: radial-gradient(circle at 80% 0%, rgba(201,162,39,0.18), transparent 50%); pointer-events:none; }
+.guide-hero h1 { color:#fff; }
+.guide-hero > .container { position:relative; z-index:2; }
+.guide-nav { display:flex; gap:8px; flex-wrap:wrap; padding:16px; background:var(--paper); border-radius:var(--r-lg); margin-bottom:24px; position:sticky; top:64px; z-index:50; box-shadow:var(--shadow-sm); border:1px solid var(--line); }
+.guide-nav a { padding:.5rem .9rem; border-radius:var(--r-full); background:var(--cream); color:var(--slate); font-weight:600; font-size:.88rem; }
+.guide-nav a:hover, .guide-nav a.active { background:var(--navy); color:var(--gold); }
+.featured-listing { background:linear-gradient(135deg,var(--blue-soft),#fff); border:2px solid var(--blue); border-radius:var(--r-lg); padding:24px; margin-bottom:24px; display:grid; grid-template-columns:140px 1fr auto; gap:24px; align-items:center; position:relative; }
+.featured-listing::before { content:'★ Premium Sponsor'; position:absolute; top:-12px; left:24px; background:var(--gold); color:var(--navy); padding:4px 12px; border-radius:var(--r-full); font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-family:var(--mono); }
+.featured-listing__img { width:140px; height:140px; border-radius:var(--r-md); background:linear-gradient(135deg,var(--navy),var(--blue)); display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:3rem; }
+.standard-listing { background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); padding:18px; display:flex; gap:16px; align-items:flex-start; transition:var(--transition); }
+.standard-listing:hover { box-shadow:var(--shadow-sm); border-color:var(--blue); transform:translateY(-1px); }
+.standard-listing__img { width:64px; height:64px; border-radius:var(--r-md); background:linear-gradient(135deg,var(--blue-soft),var(--gold-soft)); display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0; }
+.listings-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+.listings-grid--3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+.editorial { background:var(--paper); border-left:4px solid var(--blue); padding:24px 28px; border-radius:0 var(--r-lg) var(--r-lg) 0; margin:24px 0; box-shadow:var(--shadow-sm); }
+.editorial h3 { font-size:1.15rem; color:var(--navy); margin-bottom:8px; }
+.editorial p { color:var(--slate-mid); margin-bottom:0; }
+.faq-item { border:1px solid var(--line); border-radius:var(--r-md); margin-bottom:12px; background:var(--paper); }
+.faq-item summary { padding:16px 20px; cursor:pointer; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center; }
+.faq-item summary::after { content:'+'; font-size:1.4rem; color:var(--gold-deep); }
+.faq-item[open] summary::after { content:'−'; }
+.faq-item p { padding:0 20px 20px; color:var(--slate-mid); margin:0; }
+.tip-card { background:var(--blue-soft); border:1px solid var(--blue); border-radius:var(--r-md); padding:18px; }
+.tip-card h4 { color:var(--navy); margin-bottom:6px; font-size:1rem; }
+.tip-card p { font-size:.9rem; color:var(--slate-mid); margin:0; }
+.case-study { background:linear-gradient(135deg, var(--navy), var(--blue)); color:#fff; border-radius:var(--r-lg); padding:32px; margin:24px 0; }
+.case-study h3 { color:#fff; margin-bottom:8px; }
+.case-study .quote { font-family:var(--serif); font-size:1.2rem; font-style:italic; line-height:1.5; margin:16px 0; color:rgba(255,255,255,.92); }
+.case-study .attribution { font-size:.85rem; color:var(--gold); font-weight:600; }
+@media (max-width: 800px) { .listings-grid, .listings-grid--3 { grid-template-columns: 1fr; } .featured-listing { grid-template-columns: 1fr; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "West Valley Business Solutions Guide",
+  "description": "B2B services directory for businesses in Tarzana, Woodland Hills, Reseda, and Warner Center — marketing, accounting, legal, HR, IT, insurance, commercial real estate, and banking.",
+  "numberOfItems": 24,
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "item": { "@type": "ProfessionalService", "name": "Heed Business Solutions", "url": "https://heedbusinesssolutions.com", "address": { "@type": "PostalAddress", "addressLocality": "Woodland Hills", "addressRegion": "CA" } } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "AccountingService", "name": "Warner Center CPA Group", "telephone": "(818) 555-0190" } },
+    { "@type": "ListItem", "position": 3, "item": { "@type": "LegalService", "name": "Valley Business Law Group" } },
+    { "@type": "ListItem", "position": 4, "item": { "@type": "ProfessionalService", "name": "The Computer Doctor", "telephone": "(818) 555-0144" } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Best CPA for a small West Valley LLC?", "acceptedAnswer": { "@type": "Answer", "text": "Warner Center CPA Group handles most Chamber-member LLCs; they're QuickBooks-certified and run year-round bookkeeping. Tarzana Bookkeeping is the best entry-tier option ($350-650/mo)." } },
+    { "@type": "Question", "name": "Do I need a business attorney to form an LLC?", "acceptedAnswer": { "@type": "Answer", "text": "Not strictly — but a 30-min consult catches the operating-agreement and tax-election mistakes that cost thousands later. Valley Business Law Group offers Chamber members a free 30-min consult." } },
+    { "@type": "Question", "name": "What's a fair monthly fee for managed IT?", "acceptedAnswer": { "@type": "Answer", "text": "$95-$150/seat/mo for full managed IT in the West Valley — includes monitoring, patching, helpdesk, basic cyber. SecureValley MSP and The Computer Doctor are both Chamber members." } },
+    { "@type": "Question", "name": "How do I find commercial space in Warner Center?", "acceptedAnswer": { "@type": "Answer", "text": "CBRE Warner Center, Marcus &amp; Millichap, and West Valley Realty Commercial all run live availability lists. Coworking via Spaces (Westfield) and Premier Workspaces (Warner Center)." } },
+    { "@type": "Question", "name": "Best business banking option locally?", "acceptedAnswer": { "@type": "Answer", "text": "Bank of the Sierra, City National, and US Bank all have dedicated West Valley business bankers. Bank of the Sierra has the strongest SBA-7(a) lending in 91367. Mention Chamber for waived account-open fees." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div data-partial="header"></div>
+
+<section class="guide-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Guides</a> / Business Solutions</div>
+    <div class="grid grid-2" style="align-items:center;gap:32px;">
+      <div>
+        <span class="eyebrow" style="background:var(--gold);color:var(--navy);">Business Solutions Guide</span>
+        <h1 style="margin:12px 0 16px;">Run, grow, and scale a Valley business</h1>
+        <p style="font-size:1.15rem;color:rgba(255,255,255,.92);max-width:560px;">Marketing, accounting, legal, IT, HR, insurance, commercial real estate, banking — local Chamber-member providers your peers already trust. The B2B rolodex you don't have to build alone.</p>
+        <div class="hero__stats" style="margin-top:24px;">
+          <div><div class="hero__stat-num">58</div><div class="hero__stat-lbl">B2B Providers</div></div>
+          <div><div class="hero__stat-num">8</div><div class="hero__stat-lbl">Categories</div></div>
+          <div><div class="hero__stat-num">4.9★</div><div class="hero__stat-lbl">Avg Rating</div></div>
+        </div>
+        <div class="flex gap-3 mt-5" style="flex-wrap:wrap;">
+          <a href="#marketing" class="btn btn--gold">Browse</a>
+          <a href="../sponsor.html#premium-listings" class="btn btn--outline" style="border-color:#fff;color:#fff;">Become a Featured Provider</a>
+        </div>
+      </div>
+      <div class="card" style="padding:24px;">
+        <h3 style="font-size:1.05rem;margin-bottom:12px;color:var(--navy);">🤖 Business Concierge</h3>
+        <p class="text-sm text-muted mb-3">What's the bottleneck? Tell us your business size, industry, and need — we'll match you to 3 vetted providers.</p>
+        <button class="btn btn--primary btn--block" onclick="document.querySelector('.ai-widget__btn').click();">Open Concierge</button>
+        <div class="mt-3 text-xs text-muted">Try: "I need a CPA for my LLC" · "Cybersecurity audit" · "HR for an 8-person team"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream" style="padding:48px 0;">
+  <div class="container">
+
+    <div class="editorial">
+      <h3>Why this guide is the best B2B rolodex in the Valley</h3>
+      <p>Because every provider here has been hired by another Chamber member at least once and gotten a thumbs-up review. We don't list yellow-page contractors. We list people other Valley business owners would call back. Premium listings (gold-bordered) sponsor the editorial review and host the lead-capture forms below — so when you book one, the Chamber's small-business advocacy work stays funded.</p>
+    </div>
+
+    <div class="guide-nav">
+      <a href="#marketing" class="active">Marketing &amp; Web</a>
+      <a href="#accounting">Accounting &amp; Tax</a>
+      <a href="#legal">Legal</a>
+      <a href="#hr">HR &amp; Payroll</a>
+      <a href="#it">IT &amp; Cybersecurity</a>
+      <a href="#insurance">Insurance</a>
+      <a href="#commercial-re">Commercial RE</a>
+      <a href="#banking">Banking &amp; Lending</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <!-- ==================== MARKETING ==================== -->
+    <div id="marketing">
+      <h2 style="margin-bottom:8px;">Marketing &amp; Web</h2>
+      <p class="lead" style="margin-bottom:24px;">Branding, websites, SEO, paid ads, AI-powered marketing systems. The Valley's go-to growth shops.</p>
+
+      <div class="featured-listing">
+        <div class="featured-listing__img">🚀</div>
+        <div>
+          <div class="flex gap-2 mb-2" style="flex-wrap:wrap;"><span class="cm-badge">Chamber Member</span><span class="tier tier--platinum">Platinum Sponsor</span><span class="chip">AI-powered</span><span class="chip chip--green">Built this site</span></div>
+          <h3 style="font-size:1.4rem;margin-bottom:6px;">Heed Business Solutions</h3>
+          <p style="color:var(--slate-mid);margin-bottom:8px;">Built this very Chamber site. AI-powered websites, lead-gen systems, multilingual SEO, and the Client Intelligence platform that integrates with HubSpot, QuickBooks, and Square. Specialty: professional service firms (medical, legal, financial) and Chamber-member-owned operations across Tarzana, Woodland Hills, and Warner Center. Founder Andrew Heed sits on the Chamber's Tech Committee.</p>
+          <div class="text-sm text-muted">📍 Woodland Hills · 🌐 heedbusinesssolutions.com · ⭐ Built the AI Concierge you're using right now</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="https://heedbusinesssolutions.com" class="btn btn--gold">Visit Site</a>
+          <a href="#" class="btn btn--ghost btn--sm">Case studies →</a>
+        </div>
+      </div>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">📣</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Valley Brand Studio <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Branding · packaging · Tarzana · 18345 Ventura Blvd</div><div class="flex gap-2"><span class="chip">Brand systems</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🔍</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Topanga SEO &amp; PPC</h4><div class="text-sm text-muted mb-2">Local SEO · Google Ads · Woodland Hills</div><div class="flex gap-2"><span class="chip">Google Partner</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🎬</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Warner Center Video Co. <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Brand video · explainer · Owensmouth</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📧</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Reseda Email Lab</h4><div class="text-sm text-muted mb-2">HubSpot &amp; Klaviyo specialists</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📱</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Social Spark Tarzana <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">IG/TikTok/LinkedIn management</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📊</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Analytics Atelier WH</h4><div class="text-sm text-muted mb-2">GA4, Looker Studio, attribution</div></div></div>
+      </div>
+
+      <div class="case-study">
+        <h3>Member Case Study</h3>
+        <p class="quote">"We hired Heed to rebuild our practice's website. Six months in, our intake leads tripled and the AI concierge handles 60% of after-hours questions. Best operational decision of the year."</p>
+        <div class="attribution">— Dr. Lisa Marquez, Tarzana Family Dental (Chamber Silver Member)</div>
+      </div>
+
+      <div class="ad-slot mt-6" style="margin-top:32px;">📣 Marketing Sponsor slot — 18 inquiries/month avg · <a href="../sponsor.html" style="margin-left:8px;color:var(--navy);">Reserve →</a></div>
+    </div>
+
+    <!-- ==================== ACCOUNTING ==================== -->
+    <div id="accounting" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Accounting &amp; Tax</h2>
+      <p class="lead" style="margin-bottom:24px;">Bookkeeping, monthly close, tax prep, audit, advisory. The CPAs your CFO friends actually use.</p>
+
+      <div class="featured-listing">
+        <div class="featured-listing__img">📊</div>
+        <div>
+          <div class="flex gap-2 mb-2" style="flex-wrap:wrap;"><span class="cm-badge">Chamber Member</span><span class="tier tier--gold">Gold Sponsor</span><span class="chip">Warner Center</span></div>
+          <h3 style="font-size:1.4rem;margin-bottom:6px;">Warner Center CPA Group</h3>
+          <p style="color:var(--slate-mid);margin-bottom:8px;">Tax, audit, and advisory for small business and individuals. Specializes in real-estate professionals, medical practices, and S-corp owners. QuickBooks &amp; Xero certified. Free 30-min Chamber-member consult; first-year tax return discounted 15% for switchers.</p>
+          <div class="text-sm text-muted">📍 21800 Oxnard St, Warner Center · 📞 (818) 555-0190 · 👥 14 staff CPAs · 🗓️ Year-round availability</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="#" class="btn btn--gold">Free Consult</a>
+          <a href="tel:8185550190" class="btn btn--ghost btn--sm">📞 Call</a>
+        </div>
+      </div>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">💼</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana Bookkeeping <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Small business · QuickBooks · 18399 Ventura Blvd</div><div class="flex gap-2"><span class="chip">$350-650/mo</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📈</div><div style="flex:1;"><h4 style="font-size:1.05rem;">West Valley Tax Advisors</h4><div class="text-sm text-muted mb-2">EA-led · Reseda · Personal &amp; small biz</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🧮</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Topanga CPA &amp; Wealth <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">CPAs + CFP combo · Woodland Hills</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📅</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Year-Round Tax Pros</h4><div class="text-sm text-muted mb-2">Quarterly check-ins · Tarzana</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== LEGAL ==================== -->
+    <div id="legal" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Legal</h2>
+      <p class="lead" style="margin-bottom:24px;">Business formation, contracts, employment, IP, estate planning. Chamber-member-rate consults.</p>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">⚖️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Valley Business Law Group <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Contracts · entity formation · Tarzana · 18345 Ventura</div><div class="flex gap-2"><span class="chip">Free 30-min</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📜</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Topanga Estate Planning <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Wills · trusts · probate · Woodland Hills</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">👨‍⚖️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">West Valley Employment Law</h4><div class="text-sm text-muted mb-2">Employer-side · Reseda</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">©️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana IP &amp; Trademark</h4><div class="text-sm text-muted mb-2">Trademarks · copyrights · 18345 Ventura</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🤝</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Warner Center M&amp;A Counsel <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Buy-side / sell-side &lt;$10M deals</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏠</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Real Estate Law Tarzana</h4><div class="text-sm text-muted mb-2">Title disputes · landlord/tenant</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== HR ==================== -->
+    <div id="hr" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">HR &amp; Payroll</h2>
+      <p class="lead" style="margin-bottom:24px;">Fractional HR, payroll, benefits, compliance. CA labor law is brutal — these folks live it.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">👥</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Valley HR Partners <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Fractional CHRO · 5-200 employees · Woodland Hills</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">💰</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana Payroll Co.</h4><div class="text-sm text-muted mb-2">Gusto-certified · ADP migration · Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏥</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Sierra Benefits West <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Group health · 401(k) · Reseda</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📋</div><div style="flex:1;"><h4 style="font-size:1.05rem;">CA Compliance Coach</h4><div class="text-sm text-muted mb-2">Handbook + sexual-harassment training · Valley-wide</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== IT ==================== -->
+    <div id="it" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">IT &amp; Cybersecurity</h2>
+      <p class="lead" style="margin-bottom:24px;">Managed IT, cybersecurity, SOC2/HIPAA compliance, network design. Healthcare and law-firm specialty.</p>
+
+      <div class="featured-listing">
+        <div class="featured-listing__img">🔐</div>
+        <div>
+          <div class="flex gap-2 mb-2" style="flex-wrap:wrap;"><span class="cm-badge">Chamber Member</span><span class="tier tier--gold">Gold Sponsor</span><span class="chip">SOC2</span><span class="chip chip--green">HIPAA</span></div>
+          <h3 style="font-size:1.4rem;margin-bottom:6px;">SecureValley MSP</h3>
+          <p style="color:var(--slate-mid);margin-bottom:8px;">Managed services, compliance audits, and the cybersecurity playbook for medical and legal practices. SOC2-attestation prep, HIPAA risk assessments, M365 hardening, EDR, 24/7 SOC. Chamber-member rate: $115/seat/mo (vs $145 list).</p>
+          <div class="text-sm text-muted">📍 18450 Sherman Way, Reseda · 📞 (818) 555-0188 · ⭐ 5.0 (89 reviews) · ⏱️ 15-min response SLA</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="#" class="btn btn--gold">Free Risk Assessment</a>
+          <a href="#" class="btn btn--ghost btn--sm">View case studies →</a>
+        </div>
+      </div>
+
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">💻</div><div style="flex:1;"><h4 style="font-size:1.05rem;">The Computer Doctor <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Small biz IT · networking · Woodland Hills</div><div class="flex gap-2"><span class="chip">On-site</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">☁️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Cloud Migration WH</h4><div class="text-sm text-muted mb-2">M365, Google Workspace migrations</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🛡️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana Cyber Defense <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Pen-testing · phishing simulations</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📡</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Reseda Network Pros</h4><div class="text-sm text-muted mb-2">Cisco/Meraki · cabling · VOIP</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== INSURANCE ==================== -->
+    <div id="insurance" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Insurance</h2>
+      <p class="lead" style="margin-bottom:24px;">Business GL, workers' comp, cyber, EPLI, professional liability — independent brokers who quote multiple carriers.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🏢</div><div style="flex:1;"><h4 style="font-size:1.05rem;">West Valley Insurance Group <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Commercial · 6310 Topanga Canyon Blvd</div><div class="flex gap-2"><span class="chip">5+ carriers</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🛡️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana Cyber Insurance Brokers</h4><div class="text-sm text-muted mb-2">Cyber liability specialty · Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">⚕️</div><div style="flex:1;"><h4 style="font-size:1.05rem;">MedMal Pros — Valley <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Healthcare professional liability</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📋</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Workers' Comp Specialists WH</h4><div class="text-sm text-muted mb-2">Mod-rate management · audit defense</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== COMMERCIAL RE ==================== -->
+    <div id="commercial-re" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Commercial Real Estate</h2>
+      <p class="lead" style="margin-bottom:24px;">Office, retail, industrial, medical, coworking — Warner Center is the densest commercial corridor in the West Valley.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🏢</div><div style="flex:1;"><h4 style="font-size:1.05rem;">CBRE Warner Center</h4><div class="text-sm text-muted mb-2">Office &amp; medical · 21500 Oxnard St</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏬</div><div style="flex:1;"><h4 style="font-size:1.05rem;">West Valley Realty Commercial <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Retail &amp; mixed-use · 22500 Ventura Blvd</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🏭</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Marcus &amp; Millichap WH</h4><div class="text-sm text-muted mb-2">Investment sales · multifamily</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">💼</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Spaces @ Westfield Topanga</h4><div class="text-sm text-muted mb-2">Coworking · day passes · 6320 Canoga</div><div class="flex gap-2"><span class="chip">Day pass $35</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🪑</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Premier Workspaces — Warner Center <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Private offices · meeting rooms · 21800 Oxnard</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">🚪</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Tarzana Medical Office Leasing</h4><div class="text-sm text-muted mb-2">Medical-zoned · Ventura Blvd · turnkey</div></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== BANKING ==================== -->
+    <div id="banking" style="margin-top:64px;">
+      <h2 style="margin-bottom:8px;">Banking &amp; Lending</h2>
+      <p class="lead" style="margin-bottom:24px;">SBA-7(a), business lines of credit, equipment financing, commercial mortgages.</p>
+      <div class="listings-grid">
+        <div class="standard-listing"><div class="standard-listing__img">🏦</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Bank of the Sierra — WH <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Business banking · SBA preferred lender</div><div class="flex gap-2"><span class="chip">SBA top 10</span></div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">💳</div><div style="flex:1;"><h4 style="font-size:1.05rem;">City National Bank — Warner Ctr</h4><div class="text-sm text-muted mb-2">Private/business banking · 21850 Oxnard</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">💵</div><div style="flex:1;"><h4 style="font-size:1.05rem;">US Bank — Tarzana <span class="cm-badge">Member</span></h4><div class="text-sm text-muted mb-2">Practice loans · medical financing</div></div></div>
+        <div class="standard-listing"><div class="standard-listing__img">📈</div><div style="flex:1;"><h4 style="font-size:1.05rem;">Valley SBA Lending Co.</h4><div class="text-sm text-muted mb-2">7(a) and 504 specialists · Woodland Hills</div></div></div>
+      </div>
+    </div>
+
+    <!-- TIPS -->
+    <div style="margin-top:64px;">
+      <h2 style="margin-bottom:16px;">B2B-Buyer Tips</h2>
+      <div class="listings-grid--3">
+        <div class="tip-card"><h4>📑 Always 3 quotes</h4><p>Even on legal &amp; CPA work. Chamber members expect it; quoted spread reveals scope assumptions.</p></div>
+        <div class="tip-card"><h4>🧾 Annual review meeting</h4><p>Ask your CPA, attorney, and insurance broker for a once-a-year combined sit-down. The Chamber hosts free Q4 group sessions.</p></div>
+        <div class="tip-card"><h4>🤝 Connection Circles</h4><p>The Chamber's CC referrals out-perform Yelp leads 4:1 on close rate per our 2025 member survey.</p></div>
+        <div class="tip-card"><h4>📊 Quarterly KPIs</h4><p>If your accountant doesn't push you a one-page dashboard quarterly, switch. Warner Center CPA Group includes one free.</p></div>
+        <div class="tip-card"><h4>🛡️ Cyber-insure now</h4><p>Cyber liability is the fastest-growing claim category. $1M policies for &lt;10-employee firms are now under $1,500/yr.</p></div>
+        <div class="tip-card"><h4>💼 Lease vs. own</h4><p>Warner Center Class A lease rates are now lower per sqft than 2019 — a buyers' market for tenants. Negotiate hard.</p></div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div id="faq" style="margin-top:64px;">
+      <h2 style="margin-bottom:16px;">Business Owners' FAQ</h2>
+      <details class="faq-item" open><summary>Best CPA for a small West Valley LLC?</summary><p>Warner Center CPA Group handles most Chamber-member LLCs; QuickBooks-certified, year-round bookkeeping. Tarzana Bookkeeping is the best entry-tier option ($350-650/mo).</p></details>
+      <details class="faq-item"><summary>Do I need a business attorney to form an LLC?</summary><p>Not strictly — but a 30-min consult catches operating-agreement and tax-election mistakes that cost thousands later. Valley Business Law Group offers Chamber members a free 30-min consult.</p></details>
+      <details class="faq-item"><summary>Fair monthly fee for managed IT?</summary><p>$95-$150/seat/mo for full managed IT in the West Valley — monitoring, patching, helpdesk, basic cyber. SecureValley MSP and The Computer Doctor are both members.</p></details>
+      <details class="faq-item"><summary>How do I find commercial space in Warner Center?</summary><p>CBRE Warner Center, Marcus &amp; Millichap, West Valley Realty Commercial all run live availability lists. Coworking via Spaces (Westfield) and Premier Workspaces (Warner Center).</p></details>
+      <details class="faq-item"><summary>Best business banking option locally?</summary><p>Bank of the Sierra, City National, and US Bank all have West Valley business bankers. Bank of the Sierra has strongest SBA-7(a) lending. Mention Chamber for waived account-open fees.</p></details>
+    </div>
+
+    <!-- CTA -->
+    <div class="card mt-6" style="margin-top:48px;padding:40px;background:var(--navy);color:#fff;border:none;text-align:center;">
+      <span class="eyebrow eyebrow--navy">For B2B Service Members</span>
+      <h2 style="color:#fff;margin:8px 0 12px;">B2B providers — be discoverable</h2>
+      <p style="color:rgba(255,255,255,.85);max-width:620px;margin:0 auto 24px;">Premium B2B listings include case studies, downloadable resources (sample contracts, audit checklists), lead-capture forms, and AI Concierge inclusion. Highest-converting placement on the Chamber site by member survey ($1.2M+ in tracked B2B referrals last year). Title sponsorship: $7,800/yr.</p>
+      <div class="flex gap-3" style="justify-content:center;flex-wrap:wrap;">
+        <a href="../sponsor.html#premium-listings" class="btn btn--gold btn--lg">Premium Listing Plans ›</a>
+        <a href="../advertise.html" class="btn btn--outline btn--lg" style="border-color:#fff;color:#fff;">Sponsor This Guide</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div data-partial="footer"></div>
+
+<script>window.CHAMBER_API_BASE='/api';</script>
+<script src="../js/partials.js"></script>
+<script src="../js/chamber.js"></script>
+<script>
+ChamberPartials.mount({active:'guides', depth:1});
+document.querySelectorAll('.guide-nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.guide-nav a').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
