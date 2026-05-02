@@ -429,7 +429,9 @@ p  { margin-bottom: var(--s-4); }
 }
 .ai-widget__title { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; }
 .ai-widget__sub { font-size: 0.78rem; color: rgba(255,255,255,0.75); }
-.ai-widget__close { margin-left: auto; color: var(--paper); padding: 0.4rem; border-radius: 50%; }
+.ai-widget__close, .ai-widget__minimize { color: var(--paper); padding: 0.45rem; border-radius: 50%; cursor: pointer; transition: background 150ms; display: inline-flex; align-items: center; justify-content: center; }
+.ai-widget__close, .ai-widget__minimize { margin-left: auto; }
+.ai-widget__close + .ai-widget__minimize, .ai-widget__minimize + .ai-widget__close { margin-left: 4px; }
 .ai-widget__close:hover { background: rgba(255,255,255,0.1); }
 .ai-widget__body { flex: 1; overflow-y: auto; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); background: var(--cream); }
 .ai-msg { padding: 0.7rem 0.95rem; border-radius: var(--r-md); max-width: 85%; line-height: 1.5; font-size: 0.92rem; }

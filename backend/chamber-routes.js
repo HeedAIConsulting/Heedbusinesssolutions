@@ -514,19 +514,182 @@ ${events.map(e => `- ${e.date} ${e.title} | ${e.location} | ${e.category}`).join
   });
 
   // ── Member account operations (Diana's portal) ─────────
-  // List + filter + paginate members for the admin members page.
+  // List + filter + paginate members. New `status` param supports tabs:
+  //   all | new (added in last 60 days) | upcoming (renewal in next 30 days)
+  //   | lapsed (renewal date passed without renewal in last 14 days)
+  // Status uses createdAt (joinedDate) and renewalDate fields. Members
+  // without renewal data fall back to a deterministic mock anchored on the
+  // member id so the admin UI feels alive even before billing data is wired.
+  function mockRenewalDate(id) {
+    // Hash id → 0..364 day offset from Jan 1, 2026
+    let h = 0;
+    for (let i = 0; i < id.length; i++) h = ((h << 5) - h + id.charCodeAt(i)) | 0;
+    const offset = Math.abs(h) % 365;
+    const d = new Date('2026-01-01T00:00:00Z');
+    d.setUTCDate(d.getUTCDate() + offset);
+    return d.toISOString().slice(0, 10);
+  }
+  function mockJoinedDate(id, renewal) {
+    // Joined ~ 1-5 years before renewal
+    let h = 0;
+    for (let i = 0; i < id.length; i++) h = ((h << 3) + h + id.charCodeAt(i)) | 0;
+    const yearsAgo = (Math.abs(h) % 5) + 1;
+    const d = new Date(renewal);
+    d.setUTCFullYear(d.getUTCFullYear() - yearsAgo);
+    return d.toISOString().slice(0, 10);
+  }
+
   app.get('/api/admin/members', (req, res) => {
-    const { q = '', category, neighborhood, tier, chamberOnly, limit = 100, offset = 0 } = req.query;
+    const { q = '', category, neighborhood, tier, chamberOnly, status, limit = 100, offset = 0 } = req.query;
     let dir = loadJson('directory.json');
+
+    // Enrich with renewal/join data
+    dir = dir.map(m => {
+      const renewalDate = m.renewalDate || mockRenewalDate(m.id);
+      const joinedDate  = m.createdAt || mockJoinedDate(m.id, renewalDate);
+      return { ...m, renewalDate, joinedDate };
+    });
+
+    const today = new Date();
+    const todayStr = today.toISOString().slice(0, 10);
+    const in30 = new Date(today); in30.setDate(in30.getDate() + 30);
+    const ago60 = new Date(today); ago60.setDate(ago60.getDate() - 60);
+    const ago14 = new Date(today); ago14.setDate(ago14.getDate() - 14);
+
+    if (status === 'new') {
+      dir = dir.filter(m => m.chamberMember && new Date(m.joinedDate) > ago60);
+    } else if (status === 'upcoming') {
+      dir = dir.filter(m => m.chamberMember && m.renewalDate >= todayStr && new Date(m.renewalDate) <= in30);
+    } else if (status === 'lapsed') {
+      dir = dir.filter(m => m.chamberMember && m.renewalDate < todayStr && new Date(m.renewalDate) < ago14);
+    } else if (status === 'active') {
+      dir = dir.filter(m => m.chamberMember);
+    }
+
     const ql = String(q).toLowerCase();
     if (ql) dir = dir.filter(m => [m.name, m.category, m.contactName, m.email, m.tagline].filter(Boolean).join(' ').toLowerCase().includes(ql));
     if (category) dir = dir.filter(m => m.category === category);
     if (neighborhood) dir = dir.filter(m => m.neighborhood === neighborhood);
     if (tier) dir = dir.filter(m => m.tier === tier);
     if (chamberOnly === '1' || chamberOnly === 'true') dir = dir.filter(m => m.chamberMember);
+
+    // Default sort: lapsed/upcoming by date asc; new/all by joinedDate desc
+    if (status === 'lapsed' || status === 'upcoming') {
+      dir.sort((a, b) => a.renewalDate.localeCompare(b.renewalDate));
+    } else if (status === 'new') {
+      dir.sort((a, b) => b.joinedDate.localeCompare(a.joinedDate));
+    }
+
     const total = dir.length;
     const page = dir.slice(+offset, +offset + +limit);
-    res.json({ total, returned: page.length, members: page });
+
+    // Tab counts (independent of current filter so UI can show all)
+    const allDir = loadJson('directory.json').map(m => ({
+      ...m,
+      renewalDate: m.renewalDate || mockRenewalDate(m.id),
+      joinedDate:  m.createdAt   || mockJoinedDate(m.id, m.renewalDate || mockRenewalDate(m.id))
+    })).filter(m => m.chamberMember);
+    const counts = {
+      active:   allDir.length,
+      new:      allDir.filter(m => new Date(m.joinedDate) > ago60).length,
+      upcoming: allDir.filter(m => m.renewalDate >= todayStr && new Date(m.renewalDate) <= in30).length,
+      lapsed:   allDir.filter(m => m.renewalDate < todayStr && new Date(m.renewalDate) < ago14).length
+    };
+
+    res.json({ total, returned: page.length, counts, members: page });
+  });
+
+  // ── AI-generated renewal email for a lapsed/upcoming-renewal member ──
+  app.post('/api/admin/members/:id/renewal-email', async (req, res) => {
+    try {
+      const dir = loadJson('directory.json');
+      const m = dir.find(x => x.id === req.params.id);
+      if (!m) return res.status(404).json({ error: 'Member not found' });
+      const renewalDate = m.renewalDate || mockRenewalDate(m.id);
+      const joinedDate  = m.createdAt   || mockJoinedDate(m.id, renewalDate);
+      const yearsMember = Math.max(1, Math.round((Date.now() - new Date(joinedDate).getTime()) / (365 * 24 * 3600 * 1000)));
+      const todayStr = new Date().toISOString().slice(0, 10);
+      const lapsed = renewalDate < todayStr;
+      const events = loadJson('events.json').slice(0, 4);
+
+      const system = `You are drafting a personal renewal email for the West Valley Warner Center Chamber of Commerce, signed by Diana Williams (CEO).
+
+Output JSON of shape:
+{
+  "subject": "...",
+  "body": "...",
+  "tone": "warm|nudge|reactivation"
+}
+
+Voice: warm, locally-grounded, not corporate. Diana writes like a real human. Use "chamber of commerce" not "chamber" in formal sentences. End with "Stay Connected, Diana" signature block.
+
+Body should:
+- Reference how long they've been a member (${yearsMember} year${yearsMember === 1 ? '' : 's'})
+- Reference their business by name and category
+- Pick ONE specific upcoming chamber event they should attend
+- Reference one tangible benefit they've gotten or could get
+- Make a clear, low-friction ask (renew online OR have a 15-min call)
+- Be ${lapsed ? '~140 words, slightly more reactivation-oriented' : '~120 words, friendly nudge'}
+
+Do not invent specific facts about the member's business beyond what's given. If unsure, keep it general.`;
+
+      const ctx = `Member:
+- Business: ${m.name}
+- Contact: ${m.contactName || 'there'}
+- Category: ${m.category || 'unknown'}
+- Neighborhood: ${m.neighborhood || 'West Valley'}
+- Tier: ${m.tier || 'member'}
+- Member since: ${joinedDate} (${yearsMember} year${yearsMember === 1 ? '' : 's'})
+- Renewal date: ${renewalDate} ${lapsed ? '(LAPSED)' : '(upcoming)'}
+- Tagline: ${m.tagline || ''}
+
+Upcoming chamber events:
+${events.map(e => `- ${e.date} ${e.title} (${e.category||''} · ${e.location||''})`).join('\n')}`;
+
+      let parsed;
+      try {
+        const response = await anthropic.messages.create({
+          model: MODEL_STAFF,
+          max_tokens: 1200,
+          system,
+          messages: [{ role: 'user', content: ctx }]
+        });
+        const raw = response.content[0].text.trim();
+        try { parsed = JSON.parse(raw); }
+        catch { const match = raw.match(/\{[\s\S]*\}/); parsed = match ? JSON.parse(match[0]) : { subject: 'Renewal', body: raw }; }
+      } catch (apiErr) {
+        // Fallback if no API key — generate a deterministic template so the UI works offline
+        const event = events[0];
+        parsed = {
+          subject: lapsed
+            ? `${m.contactName ? m.contactName.split(' ')[0] : 'Hi'} — let's get ${m.name} back on the directory`
+            : `${m.contactName ? m.contactName.split(' ')[0] : 'Hi'}, your renewal for ${m.name}`,
+          body: `Hi ${m.contactName || 'there'},
+
+${lapsed
+  ? `Your chamber-of-commerce membership for ${m.name} has been with us for ${yearsMember} year${yearsMember===1?'':'s'}, and your renewal lapsed on ${renewalDate}. I'd love to get you back on the directory before the next mixer.`
+  : `Your chamber-of-commerce membership for ${m.name} comes up for renewal on ${renewalDate}, and I wanted to reach out personally before that arrives.`}
+
+${event ? `Quick selfish request: ${event.title} is coming up on ${event.date}${event.location?` at ${event.location}`:''}. It would be great to see you there.` : ''}
+
+You can renew online from your member portal, or I'm happy to grab 15 minutes by phone if you'd rather walk through it. ${lapsed ? 'I can also extend a one-time grace credit if there\'s a specific reason renewal slipped.' : ''}
+
+Stay Connected,
+Diana
+Diana Williams · CEO
+West Valley Warner Center Chamber of Commerce
+(818) 347-4737 · diana@woodlandhillscc.net`,
+          tone: lapsed ? 'reactivation' : 'nudge',
+          fallback: true
+        };
+      }
+
+      appendStore('renewal_emails', { memberId: m.id, ...parsed });
+      res.json({ ok: true, member: { id: m.id, name: m.name, contactName: m.contactName, email: m.email, renewalDate, lapsed }, ...parsed });
+    } catch (err) {
+      console.error('Renewal email error:', err.message);
+      res.status(500).json({ error: err.message });
+    }
   });
 
   // Single-member view with full activity history.

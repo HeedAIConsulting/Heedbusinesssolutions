@@ -43,8 +43,11 @@
             <div class="ai-widget__title">Chamber Concierge</div>
             <div class="ai-widget__sub">Powered by AI · Always on duty</div>
           </div>
-          <button class="ai-widget__close" data-action="toggle" aria-label="Close concierge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          <button class="ai-widget__minimize" data-action="minimize" aria-label="Minimize concierge" title="Minimize">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13h14"/></svg>
+          </button>
+          <button class="ai-widget__close" data-action="close" aria-label="Close concierge" title="Close">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
           </button>
         </div>
         <div class="ai-widget__body" data-role="messages">
@@ -77,8 +80,25 @@
     widget.addEventListener('click', (e) => {
       const t = e.target.closest('[data-action="toggle"]');
       if (t) { panel.classList.toggle('is-open'); if (panel.classList.contains('is-open')) input.focus(); return; }
+      const m = e.target.closest('[data-action="minimize"]');
+      if (m) { panel.classList.remove('is-open'); return; }
+      const c = e.target.closest('[data-action="close"]');
+      if (c) {
+        panel.classList.remove('is-open');
+        // Clear conversation on close (full reset). Minimize preserves it.
+        const msgsList = messages.querySelectorAll('.ai-msg, .ai-cards');
+        msgsList.forEach((el, i) => { if (i > 0) el.remove(); });
+        return;
+      }
       const sug = e.target.closest('.ai-suggest button');
       if (sug) { input.value = sug.dataset.prompt; form.requestSubmit(); }
+    });
+
+    // Esc-to-minimize keyboard shortcut
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && panel.classList.contains('is-open')) {
+        panel.classList.remove('is-open');
+      }
     });
 
     form.addEventListener('submit', async (e) => {
@@ -155,19 +175,45 @@
     }
     return null;
   }
+  // Words that don't add meaning — filtered before scoring so a query like
+  // "find me a plumber that's a chamber member" doesn't match every chamber
+  // member just because of the words "chamber" and "member".
+  const STOP = new Set([
+    'find','show','give','help','want','need','looking','please','recommend',
+    'best','good','great','any','some','all','new','near','around',
+    'the','and','for','with','from','that','this','what','where','who','how',
+    'chamber','member','members','business','businesses','company','place','places',
+    'open','today','now','near','close','far','here'
+  ]);
+
   async function clientSideConcierge(container, query) {
     if (!_DIR_CACHE) _DIR_CACHE = await loadJSON('directory.json') || [];
     if (!_SFV_CACHE) _SFV_CACHE = await loadJSON('sfv-businesses.json') || [];
     if (!_EVT_CACHE) _EVT_CACHE = await loadJSON('events.json') || [];
 
     const q = query.toLowerCase();
-    const tokens = q.split(/[^a-z0-9]+/).filter(t => t.length >= 3);
+    const allTokens = q.split(/[^a-z0-9]+/).filter(t => t.length >= 3);
+    const tokens = allTokens.filter(t => !STOP.has(t));
+
+    if (tokens.length === 0) {
+      addMsg(container, "Try giving me a more specific keyword — what kind of business, neighborhood, or service are you looking for?", 'bot');
+      return;
+    }
 
     function score(m) {
       const hay = [m.name, m.legalName, m.category, m.subcategory, m.naicsDescription, m.tagline, m.neighborhood, m.address, (m.tags||[]).join(' '), (m.features||[]).join(' '), (m.specialties||'')].filter(Boolean).join(' ').toLowerCase();
-      let s = 0;
-      tokens.forEach(t => { if (hay.includes(t)) s += hay.startsWith(t) ? 4 : hay.split(t).length - 1; });
-      // Heavy bias: chamber members ALWAYS rank above community businesses
+      let tokenScore = 0;
+      tokens.forEach(t => {
+        if (hay.includes(t)) {
+          // Higher weight for matches in the name vs. description
+          const inName = (m.name||'').toLowerCase().includes(t);
+          tokenScore += inName ? 8 : (hay.split(t).length - 1) * 2;
+        }
+      });
+      // CRITICAL: only apply tier/chamber bias when there's an actual content match.
+      // Otherwise top-tier chamber members would dominate every irrelevant search.
+      if (tokenScore === 0) return 0;
+      let s = tokenScore;
       if (m.chamberMember) s += 5;
       const tierBoost = { platinum: 3, gold: 2.5, silver: 2, bronze: 1.5, supporter: 1, friend: 1, member: 0.5 };
       s += tierBoost[m.tier] || 0;
