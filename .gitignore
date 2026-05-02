@@ -8,6 +8,9 @@ node_modules/
 raw/wvwccc_members.csv
 raw/cityloop/
 
+# Large source data (regenerate from xlsx via scripts/build-sfv-businesses.js)
+raw/818guide/
+
 # Runtime stores (created by backend, should not be checked in)
 data/_store/
 
