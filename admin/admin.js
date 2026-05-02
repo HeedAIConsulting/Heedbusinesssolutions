@@ -44,8 +44,12 @@ window.AdminShell = (function () {
       <a href="email-blasts.html" class="${active==='blasts'?'active':''}">📨 Email Blasts</a>
     </div>
     <div class="admin-nav__group">
+      <div class="admin-nav__group-title">Revenue</div>
+      <a href="ads.html" class="${active==='ads'?'active':''}">📊 Ad Inventory &amp; Revenue</a>
+      <a href="billing.html" class="${active==='billing'?'active':''}">💳 Billing</a>
+    </div>
+    <div class="admin-nav__group">
       <div class="admin-nav__group-title">Operations</div>
-      <a href="billing.html" class="${active==='billing'?'active':''}">💳 Billing &amp; Square</a>
       <a href="reports.html" class="${active==='reports'?'active':''}">📈 Reports</a>
       <a href="staff.html" class="${active==='staff'?'active':''}">🛡️ Staff &amp; Roles</a>
       <a href="settings.html" class="${active==='settings'?'active':''}">⚙️ Settings</a>

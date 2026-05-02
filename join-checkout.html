@@ -15,7 +15,7 @@
   <div class="container page-hero__inner">
     <div class="breadcrumb"><a href="index.html">Home</a> / <a href="join.html">Join</a> / Checkout</div>
     <h1>Welcome — let's get you set up</h1>
-    <p>Two minutes. Square handles payment. Membership begins immediately.</p>
+    <p>Online membership signup coming soon. For now: enter your details and Diana will reach out to complete your enrollment.</p>
   </div>
 </section>
 
@@ -58,10 +58,10 @@
           <h3 style="margin:32px 0 16px;font-size:1.1rem;">Payment</h3>
           <div class="card" style="padding:20px;background:var(--cream);border:1px dashed var(--line);">
             <div class="text-sm text-muted mb-2">Powered by</div>
-            <div style="font-weight:700;color:var(--navy);font-size:1.2rem;margin-bottom:12px;">◼ Square</div>
+            <div style="font-weight:700;color:var(--navy);font-size:1.2rem;margin-bottom:12px;">Pay by · check, invoice, or call</div>
             <div style="background:#fff;padding:14px;border:1px solid var(--line);border-radius:8px;font-family:var(--mono);color:var(--muted);font-size:.9rem;">
               Card · •••• •••• •••• 4242 · 04/27 · ✓
-              <div class="text-xs mt-2" style="color:var(--green);">▲ Square Web Payments SDK + recurring billing token in production</div>
+              <div class="text-xs mt-2" style="color:var(--green);">▲ Online checkout coming soon. For now, the chamber will send an invoice.</div>
             </div>
           </div>
 
@@ -94,7 +94,7 @@
           <div class="mt-5" style="background:var(--gold-soft);padding:14px;border-radius:8px;font-size:.85rem;color:var(--navy);">
             <strong>What happens next:</strong>
             <ol style="margin:6px 0 0 18px;padding:0;">
-              <li>Payment processed via Square</li>
+              <li>Invoice sent for payment</li>
               <li>Receipt emailed</li>
               <li>Member portal account created</li>
               <li>Directory listing live within 24h</li>
@@ -140,7 +140,7 @@ document.getElementById('amt').textContent = '$' + total.toFixed(2);
 
 document.getElementById('join-form').addEventListener('submit', e => {
   e.preventDefault();
-  alert('In production: Square card tokenization → POST /api/memberships/subscribe → create account → email welcome kit. Demo mode.');
+  alert('Submitted! Diana will email you the invoice + welcome packet within 1 business day.');
 });
 </script>
 

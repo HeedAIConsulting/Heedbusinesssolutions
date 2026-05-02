@@ -456,6 +456,170 @@ ${events.map(e => `- ${e.date} ${e.title} | ${e.location} | ${e.category}`).join
     loyalty_enrollments: readStore('loyalty_enrollments')
   }));
 
+  // ── Ad Inventory & Revenue ─────────────────────────────
+  app.get('/api/admin/ads', (req, res) => {
+    const inv = loadJson('ad-inventory.json');
+    const sold = inv.filter(i => i.status === 'sold');
+    const mrr = sold.reduce((s, i) => s + (i.term === 'annual' ? i.pricing.introAnnual / 12 : i.pricing.introMonthly), 0);
+    const arr = sold.reduce((s, i) => s + (i.term === 'annual' ? i.pricing.introAnnual : i.pricing.introMonthly * 12), 0);
+    const potentialAnnual2026 = inv.reduce((s, i) => s + i.pricing.introAnnual, 0);
+    const potentialAnnual2027 = inv.reduce((s, i) => s + i.pricing.newAnnual, 0);
+    res.json({
+      inventory: inv,
+      summary: {
+        total: inv.length,
+        sold: sold.length,
+        available: inv.length - sold.length,
+        soldPct: inv.length ? +((sold.length / inv.length) * 100).toFixed(1) : 0,
+        mrr: Math.round(mrr),
+        arr: Math.round(arr),
+        potentialAnnual2026: potentialAnnual2026,
+        potentialAnnual2027: potentialAnnual2027,
+        introExpires: '2026-12-31',
+        newPricingStarts: '2027-01-01'
+      }
+    });
+  });
+
+  app.post('/api/admin/ads/:id/sell', (req, res) => {
+    const { buyer, term, termStart, termEnd, notes } = req.body || {};
+    if (!buyer) return res.status(400).json({ error: 'buyer required' });
+    try {
+      const inv = loadJson('ad-inventory.json');
+      const idx = inv.findIndex(i => i.id === req.params.id);
+      if (idx < 0) return res.status(404).json({ error: 'Ad space not found' });
+      inv[idx].status = 'sold';
+      inv[idx].buyer = buyer;
+      inv[idx].term = term || 'annual';
+      inv[idx].termStart = termStart || new Date().toISOString().slice(0, 10);
+      inv[idx].termEnd = termEnd;
+      inv[idx].notes = notes || '';
+      fs.writeFileSync(path.join(DATA_DIR, 'ad-inventory.json'), JSON.stringify(inv, null, 2));
+      appendStore('ad_sales', inv[idx]);
+      res.json({ ok: true, item: inv[idx] });
+    } catch (e) { res.status(500).json({ error: e.message }); }
+  });
+
+  app.post('/api/admin/ads/:id/release', (req, res) => {
+    try {
+      const inv = loadJson('ad-inventory.json');
+      const idx = inv.findIndex(i => i.id === req.params.id);
+      if (idx < 0) return res.status(404).json({ error: 'Not found' });
+      inv[idx].status = 'available';
+      inv[idx].buyer = null;
+      inv[idx].termStart = null; inv[idx].termEnd = null; inv[idx].term = null;
+      fs.writeFileSync(path.join(DATA_DIR, 'ad-inventory.json'), JSON.stringify(inv, null, 2));
+      res.json({ ok: true });
+    } catch (e) { res.status(500).json({ error: e.message }); }
+  });
+
+  // ── Member account operations (Diana's portal) ─────────
+  // List + filter + paginate members for the admin members page.
+  app.get('/api/admin/members', (req, res) => {
+    const { q = '', category, neighborhood, tier, chamberOnly, limit = 100, offset = 0 } = req.query;
+    let dir = loadJson('directory.json');
+    const ql = String(q).toLowerCase();
+    if (ql) dir = dir.filter(m => [m.name, m.category, m.contactName, m.email, m.tagline].filter(Boolean).join(' ').toLowerCase().includes(ql));
+    if (category) dir = dir.filter(m => m.category === category);
+    if (neighborhood) dir = dir.filter(m => m.neighborhood === neighborhood);
+    if (tier) dir = dir.filter(m => m.tier === tier);
+    if (chamberOnly === '1' || chamberOnly === 'true') dir = dir.filter(m => m.chamberMember);
+    const total = dir.length;
+    const page = dir.slice(+offset, +offset + +limit);
+    res.json({ total, returned: page.length, members: page });
+  });
+
+  // Single-member view with full activity history.
+  app.get('/api/admin/members/:id', (req, res) => {
+    const dir = loadJson('directory.json');
+    const m = dir.find(x => x.id === req.params.id);
+    if (!m) return res.status(404).json({ error: 'Not found' });
+
+    const id = req.params.id;
+    const charges = readStore('charges').filter(c => (c.metadata && c.metadata.memberId) === id);
+    const upgrades = readStore('upgrades').filter(u => u.onboardingId === id || u.memberId === id);
+    const refsOut = readStore('referrals').filter(r => r.referrerMemberId === id || r.referrerEmail === m.email);
+    const refsIn  = readStore('referrals').filter(r => r.referredEmail === m.email);
+    const groupJoins = readStore('group_joins').filter(g => g.memberId === id);
+    const loyaltyEnrolls = readStore('loyalty_enrollments').filter(l => l.businessId === id || l.businessName === m.name);
+    const concierge = readStore('concierge').filter(c => (c.memberId || '') === id).slice(-20);
+
+    res.json({
+      member: m,
+      history: {
+        charges,
+        upgrades,
+        referralsOut: refsOut, referralsIn: refsIn,
+        groupJoins,
+        loyaltyEnrollments: loyaltyEnrolls,
+        recentConciergeMentions: concierge
+      },
+      summary: {
+        totalSpend: charges.reduce((s, c) => s + (+c.amount || 0), 0),
+        upgradeCount: upgrades.length,
+        referralsClosed: refsOut.filter(r => r.status === 'joined').length,
+        joinedDate: m.createdAt || null
+      }
+    });
+  });
+
+  // Add a feature/upgrade to a member's account (called when they purchase).
+  app.post('/api/admin/members/:id/features', (req, res) => {
+    const id = req.params.id;
+    const { feature, expiresAt, notes } = req.body || {};
+    if (!feature) return res.status(400).json({ error: 'feature required' });
+
+    appendStore('member_features', { memberId: id, feature, expiresAt, notes, addedAt: new Date().toISOString() });
+
+    // Optionally mutate the directory entry to reflect the upgrade.
+    try {
+      const dir = loadJson('directory.json');
+      const idx = dir.findIndex(x => x.id === id);
+      if (idx >= 0) {
+        dir[idx].features = dir[idx].features || [];
+        if (!dir[idx].features.includes(feature)) dir[idx].features.push(feature);
+        if (feature === 'premium_listing') dir[idx].featured = true;
+        if (feature.startsWith('tier_upgrade_')) dir[idx].tier = feature.replace('tier_upgrade_', '');
+        fs.writeFileSync(path.join(DATA_DIR, 'directory.json'), JSON.stringify(dir, null, 2));
+      }
+    } catch (e) { console.error('Feature persistence error:', e.message); }
+
+    res.json({ ok: true });
+  });
+
+  // Upgrade tier (atomic).
+  app.post('/api/admin/members/:id/tier', (req, res) => {
+    const id = req.params.id;
+    const { tier } = req.body || {};
+    if (!['friend','member','bronze','silver','gold','platinum','supporter'].includes(tier)) {
+      return res.status(400).json({ error: 'invalid tier' });
+    }
+    try {
+      const dir = loadJson('directory.json');
+      const idx = dir.findIndex(x => x.id === id);
+      if (idx < 0) return res.status(404).json({ error: 'Not found' });
+      const oldTier = dir[idx].tier;
+      dir[idx].tier = tier;
+      fs.writeFileSync(path.join(DATA_DIR, 'directory.json'), JSON.stringify(dir, null, 2));
+      appendStore('tier_changes', { memberId: id, from: oldTier, to: tier });
+      res.json({ ok: true, from: oldTier, to: tier });
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  });
+
+  // Public member-facing self-service: see my own portal data.
+  app.get('/api/members/me/:idOrEmail', (req, res) => {
+    const key = decodeURIComponent(req.params.idOrEmail);
+    const dir = loadJson('directory.json');
+    const m = dir.find(x => x.id === key || (x.email && x.email.toLowerCase() === key.toLowerCase()));
+    if (!m) return res.status(404).json({ error: 'Not found' });
+    const upgrades = readStore('upgrades').filter(u => u.email === m.email || u.memberId === m.id);
+    const features = readStore('member_features').filter(f => f.memberId === m.id);
+    const refsOut = readStore('referrals').filter(r => r.referrerEmail === m.email);
+    res.json({ member: m, features, upgrades, referrals: refsOut });
+  });
+
   console.log('✓ Chamber routes mounted (Concierge: Sonnet 4.6, Staff: Opus 4.7)');
 }
 

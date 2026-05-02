@@ -143,9 +143,9 @@
   // local keyword-match against directory + events JSON so the user still
   // gets useful results instead of an apology.
   let _DIR_CACHE = null;
+  let _SFV_CACHE = null;
   let _EVT_CACHE = null;
   async function loadJSON(p) {
-    // Walk up from current depth to find the data files
     const tries = ['data/', '../data/', '../../data/'];
     for (const prefix of tries) {
       try {
@@ -157,42 +157,67 @@
   }
   async function clientSideConcierge(container, query) {
     if (!_DIR_CACHE) _DIR_CACHE = await loadJSON('directory.json') || [];
+    if (!_SFV_CACHE) _SFV_CACHE = await loadJSON('sfv-businesses.json') || [];
     if (!_EVT_CACHE) _EVT_CACHE = await loadJSON('events.json') || [];
+
     const q = query.toLowerCase();
     const tokens = q.split(/[^a-z0-9]+/).filter(t => t.length >= 3);
 
     function score(m) {
-      const hay = [m.name, m.category, m.subcategory, m.tagline, m.neighborhood, m.address, (m.tags||[]).join(' '), (m.features||[]).join(' '), (m.specialties||'')].filter(Boolean).join(' ').toLowerCase();
+      const hay = [m.name, m.legalName, m.category, m.subcategory, m.naicsDescription, m.tagline, m.neighborhood, m.address, (m.tags||[]).join(' '), (m.features||[]).join(' '), (m.specialties||'')].filter(Boolean).join(' ').toLowerCase();
       let s = 0;
       tokens.forEach(t => { if (hay.includes(t)) s += hay.startsWith(t) ? 4 : hay.split(t).length - 1; });
-      // Bias: chamber members win ties
-      if (m.chamberMember) s += 1;
-      const tierBoost = { platinum: 2, gold: 1.5, silver: 1, bronze: 0.5 };
+      // Heavy bias: chamber members ALWAYS rank above community businesses
+      if (m.chamberMember) s += 5;
+      const tierBoost = { platinum: 3, gold: 2.5, silver: 2, bronze: 1.5, supporter: 1, friend: 1, member: 0.5 };
       s += tierBoost[m.tier] || 0;
       return s;
     }
 
-    const scored = _DIR_CACHE.map(m => ({ m, s: score(m) })).filter(x => x.s > 0).sort((a,b) => b.s - a.s).slice(0, 4);
+    // Search chamber directory FIRST, fall back to SFV-wide if nothing relevant
+    const chamberScored = _DIR_CACHE.map(m => ({ m, s: score(m), source: 'chamber' })).filter(x => x.s > 0);
+    const sfvScored = _SFV_CACHE.map(m => ({ m, s: score(m), source: 'sfv' })).filter(x => x.s > 0);
 
-    if (!scored.length) {
-      addMsg(container, "I couldn't find a match in the directory for that exact request. Try a different keyword (neighborhood, business type, or what you need) — or open the full directory from the top menu.", 'bot');
+    let combined;
+    if (chamberScored.length >= 3) {
+      // Plenty of chamber matches — show top 4 chamber-only
+      combined = chamberScored.sort((a,b) => b.s - a.s).slice(0, 4);
+    } else {
+      // Fewer chamber matches — pad with SFV matches but always chamber-first
+      combined = [
+        ...chamberScored.sort((a,b) => b.s - a.s),
+        ...sfvScored.sort((a,b) => b.s - a.s).slice(0, 4 - chamberScored.length)
+      ].slice(0, 4);
+    }
+
+    if (!combined.length) {
+      addMsg(container, "I couldn't find a match for that. Try a different keyword (neighborhood, business type, or what you need) — or browse the full directory from the top menu.", 'bot');
       return;
     }
 
-    // Find the data depth so cards link correctly
     const depth = (window.location.pathname.match(/\/[^/]+\//g) || []).length - 1;
     const prefix = '../'.repeat(Math.max(0, depth));
 
-    addMsg(container, `Here are the closest chamber-member matches I found for "${query}":`, 'bot');
-    const cards = scored.map(({ m }) => ({
+    const chamberCount = combined.filter(x => x.source === 'chamber').length;
+    const intro = chamberCount === combined.length
+      ? `Here are the chamber-member matches I found for "${query}":`
+      : chamberCount > 0
+        ? `Here are the top matches for "${query}" — chamber members first, then community businesses:`
+        : `No chamber members directly match "${query}", but here are some West Valley businesses worth checking:`;
+
+    addMsg(container, intro, 'bot');
+    const cards = combined.map(({ m, source }) => ({
       title: m.name,
-      meta: [m.category, m.neighborhood, m.phone].filter(Boolean).join(' · '),
-      body: m.tagline || (m.features && m.features.slice(0,2).join(' · ')) || '',
-      href: `${prefix}members/profile.html?id=${encodeURIComponent(m.id)}`,
-      badge: m.chamberMember ? 'Chamber Member' : null
+      meta: [m.category, m.neighborhood, m.phone || m.address].filter(Boolean).join(' · '),
+      body: m.tagline || m.naicsDescription || (m.features && m.features.slice(0,2).join(' · ')) || '',
+      href: source === 'chamber' ? `${prefix}members/profile.html?id=${encodeURIComponent(m.id)}` : `${prefix}guides/cityloop.html#${encodeURIComponent(m.id)}`,
+      badge: m.chamberMember ? 'Chamber Member' : 'Community'
     }));
     renderCards(container, cards);
-    addMsg(container, "(Powered by client-side search — for live AI answers, the chamber backend needs to be running.)", 'bot');
+
+    if (chamberCount === 0) {
+      addMsg(container, "💡 Tip: Chamber-member businesses get faster, vetted recommendations. Open the full directory or join the chamber to be found here.", 'bot');
+    }
   }
 
   // Boot widget on every page except admin/auth

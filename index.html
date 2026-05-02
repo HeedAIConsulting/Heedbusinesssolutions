@@ -213,72 +213,77 @@
       <h2 style="color:#fff;">Backed by the businesses who built this Valley</h2>
       <p style="color:rgba(255,255,255,0.85);">Six tiers of partnership. Every dollar reinvested in the community.</p>
     </div>
-    <div class="partners-grid" style="background:rgba(255,255,255,0.04);padding:32px;border-radius:14px;">
-      <div class="partners-grid__tier">
-        <div class="partners-grid__label" style="color:var(--gold);">Platinum</div>
-        <div class="partners-grid__items">
-          <div class="partner-card">Blumenfield<br><span style="font-size:.7rem;color:var(--muted);">City of LA</span></div>
-          <div class="partner-card">MPTF<br><span style="font-size:.7rem;color:var(--muted);">Motion Picture &amp; TV Fund</span></div>
-          <div class="partner-card">UCLA Health</div>
-          <div class="partner-card">Westfield<br><span style="font-size:.7rem;color:var(--muted);">Topanga &amp; The Village</span></div>
-        </div>
-      </div>
-      <div class="partners-grid__tier">
-        <div class="partners-grid__label" style="color:var(--gold);">Gold</div>
-        <div class="partners-grid__items">
-          <div class="partner-card">Los Angeles Rams</div>
-          <div class="partner-card">Providence<br><span style="font-size:.7rem;color:var(--muted);">Cedars-Sinai Tarzana</span></div>
-        </div>
-      </div>
-      <div class="partners-grid__tier">
-        <div class="partners-grid__label" style="color:rgba(255,255,255,0.75);">Silver</div>
-        <div class="partners-grid__items">
-          <div class="partner-card">Jaguar Woodland Hills</div>
-        </div>
-      </div>
-      <div class="partners-grid__tier">
-        <div class="partners-grid__label" style="color:#E0B596;">Bronze</div>
-        <div class="partners-grid__items">
-          <div class="partner-card">Joint Matters<br><span style="font-size:.7rem;color:var(--muted);">Calibration Services</span></div>
-          <div class="partner-card">Kaiser Permanente</div>
-          <div class="partner-card">Warner Center<br>Marriott</div>
-          <div class="partner-card">Porsche<br>Woodland Hills</div>
-        </div>
-      </div>
-      <div class="partners-grid__tier">
-        <div class="partners-grid__label" style="color:rgba(255,255,255,0.7);">Supporters</div>
-        <div class="partners-grid__items">
-          <div class="partner-card">Post 826 CA Legion</div>
-          <div class="partner-card">Boys &amp; Girls Clubs<br>of West Valley</div>
-          <div class="partner-card">CCR · CCA</div>
-          <div class="partner-card">The Drain Co.</div>
-          <div class="partner-card">Douglas Emmett</div>
-          <div class="partner-card">Leisure Care</div>
-          <div class="partner-card">Hilton<br>Woodland Hills</div>
-          <div class="partner-card">Hornstein<br>Law Offices</div>
-          <div class="partner-card">Mulholland Hills<br>Chamber</div>
-          <div class="partner-card">Wisteria<br>Warner Center</div>
-        </div>
-      </div>
-      <div class="partners-grid__tier">
-        <div class="partners-grid__label" style="color:rgba(255,255,255,0.7);">Friend Leaders</div>
-        <div class="partners-grid__items">
-          <div class="partner-card">CMIT Solutions<br>North LA</div>
-          <div class="partner-card">First Banks</div>
-          <div class="partner-card">Tim Gaspar<br>Insurance</div>
-          <div class="partner-card">Gelb Group</div>
-          <div class="partner-card">Inside Moves</div>
-          <div class="partner-card">LIAT Law</div>
-          <div class="partner-card">Maguire &amp; Hart</div>
-          <div class="partner-card">Premier America<br>Credit Union</div>
-          <div class="partner-card">SoCalGas</div>
-          <div class="partner-card">Ring Planet</div>
-          <div class="partner-card">U Frame It<br>Gallery</div>
-          <div class="partner-card">Vista Lincoln</div>
-          <div class="partner-card">World's Greatest<br>Stuff</div>
-        </div>
-      </div>
-    </div>
+    <div class="partners-grid" style="background:rgba(255,255,255,0.04);padding:32px;border-radius:14px;" id="partners-grid"></div>
+    <script type="application/json" id="partners-data">
+[
+  {"label":"Platinum","color":"var(--gold)","items":[
+    {"name":"Blumenfield","sub":"City of LA","domain":"blumenfield.com"},
+    {"name":"MPTF","sub":"Motion Picture & TV Fund","domain":"mptf.com"},
+    {"name":"UCLA Health","domain":"uclahealth.org"},
+    {"name":"Westfield","sub":"Topanga & The Village","domain":"westfield.com"}
+  ]},
+  {"label":"Gold","color":"var(--gold)","items":[
+    {"name":"Los Angeles Rams","domain":"therams.com"},
+    {"name":"Providence","sub":"Cedars-Sinai Tarzana","domain":"providence.org"}
+  ]},
+  {"label":"Silver","color":"rgba(255,255,255,0.75)","items":[
+    {"name":"Jaguar Woodland Hills","domain":"jaguarwoodlandhills.com"}
+  ]},
+  {"label":"Bronze","color":"#E0B596","items":[
+    {"name":"Joint Matters","sub":"Calibration Services","domain":"jointmatters.com"},
+    {"name":"Kaiser Permanente","domain":"kaiserpermanente.org"},
+    {"name":"Warner Center Marriott","domain":"marriott.com"},
+    {"name":"Porsche Woodland Hills","domain":"porschewoodlandhills.com"}
+  ]},
+  {"label":"Supporters","color":"rgba(255,255,255,0.7)","items":[
+    {"name":"Post 826 CA Legion","domain":"legion.org"},
+    {"name":"Boys & Girls Clubs of West Valley","domain":"bgcwv.org"},
+    {"name":"CCR · CCA"},
+    {"name":"The Drain Co."},
+    {"name":"Douglas Emmett","domain":"douglasemmett.com"},
+    {"name":"Leisure Care","domain":"leisurecare.com"},
+    {"name":"Hilton Woodland Hills","domain":"hilton.com"},
+    {"name":"Hornstein Law Offices","domain":"hornsteinlaw.com"},
+    {"name":"Mulholland Hills Chamber"},
+    {"name":"Wisteria Warner Center"}
+  ]},
+  {"label":"Friend Leaders","color":"rgba(255,255,255,0.7)","items":[
+    {"name":"CMIT Solutions North LA","domain":"cmitsolutions.com"},
+    {"name":"First Banks","domain":"firstbanks.com"},
+    {"name":"Tim Gaspar Insurance","domain":"gasparinsurance.com"},
+    {"name":"Gelb Group"},
+    {"name":"Inside Moves"},
+    {"name":"LIAT Law"},
+    {"name":"Maguire & Hart"},
+    {"name":"Premier America Credit Union","domain":"premieramerica.com"},
+    {"name":"SoCalGas","domain":"socalgas.com"},
+    {"name":"Ring Planet"},
+    {"name":"U Frame It Gallery"},
+    {"name":"Vista Lincoln"},
+    {"name":"World's Greatest Stuff"}
+  ]}
+]
+    </script>
+    <script>
+    (function() {
+      var data = JSON.parse(document.getElementById('partners-data').textContent);
+      var grid = document.getElementById('partners-grid');
+      grid.innerHTML = data.map(function(tier) {
+        return '<div class="partners-grid__tier">' +
+          '<div class="partners-grid__label" style="color:' + tier.color + ';">' + tier.label + '</div>' +
+          '<div class="partners-grid__items">' +
+            tier.items.map(function(p) {
+              var logo = p.domain
+                ? '<img src="https://logo.clearbit.com/' + p.domain + '?size=80" alt="' + p.name + '" style="max-width:60px;max-height:36px;object-fit:contain;margin-bottom:4px;" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.fontSize=\'.85rem\';">'
+                : '';
+              var sub = p.sub ? '<br><span style="font-size:.7rem;color:var(--muted);">' + p.sub + '</span>' : '';
+              return '<div class="partner-card">' + logo + '<span>' + p.name + sub + '</span></div>';
+            }).join('') +
+          '</div>' +
+        '</div>';
+      }).join('');
+    })();
+    </script>
     <div class="text-center mt-6">
       <a href="sponsor.html" class="btn btn--gold">Become a Leader ›</a>
       <a href="advertise.html" class="btn btn--outline" style="margin-left:12px;border-color:rgba(255,255,255,0.5);color:#fff;">Advertising Packages ›</a>

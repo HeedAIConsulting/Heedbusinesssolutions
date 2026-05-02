@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Window Sticker · West Valley Loyalty Program · WVWCCC</title>
+<meta name="description" content="Print-ready window sticker for chamber-member businesses participating in the West Valley Loyalty Program. Show your customers you're vetted, you're local, and you save them money.">
+<link rel="icon" href="../images/wvwccc-logo-2026.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chamber.css">
+<style>
+  /* On-screen layout */
+  .sticker-shell { padding: 32px 0 64px; }
+  .sticker-controls { background: var(--paper); border:1px solid var(--line); border-radius: var(--r-lg); padding:24px; margin-bottom:32px; }
+  .sticker-controls label { display:flex; flex-direction:column; gap:6px; font-size:.88rem; font-weight:500; }
+  .sticker-controls input, .sticker-controls select { padding:10px; border:1px solid var(--line); border-radius:var(--r-md); font: inherit; }
+  .sticker-controls .row { display:grid; grid-template-columns: 1fr 1fr 1fr; gap:16px; }
+
+  /* The sticker itself — designed to print at 5x5 inches */
+  .sticker-stage { display:flex; justify-content:center; align-items:center; padding:32px; background:repeating-linear-gradient(45deg, #f0ebdd, #f0ebdd 6px, #faf7f0 6px, #faf7f0 14px); border-radius:var(--r-lg); }
+  .sticker {
+    width: 5in; height: 5in;
+    background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+    color: var(--paper);
+    border-radius: 18px;
+    padding: 0.45in;
+    display: flex; flex-direction: column; justify-content: space-between;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    position: relative;
+    overflow: hidden;
+    font-family: var(--sans);
+  }
+  .sticker::before {
+    content: ""; position:absolute; inset:0;
+    background-image: radial-gradient(circle at 80% 20%, rgba(201,162,39,0.18), transparent 50%);
+    pointer-events:none;
+  }
+  .sticker__top { display:flex; align-items:center; gap:14px; }
+  .sticker__seal {
+    width: 0.7in; height: 0.7in; border-radius: 50%;
+    background: var(--gold); color: var(--navy);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--serif); font-weight:700; font-size: 24pt;
+    border: 3px solid rgba(255,255,255,0.18);
+  }
+  .sticker__brand { font-family: var(--mono); font-size: 8pt; text-transform: uppercase; letter-spacing: 0.18em; color: rgba(255,255,255,0.7); }
+  .sticker__brand strong { display:block; font-family: var(--serif); font-size: 13pt; color: var(--paper); letter-spacing: 0.02em; text-transform: none; margin-top: 2px; }
+  .sticker__title {
+    font-family: var(--serif); font-weight: 700;
+    font-size: 32pt; line-height: 1.05; color: var(--gold);
+    margin-top: 20pt;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.18);
+  }
+  .sticker__sub { color: rgba(255,255,255,0.92); font-size: 12pt; line-height: 1.45; margin-top: 12pt; }
+  .sticker__offer {
+    background: var(--gold); color: var(--navy);
+    padding: 10pt 14pt;
+    border-radius: 10pt;
+    margin-top: 16pt;
+    font-weight: 700;
+    font-size: 14pt;
+    text-align: center;
+  }
+  .sticker__bottom { display:flex; justify-content:space-between; align-items:flex-end; gap: 12pt; }
+  .sticker__qr {
+    width: 1in; height: 1in;
+    background: white; border-radius: 6pt;
+    padding: 4pt;
+    color: var(--navy);
+    font-size: 6pt;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+  }
+  .sticker__qr-grid {
+    width: 100%; height: 100%;
+    background-image:
+      linear-gradient(0deg, transparent 50%, var(--navy) 50%),
+      linear-gradient(90deg, transparent 50%, var(--navy) 50%),
+      linear-gradient(45deg, transparent 50%, var(--navy) 50%);
+    background-size: 6pt 6pt, 6pt 6pt, 12pt 12pt;
+    border-radius: 4pt;
+  }
+  .sticker__url { font-family: var(--mono); font-size: 8pt; color: rgba(255,255,255,0.78); text-align: right; line-height: 1.3; }
+  .sticker__url strong { color: var(--gold); display:block; font-size: 10pt; letter-spacing: 0.02em; }
+
+  /* Compact 3x3 sticker variant */
+  .sticker--compact { width: 3in; height: 3in; padding: 0.25in; }
+  .sticker--compact .sticker__title { font-size: 18pt; margin-top: 8pt; }
+  .sticker--compact .sticker__sub { font-size: 9pt; margin-top: 6pt; }
+  .sticker--compact .sticker__offer { font-size: 11pt; padding: 6pt 10pt; margin-top: 10pt; }
+  .sticker--compact .sticker__seal { width: .5in; height: .5in; font-size: 16pt; }
+  .sticker--compact .sticker__brand { font-size: 6pt; }
+  .sticker--compact .sticker__brand strong { font-size: 9pt; }
+  .sticker--compact .sticker__qr { width: .65in; height: .65in; }
+  .sticker--compact .sticker__url { font-size: 6pt; }
+
+  /* Print rules */
+  @media print {
+    body { background: white; }
+    .no-print { display: none !important; }
+    .sticker-stage { padding: 0; background: white; box-shadow: none; }
+    .sticker { box-shadow: none; }
+    @page { margin: 0.5in; size: letter; }
+  }
+</style>
+</head>
+<body>
+
+<header data-partial="header" class="no-print"></header>
+
+<section class="section bg-cream sticker-shell">
+  <div class="container container-narrow">
+    <div class="no-print" style="margin-bottom:24px;">
+      <span class="eyebrow">Loyalty Program</span>
+      <h1>Print your window sticker</h1>
+      <p class="lead">Customize, preview, then print on any 5×5 or 3×3 sticker stock. The chamber sends you a free professionally-printed pack within 5 business days of enrolling — this generator is for re-prints, expanded coverage, or in-store table tents.</p>
+      <p class="text-sm text-muted"><a href="../loyalty.html">← Back to Loyalty Program</a> &nbsp;·&nbsp; <a href="register.html">Enroll my business →</a></p>
+    </div>
+
+    <div class="sticker-controls no-print">
+      <h3 style="margin-bottom:16px;">Customize</h3>
+      <div class="row">
+        <label>Business name<input id="biz" value="Your Business Name"></label>
+        <label>Your offer (≤40 chars)<input id="offer" value="10% off for cardholders" maxlength="40"></label>
+        <label>Sticker size
+          <select id="size"><option value="full">Full (5×5 — door)</option><option value="compact">Compact (3×3 — counter)</option></select>
+        </label>
+      </div>
+      <div class="row" style="margin-top:14px;">
+        <label>Cardholder URL (auto)<input id="url" value="woodlandhillscc.net/loyalty" readonly></label>
+        <label>QR target (auto)<input id="qr" value="woodlandhillscc.net/loyalty" readonly></label>
+        <label style="justify-content:flex-end;">
+          <button type="button" class="btn btn--gold btn--lg" onclick="window.print()">🖨️ Print</button>
+        </label>
+      </div>
+    </div>
+
+    <!-- Preview -->
+    <div class="sticker-stage">
+      <div class="sticker" id="preview">
+        <div>
+          <div class="sticker__top">
+            <div class="sticker__seal">WV</div>
+            <div class="sticker__brand">Proudly participating<strong>West Valley Loyalty</strong></div>
+          </div>
+          <div class="sticker__title" id="t-title">Show your card.<br>Save here.</div>
+          <div class="sticker__sub" id="t-sub">A chamber-of-commerce program — free for residents, real savings at vetted local businesses.</div>
+          <div class="sticker__offer" id="t-offer">10% off for cardholders</div>
+        </div>
+        <div class="sticker__bottom">
+          <div class="sticker__qr"><div class="sticker__qr-grid"></div></div>
+          <div class="sticker__url"><strong id="t-biz">Your Business Name</strong>woodlandhillscc.net/loyalty</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-print" style="margin-top:32px;">
+      <h3>What's included with your enrollment kit (free)</h3>
+      <div class="grid grid-3" style="gap:16px;margin-top:12px;">
+        <div class="card" style="padding:20px;"><strong>2× door stickers</strong><p class="text-sm text-muted">5×5, vinyl, 3-year UV resistance</p></div>
+        <div class="card" style="padding:20px;"><strong>4× counter cards</strong><p class="text-sm text-muted">3×3 acrylic stand for register/host stand</p></div>
+        <div class="card" style="padding:20px;"><strong>10× table tents</strong><p class="text-sm text-muted">For restaurants, spas, salons</p></div>
+        <div class="card" style="padding:20px;"><strong>1× window decal</strong><p class="text-sm text-muted">Inside-mount, weather-proof</p></div>
+        <div class="card" style="padding:20px;"><strong>Digital pack</strong><p class="text-sm text-muted">Social posts, email banners, "as seen at" badges</p></div>
+        <div class="card" style="padding:20px;"><strong>Priority listing</strong><p class="text-sm text-muted">"WV Loyalty" filter shown on the directory + Concierge</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer data-partial="footer" class="no-print"></footer>
+<script src="../js/partials.js"></script>
+<script src="../js/chamber.js"></script>
+<script>
+ChamberPartials.mount({ active: 'loyalty', depth: 1 });
+
+const $ = id => document.getElementById(id);
+function update() {
+  const biz = $('biz').value || 'Your Business';
+  const offer = $('offer').value || 'Loyalty Card honored here';
+  $('t-biz').textContent = biz;
+  $('t-offer').textContent = offer;
+  $('t-title').innerHTML = 'Show your card.<br>Save here.';
+  $('t-sub').textContent = 'A chamber-of-commerce program — free for residents, real savings at vetted local businesses.';
+  // Size variant
+  const size = $('size').value;
+  $('preview').classList.toggle('sticker--compact', size === 'compact');
+}
+['biz','offer','size'].forEach(id => $(id).addEventListener('input', update));
+update();
+</script>
+</body>
+</html>

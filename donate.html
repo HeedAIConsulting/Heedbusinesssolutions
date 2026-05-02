@@ -74,7 +74,7 @@
               <input type="checkbox"> <span>Make my donation anonymous</span>
             </label>
           </div>
-          <button type="submit" class="btn btn--gold btn--lg btn--block">Donate <span id="d-amt">$250</span> via Square</button>
+          <button type="submit" class="btn btn--gold btn--lg btn--block">Donate <span id="d-amt">$250</span> · payment links coming soon</button>
           <p class="text-xs text-muted text-center mt-3">501(c)(3) · EIN 47-XXXXXXX · Receipt sent immediately</p>
         </form>
       </div>
@@ -132,7 +132,7 @@ document.querySelectorAll('.amt-btn').forEach(b => {
     }
   });
 });
-document.getElementById('donate-form').addEventListener('submit', e => { e.preventDefault(); alert('In production: Square charge + 501(c)(3) tax receipt emailed. Demo mode.'); });
+document.getElementById('donate-form').addEventListener('submit', e => { e.preventDefault(); alert('Online checkout coming soon. For now, email diana@woodlandhillscc.net or call (818) 347-4737.'); });
 </script>
 
 </body>
