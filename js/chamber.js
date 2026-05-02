@@ -27,6 +27,8 @@
   const apiBase = window.CHAMBER_API_BASE || '/api';
 
   function buildConcierge() {
+    // Respect a "dismissed for this session" flag so the user can hide it entirely.
+    if (sessionStorage.getItem('wvwccc_concierge_hidden') === '1') return;
     if (document.querySelector('.ai-widget')) return;
 
     const widget = document.createElement('div');
@@ -36,6 +38,7 @@
         <span class="ai-widget__pulse"></span>
         <span>Ask the Chamber Concierge</span>
       </button>
+      <button class="ai-widget__dismiss" data-action="dismiss" aria-label="Hide concierge for this session" title="Hide for this session">×</button>
       <div class="ai-widget__panel" role="dialog" aria-label="Chamber AI Concierge">
         <div class="ai-widget__header">
           <div class="ai-widget__avatar">CC</div>
@@ -85,9 +88,15 @@
       const c = e.target.closest('[data-action="close"]');
       if (c) {
         panel.classList.remove('is-open');
-        // Clear conversation on close (full reset). Minimize preserves it.
         const msgsList = messages.querySelectorAll('.ai-msg, .ai-cards');
         msgsList.forEach((el, i) => { if (i > 0) el.remove(); });
+        return;
+      }
+      const d = e.target.closest('[data-action="dismiss"]');
+      if (d) {
+        e.stopPropagation();
+        sessionStorage.setItem('wvwccc_concierge_hidden', '1');
+        widget.remove();
         return;
       }
       const sug = e.target.closest('.ai-suggest button');
@@ -200,39 +209,78 @@
       return;
     }
 
+    // Find the rarest content token across the chamber directory.
+    // If a token matches ZERO entries (e.g. "plumber"), the user's intent
+    // can't be served honestly — return no results for THAT token rather
+    // than padding with unrelated entries that match a more common token
+    // like a neighborhood. This prevents "pizza tarzana" from returning
+    // tarzana hospitals.
+    function matchCountIn(set, t) {
+      let n = 0;
+      for (const m of set) {
+        const hay = [m.name, m.legalName, m.category, m.subcategory, m.naicsDescription, m.tagline, m.neighborhood, m.address, (m.tags||[]).join(' '), (m.features||[]).join(' '), (m.specialties||'')].filter(Boolean).join(' ').toLowerCase();
+        if (hay.includes(t)) n++;
+      }
+      return n;
+    }
+    const tokenCounts = tokens.map(t => ({ t, n: matchCountIn(_DIR_CACHE, t) + matchCountIn(_SFV_CACHE, t) }));
+    const rarestToken = tokenCounts.sort((a,b) => a.n - b.n)[0];
+    if (rarestToken && rarestToken.n === 0) {
+      // The most-meaningful word matches nothing in the directory.
+      addMsg(container, `I don't see any chamber-member or community businesses matching "${rarestToken.t}". Try a different keyword — or browse the full directory.`, 'bot');
+      return;
+    }
+    const requiredToken = rarestToken && rarestToken.n < 50 ? rarestToken.t : null;
+
     function score(m) {
       const hay = [m.name, m.legalName, m.category, m.subcategory, m.naicsDescription, m.tagline, m.neighborhood, m.address, (m.tags||[]).join(' '), (m.features||[]).join(' '), (m.specialties||'')].filter(Boolean).join(' ').toLowerCase();
+      // If we identified a rarest meaningful token, REQUIRE it to match.
+      // This ensures a 2-token query like "pizza tarzana" only returns
+      // entries that actually contain "pizza" (vs. flooding with Tarzana
+      // hospitals that match "tarzana" only).
+      if (requiredToken && !hay.includes(requiredToken)) return { s: 0, matchedTokens: 0 };
       let tokenScore = 0;
+      let matchedTokens = 0;
       tokens.forEach(t => {
         if (hay.includes(t)) {
-          // Higher weight for matches in the name vs. description
+          matchedTokens++;
           const inName = (m.name||'').toLowerCase().includes(t);
           tokenScore += inName ? 8 : (hay.split(t).length - 1) * 2;
         }
       });
-      // CRITICAL: only apply tier/chamber bias when there's an actual content match.
-      // Otherwise top-tier chamber members would dominate every irrelevant search.
-      if (tokenScore === 0) return 0;
-      let s = tokenScore;
+      if (tokenScore === 0) return { s: 0, matchedTokens: 0 };
+      let s = tokenScore + matchedTokens * 50; // big bonus for matching MORE distinct tokens
       if (m.chamberMember) s += 5;
       const tierBoost = { platinum: 3, gold: 2.5, silver: 2, bronze: 1.5, supporter: 1, friend: 1, member: 0.5 };
       s += tierBoost[m.tier] || 0;
-      return s;
+      return { s, matchedTokens };
     }
 
-    // Search chamber directory FIRST, fall back to SFV-wide if nothing relevant
-    const chamberScored = _DIR_CACHE.map(m => ({ m, s: score(m), source: 'chamber' })).filter(x => x.s > 0);
-    const sfvScored = _SFV_CACHE.map(m => ({ m, s: score(m), source: 'sfv' })).filter(x => x.s > 0);
+    // Score everything once
+    const chamberScored = _DIR_CACHE.map(m => { const r = score(m); return { m, ...r, source: 'chamber' }; }).filter(x => x.s > 0);
+    const sfvScored     = _SFV_CACHE.map(m => { const r = score(m); return { m, ...r, source: 'sfv' };     }).filter(x => x.s > 0);
+
+    // Prefer entries that match ALL query tokens. If no entry matches all,
+    // fall back to entries that match the most. This stops "pizza tarzana"
+    // from returning a hospital just because it's in Tarzana.
+    function pickBest(scored) {
+      if (!scored.length) return [];
+      const maxMatched = Math.max(...scored.map(x => x.matchedTokens));
+      const bestTier = scored.filter(x => x.matchedTokens === maxMatched);
+      return bestTier.sort((a, b) => b.s - a.s);
+    }
+
+    const chamberBest = pickBest(chamberScored);
+    const sfvBest     = pickBest(sfvScored);
 
     let combined;
-    if (chamberScored.length >= 3) {
-      // Plenty of chamber matches — show top 4 chamber-only
-      combined = chamberScored.sort((a,b) => b.s - a.s).slice(0, 4);
+    if (chamberBest.length >= 3) {
+      combined = chamberBest.slice(0, 4);
     } else {
-      // Fewer chamber matches — pad with SFV matches but always chamber-first
       combined = [
-        ...chamberScored.sort((a,b) => b.s - a.s),
-        ...sfvScored.sort((a,b) => b.s - a.s).slice(0, 4 - chamberScored.length)
+        ...chamberBest,
+        ...sfvBest.filter(x => x.matchedTokens >= (chamberBest[0]?.matchedTokens || 1))
+                  .slice(0, 4 - chamberBest.length)
       ].slice(0, 4);
     }
 

@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/chamber.css">
+<link rel="stylesheet" href="css/chamber.css?v=3">
 
 <!-- JSON-LD: Organization + LocalBusiness + WebSite -->
 <script type="application/ld+json">
@@ -268,16 +268,29 @@
     (function() {
       var data = JSON.parse(document.getElementById('partners-data').textContent);
       var grid = document.getElementById('partners-grid');
+      // Tier accent colors for partner-card backgrounds
+      var tierStyles = {
+        'Platinum':       'background:linear-gradient(135deg,#e5e4e2,#bfc1c2);color:#0B2545;',
+        'Gold':           'background:linear-gradient(135deg,#F4E9C1,#C9A227);color:#0B2545;',
+        'Silver':         'background:linear-gradient(135deg,#f0f0f0,#cfcfcf);color:#0B2545;',
+        'Bronze':         'background:linear-gradient(135deg,#E0B596,#B07045);color:#fff;',
+        'Supporters':     'background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.92);border-color:rgba(255,255,255,0.18);',
+        'Friend Leaders': 'background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.14);'
+      };
       grid.innerHTML = data.map(function(tier) {
+        var cardStyle = tierStyles[tier.label] || '';
         return '<div class="partners-grid__tier">' +
           '<div class="partners-grid__label" style="color:' + tier.color + ';">' + tier.label + '</div>' +
           '<div class="partners-grid__items">' +
             tier.items.map(function(p) {
-              var logo = p.domain
-                ? '<img src="https://logo.clearbit.com/' + p.domain + '?size=80" alt="' + p.name + '" style="max-width:60px;max-height:36px;object-fit:contain;margin-bottom:4px;" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.fontSize=\'.85rem\';">'
-                : '';
-              var sub = p.sub ? '<br><span style="font-size:.7rem;color:var(--muted);">' + p.sub + '</span>' : '';
-              return '<div class="partner-card">' + logo + '<span>' + p.name + sub + '</span></div>';
+              // Use the first 1-2 letters as a typographic mark
+              var initials = p.name.replace(/&amp;/g,'').split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+              var sub = p.sub ? '<div style="font-size:.66rem;opacity:.75;margin-top:2px;">' + p.sub + '</div>' : '';
+              return '<div class="partner-card" style="' + cardStyle + '">' +
+                '<div style="font-family:var(--serif);font-weight:700;font-size:1.1rem;letter-spacing:.04em;line-height:1;margin-bottom:6px;opacity:.9;">' + initials + '</div>' +
+                '<div style="font-weight:600;font-size:.78rem;line-height:1.2;">' + p.name + '</div>' +
+                sub +
+              '</div>';
             }).join('') +
           '</div>' +
         '</div>';
@@ -426,8 +439,8 @@
 <script>
 window.CHAMBER_API_BASE = '/api';
 </script>
-<script src="js/partials.js"></script>
-<script src="js/chamber.js"></script>
+<script src="js/partials.js?v=3"></script>
+<script src="js/chamber.js?v=3"></script>
 <script>
 ChamberPartials.mount({ active: 'home', depth: 0 });
 

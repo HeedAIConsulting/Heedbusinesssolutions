@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Members · Diana's Console</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/chamber.css">
+<link rel="stylesheet" href="../css/chamber.css?v=3">
 <link rel="stylesheet" href="admin.css">
 <style>
   .tabs { display:flex; gap:6px; border-bottom:1px solid var(--line); margin-bottom:20px; flex-wrap:wrap; }
@@ -127,7 +127,7 @@ async function load() {
     data = await r.json();
   } catch (e) {
     // Backend offline — fall back to client-side directory
-    const dir = await fetch('../data/directory.json').then(r => r.json()).catch(() => []);
+    const dir = await fetch('/data/directory.json').then(r => r.json()).catch(() => []);
     const today = new Date().toISOString().slice(0,10);
     const enriched = dir.filter(m => m.chamberMember).map(m => {
       // Deterministic mock dates so tabs work offline
@@ -236,7 +236,7 @@ async function generateEmail(memberId, memberName) {
     showEmail(data);
   } catch (e) {
     // Offline fallback — generate a template entirely client-side
-    const dir = await fetch('../data/directory.json').then(r => r.json()).catch(() => []);
+    const dir = await fetch('/data/directory.json').then(r => r.json()).catch(() => []);
     const m = dir.find(x => x.id === memberId) || { name: memberName };
     const today = new Date().toISOString().slice(0,10);
     showEmail({
@@ -271,7 +271,7 @@ function sendEmail() {
   const body = encodeURIComponent($('em-bodytext').value);
   // Find member email
   if (lastEmailContext) {
-    fetch('../data/directory.json').then(r => r.json()).then(dir => {
+    fetch('/data/directory.json').then(r => r.json()).then(dir => {
       const m = dir.find(x => x.id === lastEmailContext.memberId);
       const to = m && m.email ? encodeURIComponent(m.email) : '';
       window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;

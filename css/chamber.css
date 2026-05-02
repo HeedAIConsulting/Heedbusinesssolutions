@@ -387,6 +387,19 @@ p  { margin-bottom: var(--s-4); }
   border: 2px solid var(--gold);
 }
 .ai-widget__btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-xl); }
+.ai-widget__dismiss {
+  position: absolute;
+  top: -8px; right: -8px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--paper); color: var(--navy);
+  border: 1.5px solid var(--navy);
+  font-size: 16px; font-weight: 700; line-height: 20px;
+  cursor: pointer; padding: 0;
+  display: none;
+  box-shadow: var(--shadow-sm);
+}
+.ai-widget:hover .ai-widget__dismiss { display: block; }
+.ai-widget__dismiss:hover { background: var(--red); color: var(--paper); border-color: var(--red); }
 .ai-widget__pulse {
   width: 10px; height: 10px; border-radius: 50%;
   background: #4ADE80;
