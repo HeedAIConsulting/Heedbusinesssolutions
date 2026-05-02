@@ -11,7 +11,12 @@
     "tagline": "Award-winning hospital serving the West Valley for over 50 years.",
     "logo": "P",
     "featured": true,
-    "tags": ["hospital", "emergency", "maternity", "cardiology"]
+    "tags": [
+      "hospital",
+      "emergency",
+      "maternity",
+      "cardiology"
+    ]
   },
   {
     "id": "marriott-warner",
@@ -25,7 +30,12 @@
     "tagline": "Premier hotel and event venue in the heart of Warner Center.",
     "logo": "M",
     "featured": true,
-    "tags": ["hotel", "events", "weddings", "conferences"]
+    "tags": [
+      "hotel",
+      "events",
+      "weddings",
+      "conferences"
+    ]
   },
   {
     "id": "wh-camera",
@@ -39,7 +49,12 @@
     "tagline": "70 years of optics expertise. Cameras, telescopes, and more.",
     "logo": "W",
     "featured": true,
-    "tags": ["cameras", "telescopes", "photography", "astronomy"]
+    "tags": [
+      "cameras",
+      "telescopes",
+      "photography",
+      "astronomy"
+    ]
   },
   {
     "id": "fogo-de-chao",
@@ -53,7 +68,12 @@
     "tagline": "Authentic churrasco experience, hand-carved tableside.",
     "logo": "F",
     "featured": true,
-    "tags": ["steakhouse", "brazilian", "fine dining", "happy hour"]
+    "tags": [
+      "steakhouse",
+      "brazilian",
+      "fine dining",
+      "happy hour"
+    ]
   },
   {
     "id": "ethos-fitness",
@@ -66,7 +86,12 @@
     "website": "https://ethosfitness.com",
     "tagline": "Personal training and group classes in a boutique studio.",
     "logo": "E",
-    "tags": ["gym", "personal training", "group fitness", "yoga"]
+    "tags": [
+      "gym",
+      "personal training",
+      "group fitness",
+      "yoga"
+    ]
   },
   {
     "id": "computer-doctor",
@@ -77,7 +102,12 @@
     "phone": "(818) 555-0144",
     "tagline": "On-site IT support for small business and home offices.",
     "logo": "C",
-    "tags": ["IT support", "computer repair", "networking", "small business"]
+    "tags": [
+      "IT support",
+      "computer repair",
+      "networking",
+      "small business"
+    ]
   },
   {
     "id": "cryohealthcare",
@@ -88,7 +118,12 @@
     "phone": "(818) 555-0173",
     "tagline": "Whole-body cryotherapy, red-light therapy, recovery suites.",
     "logo": "C",
-    "tags": ["cryotherapy", "recovery", "wellness", "spa"]
+    "tags": [
+      "cryotherapy",
+      "recovery",
+      "wellness",
+      "spa"
+    ]
   },
   {
     "id": "winnetka-bowl",
@@ -99,7 +134,12 @@
     "phone": "(818) 340-5190",
     "tagline": "Family bowling and the West Valley's favorite mixer venue.",
     "logo": "W",
-    "tags": ["bowling", "events", "family", "arcade"]
+    "tags": [
+      "bowling",
+      "events",
+      "family",
+      "arcade"
+    ]
   },
   {
     "id": "lees-luncheon",
@@ -109,7 +149,11 @@
     "neighborhood": "Woodland Hills",
     "tagline": "East Coast hoagies, west coast vibes. Connection Circle home.",
     "logo": "L",
-    "tags": ["sandwiches", "lunch", "casual"]
+    "tags": [
+      "sandwiches",
+      "lunch",
+      "casual"
+    ]
   },
   {
     "id": "wh-country-club",
@@ -120,7 +164,12 @@
     "phone": "(818) 347-1511",
     "tagline": "Private golf, tennis, and event venue since 1925.",
     "logo": "W",
-    "tags": ["golf", "tennis", "private club", "weddings"]
+    "tags": [
+      "golf",
+      "tennis",
+      "private club",
+      "weddings"
+    ]
   },
   {
     "id": "valley-spa",
@@ -131,7 +180,12 @@
     "phone": "(818) 555-0119",
     "tagline": "Day spa specializing in facials, massage, and skincare.",
     "logo": "S",
-    "tags": ["spa", "massage", "facial", "skincare"]
+    "tags": [
+      "spa",
+      "massage",
+      "facial",
+      "skincare"
+    ]
   },
   {
     "id": "valley-plumbing",
@@ -142,7 +196,12 @@
     "phone": "(818) 555-0166",
     "tagline": "Licensed plumbing, drain, and water heater specialists.",
     "logo": "V",
-    "tags": ["plumbing", "emergency", "water heater", "drain"]
+    "tags": [
+      "plumbing",
+      "emergency",
+      "water heater",
+      "drain"
+    ]
   },
   {
     "id": "tarzana-dental",
@@ -153,7 +212,12 @@
     "phone": "(818) 555-0151",
     "tagline": "General, pediatric, and cosmetic dentistry.",
     "logo": "T",
-    "tags": ["dentist", "family", "pediatric", "cosmetic"]
+    "tags": [
+      "dentist",
+      "family",
+      "pediatric",
+      "cosmetic"
+    ]
   },
   {
     "id": "westvalley-realty",
@@ -164,7 +228,12 @@
     "phone": "(818) 555-0102",
     "tagline": "Specializing in Woodland Hills, Tarzana, and Encino homes.",
     "logo": "W",
-    "tags": ["real estate", "homes", "luxury", "agent"]
+    "tags": [
+      "real estate",
+      "homes",
+      "luxury",
+      "agent"
+    ]
   },
   {
     "id": "kindergym-kids",
@@ -175,7 +244,12 @@
     "phone": "(818) 555-0145",
     "tagline": "Movement, music, and motor-skill classes ages 6 mo – 8 yr.",
     "logo": "K",
-    "tags": ["kids", "classes", "preschool", "fitness"]
+    "tags": [
+      "kids",
+      "classes",
+      "preschool",
+      "fitness"
+    ]
   },
   {
     "id": "warner-center-cpa",
@@ -186,6 +260,38 @@
     "phone": "(818) 555-0190",
     "tagline": "Tax, audit, and advisory for small business and individuals.",
     "logo": "W",
-    "tags": ["accountant", "tax", "audit", "small business"]
+    "tags": [
+      "accountant",
+      "tax",
+      "audit",
+      "small business"
+    ]
+  },
+  {
+    "id": "heed-ai-solutions",
+    "name": "Heed AI Solutions",
+    "category": "Tech / AI Consulting",
+    "tier": "friend",
+    "neighborhood": "Woodland Hills",
+    "contactName": "Michael Bowers",
+    "email": "mbowers@heedconsulting.ai",
+    "phone": "(310) 363-0826",
+    "website": "https://heedbusinesssolutions.com",
+    "address": "21255 Burbank Blvd, Woodland Hills, CA 91367",
+    "tagline": "AI-powered business automation, marketing, and chamber-of-commerce platform engineering.",
+    "description": "Heed AI Solutions builds practical AI tools for small businesses across the West Valley — including the platform that powers this chamber site. Founder Michael Bowers leads the chamber's AI for Business Connection Circle and has spoken at the State of the Chamber on real-world AI use cases.",
+    "logo": "H",
+    "featured": true,
+    "chamberMember": true,
+    "tags": [
+      "ai",
+      "automation",
+      "consulting",
+      "marketing",
+      "web-development",
+      "chamber-platform"
+    ],
+    "specialties": "AI workflow automation · custom Claude agents · website rebuilds · marketing automation",
+    "source": "curated"
   }
 ]

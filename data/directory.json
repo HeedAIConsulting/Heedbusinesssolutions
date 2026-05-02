@@ -1,5 +1,32 @@
 [
   {
+    "id": "heed-ai-solutions",
+    "name": "Heed AI Solutions",
+    "category": "Tech / AI Consulting",
+    "tier": "friend",
+    "neighborhood": "Woodland Hills",
+    "contactName": "Michael Bowers",
+    "email": "mbowers@heedconsulting.ai",
+    "phone": "(310) 363-0826",
+    "website": "https://heedbusinesssolutions.com",
+    "address": "21255 Burbank Blvd, Woodland Hills, CA 91367",
+    "tagline": "AI-powered business automation, marketing, and chamber-of-commerce platform engineering.",
+    "description": "Heed AI Solutions builds practical AI tools for small businesses across the West Valley — including the platform that powers this chamber site. Founder Michael Bowers leads the chamber's AI for Business Connection Circle and has spoken at the State of the Chamber on real-world AI use cases.",
+    "logo": "H",
+    "featured": true,
+    "chamberMember": true,
+    "tags": [
+      "ai",
+      "automation",
+      "consulting",
+      "marketing",
+      "web-development",
+      "chamber-platform"
+    ],
+    "specialties": "AI workflow automation · custom Claude agents · website rebuilds · marketing automation",
+    "source": "curated"
+  },
+  {
     "id": "providence-tarzana",
     "name": "Providence Cedars-Sinai Tarzana Medical Center",
     "category": "Healthcare",
