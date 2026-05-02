@@ -209,47 +209,58 @@
       return;
     }
 
-    // Find the rarest content token across the chamber directory.
-    // If a token matches ZERO entries (e.g. "plumber"), the user's intent
-    // can't be served honestly — return no results for THAT token rather
-    // than padding with unrelated entries that match a more common token
-    // like a neighborhood. This prevents "pizza tarzana" from returning
-    // tarzana hospitals.
+    // Word-boundary matchers — prevents "join" from matching "joint",
+    // "skin" from matching "skincare" as a hard match, etc. We accept
+    // word-prefix matches (skin → skincare) at lower score so legitimate
+    // stem-style searches still surface relevant members.
+    function escapeRe(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+    function wordRe(t) { return new RegExp('\\b' + escapeRe(t) + '\\b', 'i'); }
+    function prefixRe(t) { return new RegExp('\\b' + escapeRe(t), 'i'); }
+
+    // Find the rarest content token. Use WORD-BOUNDARY matching so
+    // "join" in "joint chiropractic" doesn't count as a match when the
+    // user typed "join the chamber".
     function matchCountIn(set, t) {
+      const re = wordRe(t);
       let n = 0;
       for (const m of set) {
-        const hay = [m.name, m.legalName, m.category, m.subcategory, m.naicsDescription, m.tagline, m.neighborhood, m.address, (m.tags||[]).join(' '), (m.features||[]).join(' '), (m.specialties||'')].filter(Boolean).join(' ').toLowerCase();
-        if (hay.includes(t)) n++;
+        const hay = [m.name, m.legalName, m.category, m.subcategory, m.naicsDescription, m.tagline, m.neighborhood, m.address, (m.tags||[]).join(' '), (m.features||[]).join(' '), (m.specialties||'')].filter(Boolean).join(' ');
+        if (re.test(hay)) n++;
       }
       return n;
     }
     const tokenCounts = tokens.map(t => ({ t, n: matchCountIn(_DIR_CACHE, t) + matchCountIn(_SFV_CACHE, t) }));
     const rarestToken = tokenCounts.sort((a,b) => a.n - b.n)[0];
     if (rarestToken && rarestToken.n === 0) {
-      // The most-meaningful word matches nothing in the directory.
       addMsg(container, `I don't see any chamber-member or community businesses matching "${rarestToken.t}". Try a different keyword — or browse the full directory.`, 'bot');
       return;
     }
     const requiredToken = rarestToken && rarestToken.n < 50 ? rarestToken.t : null;
+    const requiredRe = requiredToken ? wordRe(requiredToken) : null;
 
     function score(m) {
-      const hay = [m.name, m.legalName, m.category, m.subcategory, m.naicsDescription, m.tagline, m.neighborhood, m.address, (m.tags||[]).join(' '), (m.features||[]).join(' '), (m.specialties||'')].filter(Boolean).join(' ').toLowerCase();
-      // If we identified a rarest meaningful token, REQUIRE it to match.
-      // This ensures a 2-token query like "pizza tarzana" only returns
-      // entries that actually contain "pizza" (vs. flooding with Tarzana
-      // hospitals that match "tarzana" only).
-      if (requiredToken && !hay.includes(requiredToken)) return { s: 0, matchedTokens: 0 };
+      const hay = [m.name, m.legalName, m.category, m.subcategory, m.naicsDescription, m.tagline, m.neighborhood, m.address, (m.tags||[]).join(' '), (m.features||[]).join(' '), (m.specialties||'')].filter(Boolean).join(' ');
+      const name = m.name || '';
+
+      // Require the rarest token (word-boundary). 'join' must match a
+      // standalone "join", not "joint" or "joiner".
+      if (requiredRe && !requiredRe.test(hay)) return { s: 0, matchedTokens: 0 };
+
       let tokenScore = 0;
       let matchedTokens = 0;
       tokens.forEach(t => {
-        if (hay.includes(t)) {
-          matchedTokens++;
-          const inName = (m.name||'').toLowerCase().includes(t);
-          tokenScore += inName ? 8 : (hay.split(t).length - 1) * 2;
-        }
+        const wre = wordRe(t);
+        const pre = prefixRe(t);
+        let pts = 0;
+        if (wre.test(name)) pts = 12;       // whole word in business name (best)
+        else if (wre.test(hay))  pts = 8;   // whole word anywhere
+        else if (pre.test(name)) pts = 5;   // word-prefix in name (skin → skincare)
+        else if (pre.test(hay))  pts = 2;   // word-prefix anywhere (weakest)
+        if (pts > 0) { matchedTokens++; tokenScore += pts; }
       });
+
       if (tokenScore === 0) return { s: 0, matchedTokens: 0 };
-      let s = tokenScore + matchedTokens * 50; // big bonus for matching MORE distinct tokens
+      let s = tokenScore + matchedTokens * 50;
       if (m.chamberMember) s += 5;
       const tierBoost = { platinum: 3, gold: 2.5, silver: 2, bronze: 1.5, supporter: 1, friend: 1, member: 0.5 };
       s += tierBoost[m.tier] || 0;
