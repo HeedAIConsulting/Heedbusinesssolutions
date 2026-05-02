@@ -39,6 +39,7 @@ ${body}
 <script>
 AdminShell.mount({ active: '${active}' });
 </script>
+<script src="admin-hydrate.js"></script>
 </body>
 </html>
 `;
