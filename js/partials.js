@@ -450,11 +450,12 @@ window.ChamberPartials = (function () {
   // out of place.
   var ELEVENLABS_AGENT_ID = 'agent_8201kqnjhzyrfpdvtqwgf9e0034y';
   function mountElevenLabs() {
-    if (document.querySelector('elevenlabs-convai')) return;
     if (/\/(admin|auth)\//.test(window.location.pathname)) return;
-    var el = document.createElement('elevenlabs-convai');
-    el.setAttribute('agent-id', ELEVENLABS_AGENT_ID);
-    document.body.appendChild(el);
+    if (!document.querySelector('elevenlabs-convai')) {
+      var el = document.createElement('elevenlabs-convai');
+      el.setAttribute('agent-id', ELEVENLABS_AGENT_ID);
+      document.body.appendChild(el);
+    }
     if (!document.querySelector('script[src*="@elevenlabs/convai-widget-embed"]')) {
       var s = document.createElement('script');
       s.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
@@ -464,6 +465,94 @@ window.ChamberPartials = (function () {
     }
   }
 
+  // Inline concierge launcher — placed wherever a page has
+  // <div data-partial="concierge-inline" data-prompt="…" data-topic="…"></div>.
+  // Renders a visual chat preview that opens the floating widget on click.
+  function mountInlineConciergeLaunchers() {
+    document.querySelectorAll('[data-partial="concierge-inline"]').forEach(function(host) {
+      var topic  = host.dataset.topic  || 'the West Valley';
+      var prompt = host.dataset.prompt || ('Ask about ' + topic + '…');
+      var variant = host.dataset.variant || 'card'; // 'card' | 'banner' | 'iframe'
+
+      if (variant === 'iframe') {
+        // Persistent embedded chat — used on dedicated concierge pages
+        host.outerHTML =
+          '<div class="concierge-iframe" style="background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:var(--r-lg);padding:18px;box-shadow:var(--shadow-lg);">'
+          + '<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;color:#fff;">'
+          +   '<div style="width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;">CC</div>'
+          +   '<div><div style="font-family:var(--serif);font-size:1.1rem;font-weight:700;">Chamber Concierge</div>'
+          +   '<div style="font-size:.78rem;color:rgba(255,255,255,.78);">Voice or text · 8 languages · Always on duty</div></div>'
+          + '</div>'
+          + '<iframe src="https://elevenlabs.io/app/talk-to?agent_id=' + ELEVENLABS_AGENT_ID + '" '
+          +   'style="width:100%;height:540px;border:0;border-radius:var(--r-md);background:#fff;display:block;" '
+          +   'allow="microphone; camera" '
+          +   'title="Chamber Concierge"></iframe>'
+          + '<p style="margin-top:12px;font-size:.78rem;color:rgba(255,255,255,.7);text-align:center;">'
+          +   'Or call <strong style="color:var(--gold);">(818) 347-4737</strong> · '
+          +   '<a href="mailto:info@woodlandhillscc.net" style="color:var(--gold);">info@woodlandhillscc.net</a>'
+          + '</p>'
+          + '</div>';
+        return;
+      }
+
+      if (variant === 'banner') {
+        // Slim banner-style launcher
+        host.outerHTML =
+          '<section class="concierge-banner" style="background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:18px 0;">'
+          + '<div class="container container-narrow" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">'
+          +   '<div style="width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;flex-shrink:0;">CC</div>'
+          +   '<div style="flex:1;min-width:240px;"><strong style="color:var(--gold);font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;">Chamber Concierge</strong>'
+          +   '<div style="font-family:var(--serif);font-size:1.05rem;">' + prompt + '</div></div>'
+          +   '<div style="display:flex;gap:8px;flex-wrap:wrap;">'
+          +     '<button type="button" class="btn btn--gold" data-concierge-launch>Start chat ›</button>'
+          +     '<a href="tel:8183474737" class="btn btn--outline" style="border-color:rgba(255,255,255,.5);color:#fff;">📞 Call (818) 347-4737</a>'
+          +   '</div>'
+          + '</div></section>';
+        return;
+      }
+
+      // Default: card variant — drop-in replacement for the old hero ask-stack
+      host.outerHTML =
+        '<div class="concierge-card" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-radius:var(--r-lg);padding:24px;color:#fff;">'
+        + '<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">'
+        +   '<div style="width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1.1rem;">CC</div>'
+        +   '<div><div style="font-family:var(--serif);font-size:1.15rem;font-weight:700;">Chamber Concierge</div>'
+        +   '<div style="font-size:.78rem;color:rgba(255,255,255,.7);">Voice + text · 8 languages</div></div>'
+        + '</div>'
+        + '<p style="font-size:.95rem;color:rgba(255,255,255,.92);margin-bottom:14px;">' + prompt + '</p>'
+        + '<div style="background:rgba(255,255,255,.08);border-radius:var(--r-md);padding:12px 14px;font-size:.85rem;color:rgba(255,255,255,.85);font-style:italic;margin-bottom:14px;">'
+        +   '"Find me a kid-friendly Persian restaurant in Tarzana that\'s open late."'
+        + '</div>'
+        + '<button type="button" class="btn btn--gold btn--block" data-concierge-launch>Start the conversation ›</button>'
+        + '<div style="margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.7);text-align:center;">'
+        +   'Or talk to a human: <a href="tel:8183474737" style="color:var(--gold);font-weight:600;">📞 (818) 347-4737</a> · '
+        +   '<a href="mailto:info@woodlandhillscc.net" style="color:var(--gold);">✉️ info@woodlandhillscc.net</a>'
+        + '</div>'
+        + '</div>';
+    });
+
+    // Hook up data-concierge-launch buttons to open the floating widget
+    document.addEventListener('click', function(e) {
+      var b = e.target.closest('[data-concierge-launch]');
+      if (!b) return;
+      var w = document.querySelector('elevenlabs-convai');
+      if (!w) return;
+      // ConvAI widget supports a "click to open" via dispatching a click on its shadow-root trigger.
+      // Try the documented .start() / .open() methods first; fall back to scrolling+click.
+      try { if (typeof w.open === 'function') { w.open(); return; } } catch (_) {}
+      try { if (typeof w.start === 'function') { w.start(); return; } } catch (_) {}
+      try {
+        var sr = w.shadowRoot;
+        if (sr) {
+          var btn = sr.querySelector('button[aria-label*="onciege" i], button[aria-label*="oncierg" i], button.elevenlabs-trigger, button');
+          if (btn) { btn.click(); return; }
+        }
+      } catch (_) {}
+      // Last resort: scroll the widget into view
+      w.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
   function mount({ active = '', depth = 0, lang = 'en' } = {}) {
     const h = document.querySelector('[data-partial="header"]');
     const f = document.querySelector('[data-partial="footer"]');
@@ -471,6 +560,7 @@ window.ChamberPartials = (function () {
     if (f) f.outerHTML = footer(depth, lang);
 
     mountElevenLabs();
+    mountInlineConciergeLaunchers();
 
     // Close mega menus on outside click / esc
     document.addEventListener('click', function(e){

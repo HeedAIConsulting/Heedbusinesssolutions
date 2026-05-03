@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact · West Valley Chamber</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/chamber.css?v=5">
+<link rel="stylesheet" href="css/chamber.css?v=6">
 </head>
 <body>
 <div data-partial="header"></div>
@@ -62,11 +62,8 @@
           <div class="text-sm">Mon–Fri · 9 AM – 5 PM PT<br>Concierge: 24/7</div>
         </div>
 
-        <div class="card mt-4" style="padding:24px;background:var(--gold-soft);border-color:var(--gold);">
-          <div style="font-size:1.6rem;">🤖</div>
-          <h3 style="font-size:1.1rem;margin:8px 0;color:var(--navy);">Have a quick question?</h3>
-          <p class="text-sm">The Concierge answers most questions in seconds — no need to wait for office hours.</p>
-          <p class="text-sm text-muted">↘ Use the Concierge widget at the bottom right.</p>
+        <div class="mt-4" style="background:var(--navy);border-radius:var(--r-lg);padding:6px;">
+          <div data-partial="concierge-inline" data-variant="card" data-prompt="Have a quick question? The Concierge answers most things in seconds — no need to wait for office hours."></div>
         </div>
       </aside>
     </div>
@@ -75,8 +72,8 @@
 
 <div data-partial="footer"></div>
 <script>window.CHAMBER_API_BASE='/api';</script>
-<script src="js/partials.js?v=5"></script>
-<script src="js/chamber.js?v=5"></script>
+<script src="js/partials.js?v=6"></script>
+<script src="js/chamber.js?v=6"></script>
 <script>
 ChamberPartials.mount({});
 document.getElementById('contact-form').addEventListener('submit', e => { e.preventDefault(); alert('Message sent. We\'ll get back to you within one business day.'); });

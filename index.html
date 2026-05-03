@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/chamber.css?v=5">
+<link rel="stylesheet" href="css/chamber.css?v=6">
 
 <!-- JSON-LD: Organization + LocalBusiness + WebSite -->
 <script type="application/ld+json">
@@ -128,26 +128,7 @@
         </div>
       </div>
       <div class="hero__visual">
-        <h4>Ask the Chamber Concierge</h4>
-        <div class="hero-stack">
-          <div class="hero-stack__item">
-            <div class="hero-stack__icon">🍴</div>
-            <div><div class="hero-stack__title">Find a member restaurant for date night</div><div class="hero-stack__desc">Filtered by neighborhood, ambiance, price.</div></div>
-          </div>
-          <div class="hero-stack__item">
-            <div class="hero-stack__icon">🛠️</div>
-            <div><div class="hero-stack__title">Hire a vetted plumber, fast</div><div class="hero-stack__desc">Member-recommended home pros, available now.</div></div>
-          </div>
-          <div class="hero-stack__item">
-            <div class="hero-stack__icon">📅</div>
-            <div><div class="hero-stack__title">What's happening this weekend?</div><div class="hero-stack__desc">Curated events for families, members, and visitors.</div></div>
-          </div>
-          <div class="hero-stack__item">
-            <div class="hero-stack__icon">🎓</div>
-            <div><div class="hero-stack__title">After-school programs near me</div><div class="hero-stack__desc">From the Parent Resource Guide.</div></div>
-          </div>
-        </div>
-        <p class="text-sm" style="color:rgba(255,255,255,0.78);text-align:center;margin-top:16px;">↘ Use the floating Concierge widget at the bottom right — speaks 8 languages.</p>
+        <div data-partial="concierge-inline" data-variant="card" data-prompt="Tell me what you're looking for in the West Valley — a restaurant, a plumber, an event this weekend, an after-school program. I speak 8 languages and surface chamber members first."></div>
       </div>
     </div>
   </div>
@@ -429,8 +410,8 @@
 <script>
 window.CHAMBER_API_BASE = '/api';
 </script>
-<script src="js/partials.js?v=5"></script>
-<script src="js/chamber.js?v=5"></script>
+<script src="js/partials.js?v=6"></script>
+<script src="js/chamber.js?v=6"></script>
 <script>
 ChamberPartials.mount({ active: 'home', depth: 0 });
 

@@ -13,17 +13,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/chamber.css?v=5">
+<link rel="stylesheet" href="css/chamber.css?v=6">
 </head>
 <body>
 <header data-partial="header"></header>
 
-<section class="hero" style="padding:80px 0 64px;">
-  <div class="container container-narrow text-center">
-    <span class="eyebrow eyebrow--navy">Voice + text · 8 languages · Free</span>
-    <h1>The Chamber Concierge</h1>
-    <p class="hero__lead" style="max-width:680px;margin:0 auto;">Always on duty. Knows every chamber member, every event, every guide, every networking group, every loyalty offer. Speaks English, Español, 中文, Հայերեն, Tiếng Việt, 日本語, Русский, and Українська.</p>
-    <p class="text-sm" style="color:rgba(255,255,255,0.78);margin-top:24px;">↘ The Concierge widget is in the bottom-right corner of every page. Click it and ask away — by voice or text.</p>
+<section class="hero" style="padding:64px 0 32px;">
+  <div class="container">
+    <div style="text-align:center;max-width:680px;margin:0 auto 32px;">
+      <span class="eyebrow eyebrow--navy">Voice + text · 8 languages · Free · No signup</span>
+      <h1>The Chamber Concierge</h1>
+      <p class="hero__lead">Always on duty. Knows every chamber member, every event, every guide, every networking group, every loyalty offer.</p>
+    </div>
+    <div style="max-width:760px;margin:0 auto;">
+      <div data-partial="concierge-inline" data-variant="iframe"></div>
+    </div>
   </div>
 </section>
 
@@ -97,8 +101,8 @@
 </section>
 
 <footer data-partial="footer"></footer>
-<script src="js/partials.js?v=5"></script>
-<script src="js/chamber.js?v=5"></script>
+<script src="js/partials.js?v=6"></script>
+<script src="js/chamber.js?v=6"></script>
 <script>ChamberPartials.mount({ active: 'concierge', depth: 0 });</script>
 </body>
 </html>
