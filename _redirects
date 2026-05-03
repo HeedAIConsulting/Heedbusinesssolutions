@@ -1,0 +1,71 @@
+# Cloudflare Pages redirects + URL rewrites
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# ── Block dev/source folders from being publicly served ──
+/scripts/*       /404                          404
+/backend/*       /404                          404
+/raw/*           /404                          404
+/_archive_heed/* /404                          404
+/.claude/*       /404                          404
+
+# ── Nice URLs — let extensionless paths resolve to .html ──
+/about           /about.html                   200
+/about/board     /about/board.html             200
+/about/staff    /about/staff.html              200
+/about/board-letter /about/board-letter.html   200
+/about/ceo-letter   /about/ceo-letter.html     200
+/about/wellness-network /about/wellness-network.html 200
+
+/contact         /contact.html                 200
+/join            /join.html                    200
+/onboard         /onboard.html                 200
+/sponsor         /sponsor.html                 200
+/advertise       /advertise.html               200
+/donate          /donate.html                  200
+/loyalty         /loyalty.html                 200
+/networking-groups /networking-groups.html     200
+/referral        /referral.html                200
+/benefits        /benefits.html                200
+/member-deals    /member-deals.html            200
+/grateful-hearts /grateful-hearts.html         200
+/committees      /committees.html              200
+/ai-concierge    /ai-concierge.html            200
+
+# ── Folder-style URLs (let / resolve to /index.html) ──
+/members          /members/directory.html      302
+/blog/            /blog/index.html             200
+/guides/          /guides/index.html           200
+/community/       /community/index.html        200
+/events/          /events/index.html           200
+/newsletters/     /newsletters/index.html      200
+/landing/         /index.html                  302
+/loyalty/        /loyalty/register.html        302
+/profiles/        /profiles/index.html         200
+/admin/           /admin/index.html            200
+/auth/            /auth/member-login.html      302
+/downloads/       /downloads/index.html        200
+
+# ── Legacy / typo paths ──
+/cityloop        /guides/cityloop.html         301
+/dine-sfv        /guides/restaurant.html       301
+/dining          /guides/restaurant.html       301
+/parents         /guides/parent-resource.html  301
+/spa             /guides/spa.html              301
+/wellness        /guides/spa.html              301
+/home            /guides/home-maintenance.html 301
+/business        /guides/business-solutions.html 301
+/education       /guides/education.html        301
+/family          /guides/family-activities.html 301
+/professional    /guides/professional-services.html 301
+/membership      /benefits.html                301
+/directory       /members/directory.html       301
+
+# ── Language root redirects (so /es resolves cleanly) ──
+/es              /es/index.html                200
+/ru              /ru/index.html                200
+/hy              /hy/index.html                200
+/zh              /zh/index.html                200
+/es/guides       /es/guides/index.html         200
+/ru/guides       /ru/guides/index.html         200
+/hy/guides       /hy/guides/index.html         200
+/zh/guides       /zh/guides/index.html         200
