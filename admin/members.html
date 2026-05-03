@@ -103,6 +103,7 @@
     <div class="email-modal__actions">
       <button class="row-action" onclick="copyEmail()">📋 Copy</button>
       <button class="row-action" onclick="regenerateEmail()">🔄 Regenerate</button>
+      <button class="row-action" onclick="scheduleCall()" title="Open Google Calendar with a prefilled 15-min renewal call">📅 Schedule call</button>
       <button class="row-action row-action--primary" onclick="sendEmail()">✉️ Open in mail client</button>
     </div>
   </div>
@@ -277,6 +278,29 @@ function sendEmail() {
       window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
     });
   }
+}
+
+function scheduleCall() {
+  if (!lastEmailContext) return;
+  fetch('/data/directory.json').then(r => r.json()).then(dir => {
+    const m = dir.find(x => x.id === lastEmailContext.memberId) || {};
+    const memberEmail = m.email || '';
+    const memberName  = m.contactName || lastEmailContext.memberName;
+    const business    = m.name || lastEmailContext.memberName;
+    // Default: tomorrow at 10am Pacific, 15-min slot
+    const start = new Date(); start.setDate(start.getDate() + 1); start.setHours(10, 0, 0, 0);
+    const end = new Date(start); end.setMinutes(start.getMinutes() + 15);
+    const fmt = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: `Renewal call: ${business} + Diana Williams`,
+      details: `15-min renewal check-in call.\n\nMember: ${memberName}\nBusiness: ${business}\nEmail: ${memberEmail}\n\nDial-in: (818) 347-4737`,
+      add: [memberEmail, 'diana@woodlandhillscc.net'].filter(Boolean).join(','),
+      location: '(818) 347-4737',
+      dates: `${fmt(start)}/${fmt(end)}`
+    });
+    window.open(`https://calendar.google.com/calendar/render?${params.toString()}`, '_blank');
+  });
 }
 
 function regenerateEmail() {
