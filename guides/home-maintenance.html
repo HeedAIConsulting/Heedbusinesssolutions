@@ -6,7 +6,7 @@
 <title>Home Maintenance &amp; Repair Guide · Vetted West Valley Pros · Chamber</title>
 <meta name="description" content="Licensed plumbers, electricians, HVAC, roofers, landscapers, handymen, and remodelers across the West Valley. Vetted Chamber members with 24/7 emergency triage and Chamber-family discounts.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/chamber.css?v=4">
+<link rel="stylesheet" href="../css/chamber.css?v=5">
 <style>
 .guide-hero { background: linear-gradient(135deg, var(--navy), var(--slate)); color:#fff; padding:80px 0; position:relative; overflow:hidden; }
 .guide-hero::before { content:''; position:absolute; inset:0; background-image: radial-gradient(circle at 90% 100%, rgba(201,162,39,0.18), transparent 50%); pointer-events:none; }
@@ -94,9 +94,9 @@
         </div>
       </div>
       <div class="card" style="padding:24px;">
-        <h3 style="font-size:1.05rem;margin-bottom:12px;color:var(--navy);">🚨 Emergency? Open Concierge</h3>
+        <h3 style="font-size:1.05rem;margin-bottom:12px;color:var(--navy);">🚨 Emergency? Talk to the Concierge</h3>
         <p class="text-sm text-muted mb-3">We'll triage your problem and connect you with the right available pro — even at 2am.</p>
-        <button class="btn btn--gold btn--block" onclick="document.querySelector('.ai-widget__btn').click();">Open Concierge</button>
+        <p class="text-sm" style="margin-top:8px;">↘ Use the Concierge widget at the bottom right.</p>
         <div class="mt-3 text-xs text-muted">Try: "Burst pipe in Tarzana" · "AC stopped working" · "Roof leak in this storm"</div>
       </div>
     </div>
@@ -112,7 +112,7 @@
         <strong style="color:#B33A3A;">After-hours emergency?</strong>
         <span class="text-sm text-muted"> Concierge has the on-call list of every member who responds 24/7. Burst pipes, no power, no AC in summer, roof leak — tap the button above and a Chamber-vetted pro responds within 30 minutes.</span>
       </div>
-      <a href="#" onclick="document.querySelector('.ai-widget__btn').click();" class="btn btn--primary btn--sm">Triage Now</a>
+      <span class="text-xs text-muted">↘ Use the Concierge widget</span>
     </div>
 
     <div class="editorial">
@@ -351,8 +351,8 @@
 <div data-partial="footer"></div>
 
 <script>window.CHAMBER_API_BASE='/api';</script>
-<script src="../js/partials.js?v=4"></script>
-<script src="../js/chamber.js?v=4"></script>
+<script src="../js/partials.js?v=5"></script>
+<script src="../js/chamber.js?v=5"></script>
 <script>
 ChamberPartials.mount({active:'guides', depth:1});
 document.querySelectorAll('.guide-nav a').forEach(a => {

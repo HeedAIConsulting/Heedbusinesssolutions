@@ -6,7 +6,7 @@
 <title>Dine West Valley · Restaurant Guide · Chamber</title>
 <meta name="description" content="The insider's restaurant guide to Tarzana, Woodland Hills, Reseda, and Warner Center. Curated by the Chamber.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/chamber.css?v=4">
+<link rel="stylesheet" href="../css/chamber.css?v=5">
 <style>
 .guide-hero { background: linear-gradient(135deg, var(--gold-deep), var(--gold)); color: var(--navy); padding: 80px 0; }
 .guide-hero h1 { color: var(--navy); }
@@ -45,7 +45,7 @@
       <div class="card" style="padding:24px;">
         <h3 style="font-size:1.05rem;margin-bottom:12px;color:var(--navy);">🤖 Ask the Concierge</h3>
         <p class="text-sm text-muted mb-3">Tell our AI what you're craving and we'll match you with the perfect spot.</p>
-        <button class="btn btn--primary btn--block" onclick="document.querySelector('.ai-widget__btn').click();">Open Concierge</button>
+        <p class="text-sm text-muted text-center" style="margin-top:8px;">↘ Use the Concierge widget at the bottom right &mdash; speaks 8 languages.</p>
         <div class="mt-3 text-xs text-muted">Try: "romantic dinner under $80" · "best brunch in Tarzana" · "kid-friendly Italian"</div>
       </div>
     </div>
@@ -156,8 +156,8 @@
 <div data-partial="footer"></div>
 
 <script>window.CHAMBER_API_BASE='/api';</script>
-<script src="../js/partials.js?v=4"></script>
-<script src="../js/chamber.js?v=4"></script>
+<script src="../js/partials.js?v=5"></script>
+<script src="../js/chamber.js?v=5"></script>
 <script>
 ChamberPartials.mount({ active:'guides', depth:1 });
 document.querySelectorAll('.guide-nav a').forEach(a => {

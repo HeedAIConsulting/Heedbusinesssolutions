@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/chamber.css?v=4">
+<link rel="stylesheet" href="css/chamber.css?v=5">
 
 <!-- JSON-LD: Organization + LocalBusiness + WebSite -->
 <script type="application/ld+json">
@@ -147,7 +147,7 @@
             <div><div class="hero-stack__title">After-school programs near me</div><div class="hero-stack__desc">From the Parent Resource Guide.</div></div>
           </div>
         </div>
-        <button class="btn btn--primary btn--block mt-4" id="open-concierge-btn">Open Concierge ›</button>
+        <p class="text-sm" style="color:rgba(255,255,255,0.78);text-align:center;margin-top:16px;">↘ Use the floating Concierge widget at the bottom right — speaks 8 languages.</p>
       </div>
     </div>
   </div>
@@ -411,16 +411,6 @@
 
 <footer data-partial="footer"></footer>
 
-<!-- Slideout: AI Concierge promotion -->
-<aside class="slideout" id="slideout-concierge" aria-label="AI Concierge">
-  <button class="slideout__handle" aria-controls="slideout-concierge">✨ Ask AI</button>
-  <button class="slideout__close" aria-label="Close">×</button>
-  <h3>Need something specific?</h3>
-  <p>Our 24/7 AI Concierge knows every member, every event, and every guide. Try asking:</p>
-  <div style="background:rgba(255,255,255,0.06);padding:12px;border-radius:8px;margin:12px 0;font-size:.88rem;font-style:italic;">"Find me a kid-friendly restaurant in Tarzana that's open late."</div>
-  <a href="ai-concierge.html" class="btn btn--gold btn--sm" style="width:100%;">Open Concierge ›</a>
-</aside>
-
 <!-- Popup: First-visit lead capture -->
 <div class="popup-overlay" id="popup-welcome" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
   <div class="popup">
@@ -439,27 +429,11 @@
 <script>
 window.CHAMBER_API_BASE = '/api';
 </script>
-<script src="js/partials.js?v=4"></script>
-<script src="js/chamber.js?v=4"></script>
+<script src="js/partials.js?v=5"></script>
+<script src="js/chamber.js?v=5"></script>
 <script>
 ChamberPartials.mount({ active: 'home', depth: 0 });
 
-// Concierge button
-document.getElementById('open-concierge-btn')?.addEventListener('click', function(){
-  var btn = document.querySelector('.ai-widget__btn');
-  if (btn) btn.click(); else location.href = 'ai-concierge.html';
-});
-
-// Slideout
-(function(){
-  var s = document.getElementById('slideout-concierge');
-  s.querySelector('.slideout__handle').addEventListener('click', function(){
-    s.classList.toggle('open');
-  });
-  s.querySelector('.slideout__close').addEventListener('click', function(){
-    s.classList.remove('open');
-  });
-})();
 
 // First-visit popup (5s delay, once per session)
 (function(){

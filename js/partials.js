@@ -445,50 +445,32 @@ window.ChamberPartials = (function () {
 </footer>`;
   }
 
-  // "Ask the Concierge" inline form — auto-injected on guide pages
-  // (and any page that opts in via <div data-partial="ask-form">…</div>).
-  function askForm(depth, topic) {
-    var prefix = ('../'.repeat(depth));
-    var label = topic ? 'Ask about ' + topic + '…' : 'Ask the Chamber Concierge anything about the West Valley…';
-    return `
-<section class="ask-form-section" style="background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:24px 0;">
-  <div class="container container-narrow">
-    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-      <div style="flex:1;min-width:240px;">
-        <div style="font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);">Concierge shortcut</div>
-        <div style="font-family:var(--serif);font-size:1.1rem;font-weight:600;color:#fff;margin-top:2px;">Tell us what you're looking for &mdash; we'll match you to the right ${topic||'chamber-member'} business.</div>
-      </div>
-      <form class="ask-form" style="flex:2;min-width:300px;display:flex;gap:8px;" onsubmit="event.preventDefault();var v=this.querySelector('input').value;if(!v)return;var w=document.querySelector('.ai-widget');if(w){var p=w.querySelector('.ai-widget__panel');var pn=w.querySelector('[data-action=&quot;toggle&quot;]');if(p&&!p.classList.contains('is-open')&&pn)pn.click();var i=w.querySelector('[data-role=&quot;input&quot;]');var f=w.querySelector('[data-role=&quot;form&quot;]');if(i&&f){i.value=v;f.requestSubmit();}}">
-        <input type="text" placeholder="${label}" style="flex:1;padding:12px 16px;border:none;border-radius:var(--r-md);font-size:.95rem;">
-        <button type="submit" class="btn btn--gold">Ask &rarr;</button>
-      </form>
-    </div>
-  </div>
-</section>`;
+  // ElevenLabs ConvAI widget — single agent serves the entire site,
+  // every language. Skipped in /admin/ and /auth/ pages where it'd be
+  // out of place.
+  var ELEVENLABS_AGENT_ID = 'agent_8201kqnjhzyrfpdvtqwgf9e0034y';
+  function mountElevenLabs() {
+    if (document.querySelector('elevenlabs-convai')) return;
+    if (/\/(admin|auth)\//.test(window.location.pathname)) return;
+    var el = document.createElement('elevenlabs-convai');
+    el.setAttribute('agent-id', ELEVENLABS_AGENT_ID);
+    document.body.appendChild(el);
+    if (!document.querySelector('script[src*="@elevenlabs/convai-widget-embed"]')) {
+      var s = document.createElement('script');
+      s.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
+      s.async = true;
+      s.type = 'text/javascript';
+      document.body.appendChild(s);
+    }
   }
 
-  function mount({ active = '', depth = 0, lang = 'en', askTopic } = {}) {
+  function mount({ active = '', depth = 0, lang = 'en' } = {}) {
     const h = document.querySelector('[data-partial="header"]');
     const f = document.querySelector('[data-partial="footer"]');
     if (h) h.outerHTML = header(active, depth, lang);
     if (f) f.outerHTML = footer(depth, lang);
 
-    // Auto-inject "Ask the Concierge" form on guide pages, OR on any
-    // page with <div data-partial="ask-form" data-topic="…">.
-    var optIn = document.querySelector('[data-partial="ask-form"]');
-    var isGuide = /\/guides\//.test(window.location.pathname);
-    if (optIn || (isGuide && active === 'guides')) {
-      var topic = (optIn && optIn.dataset.topic) || askTopic ||
-        (isGuide ? (document.title.split(/[·—|]/)[0].trim().replace(/Guide$/i,'').trim().toLowerCase()) : '');
-      var html = askForm(depth, topic);
-      if (optIn) {
-        optIn.outerHTML = html;
-      } else {
-        // Inject right after the first <header> or <section.hero>
-        var anchor = document.querySelector('section.hero') || document.querySelector('header');
-        if (anchor) anchor.insertAdjacentHTML('afterend', html);
-      }
-    }
+    mountElevenLabs();
 
     // Close mega menus on outside click / esc
     document.addEventListener('click', function(e){
