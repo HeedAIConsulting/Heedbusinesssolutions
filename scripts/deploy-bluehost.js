@@ -154,56 +154,112 @@ async function deploy() {
     return;
   }
 
-  const client = new ftp.Client(60_000);
-  client.ftp.verbose = false;
-
-  try {
-    console.log('Connecting (FTPS explicit on port 21)…');
-    await client.access({
+  // Connection helper — creates a fresh client + connects. Reused on reconnect.
+  async function makeClient() {
+    const c = new ftp.Client(60_000);
+    c.ftp.verbose = false;
+    await c.access({
       host: HOST,
       port: PORT,
       user: USER,
       password: PASS,
       secure: true,
-      secureOptions: { rejectUnauthorized: false } // Bluehost FTPS cert often differs from FQDN
+      secureOptions: { rejectUnauthorized: false } // Bluehost FTPS cert mismatch is common
     });
-    console.log('✓ Connected\n');
+    await c.ensureDir(REMOTE_DIR);
+    await c.cd('/');
+    return c;
+  }
 
-    // Ensure remote dir exists
-    await client.ensureDir(REMOTE_DIR);
-    console.log(`✓ Remote dir ready: ${REMOTE_DIR}\n`);
+  console.log('Connecting (FTPS explicit on port 21)…');
+  let client = await makeClient();
+  console.log(`✓ Connected · remote dir ready: ${REMOTE_DIR}\n`);
 
-    console.log('Uploading…');
-    const start = Date.now();
-    let uploaded = 0;
-    let bytesUp = 0;
-    const reportEvery = Math.max(1, Math.floor(files.length / 20));
+  console.log('Uploading…');
+  const start = Date.now();
+  let uploaded = 0;
+  let bytesUp = 0;
+  let reconnects = 0;
+  const failed = [];
+  const reportEvery = Math.max(1, Math.floor(files.length / 30));
+  const knownDirs = new Set();
 
-    for (const file of files) {
-      const remotePath = REMOTE_DIR + '/' + file.rel;
-      const remoteDir  = remotePath.substring(0, remotePath.lastIndexOf('/'));
+  // Pre-create all directories first (one ensureDir per unique dir, not per file)
+  console.log('  Creating remote directories…');
+  for (const f of files) {
+    const remotePath = REMOTE_DIR + '/' + f.rel;
+    const remoteDir = remotePath.substring(0, remotePath.lastIndexOf('/'));
+    if (!knownDirs.has(remoteDir)) {
       try {
         await client.ensureDir(remoteDir);
-        await client.cd('/'); // ensureDir leaves us in the dir; reset
-        await client.uploadFrom(file.full, remotePath);
-        uploaded++;
-        bytesUp += file.size;
-        if (uploaded % reportEvery === 0 || uploaded === files.length) {
-          const pct = Math.round((uploaded / files.length) * 100);
-          process.stdout.write(`\r  ${uploaded}/${files.length} (${pct}%) · ${fmtBytes(bytesUp)}      `);
-        }
+        await client.cd('/');
+        knownDirs.add(remoteDir);
       } catch (e) {
-        console.error(`\n  ✗ ${file.rel} — ${e.message}`);
+        // If we lose the connection during dir creation, reconnect and retry
+        try { client.close(); } catch (_) {}
+        client = await makeClient();
+        reconnects++;
+        await client.ensureDir(remoteDir);
+        await client.cd('/');
+        knownDirs.add(remoteDir);
       }
     }
-    const elapsed = Math.round((Date.now() - start) / 1000);
-    console.log(`\n\n✓ Uploaded ${uploaded}/${files.length} files (${fmtBytes(bytesUp)}) in ${elapsed}s`);
-  } catch (e) {
-    console.error('\n✗ Deploy failed:', e.message);
-    process.exitCode = 1;
-  } finally {
-    client.close();
   }
+  console.log(`  ✓ ${knownDirs.size} directories ready\n`);
+
+  // Upload with reconnect-on-drop. Up to 3 reconnects per file before giving up.
+  async function uploadOne(file, attempt = 0) {
+    const remotePath = REMOTE_DIR + '/' + file.rel;
+    try {
+      await client.uploadFrom(file.full, remotePath);
+      return true;
+    } catch (e) {
+      const msg = e.message || String(e);
+      const isDropped = /ECONNRESET|Client is closed|ETIMEDOUT|EPIPE|connection lost/i.test(msg);
+      if (isDropped && attempt < 3) {
+        // Reconnect and retry this file
+        try { client.close(); } catch (_) {}
+        await new Promise(r => setTimeout(r, 1500 + attempt * 1500));
+        try {
+          client = await makeClient();
+          reconnects++;
+          process.stdout.write(`\r  [reconnect #${reconnects}] retrying ${file.rel}…                      `);
+          return await uploadOne(file, attempt + 1);
+        } catch (reconnectErr) {
+          console.error(`\n  ✗ ${file.rel} — reconnect failed: ${reconnectErr.message}`);
+          return false;
+        }
+      }
+      console.error(`\n  ✗ ${file.rel} — ${msg}`);
+      return false;
+    }
+  }
+
+  for (const file of files) {
+    const ok = await uploadOne(file);
+    if (ok) {
+      uploaded++;
+      bytesUp += file.size;
+    } else {
+      failed.push(file);
+    }
+    if (uploaded % reportEvery === 0 || uploaded === files.length) {
+      const pct = Math.round((uploaded / files.length) * 100);
+      process.stdout.write(`\r  ${uploaded}/${files.length} (${pct}%) · ${fmtBytes(bytesUp)} · ${reconnects} reconnects        `);
+    }
+    // Tiny inter-file delay so the control socket doesn't get hammered
+    if (uploaded % 20 === 19) await new Promise(r => setTimeout(r, 100));
+  }
+
+  const elapsed = Math.round((Date.now() - start) / 1000);
+  console.log(`\n\n✓ Uploaded ${uploaded}/${files.length} files (${fmtBytes(bytesUp)}) in ${elapsed}s · ${reconnects} reconnect(s)`);
+  if (failed.length) {
+    console.log(`✗ ${failed.length} file(s) failed:`);
+    failed.forEach(f => console.log(`    ${f.rel}`));
+    console.log('  → re-run `node scripts/deploy-bluehost.js` to retry just the missing ones (the script overwrites identical files harmlessly)');
+    process.exitCode = 1;
+  }
+  try { client.close(); } catch (_) {}
 
   console.log('\n──────────────────────────────────────────────');
   console.log(`Preview: ${PUBLIC_URL}`);
