@@ -123,12 +123,12 @@ async function load() {
   const params = new URLSearchParams({ status: activeStatus, q: activeQ, limit: 100 });
   let data;
   try {
-    const r = await fetch('/api/admin/members?' + params);
+    const r = await fetch('../api/admin/members?' + params);
     if (!r.ok) throw new Error('api ' + r.status);
     data = await r.json();
   } catch (e) {
     // Backend offline — fall back to client-side directory
-    const dir = await fetch('/data/directory.json').then(r => r.json()).catch(() => []);
+    const dir = await fetch('../data/directory.json').then(r => r.json()).catch(() => []);
     const today = new Date().toISOString().slice(0,10);
     const enriched = dir.filter(m => m.chamberMember).map(m => {
       // Deterministic mock dates so tabs work offline
@@ -231,13 +231,13 @@ async function generateEmail(memberId, memberName) {
   $('email-modal').classList.add('open');
 
   try {
-    const r = await fetch(`/api/admin/members/${encodeURIComponent(memberId)}/renewal-email`, { method:'POST' });
+    const r = await fetch(`../api/admin/members/${encodeURIComponent(memberId)}/renewal-email`, { method:'POST' });
     if (!r.ok) throw new Error('api ' + r.status);
     const data = await r.json();
     showEmail(data);
   } catch (e) {
     // Offline fallback — generate a template entirely client-side
-    const dir = await fetch('/data/directory.json').then(r => r.json()).catch(() => []);
+    const dir = await fetch('../data/directory.json').then(r => r.json()).catch(() => []);
     const m = dir.find(x => x.id === memberId) || { name: memberName };
     const today = new Date().toISOString().slice(0,10);
     showEmail({
@@ -272,7 +272,7 @@ function sendEmail() {
   const body = encodeURIComponent($('em-bodytext').value);
   // Find member email
   if (lastEmailContext) {
-    fetch('/data/directory.json').then(r => r.json()).then(dir => {
+    fetch('../data/directory.json').then(r => r.json()).then(dir => {
       const m = dir.find(x => x.id === lastEmailContext.memberId);
       const to = m && m.email ? encodeURIComponent(m.email) : '';
       window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
@@ -282,7 +282,7 @@ function sendEmail() {
 
 function scheduleCall() {
   if (!lastEmailContext) return;
-  fetch('/data/directory.json').then(r => r.json()).then(dir => {
+  fetch('../data/directory.json').then(r => r.json()).then(dir => {
     const m = dir.find(x => x.id === lastEmailContext.memberId) || {};
     const memberEmail = m.email || '';
     const memberName  = m.contactName || lastEmailContext.memberName;

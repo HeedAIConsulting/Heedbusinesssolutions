@@ -17,3 +17,6 @@ data/_store/
 # Build artifacts
 .cache/
 dist/
+
+# FTP/deployment credentials — NEVER commit
+.deploy.env
