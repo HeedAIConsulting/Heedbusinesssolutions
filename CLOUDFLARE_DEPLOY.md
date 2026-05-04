@@ -3,7 +3,7 @@
 This site deploys to Cloudflare Pages directly from the GitHub repo. No build step, no FTP, no manual upload.
 
 We're doing this in **two phases**:
-1. **Preview phase** — host on `chamber.heedaisolutions.com` (or whichever subdomain you pick) for Diana to review and approve. Existing `woodlandhillscc.net` stays untouched on Bluehost.
+1. **Preview phase** — host on `wvwccoc.heedaisolutions.com` (or whichever subdomain you pick) for Diana to review and approve. Existing `woodlandhillscc.net` stays untouched on Bluehost.
 2. **Production phase** — once approved, point `www.woodlandhillscc.net` at the same Cloudflare Pages project. Bluehost email keeps working; only the website moves.
 
 ---
@@ -38,9 +38,9 @@ We're doing this in **two phases**:
 
 ### 4. Add the preview subdomain
 
-Pick a subdomain of `heedaisolutions.com`. Recommendation: **`chamber.heedaisolutions.com`** (short, clear, reusable for future client chamber previews).
+Pick a subdomain of `heedaisolutions.com`. Recommendation: **`wvwccoc.heedaisolutions.com`** (short, clear, reusable for future client chamber previews).
 
-In Cloudflare Pages → your project → **Custom domains** → **Set up a custom domain** → enter `chamber.heedaisolutions.com`.
+In Cloudflare Pages → your project → **Custom domains** → **Set up a custom domain** → enter `wvwccoc.heedaisolutions.com`.
 
 What happens next depends on where heedaisolutions.com's DNS is:
 
@@ -54,7 +54,7 @@ What happens next depends on where heedaisolutions.com's DNS is:
 - Add a CNAME record at heedaisolutions.com's DNS provider:
   ```
   Type: CNAME
-  Name: chamber
+  Name: wvwccoc
   Target: wvwccc-chamber.pages.dev
   TTL: Auto (or 3600)
   ```
@@ -62,7 +62,7 @@ What happens next depends on where heedaisolutions.com's DNS is:
 - Cloudflare auto-issues HTTPS cert when DNS resolves
 
 ### 5. Share with Diana
-Send her `https://chamber.heedaisolutions.com` for review.
+Send her `https://wvwccoc.heedaisolutions.com` for review.
 
 ---
 
@@ -102,7 +102,7 @@ Send her `https://chamber.heedaisolutions.com` for review.
 - MX records (email) stay on Bluehost
 
 ### Optional: keep the preview subdomain
-You can leave `chamber.heedaisolutions.com` pointing at the same Pages project — it becomes a permanent preview/staging URL, useful for testing changes before they hit production. Or remove it after the production cutover. Either way.
+You can leave `wvwccoc.heedaisolutions.com` pointing at the same Pages project — it becomes a permanent preview/staging URL, useful for testing changes before they hit production. Or remove it after the production cutover. Either way.
 
 ---
 
@@ -129,7 +129,7 @@ Both are read automatically by Cloudflare Pages — nothing else to configure.
 
 ## Verification checklist (after first deploy)
 
-Visit each on `https://chamber.heedaisolutions.com` and confirm 200 OK + page renders:
+Visit each on `https://wvwccoc.heedaisolutions.com` and confirm 200 OK + page renders:
 
 - [ ] `/` — homepage with logo + 8-language stats + ElevenLabs widget
 - [ ] `/members/directory.html` — 851 entries load (check the count in the toolbar)
@@ -148,6 +148,6 @@ If `/data/directory.json` 404s → the **Root directory** in build settings is w
 
 ## When you're ready
 
-Tell me you've connected Cloudflare to the repo, paste the `chamber.heedaisolutions.com` URL once it's deployed, and I'll run the verification checklist for you.
+Tell me you've connected Cloudflare to the repo, paste the `wvwccoc.heedaisolutions.com` URL once it's deployed, and I'll run the verification checklist for you.
 
 Or — say "use Claude in Chrome" and I'll spin up the browser and walk you through the Cloudflare UI in real time.
