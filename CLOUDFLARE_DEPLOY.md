@@ -26,10 +26,10 @@ We're doing this in **two phases**:
 | Framework preset | None |
 | Build command | *(leave blank)* |
 | Build output directory | `/` |
-| Root directory | `websites/WVchamber/.claude/worktrees/hopeful-hellman-6f7a38` |
+| Root directory (advanced) | *(leave blank)* |
 | Environment variables | *(none needed)* |
 
-> **Important:** the "Root directory" tells Cloudflare where the chamber site files live within the larger `Heedbusinesssolutions` repo. Without it, Cloudflare deploys the wrong folder.
+> **Note:** On the `claude/hopeful-hellman-6f7a38` branch, the chamber site files (`index.html`, `_headers`, `_redirects`, etc.) live at the repo root — so leave Root directory blank. Don't put it inside `websites/WVchamber/.claude/worktrees/...`; that's just the local worktree path, not where the files live on the branch.
 
 ### 3. Deploy
 - Click **Save and Deploy**
