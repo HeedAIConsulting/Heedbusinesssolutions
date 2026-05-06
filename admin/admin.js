@@ -82,30 +82,37 @@ window.AdminShell = (function () {
   }
 
   function aiAssistant() {
+    // Initial collapsed state — read from localStorage so the chat stays
+    // collapsed/expanded across page navigation.
+    var startCollapsed = false;
+    try { startCollapsed = localStorage.getItem('ai-assistant-collapsed') === '1'; } catch (e) {}
     return `
-<div class="ai-assistant" id="ai-assistant">
-  <div class="ai-assistant__head">
+<div class="ai-assistant${startCollapsed ? ' is-collapsed' : ''}" id="ai-assistant">
+  <button class="ai-assistant__head" id="ai-toggle" type="button" aria-expanded="${!startCollapsed}" aria-controls="ai-panel" title="Click to ${startCollapsed ? 'expand' : 'collapse'}">
     <div class="ai-assistant__head-avatar">AI</div>
     <div class="ai-assistant__head-text">
       <div class="ai-assistant__title">Staff Assistant</div>
       <div class="ai-assistant__sub">Your AI co-pilot for everything Chamber</div>
     </div>
-  </div>
-  <div class="ai-assistant__body" id="ai-body">
-    <div class="ai-msg ai-msg--bot">
-      Hi Diana — I'm your AI assistant. I can draft content, manage approvals, look up members, schedule events, send newsletters, and answer any operational question. What do you need?
+    <span class="ai-assistant__chevron" aria-hidden="true">▾</span>
+  </button>
+  <div class="ai-assistant__panel" id="ai-panel">
+    <div class="ai-assistant__body" id="ai-body">
+      <div class="ai-msg ai-msg--bot">
+        Hi Diana — I'm your AI assistant. I can draft content, manage approvals, look up members, schedule events, send newsletters, and answer any operational question. What do you need?
+      </div>
     </div>
+    <div class="ai-assistant__action">
+      <button data-prompt="Draft this week's newsletter">✉️ Draft newsletter</button>
+      <button data-prompt="Approve all pending listings that meet our standards">✅ Bulk approve</button>
+      <button data-prompt="What needs my attention today?">🎯 What needs me?</button>
+      <button data-prompt="Schedule a ribbon cutting for new member Cryohealthcare">📅 Schedule event</button>
+    </div>
+    <form class="ai-assistant__input" id="ai-form">
+      <input type="text" id="ai-input" placeholder="Ask anything or give a command…" autocomplete="off">
+      <button type="submit" class="btn btn--primary btn--sm">Send</button>
+    </form>
   </div>
-  <div class="ai-assistant__action">
-    <button data-prompt="Draft this week's newsletter">✉️ Draft newsletter</button>
-    <button data-prompt="Approve all pending listings that meet our standards">✅ Bulk approve</button>
-    <button data-prompt="What needs my attention today?">🎯 What needs me?</button>
-    <button data-prompt="Schedule a ribbon cutting for new member Cryohealthcare">📅 Schedule event</button>
-  </div>
-  <form class="ai-assistant__input" id="ai-form">
-    <input type="text" id="ai-input" placeholder="Ask anything or give a command…" autocomplete="off">
-    <button type="submit" class="btn btn--primary btn--sm">Send</button>
-  </form>
 </div>`;
   }
 
@@ -123,7 +130,18 @@ window.AdminShell = (function () {
     const body = document.getElementById('ai-body');
     const form = document.getElementById('ai-form');
     const input = document.getElementById('ai-input');
+    const widget = document.getElementById('ai-assistant');
+    const toggle = document.getElementById('ai-toggle');
     if (!form) return;
+    if (toggle && widget) {
+      toggle.addEventListener('click', () => {
+        const next = !widget.classList.contains('is-collapsed');
+        widget.classList.toggle('is-collapsed', next);
+        toggle.setAttribute('aria-expanded', String(!next));
+        toggle.setAttribute('title', 'Click to ' + (next ? 'expand' : 'collapse'));
+        try { localStorage.setItem('ai-assistant-collapsed', next ? '1' : '0'); } catch (e) {}
+      });
+    }
     document.querySelectorAll('.ai-assistant__action button').forEach(b => {
       b.addEventListener('click', () => { input.value = b.dataset.prompt; form.requestSubmit(); });
     });
