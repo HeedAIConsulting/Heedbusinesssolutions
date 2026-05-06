@@ -198,17 +198,20 @@ p  { margin-bottom: var(--s-4); }
   letter-spacing: 0.1em;
   color: var(--gold-deep);
 }
-.nav { display: flex; gap: var(--s-2); align-items: center; }
+.nav { display: flex; gap: 2px; align-items: center; flex-wrap: nowrap; }
 .nav a {
   color: var(--slate);
   font-weight: 500;
-  font-size: 0.92rem;
-  padding: 0.5rem 0.85rem;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.7rem;
   border-radius: var(--r-md);
   transition: var(--transition);
+  white-space: nowrap;       /* never let nav labels wrap */
+  line-height: 1.2;
 }
 .nav a:hover, .nav a.active { color: var(--navy); background: var(--blue-soft); }
-.nav-cta { margin-left: var(--s-3); }
+.nav-cta { margin-left: var(--s-2); }
+.nav-cta.btn { white-space: nowrap; }
 .menu-toggle { display: none; padding: 0.5rem; color: var(--navy); }
 .menu-toggle svg { width: 28px; height: 28px; }
 
