@@ -1,24 +1,31 @@
 # Render service definition — deploys the Express API backend.
 # https://render.com/docs/blueprint-spec
 #
-# Setup once:
-#   1. Push this branch to GitHub.
-#   2. In Render dashboard → New → Blueprint → connect to this repo,
-#      pick branch `claude/hopeful-hellman-6f7a38`.
-#   3. Set root directory to `websites/WVchamber/.claude/worktrees/hopeful-hellman-6f7a38`.
-#   4. Add env vars (Environment tab on the resulting service):
+# IMPORTANT: This file lives at the REPO ROOT on the
+# `claude/hopeful-hellman-6f7a38` branch. The chamber site code is at the
+# branch root too — package.json, server.js, backend/, etc. all sit at /.
+# Do NOT set Render's "Root directory" to anything else.
+#
+# Recommended setup (Web Service, NOT Blueprint — Blueprint locks bad paths):
+#   1. Render dashboard → New + → Web Service
+#   2. Connect HeedAIConsulting/Heedbusinesssolutions
+#   3. Branch: claude/hopeful-hellman-6f7a38
+#   4. Root directory: (leave BLANK)
+#   5. Build command: npm install
+#   6. Start command: node server.js
+#   7. Health check path: /api/chamber
+#   8. Environment vars (set in dashboard, never committed):
 #        GEMINI_API_KEY
-#        ANTHROPIC_API_KEY            (fallback, optional)
+#        ANTHROPIC_API_KEY            (optional fallback)
 #        MS_GRAPH_TENANT_ID
 #        MS_GRAPH_CLIENT_ID
 #        MS_GRAPH_CLIENT_SECRET
-#        M365_PRIMARY_MAILBOX
-#        M365_REDIRECT_URI            ← https://<service>.onrender.com/auth/m365/callback
-#        COOKIE_SECRET                ← any random 32+ char string
-#   5. Add the M365_REDIRECT_URI value above to Azure portal →
+#        M365_PRIMARY_MAILBOX         e.g. wendy@woodlandhillscc.net
+#        M365_REDIRECT_URI            https://<service>.onrender.com/auth/m365/callback
+#        COOKIE_SECRET                any random 32+ char string
+#   9. After first deploy, add M365_REDIRECT_URI to Azure portal →
 #        WVWCC Chamber Site → Authentication → Web platform → Redirect URIs.
-#   6. Update the static frontend's window.CHAMBER_API_BASE on Cloudflare Pages
-#      to https://<service>.onrender.com/api once the service is live.
+#  10. Update js/api-base.js RENDER_API_BASE constant to your actual onrender.com URL.
 #
 # Free tier: instance sleeps after 15 min idle, ~30s cold start. Fine for demos.
 services:
