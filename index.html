@@ -195,87 +195,61 @@
       <p style="color:rgba(255,255,255,0.85);">Six tiers of partnership. Every dollar reinvested in the community.</p>
     </div>
     <div class="partners-grid" style="background:rgba(255,255,255,0.04);padding:32px;border-radius:14px;" id="partners-grid"></div>
-    <script type="application/json" id="partners-data">
-[
-  {"label":"Platinum","color":"var(--gold)","items":[
-    {"name":"Blumenfield","sub":"City of LA","domain":"blumenfield.com"},
-    {"name":"MPTF","sub":"Motion Picture & TV Fund","domain":"mptf.com"},
-    {"name":"UCLA Health","domain":"uclahealth.org"},
-    {"name":"Westfield","sub":"Topanga & The Village","domain":"westfield.com"}
-  ]},
-  {"label":"Gold","color":"var(--gold)","items":[
-    {"name":"Los Angeles Rams","domain":"therams.com"},
-    {"name":"Providence","sub":"Cedars-Sinai Tarzana","domain":"providence.org"}
-  ]},
-  {"label":"Silver","color":"rgba(255,255,255,0.75)","items":[
-    {"name":"Jaguar Woodland Hills","domain":"jaguarwoodlandhills.com"}
-  ]},
-  {"label":"Bronze","color":"#E0B596","items":[
-    {"name":"Joint Matters","sub":"Calibration Services","domain":"jointmatters.com"},
-    {"name":"Kaiser Permanente","domain":"kaiserpermanente.org"},
-    {"name":"Warner Center Marriott","domain":"marriott.com"},
-    {"name":"Porsche Woodland Hills","domain":"porschewoodlandhills.com"}
-  ]},
-  {"label":"Supporters","color":"rgba(255,255,255,0.7)","items":[
-    {"name":"Post 826 CA Legion","domain":"legion.org"},
-    {"name":"Boys & Girls Clubs of West Valley","domain":"bgcwv.org"},
-    {"name":"CCR · CCA"},
-    {"name":"The Drain Co."},
-    {"name":"Douglas Emmett","domain":"douglasemmett.com"},
-    {"name":"Leisure Care","domain":"leisurecare.com"},
-    {"name":"Hilton Woodland Hills","domain":"hilton.com"},
-    {"name":"Hornstein Law Offices","domain":"hornsteinlaw.com"},
-    {"name":"Mulholland Hills Chamber"},
-    {"name":"Wisteria Warner Center"}
-  ]},
-  {"label":"Friend Leaders","color":"rgba(255,255,255,0.7)","items":[
-    {"name":"CMIT Solutions North LA","domain":"cmitsolutions.com"},
-    {"name":"First Banks","domain":"firstbanks.com"},
-    {"name":"Tim Gaspar Insurance","domain":"gasparinsurance.com"},
-    {"name":"Gelb Group"},
-    {"name":"Inside Moves"},
-    {"name":"LIAT Law"},
-    {"name":"Maguire & Hart"},
-    {"name":"Premier America Credit Union","domain":"premieramerica.com"},
-    {"name":"SoCalGas","domain":"socalgas.com"},
-    {"name":"Ring Planet"},
-    {"name":"U Frame It Gallery"},
-    {"name":"Vista Lincoln"},
-    {"name":"World's Greatest Stuff"}
-  ]}
-]
-    </script>
+    <!-- Partners pulled live from data/directory.json — only real chamber members at each tier. -->
+    <noscript><p style="color:rgba(255,255,255,0.75);text-align:center;">Browse our <a href="members/directory.html" style="color:var(--gold);">full member directory</a> to see all 800+ chamber members.</p></noscript>
     <script>
     (function() {
-      var data = JSON.parse(document.getElementById('partners-data').textContent);
       var grid = document.getElementById('partners-grid');
-      // Tier accent colors for partner-card backgrounds
-      var tierStyles = {
-        'Platinum':       'background:linear-gradient(135deg,#e5e4e2,#bfc1c2);color:#0B2545;',
-        'Gold':           'background:linear-gradient(135deg,#F4E9C1,#C9A227);color:#0B2545;',
-        'Silver':         'background:linear-gradient(135deg,#f0f0f0,#cfcfcf);color:#0B2545;',
-        'Bronze':         'background:linear-gradient(135deg,#E0B596,#B07045);color:#fff;',
-        'Supporters':     'background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.92);border-color:rgba(255,255,255,0.18);',
-        'Friend Leaders': 'background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.14);'
-      };
-      grid.innerHTML = data.map(function(tier) {
-        var cardStyle = tierStyles[tier.label] || '';
-        return '<div class="partners-grid__tier">' +
-          '<div class="partners-grid__label" style="color:' + tier.color + ';">' + tier.label + '</div>' +
-          '<div class="partners-grid__items">' +
-            tier.items.map(function(p) {
-              // Use the first 1-2 letters as a typographic mark
-              var initials = p.name.replace(/&amp;/g,'').split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
-              var sub = p.sub ? '<div style="font-size:.66rem;opacity:.75;margin-top:2px;">' + p.sub + '</div>' : '';
-              return '<div class="partner-card" style="' + cardStyle + '">' +
-                '<div style="font-family:var(--serif);font-weight:700;font-size:1.1rem;letter-spacing:.04em;line-height:1;margin-bottom:6px;opacity:.9;">' + initials + '</div>' +
-                '<div style="font-weight:600;font-size:.78rem;line-height:1.2;">' + p.name + '</div>' +
-                sub +
-              '</div>';
-            }).join('') +
-          '</div>' +
-        '</div>';
-      }).join('');
+      var TIERS = [
+        {key:'platinum',  label:'Platinum',       cardStyle:'background:linear-gradient(135deg,#e5e4e2,#bfc1c2);color:#0B2545;', labelColor:'var(--gold)'},
+        {key:'gold',      label:'Gold',           cardStyle:'background:linear-gradient(135deg,#F4E9C1,#C9A227);color:#0B2545;', labelColor:'var(--gold)'},
+        {key:'silver',    label:'Silver',         cardStyle:'background:linear-gradient(135deg,#f0f0f0,#cfcfcf);color:#0B2545;', labelColor:'rgba(255,255,255,0.85)'},
+        {key:'bronze',    label:'Bronze',         cardStyle:'background:linear-gradient(135deg,#E0B596,#B07045);color:#fff;',     labelColor:'#E0B596'},
+        {key:'supporter', label:'Supporters',     cardStyle:'background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.92);border:1px solid rgba(255,255,255,0.18);', labelColor:'rgba(255,255,255,0.7)'},
+        {key:'friend',    label:'Friend Leaders', cardStyle:'background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.14);',  labelColor:'rgba(255,255,255,0.7)'}
+      ];
+      function domainFromUrl(u) {
+        if (!u) return null;
+        try { return new URL(u.indexOf('http')===0 ? u : 'https://'+u).hostname.replace(/^www\./,''); }
+        catch(e) { return null; }
+      }
+      function initials(name) {
+        return name.replace(/&/g,'').split(/\s+/).filter(Boolean).slice(0,2).map(function(w){return w[0]||'';}).join('').toUpperCase();
+      }
+      function renderCard(m, cardStyle) {
+        var domain = domainFromUrl(m.website);
+        var safeName = (m.name||'').replace(/</g,'&lt;');
+        var sub = m.neighborhood ? '<div style="font-size:.66rem;opacity:.75;margin-top:2px;">'+m.neighborhood+'</div>' : '';
+        var mark;
+        if (domain) {
+          var faviconUrl = 'https://www.google.com/s2/favicons?domain='+domain+'&sz=128';
+          var fallbackHtml = '<div style=&quot;font-family:var(--serif);font-weight:700;font-size:1.1rem;letter-spacing:.04em;line-height:1;margin-bottom:6px;opacity:.9;&quot;>'+initials(m.name)+'</div>';
+          mark = '<img src="'+faviconUrl+'" alt="" width="40" height="40" '+
+                 'style="border-radius:8px;background:#fff;padding:4px;margin-bottom:8px;object-fit:contain;" '+
+                 'onerror="this.outerHTML=\''+fallbackHtml+'\'">';
+        } else {
+          mark = '<div style="font-family:var(--serif);font-weight:700;font-size:1.1rem;letter-spacing:.04em;line-height:1;margin-bottom:6px;opacity:.9;">'+initials(m.name)+'</div>';
+        }
+        return '<div class="partner-card" style="'+cardStyle+'">'+mark+
+                 '<div style="font-weight:600;font-size:.78rem;line-height:1.2;">'+safeName+'</div>'+
+                 sub+
+               '</div>';
+      }
+      fetch('data/directory.json').then(function(r){ return r.json(); }).then(function(directory) {
+        var html = TIERS.map(function(tier) {
+          var members = directory.filter(function(m){ return m.tier === tier.key; });
+          if (!members.length) return '';
+          return '<div class="partners-grid__tier">' +
+            '<div class="partners-grid__label" style="color:'+tier.labelColor+';">'+tier.label+'</div>' +
+            '<div class="partners-grid__items">' +
+              members.map(function(m){ return renderCard(m, tier.cardStyle); }).join('') +
+            '</div>' +
+          '</div>';
+        }).join('');
+        grid.innerHTML = html;
+      }).catch(function(){
+        grid.innerHTML = '<p style="color:rgba(255,255,255,0.75);text-align:center;">Browse our <a href="members/directory.html" style="color:var(--gold);">full member directory</a> to see all 800+ chamber members.</p>';
+      });
     })();
     </script>
     <div class="text-center mt-6">
@@ -407,9 +381,7 @@
   </div>
 </div>
 
-<script>
-window.CHAMBER_API_BASE = '/api';
-</script>
+<script src="js/api-base.js?v=6"></script>
 <script src="js/partials.js?v=6"></script>
 <script src="js/chamber.js?v=6"></script>
 <script>

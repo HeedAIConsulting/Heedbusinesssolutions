@@ -14,8 +14,15 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
-// Optional .env loading (no error if dotenv missing)
-try { require('dotenv').config(); } catch (_) {}
+// Optional .env loading (no error if dotenv missing).
+// Try .env.local first (gitignored, real creds for local dev), then .env
+// as fallback. On Render, vars come from the dashboard so neither file
+// exists in production and that's fine.
+try {
+  const dotenv = require('dotenv');
+  dotenv.config({ path: '.env.local' });
+  dotenv.config(); // .env — won't override values already set
+} catch (_) {}
 
 // Optional Anthropic SDK (no error if missing — falls back to mock)
 let Anthropic = null;
@@ -26,6 +33,31 @@ const PORT = parseInt(process.env.PORT || '5500', 10);
 const DATA = path.join(__dirname, 'data');
 
 app.use(express.json({ limit: '1mb' }));
+
+// CORS — frontend on Cloudflare Pages calls this backend on Render
+const ALLOWED_ORIGINS = [
+  'https://wvwccc-chamber.pages.dev',
+  'http://localhost:3456',
+  'http://localhost:5500'
+];
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin && ALLOWED_ORIGINS.some(o => origin === o || origin.endsWith('.pages.dev'))) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  }
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
+  next();
+});
+
+// Mount chamber-routes first — they own /api/concierge, /api/staff-assistant,
+// /api/outreach/draft, /api/m365/*, etc. and use the provider-agnostic LLM
+// wrapper (Gemini → Anthropic → mock). Older inline routes below are
+// dead code now since Express uses first-match.
+const attachChamberRoutes = require('./backend/chamber-routes');
+attachChamberRoutes(app);
 
 // ── Static files ────────────────────────────────────────────────
 app.use(express.static(__dirname, { extensions: ['html'] }));

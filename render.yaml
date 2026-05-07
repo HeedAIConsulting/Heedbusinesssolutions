@@ -1,0 +1,54 @@
+# Render service definition — deploys the Express API backend.
+# https://render.com/docs/blueprint-spec
+#
+# Setup once:
+#   1. Push this branch to GitHub.
+#   2. In Render dashboard → New → Blueprint → connect to this repo,
+#      pick branch `claude/hopeful-hellman-6f7a38`.
+#   3. Set root directory to `websites/WVchamber/.claude/worktrees/hopeful-hellman-6f7a38`.
+#   4. Add env vars (Environment tab on the resulting service):
+#        GEMINI_API_KEY
+#        ANTHROPIC_API_KEY            (fallback, optional)
+#        MS_GRAPH_TENANT_ID
+#        MS_GRAPH_CLIENT_ID
+#        MS_GRAPH_CLIENT_SECRET
+#        M365_PRIMARY_MAILBOX
+#        M365_REDIRECT_URI            ← https://<service>.onrender.com/auth/m365/callback
+#        COOKIE_SECRET                ← any random 32+ char string
+#   5. Add the M365_REDIRECT_URI value above to Azure portal →
+#        WVWCC Chamber Site → Authentication → Web platform → Redirect URIs.
+#   6. Update the static frontend's window.CHAMBER_API_BASE on Cloudflare Pages
+#      to https://<service>.onrender.com/api once the service is live.
+#
+# Free tier: instance sleeps after 15 min idle, ~30s cold start. Fine for demos.
+services:
+  - type: web
+    name: wvwccc-chamber-api
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm ci --omit=dev || npm install --production
+    startCommand: node server.js
+    healthCheckPath: /api/chamber
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # The secrets below are not committed — set them in the Render dashboard.
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: MS_GRAPH_TENANT_ID
+        sync: false
+      - key: MS_GRAPH_CLIENT_ID
+        sync: false
+      - key: MS_GRAPH_CLIENT_SECRET
+        sync: false
+      - key: M365_PRIMARY_MAILBOX
+        sync: false
+      - key: M365_REDIRECT_URI
+        sync: false
+      - key: COOKIE_SECRET
+        generateValue: true

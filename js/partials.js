@@ -553,6 +553,18 @@ window.ChamberPartials = (function () {
     });
   }
 
+  // Loads /js/share-calendar.js once (handles Add-to-Calendar + share buttons site-wide).
+  function mountShareCalendar(depth) {
+    if (window.WVCal) return; // already loaded
+    if (document.querySelector('script[src$="share-calendar.js"]')) return;
+    var s = document.createElement('script');
+    var prefix = '';
+    for (var i = 0; i < (depth || 0); i++) prefix += '../';
+    s.src = prefix + 'js/share-calendar.js?v=6';
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
   function mount({ active = '', depth = 0, lang = 'en' } = {}) {
     const h = document.querySelector('[data-partial="header"]');
     const f = document.querySelector('[data-partial="footer"]');
@@ -561,6 +573,7 @@ window.ChamberPartials = (function () {
 
     mountElevenLabs();
     mountInlineConciergeLaunchers();
+    mountShareCalendar(depth);
 
     // Close mega menus on outside click / esc
     document.addEventListener('click', function(e){

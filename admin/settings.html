@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-<script>window.CHAMBER_API_BASE='/api';</script>
+<script>// API base resolved by api-base.js below — leave any override BEFORE that script.</script>
+<script src='../js/api-base.js'></script>
 <script src="admin.js"></script>
 <script src="_stub.js"></script>
 <script>
@@ -20,15 +21,8 @@ AdminStub.render({
     <div class="grid grid-2">
       <div class="admin-card">
         <div class="admin-card__head"><div class="admin-card__title">Integrations</div></div>
-        <div class="admin-card__body">
-          <div class="flex justify-between items-center mb-3"><div><strong>Square</strong><div class="text-xs text-muted">Payments, recurring billing, payouts</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
-          <div class="flex justify-between items-center mb-3"><div><strong>Anthropic Claude</strong><div class="text-xs text-muted">AI Concierge & Staff Assistant</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
-          <div class="flex justify-between items-center mb-3"><div><strong>Mailchimp</strong><div class="text-xs text-muted">Newsletter sends</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
-          <div class="flex justify-between items-center mb-3"><div><strong>QuickBooks</strong><div class="text-xs text-muted">Accounting sync</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
-          <div class="flex justify-between items-center mb-3"><div><strong>Meta Business Suite</strong><div class="text-xs text-muted">Instagram & Facebook</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
-          <div class="flex justify-between items-center mb-3"><div><strong>LinkedIn Pages</strong><div class="text-xs text-muted">Social posting</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
-          <div class="flex justify-between items-center mb-3"><div><strong>Google Workspace</strong><div class="text-xs text-muted">Staff SSO</div></div><span class="admin-pill admin-pill--green">Connected</span></div>
-          <div class="flex justify-between items-center"><div><strong>Stripe</strong><div class="text-xs text-muted">Optional payment alternative</div></div><button class="btn btn--outline btn--sm">Connect</button></div>
+        <div class="admin-card__body" id="integrations-body">
+          <div class="text-sm text-muted">Loading live status…</div>
         </div>
       </div>
 
@@ -72,6 +66,63 @@ AdminStub.render({
       </div>
     </div>`
 });
+
+// Live integrations status — actual connection state, no fake "Connected" labels.
+(async function loadIntegrations() {
+  const host = document.getElementById('integrations-body');
+  if (!host) return;
+  try {
+    const r = await fetch(window.CHAMBER_API_BASE + '/chamber');
+    const data = await r.json();
+    const llm = data.llm || {};
+    const m365 = data.m365 || {};
+
+    function row(name, sub, statusHtml, action) {
+      return '<div class="flex justify-between items-center mb-3" style="gap:16px;">' +
+               '<div style="flex:1;"><strong>' + name + '</strong><div class="text-xs text-muted">' + sub + '</div></div>' +
+               '<div style="display:flex;gap:8px;align-items:center;">' + statusHtml + (action || '') + '</div>' +
+             '</div>';
+    }
+
+    // LLM provider
+    const llmStatus = llm.live
+      ? '<span class="admin-pill admin-pill--green">' + llm.provider + ' · live</span>'
+      : '<span class="admin-pill admin-pill--gray">mock fallback</span>';
+
+    // Microsoft 365 — show connected user if any, otherwise a Connect button
+    let m365Status, m365Action = '';
+    if (!m365.configured) {
+      m365Status = '<span class="admin-pill admin-pill--gray">not configured</span>';
+    } else if (m365.connected) {
+      m365Status = '<span class="admin-pill admin-pill--green">connected · ' + (m365.connectedAs || '') + '</span>';
+      m365Action = '<button class="btn btn--outline btn--sm" onclick="m365Disconnect()">Disconnect</button>';
+    } else {
+      m365Status = '<span class="admin-pill admin-pill--gold">configured · not signed in</span>';
+      m365Action = '<a href="/auth/m365/login" class="btn btn--gold btn--sm">Connect</a>';
+    }
+
+    // URL flag from OAuth callback
+    const urlParams = new URLSearchParams(window.location.search);
+    const justConnected = urlParams.get('m365') === 'connected';
+    const justConnectedBanner = justConnected
+      ? '<div style="background:#E8F5E9;border:1px solid #1F7A3A;color:#1F7A3A;padding:10px 14px;border-radius:8px;margin-bottom:12px;font-size:.92rem;">✓ Microsoft 365 connected as ' + (urlParams.get('user') || '') + '. Drafts and sends will go through this account.</div>'
+      : '';
+
+    host.innerHTML =
+      justConnectedBanner +
+      row('Microsoft 365', 'Inbox · drafts · send (via Microsoft Graph)', m365Status, m365Action) +
+      row('Google Gemini', 'AI Concierge & Staff Assistant — primary', llmStatus, '') +
+      row('Anthropic Claude', 'LLM fallback if Gemini unavailable', '<span class="admin-pill admin-pill--gray">fallback</span>', '');
+  } catch (e) {
+    host.innerHTML = '<div class="text-sm text-muted">Could not reach the API: ' + e.message + '</div>';
+  }
+})();
+
+window.m365Disconnect = async function() {
+  if (!confirm('Disconnect Microsoft 365? You will need to sign in again to draft or send emails.')) return;
+  await fetch(window.CHAMBER_API_BASE + '/m365/disconnect', { method: 'POST' });
+  window.location.reload();
+};
 </script>
 </body>
 </html>

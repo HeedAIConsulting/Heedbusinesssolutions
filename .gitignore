@@ -20,3 +20,9 @@ dist/
 
 # FTP/deployment credentials — NEVER commit
 .deploy.env
+
+# Cloudflare Wrangler / API key + secret store — NEVER commit
+.dev.vars
+.dev.vars.*
+.env.azure
+.env.gemini

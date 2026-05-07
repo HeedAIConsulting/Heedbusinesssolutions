@@ -5,9 +5,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const Anthropic = require('@anthropic-ai/sdk');
-
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const llm = require('./llm');     // Provider-agnostic LLM (Gemini → Anthropic → mock)
+const m365 = require('./m365');   // Microsoft 365 Graph (delegated OAuth)
 
 // Site lives at the repo root — adjust if relocated.
 const SITE_ROOT = path.join(__dirname, '..');
@@ -34,10 +33,9 @@ function readStore(name) {
   return fs.readFileSync(file, 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l));
 }
 
-// Models — Opus 4.7 for the staff agent (heavy reasoning, drafting),
-// Sonnet 4.6 for the public Concierge (quality + cost balance, "break the bank" per user req).
-const MODEL_CONCIERGE = 'claude-sonnet-4-6';
-const MODEL_STAFF     = 'claude-opus-4-7';
+// LLM role aliases — llm.js maps these to the right provider+model.
+const MODEL_CONCIERGE = 'concierge'; // public-facing Q&A
+const MODEL_STAFF     = 'staff';     // Diana's internal AI co-pilot
 
 function attachChamberRoutes(app) {
   // ── Health ─────────────────────────────────────────────
@@ -45,7 +43,8 @@ function attachChamberRoutes(app) {
     status: 'ok',
     service: 'West Valley · Warner Center Chamber of Commerce API',
     timestamp: new Date().toISOString(),
-    models: { concierge: MODEL_CONCIERGE, staff: MODEL_STAFF }
+    llm: llm.status(),
+    m365: m365.status()
   }));
 
   // ── Public data ────────────────────────────────────────
@@ -122,14 +121,14 @@ ${loyalty.slice(0, 20).map(l => `- ${l.business}: ${l.offer}`).join('\n')}`;
         { role: 'user', content: `User is on page: ${page || '/'}\n\nUser: ${message}\n\nDirectory context:\n${ctx}` }
       ];
 
-      const response = await anthropic.messages.create({
+      const response = await llm.complete({
         model: MODEL_CONCIERGE,
-        max_tokens: 1400,
+        maxTokens: 1400,
         system,
         messages
       });
 
-      const raw = response.content[0].text.trim();
+      const raw = response.text;
       let parsed;
       try { parsed = JSON.parse(raw); }
       catch {
@@ -199,17 +198,17 @@ ${events.slice(0, 5).map(e => `- ${e.date} ${e.title} (${e.category||''})`).join
         { role: 'user', content: `Context:\n${ctx}\n\nDiana asks: ${message}` }
       ];
 
-      const response = await anthropic.messages.create({
+      const response = await llm.complete({
         model: MODEL_STAFF,
-        max_tokens: 2400,
+        maxTokens: 2400,
         system,
         messages
       });
 
-      res.json({ reply: response.content[0].text.trim(), model: MODEL_STAFF });
+      res.json({ reply: response.text, provider: response.provider, model: response.model });
     } catch (err) {
       console.error('Staff assistant error:', err.message);
-      res.status(500).json({ reply: "Connection issue with the AI provider. Check ANTHROPIC_API_KEY in the env." });
+      res.status(500).json({ reply: "Connection issue with the AI provider. Check GEMINI_API_KEY or ANTHROPIC_API_KEY in the env." });
     }
   });
 
@@ -251,14 +250,14 @@ Use "chamber of commerce" rather than "chamber" in formal sentences (Diana's pre
 Upcoming events to mention if relevant:
 ${events.map(e => `- ${e.date} ${e.title} | ${e.location} | ${e.category}`).join('\n')}`;
 
-      const response = await anthropic.messages.create({
-        model: MODEL_STAFF,
-        max_tokens: 2000,
+      const response = await llm.complete({
+        model: 'draft',
+        maxTokens: 2000,
         system,
         messages: [{ role: 'user', content: ctx }]
       });
 
-      const raw = response.content[0].text.trim();
+      const raw = response.text;
       let parsed;
       try { parsed = JSON.parse(raw); }
       catch { const m = raw.match(/\{[\s\S]*\}/); parsed = m ? JSON.parse(m[0]) : { error: 'parse failed', raw }; }
@@ -267,6 +266,173 @@ ${events.map(e => `- ${e.date} ${e.title} | ${e.location} | ${e.category}`).join
     } catch (err) {
       console.error('Outreach error:', err.message);
       res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ── Microsoft 365 — OAuth (delegated) ────────────────────
+  // Staff visits /auth/m365/login → Microsoft consent → /auth/m365/callback.
+  // Tokens cached in data/_store/m365-tokens.json (gitignored).
+  app.get('/auth/m365/login', async (req, res) => {
+    if (!m365.isConfigured) {
+      return res.status(500).send('Microsoft 365 not configured. See backend/m365.js for required env vars.');
+    }
+    try {
+      const state = require('crypto').randomBytes(16).toString('hex');
+      // Stash state in a short-lived cookie for CSRF protection on callback
+      res.cookie ? res.cookie('m365_state', state, { httpOnly: true, sameSite: 'lax', maxAge: 10 * 60 * 1000 })
+                 : res.setHeader('Set-Cookie', `m365_state=${state}; HttpOnly; SameSite=Lax; Max-Age=600; Path=/`);
+      const url = await m365.getAuthUrl(state);
+      res.redirect(url);
+    } catch (err) {
+      console.error('M365 auth-url error:', err.message);
+      res.status(500).send('Failed to start Microsoft 365 sign-in: ' + err.message);
+    }
+  });
+
+  app.get('/auth/m365/callback', async (req, res) => {
+    const { code, state, error, error_description } = req.query || {};
+    if (error) return res.status(400).send(`Microsoft sign-in error: ${error} — ${error_description || ''}`);
+    if (!code) return res.status(400).send('Missing auth code.');
+    try {
+      const result = await m365.handleCallback(code);
+      // Bounce back to the admin settings page with a success flag
+      res.redirect('/admin/settings.html?m365=connected&user=' + encodeURIComponent(result.account?.username || ''));
+    } catch (err) {
+      console.error('M365 callback error:', err.message);
+      res.status(500).send('Microsoft 365 connection failed: ' + err.message);
+    }
+  });
+
+  app.get('/api/m365/status', (_req, res) => res.json(m365.status()));
+
+  app.post('/api/m365/disconnect', (_req, res) => res.json(m365.disconnect()));
+
+  // ── Microsoft 365 — Graph operations ─────────────────────
+  app.get('/api/m365/me', async (_req, res) => {
+    try { res.json(await m365.me()); }
+    catch (err) { res.status(401).json({ error: err.message }); }
+  });
+
+  app.get('/api/m365/inbox', async (req, res) => {
+    try {
+      const messages = await m365.listInbox({
+        top: parseInt(req.query.top || '25', 10),
+        unreadOnly: req.query.unread === '1' || req.query.unread === 'true',
+        search: req.query.q
+      });
+      res.json({ messages, count: messages.length });
+    } catch (err) {
+      res.status(401).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/m365/draft', async (req, res) => {
+    try {
+      const { subject, body, to, cc, bcc, tag } = req.body || {};
+      if (!to) return res.status(400).json({ error: 'to recipient required' });
+      const result = await m365.createDraft({ subject, body, to, cc, bcc, tag });
+      res.json(result);
+    } catch (err) {
+      res.status(err.message?.includes('not connected') ? 401 : 500).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/m365/send', async (req, res) => {
+    try {
+      const { subject, body, to, cc, bcc } = req.body || {};
+      if (!to) return res.status(400).json({ error: 'to recipient required' });
+      await m365.sendMail({ subject, body, to, cc, bcc });
+      res.json({ ok: true });
+    } catch (err) {
+      res.status(err.message?.includes('not connected') ? 401 : 500).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/m365/reply-draft', async (req, res) => {
+    try {
+      const { messageId, comment } = req.body || {};
+      if (!messageId) return res.status(400).json({ error: 'messageId required' });
+      // Optional: have the LLM draft the reply text first
+      let replyText = comment;
+      if (!replyText && req.body.useLlm) {
+        const original = await m365.getMessage(messageId);
+        const r = await llm.complete({
+          model: 'staff',
+          system: 'You are Diana Williams, CEO of the West Valley · Warner Center Chamber of Commerce. Draft a warm, brief reply to the email below. Sign off as "Diana".',
+          messages: [{ role: 'user', content: `From: ${original.from?.emailAddress?.address}\nSubject: ${original.subject}\n\n${(original.body?.content || '').replace(/<[^>]+>/g, '')}` }],
+          maxTokens: 800
+        });
+        replyText = r.text;
+      }
+      const result = await m365.replyDraft(messageId, replyText || '');
+      res.json(result);
+    } catch (err) {
+      res.status(err.message?.includes('not connected') ? 401 : 500).json({ error: err.message });
+    }
+  });
+
+  // Bulk-draft generator: filter members, generate per-recipient personalized
+  // drafts via LLM, land them all in the connected user's Drafts folder.
+  app.post('/api/m365/bulk-draft', async (req, res) => {
+    try {
+      const { filter = {}, intent, dryRun } = req.body || {};
+      if (!intent) return res.status(400).json({ error: 'intent required (e.g. "Renewal nudge for Q2")' });
+
+      const dir = loadJson('directory.json');
+      const filtered = dir.filter(m => {
+        if (filter.tier && m.tier !== filter.tier) return false;
+        if (filter.category && !(m.category || '').toLowerCase().includes(filter.category.toLowerCase())) return false;
+        if (filter.neighborhood && m.neighborhood !== filter.neighborhood) return false;
+        if (filter.hasEmail && !m.email) return false;
+        return true;
+      }).filter(m => m.email); // can't draft to a member with no email
+
+      const limit = Math.min(filter.limit || 10, 50);
+      const targets = filtered.slice(0, limit);
+
+      if (dryRun) {
+        return res.json({
+          dryRun: true,
+          totalMatched: filtered.length,
+          willDraft: targets.length,
+          recipients: targets.map(m => ({ name: m.name, email: m.email, tier: m.tier, category: m.category }))
+        });
+      }
+
+      const drafted = [];
+      const failed = [];
+      for (const member of targets) {
+        try {
+          const r = await llm.complete({
+            model: 'draft',
+            system: `You are drafting a personalized email for the West Valley · Warner Center Chamber of Commerce, signed by Diana Williams (CEO).
+
+Tone: warm, locally-grounded, specific to the recipient's business. No marketing fluff. Reference their category and neighborhood. Single soft CTA at the end.
+
+Output JSON only: { "subject": "...", "body": "<html><p>...</p></html>" }`,
+            messages: [{ role: 'user', content: `Intent: ${intent}\n\nRecipient:\n- Name: ${member.contactName || member.name}\n- Business: ${member.name}\n- Category: ${member.category}\n- Tier: ${member.tier}\n- Neighborhood: ${member.neighborhood}` }],
+            maxTokens: 800
+          });
+          let parsed;
+          try { parsed = JSON.parse(r.text); }
+          catch { const m = r.text.match(/\{[\s\S]*\}/); parsed = m ? JSON.parse(m[0]) : null; }
+          if (!parsed?.subject || !parsed?.body) { failed.push({ member: member.name, reason: 'LLM parse failed' }); continue; }
+
+          const draft = await m365.createDraft({
+            subject: parsed.subject,
+            body: parsed.body,
+            to: member.email,
+            tag: 'chamber-bulk-' + (filter.tier || 'all')
+          });
+          drafted.push({ member: member.name, email: member.email, draftId: draft.id, webLink: draft.webLink });
+        } catch (e) {
+          failed.push({ member: member.name, reason: e.message });
+        }
+      }
+      appendStore('bulk-draft', { intent, filter, count: drafted.length, failed: failed.length });
+      res.json({ ok: true, totalMatched: filtered.length, drafted, failed });
+    } catch (err) {
+      res.status(err.message?.includes('not connected') ? 401 : 500).json({ error: err.message });
     }
   });
 
@@ -648,13 +814,13 @@ ${events.map(e => `- ${e.date} ${e.title} (${e.category||''} · ${e.location||''
 
       let parsed;
       try {
-        const response = await anthropic.messages.create({
-          model: MODEL_STAFF,
-          max_tokens: 1200,
+        const response = await llm.complete({
+          model: 'draft',
+          maxTokens: 1200,
           system,
           messages: [{ role: 'user', content: ctx }]
         });
-        const raw = response.content[0].text.trim();
+        const raw = response.text;
         try { parsed = JSON.parse(raw); }
         catch { const match = raw.match(/\{[\s\S]*\}/); parsed = match ? JSON.parse(match[0]) : { subject: 'Renewal', body: raw }; }
       } catch (apiErr) {

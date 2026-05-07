@@ -10,8 +10,13 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
+    "@azure/msal-node": "^2.16.2",
+    "@google/generative-ai": "^0.21.0",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.5",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "isomorphic-fetch": "^3.0.0"
   },
   "engines": {
     "node": ">=18.0.0"
