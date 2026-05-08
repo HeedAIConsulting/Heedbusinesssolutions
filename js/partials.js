@@ -511,22 +511,23 @@ window.ChamberPartials = (function () {
         return;
       }
 
-      // Default: card variant — drop-in replacement for the old hero ask-stack
+      // Default: card variant — sits inside .hero__visual (white background),
+      // so styled DARK on light, not the reverse.
       host.outerHTML =
-        '<div class="concierge-card" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-radius:var(--r-lg);padding:24px;color:#fff;">'
+        '<div class="concierge-card" style="border-radius:var(--r-lg);color:var(--ink);">'
         + '<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">'
-        +   '<div style="width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1.1rem;">CC</div>'
-        +   '<div><div style="font-family:var(--serif);font-size:1.15rem;font-weight:700;">Chamber Concierge</div>'
-        +   '<div style="font-size:.78rem;color:rgba(255,255,255,.7);">Voice + text · 8 languages</div></div>'
+        +   '<div style="width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1.1rem;flex-shrink:0;">CC</div>'
+        +   '<div><div style="font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--navy);">Chamber Concierge</div>'
+        +   '<div style="font-size:.78rem;color:var(--muted);">Voice + text · 8 languages</div></div>'
         + '</div>'
-        + '<p style="font-size:.95rem;color:rgba(255,255,255,.92);margin-bottom:14px;">' + prompt + '</p>'
-        + '<div style="background:rgba(255,255,255,.08);border-radius:var(--r-md);padding:12px 14px;font-size:.85rem;color:rgba(255,255,255,.85);font-style:italic;margin-bottom:14px;">'
+        + '<p style="font-size:.95rem;color:var(--slate);margin-bottom:14px;line-height:1.5;">' + prompt + '</p>'
+        + '<div style="background:var(--blue-soft);border-radius:var(--r-md);padding:12px 14px;font-size:.85rem;color:var(--navy);font-style:italic;margin-bottom:14px;border-left:3px solid var(--blue);">'
         +   '"Find me a kid-friendly Persian restaurant in Tarzana that\'s open late."'
         + '</div>'
         + '<button type="button" class="btn btn--gold btn--block" data-concierge-launch>Start the conversation ›</button>'
-        + '<div style="margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.7);text-align:center;">'
-        +   'Or talk to a human: <a href="tel:8183474737" style="color:var(--gold);font-weight:600;">📞 (818) 347-4737</a> · '
-        +   '<a href="mailto:info@woodlandhillscc.net" style="color:var(--gold);">✉️ info@woodlandhillscc.net</a>'
+        + '<div style="margin-top:14px;font-size:.78rem;color:var(--muted);text-align:center;">'
+        +   'Or talk to a human: <a href="tel:8183474737" style="color:var(--navy);font-weight:600;">📞 (818) 347-4737</a> · '
+        +   '<a href="mailto:info@woodlandhillscc.net" style="color:var(--navy);font-weight:600;">✉️ info@woodlandhillscc.net</a>'
         + '</div>'
         + '</div>';
     });
