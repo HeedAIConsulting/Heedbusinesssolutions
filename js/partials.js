@@ -580,6 +580,18 @@ window.ChamberPartials = (function () {
     document.body.appendChild(s);
   }
 
+  // Loads /js/accessibility.js once (full WCAG 2.1 AA toolkit, floating button).
+  function mountA11y(depth) {
+    if (window.WVA11y) return;
+    if (document.querySelector('script[src$="accessibility.js"]')) return;
+    var s = document.createElement('script');
+    var prefix = '';
+    for (var i = 0; i < (depth || 0); i++) prefix += '../';
+    s.src = prefix + 'js/accessibility.js?v=6';
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
   function mount({ active = '', depth = 0, lang = 'en' } = {}) {
     const h = document.querySelector('[data-partial="header"]');
     const f = document.querySelector('[data-partial="footer"]');
@@ -590,6 +602,7 @@ window.ChamberPartials = (function () {
     mountInlineConciergeLaunchers();
     mountShareCalendar(depth);
     mountTour(depth);
+    mountA11y(depth);
 
     // Close mega menus on outside click / esc
     document.addEventListener('click', function(e){

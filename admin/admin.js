@@ -135,6 +135,13 @@ window.AdminShell = (function () {
     s.src = '../js/tour.js?v=6';
     s.defer = true;
     document.body.appendChild(s);
+    // Also load the accessibility widget so admins get the same a11y toolkit.
+    if (!window.WVA11y && !document.querySelector('script[src$="accessibility.js"]')) {
+      const a = document.createElement('script');
+      a.src = '../js/accessibility.js?v=6';
+      a.defer = true;
+      document.body.appendChild(a);
+    }
   }
 
   function bindAi() {
