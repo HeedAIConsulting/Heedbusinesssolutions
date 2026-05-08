@@ -208,28 +208,16 @@
         {key:'supporter', label:'Supporters',     cardStyle:'background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.92);border:1px solid rgba(255,255,255,0.18);', labelColor:'rgba(255,255,255,0.7)'},
         {key:'friend',    label:'Friend Leaders', cardStyle:'background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.14);',  labelColor:'rgba(255,255,255,0.7)'}
       ];
-      function domainFromUrl(u) {
-        if (!u) return null;
-        try { return new URL(u.indexOf('http')===0 ? u : 'https://'+u).hostname.replace(/^www\./,''); }
-        catch(e) { return null; }
-      }
       function initials(name) {
         return name.replace(/&/g,'').split(/\s+/).filter(Boolean).slice(0,2).map(function(w){return w[0]||'';}).join('').toUpperCase();
       }
       function renderCard(m, cardStyle) {
-        var domain = domainFromUrl(m.website);
+        // Uniform typography mark for every card — no favicon mix.
+        // Many members don't have a website on file yet; rather than show some
+        // logos and some initials, we use the chamber's typography mark for all.
         var safeName = (m.name||'').replace(/</g,'&lt;');
         var sub = m.neighborhood ? '<div style="font-size:.66rem;opacity:.75;margin-top:2px;">'+m.neighborhood+'</div>' : '';
-        var mark;
-        if (domain) {
-          var faviconUrl = 'https://www.google.com/s2/favicons?domain='+domain+'&sz=128';
-          var fallbackHtml = '<div style=&quot;font-family:var(--serif);font-weight:700;font-size:1.1rem;letter-spacing:.04em;line-height:1;margin-bottom:6px;opacity:.9;&quot;>'+initials(m.name)+'</div>';
-          mark = '<img src="'+faviconUrl+'" alt="" width="40" height="40" '+
-                 'style="border-radius:8px;background:#fff;padding:4px;margin-bottom:8px;object-fit:contain;" '+
-                 'onerror="this.outerHTML=\''+fallbackHtml+'\'">';
-        } else {
-          mark = '<div style="font-family:var(--serif);font-weight:700;font-size:1.1rem;letter-spacing:.04em;line-height:1;margin-bottom:6px;opacity:.9;">'+initials(m.name)+'</div>';
-        }
+        var mark = '<div style="font-family:var(--serif);font-weight:700;font-size:1.1rem;letter-spacing:.04em;line-height:1;margin-bottom:6px;opacity:.9;">'+initials(m.name)+'</div>';
         return '<div class="partner-card" style="'+cardStyle+'">'+mark+
                  '<div style="font-weight:600;font-size:.78rem;line-height:1.2;">'+safeName+'</div>'+
                  sub+
