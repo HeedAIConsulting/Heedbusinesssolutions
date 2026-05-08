@@ -124,6 +124,17 @@ window.AdminShell = (function () {
     if (topHost) topHost.outerHTML = topbar();
     if (aiHost) aiHost.outerHTML = aiAssistant();
     bindAi();
+    mountTour();
+  }
+
+  // Load /js/tour.js so the cross-page guided walkthrough resumes on admin pages too.
+  function mountTour() {
+    if (window.WVTour) return;
+    if (document.querySelector('script[src$="tour.js"]')) return;
+    const s = document.createElement('script');
+    s.src = '../js/tour.js?v=6';
+    s.defer = true;
+    document.body.appendChild(s);
   }
 
   function bindAi() {

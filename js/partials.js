@@ -565,6 +565,18 @@ window.ChamberPartials = (function () {
     document.body.appendChild(s);
   }
 
+  // Loads /js/tour.js once (drives the [data-tour-start] guided walkthrough).
+  function mountTour(depth) {
+    if (window.WVTour) return;
+    if (document.querySelector('script[src$="tour.js"]')) return;
+    var s = document.createElement('script');
+    var prefix = '';
+    for (var i = 0; i < (depth || 0); i++) prefix += '../';
+    s.src = prefix + 'js/tour.js?v=6';
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
   function mount({ active = '', depth = 0, lang = 'en' } = {}) {
     const h = document.querySelector('[data-partial="header"]');
     const f = document.querySelector('[data-partial="footer"]');
@@ -574,6 +586,7 @@ window.ChamberPartials = (function () {
     mountElevenLabs();
     mountInlineConciergeLaunchers();
     mountShareCalendar(depth);
+    mountTour(depth);
 
     // Close mega menus on outside click / esc
     document.addEventListener('click', function(e){
