@@ -212,13 +212,29 @@
       function initials(name) {
         return name.replace(/&/g,'').split(/\s+/).filter(Boolean).slice(0,2).map(function(w){return w[0]||'';}).join('').toUpperCase();
       }
+      function domainFromUrl(u) {
+        if (!u) return null;
+        try { return new URL(u.indexOf('http')===0 ? u : 'https://'+u).hostname.replace(/^www\./,''); }
+        catch(e) { return null; }
+      }
       function renderCard(m, cardStyle) {
-        // Uniform typography mark for every card — no favicon mix.
-        // Many members don't have a website on file yet; rather than show some
-        // logos and some initials, we use the chamber's typography mark for all.
         var safeName = (m.name||'').replace(/</g,'&lt;');
         var sub = m.neighborhood ? '<div style="font-size:.66rem;opacity:.75;margin-top:2px;">'+m.neighborhood+'</div>' : '';
-        var mark = '<div style="font-family:var(--serif);font-weight:700;font-size:1.1rem;letter-spacing:.04em;line-height:1;margin-bottom:6px;opacity:.9;">'+initials(m.name)+'</div>';
+        var domain = domainFromUrl(m.website);
+        var inits = initials(m.name);
+        var mark;
+        if (domain) {
+          // Google's favicon API: reliable, no API key, returns the
+          // member's actual logo when their site exposes one. Fallback
+          // to the typography mark if the image fails to load.
+          var faviconUrl = 'https://www.google.com/s2/favicons?domain='+domain+'&sz=128';
+          var fallback = '<div style=&quot;font-family:var(--serif);font-weight:700;font-size:1.1rem;letter-spacing:.04em;line-height:1;margin-bottom:6px;opacity:.9;&quot;>'+inits+'</div>';
+          mark = '<img src="'+faviconUrl+'" alt="" width="44" height="44" loading="lazy" '+
+                 'style="border-radius:8px;background:#fff;padding:4px;margin:0 auto 8px;object-fit:contain;display:block;" '+
+                 'onerror="this.outerHTML=\''+fallback+'\'">';
+        } else {
+          mark = '<div style="font-family:var(--serif);font-weight:700;font-size:1.1rem;letter-spacing:.04em;line-height:1;margin-bottom:6px;opacity:.9;">'+inits+'</div>';
+        }
         return '<div class="partner-card" style="'+cardStyle+'">'+mark+
                  '<div style="font-weight:600;font-size:.78rem;line-height:1.2;">'+safeName+'</div>'+
                  sub+

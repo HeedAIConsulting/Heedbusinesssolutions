@@ -8,7 +8,7 @@
 ---
 
 ## TL;DR
-The chamber of commerce gets a complete website rebuild — modern, AI-powered, multilingual, fully monetized — at **$0 build cost**. Heed hosts and operates the platform in exchange for a **5% revenue share** on every transaction processed (memberships, sponsorships, ad packages, event tickets, premium listings, email blasts, loyalty enrollments, etc.). When the chamber earns more, we earn more. When the chamber stagnates, we don't get paid.
+The chamber of commerce gets a complete website rebuild — modern, AI-powered, multilingual, fully monetized — at **$0 build cost**. Heed hosts and operates the platform in exchange for a **15% revenue share** on every transaction processed (memberships, sponsorships, ad packages, event tickets, premium listings, email blasts, loyalty enrollments, etc.). When the chamber earns more, we earn more. When the chamber stagnates, we don't get paid.
 
 This is the model we use to onboard the **Beverly Hills Chamber, Los Angeles Area Chamber, and 80+ other SoCal chambers** after WVWCCC. WVWCCC is the flagship reference build.
 
@@ -98,7 +98,7 @@ Personalized for Diana Williams (CEO) — addresses her by name, dynamic time-of
 We host it on Cloudflare Pages (front) + a small Cloudflare Worker (backend) + Anthropic API (the AI). Total infra cost to run it: ~$80/mo, paid by Heed.
 
 ## What Heed earns
-**5%** of every transaction processed through the chamber's Square account that originated from this site:
+**15%** of every transaction processed through the chamber's Square account that originated from this site:
 - Memberships ($295–$5,000+)
 - Sponsorships (event presenting, premium guide listings, loyalty program co-op slots)
 - Advertising packages (newsletter spotlights, dedicated blasts, banner ads)
@@ -113,7 +113,7 @@ We provide quarterly reports. Either side can terminate with 60 days notice. The
 - +20% lift from automated onboarding + better marketing = $136K incremental
 - Sponsorships, ads, blasts, premium listings: $90K (current run rate ~$30K)
 - Loyalty program: $0 to chamber (free), but recovers $25K/yr in lapsed-member retention
-- **5% of $906K ≈ $45K/year to Heed**, which fully funds operations and our team.
+- **15% of $906K ≈ $136K/year to Heed**, which fully funds operations and our team.
 
 **Diana's net:** $40K+ more in chamber revenue (after Heed's cut) AND a 24/7 AI concierge that handles a third of the inbound questions Felicia and the team field today.
 
@@ -127,7 +127,7 @@ Once WVWCCC is live and proven (we anticipate 90 days), we replicate this templa
 4. **Calabasas, Encino, Sherman Oaks, Studio City** chambers
 5. Every chamber-of-commerce in LA + Ventura + Orange counties (~85 total)
 
-Each new chamber takes ~2 weeks to clone (data swap, brand swap, partner swap). The AI prompts adapt automatically. Heed scales. Each chamber gets the same upgraded site + same 5% revenue share. Math:
+Each new chamber takes ~2 weeks to clone (data swap, brand swap, partner swap). The AI prompts adapt automatically. Heed scales. Each chamber gets the same upgraded site + same 15% revenue share. Math:
 
 - 80 chambers × $35K avg/year revenue share = **$2.8M ARR** by Year 3.
 - Defensible: every chamber that signs gets exclusivity in their geography + advisory board seat.

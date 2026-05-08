@@ -42,13 +42,15 @@ if (HAS_ANTHROPIC) {
 }
 
 // Map our role aliases to provider-specific model names.
-// '*-latest' aliases auto-track Google's newest stable model so we don't
-// break when an experimental tag is retired.
+// We use Flash for ALL roles because gemini-pro-latest resolves to
+// gemini-3.1-pro which has *zero* free-tier quota (paid-only). Flash
+// has a generous free-tier quota and is fast + good enough for the
+// chamber's chat / drafting / outreach workloads.
 const GEMINI_MODELS = {
   fast:      'gemini-flash-latest',
   concierge: 'gemini-flash-latest',
-  staff:     'gemini-pro-latest',
-  draft:     'gemini-pro-latest'
+  staff:     'gemini-flash-latest',
+  draft:     'gemini-flash-latest'
 };
 const ANTHROPIC_MODELS = {
   fast:      'claude-haiku-4-5',
