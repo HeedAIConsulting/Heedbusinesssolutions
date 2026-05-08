@@ -240,6 +240,8 @@ window.ChamberPartials = (function () {
           </div>
         </div>
         <span class="dot-sep">·</span>
+        <a href="#" data-tour-start title="Take a guided tour of the site">▶ Take the tour</a>
+        <span class="dot-sep">·</span>
         <a href="${p(depth, 'auth/member-login.html')}">${L('memberLogin')}</a>
         <span class="dot-sep">·</span>
         <a href="${p(depth, 'auth/staff-login.html')}">${L('staff')}</a>

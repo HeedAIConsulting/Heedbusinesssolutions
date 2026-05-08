@@ -142,7 +142,7 @@ declines until they catch up.
 ### Why Express on the existing Heed backend?
 - Already exists, already deployed.
 - Already has the Anthropic SDK wired up.
-- One backend serves both heedbusinesssolutions.com and wvwcc.org cleanly.
+- One backend serves both heedbusinesssolutions.com and woodlandhillscc.net cleanly.
 - Add Square SDK in 5 minutes when ready.
 
 ### Why Square (and not Stripe)?

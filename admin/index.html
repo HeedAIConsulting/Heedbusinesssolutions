@@ -28,6 +28,32 @@
         </div>
       </div>
 
+      <!-- Live Microsoft 365 connection banner — only renders if not yet connected -->
+      <div id="m365-banner" style="display:none;margin-bottom:24px;padding:18px 22px;background:linear-gradient(135deg,#F4E9C1,#FAF7F0);border:1px solid var(--gold);border-radius:var(--r-lg);display:none;align-items:center;gap:18px;">
+        <div style="font-size:2rem;line-height:1;">📧</div>
+        <div style="flex:1;">
+          <div style="font-family:var(--serif);font-weight:700;color:var(--navy);font-size:1.1rem;">Connect Microsoft 365 to enable email features</div>
+          <div class="text-sm" style="color:var(--slate-mid);">Sign in once with your chamber Outlook account. Then bulk-draft member emails, scan inbox, and reply with AI assistance — all drafts land in your real Outlook Drafts folder for review.</div>
+        </div>
+        <a id="m365-connect-link" class="btn btn--gold" href="#">Connect Microsoft 365 →</a>
+      </div>
+      <script>
+      (async function() {
+        try {
+          const r = await fetch(window.CHAMBER_API_BASE + '/m365/status');
+          const s = await r.json();
+          const banner = document.getElementById('m365-banner');
+          const link = document.getElementById('m365-connect-link');
+          if (!s.configured || s.connected) return;
+          // Use the API origin (Render) for the OAuth start so it works
+          // whether the user is on Pages or on Render.
+          const apiOrigin = (window.CHAMBER_API_BASE || '/api').replace(/\/api\/?$/, '');
+          link.href = apiOrigin + '/auth/m365/login';
+          banner.style.display = 'flex';
+        } catch (e) { /* offline / API down — silently hide */ }
+      })();
+      </script>
+
       <div class="admin-stat-grid">
         <div class="admin-stat">
           <div class="admin-stat__label">Active Members</div>

@@ -76,7 +76,8 @@ AdminShell.mount({ active: 'outreach' });
     } else if (s.connected) {
       pill.innerHTML = '<span class="admin-pill admin-pill--green">M365 · ' + (s.connectedAs || 'connected') + '</span>';
     } else {
-      pill.innerHTML = '<a href="/auth/m365/login" class="btn btn--gold btn--sm">Connect Microsoft 365 to enable drafts</a>';
+      const apiOrigin = (API || '/api').replace(/\/api\/?$/, '');
+      pill.innerHTML = '<a href="' + apiOrigin + '/auth/m365/login" class="btn btn--gold btn--sm">Connect Microsoft 365 to enable drafts</a>';
     }
   }).catch(() => {});
 
@@ -114,7 +115,8 @@ AdminShell.mount({ active: 'outreach' });
       const data = await r.json();
       if (!r.ok) {
         if (r.status === 401) {
-          $('bd-status').innerHTML = 'Not connected to Microsoft 365. <a href="/auth/m365/login">Connect now →</a>';
+          const apiOrigin = (API || '/api').replace(/\/api\/?$/, '');
+          $('bd-status').innerHTML = 'Not connected to Microsoft 365. <a href="' + apiOrigin + '/auth/m365/login">Connect now →</a>';
           return;
         }
         throw new Error(data.error || 'Bulk draft failed');

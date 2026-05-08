@@ -98,7 +98,8 @@ AdminStub.render({
       m365Action = '<button class="btn btn--outline btn--sm" onclick="m365Disconnect()">Disconnect</button>';
     } else {
       m365Status = '<span class="admin-pill admin-pill--gold">configured · not signed in</span>';
-      m365Action = '<a href="/auth/m365/login" class="btn btn--gold btn--sm">Connect</a>';
+      const apiOrigin = (window.CHAMBER_API_BASE || '/api').replace(/\/api\/?$/, '');
+      m365Action = '<a href="' + apiOrigin + '/auth/m365/login" class="btn btn--gold btn--sm">Connect</a>';
     }
 
     // URL flag from OAuth callback
