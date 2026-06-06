@@ -1,198 +1,314 @@
 /* ============================================================
-   Chamber Desktop Assistant — admin shell logic
+   WVWCCC Admin Console — shell + page logic (vanilla)
    ============================================================ */
+window.Admin = (function () {
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const apiBase = (window.ChamberAPI ? ChamberAPI.url('') : '');
 
-window.AdminShell = (function () {
-  function nav(active) {
-    return `
-<aside class="admin-side">
-  <div class="admin-side__brand">
-    <img src="../images/wvwccc-logo-2026.png" alt="WVWCCC" style="width:42px;height:42px;border-radius:8px;flex-shrink:0;">
-    <div class="admin-side__brand-text">
-      <div class="admin-side__brand-name">Desktop Assistant</div>
-      <div class="admin-side__brand-sub">Diana's Console</div>
-    </div>
-  </div>
-  <nav class="admin-nav">
-    <div class="admin-nav__group">
-      <a href="index.html" class="${active==='dashboard'?'active':''}">📊 Dashboard</a>
-      <a href="approvals.html" class="${active==='approvals'?'active':''}">✅ Approvals <span class="admin-nav__badge">7</span></a>
-      <a href="onboarding.html" class="${active==='onboarding'?'active':''}">🚀 Onboarding Queue <span class="admin-nav__badge">4</span></a>
-      <a href="ai-assistant.html" class="${active==='ai'?'active':''}">🤖 AI Assistant</a>
-    </div>
-    <div class="admin-nav__group">
-      <div class="admin-nav__group-title">Membership</div>
-      <a href="members.html" class="${active==='members'?'active':''}">👥 Members</a>
-      <a href="leads.html" class="${active==='leads'?'active':''}">📥 Leads</a>
-      <a href="renewals.html" class="${active==='renewals'?'active':''}">🔄 Renewals <span class="admin-nav__badge">12</span></a>
-      <a href="referrals.html" class="${active==='referrals'?'active':''}">🎁 Referrals</a>
-      <a href="outreach.html" class="${active==='outreach'?'active':''}">📤 Outreach</a>
-    </div>
-    <div class="admin-nav__group">
-      <div class="admin-nav__group-title">Programs</div>
-      <a href="events.html" class="${active==='events'?'active':''}">📅 Events</a>
-      <a href="guides.html" class="${active==='guides'?'active':''}">📖 Guides</a>
-      <a href="sponsorships.html" class="${active==='sponsorships'?'active':''}">⭐ Sponsorships</a>
-      <a href="loyalty.html" class="${active==='loyalty'?'active':''}">💳 Loyalty Program</a>
-      <a href="networking.html" class="${active==='networking'?'active':''}">🤝 Networking Groups</a>
-    </div>
-    <div class="admin-nav__group">
-      <div class="admin-nav__group-title">Content</div>
-      <a href="blog.html" class="${active==='blog'?'active':''}">📝 Blog &amp; Buzz</a>
-      <a href="social.html" class="${active==='social'?'active':''}">📣 Social Media</a>
-      <a href="newsletter.html" class="${active==='newsletter'?'active':''}">✉️ Newsletters</a>
-      <a href="email-blasts.html" class="${active==='blasts'?'active':''}">📨 Email Blasts</a>
-    </div>
-    <div class="admin-nav__group">
-      <div class="admin-nav__group-title">Revenue</div>
-      <a href="ads.html" class="${active==='ads'?'active':''}">📊 Ad Inventory &amp; Revenue</a>
-      <a href="billing.html" class="${active==='billing'?'active':''}">💳 Billing</a>
-    </div>
-    <div class="admin-nav__group">
-      <div class="admin-nav__group-title">Operations</div>
-      <a href="reports.html" class="${active==='reports'?'active':''}">📈 Reports</a>
-      <a href="staff.html" class="${active==='staff'?'active':''}">🛡️ Staff &amp; Roles</a>
-      <a href="settings.html" class="${active==='settings'?'active':''}">⚙️ Settings</a>
-    </div>
-  </nav>
-  <div class="admin-side__user">
-    <div class="admin-side__user-avatar" style="background:var(--gold);color:var(--navy);font-weight:700;">DW</div>
-    <div>
-      <div class="admin-side__user-name">Diana Williams</div>
-      <div class="admin-side__user-role">CEO · CBF Director</div>
-    </div>
-  </div>
-</aside>`;
+  async function api(pathname, opts = {}) {
+    const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
+    const res = await fetch(apiBase + pathname, { credentials: 'same-origin', ...opts, headers });
+    if (res.status === 401 || res.status === 403) {
+      // not signed in (or not staff) → send to staff login
+      location.href = '../auth/staff-login.html';
+      throw new Error('auth required');
+    }
+    if (!res.ok) throw new Error(`${pathname} → ${res.status}`);
+    return res.json();
   }
 
-  function topbar() {
-    return `
-<div class="admin-top">
-  <div class="admin-search">
-    <span style="color:var(--muted);">🔎</span>
-    <input type="text" placeholder="Search members, events, content, billing — or type / for AI" id="admin-search-input">
-    <kbd style="background:var(--paper);border:1px solid var(--line);padding:1px 6px;border-radius:4px;font-family:var(--mono);font-size:.72rem;color:var(--muted);">⌘ K</kbd>
-  </div>
-  <div class="admin-top__actions">
-    <button class="btn btn--ghost btn--sm" title="Notifications">🔔 <span class="admin-pill admin-pill--gold" style="font-size:.65rem;padding:1px 6px;margin-left:4px;">3</span></button>
-    <button class="btn btn--ghost btn--sm" title="Help">?</button>
-    <a href="../index.html" class="btn btn--outline btn--sm" target="_blank">View site ↗</a>
-  </div>
-</div>`;
-  }
+  const NAV = [
+    { grp: 'Manage' },
+    { href: 'index.html', icon: '▦', label: 'Dashboard', key: 'dashboard' },
+    { href: 'members.html', icon: '◉', label: 'Members', key: 'members' },
+    { href: 'approvals.html', icon: '✓', label: 'Approvals', key: 'approvals' },
+    { href: 'events.html', icon: '◆', label: 'Events', key: 'events' },
+    { href: 'content.html', icon: '✎', label: 'Content', key: 'content' },
+    { grp: 'Revenue & contact' },
+    { href: 'payments.html', icon: '$', label: 'Pay Log', key: 'payments' },
+    { href: 'leads.html', icon: '✉', label: 'Inquiries', key: 'leads' },
+  ];
 
-  function aiAssistant() {
-    // Initial collapsed state — read from localStorage so the chat stays
-    // collapsed/expanded across page navigation.
-    var startCollapsed = false;
-    try { startCollapsed = localStorage.getItem('ai-assistant-collapsed') === '1'; } catch (e) {}
-    return `
-<div class="ai-assistant${startCollapsed ? ' is-collapsed' : ''}" id="ai-assistant">
-  <button class="ai-assistant__head" id="ai-toggle" type="button" aria-expanded="${!startCollapsed}" aria-controls="ai-panel" title="Click to ${startCollapsed ? 'expand' : 'collapse'}">
-    <div class="ai-assistant__head-avatar">AI</div>
-    <div class="ai-assistant__head-text">
-      <div class="ai-assistant__title">Staff Assistant</div>
-      <div class="ai-assistant__sub">Your AI co-pilot for everything Chamber</div>
-    </div>
-    <span class="ai-assistant__chevron" aria-hidden="true">▾</span>
-  </button>
-  <div class="ai-assistant__panel" id="ai-panel">
-    <div class="ai-assistant__body" id="ai-body">
-      <div class="ai-msg ai-msg--bot">
-        Hi Diana — I'm your AI assistant. I can draft content, manage approvals, look up members, schedule events, send newsletters, and answer any operational question. What do you need?
-      </div>
-    </div>
-    <div class="ai-assistant__action">
-      <button data-prompt="Draft this week's newsletter">✉️ Draft newsletter</button>
-      <button data-prompt="Approve all pending listings that meet our standards">✅ Bulk approve</button>
-      <button data-prompt="What needs my attention today?">🎯 What needs me?</button>
-      <button data-prompt="Schedule a ribbon cutting for new member Cryohealthcare">📅 Schedule event</button>
-    </div>
-    <form class="ai-assistant__input" id="ai-form">
-      <input type="text" id="ai-input" placeholder="Ask anything or give a command…" autocomplete="off">
-      <button type="submit" class="btn btn--primary btn--sm">Send</button>
-    </form>
-  </div>
-</div>`;
-  }
-
-  function mount({ active }) {
-    const sideHost = document.querySelector('[data-admin="side"]');
-    const topHost = document.querySelector('[data-admin="top"]');
-    const aiHost = document.querySelector('[data-admin="ai"]');
-    if (sideHost) sideHost.outerHTML = nav(active);
-    if (topHost) topHost.outerHTML = topbar();
-    if (aiHost) aiHost.outerHTML = aiAssistant();
-    bindAi();
-    mountTour();
-  }
-
-  // Load /js/tour.js so the cross-page guided walkthrough resumes on admin pages too.
-  function mountTour() {
-    if (window.WVTour) return;
-    if (document.querySelector('script[src$="tour.js"]')) return;
-    const s = document.createElement('script');
-    s.src = '../js/tour.js?v=6';
-    s.defer = true;
-    document.body.appendChild(s);
-    // Also load the accessibility widget so admins get the same a11y toolkit.
-    if (!window.WVA11y && !document.querySelector('script[src$="accessibility.js"]')) {
-      const a = document.createElement('script');
-      a.src = '../js/accessibility.js?v=6';
-      a.defer = true;
-      document.body.appendChild(a);
+  function mountShell(active) {
+    document.body.classList.add('admin');
+    const side = document.querySelector('[data-admin-nav]');
+    if (side) {
+      side.innerHTML = `
+        <div class="admin-brand">
+          <img src="../images/wvwccc-logo.png" alt="WVWCCC" />
+          <div><b>WVWCCC</b><span>Admin Console</span></div>
+        </div>
+        <nav class="admin-nav">
+          ${NAV.map((n) => n.grp
+            ? `<div class="grp">${esc(n.grp)}</div>`
+            : `<a href="${n.href}" class="${n.key === active ? 'active' : ''}"><span class="ico">${n.icon}</span>${esc(n.label)}</a>`).join('')}
+        </nav>
+        <div class="admin-sidebar__foot">
+          <a href="../index.html">↗ View live site</a>
+        </div>`;
     }
   }
 
-  function bindAi() {
-    const body = document.getElementById('ai-body');
-    const form = document.getElementById('ai-form');
-    const input = document.getElementById('ai-input');
-    const widget = document.getElementById('ai-assistant');
-    const toggle = document.getElementById('ai-toggle');
-    if (!form) return;
-    if (toggle && widget) {
-      toggle.addEventListener('click', () => {
-        const next = !widget.classList.contains('is-collapsed');
-        widget.classList.toggle('is-collapsed', next);
-        toggle.setAttribute('aria-expanded', String(!next));
-        toggle.setAttribute('title', 'Click to ' + (next ? 'expand' : 'collapse'));
-        try { localStorage.setItem('ai-assistant-collapsed', next ? '1' : '0'); } catch (e) {}
+  function statusPill(s) { s = s || 'approved'; return `<span class="pill pill--${s}">${esc(s)}</span>`; }
+
+  // ── Dashboard ──
+  async function initDashboard() {
+    mountShell('dashboard');
+    try {
+      const s = await api('/api/admin/summary');
+      const cards = [
+        { num: s.members, lbl: 'Members', },
+        { num: s.pendingMembers, lbl: 'Pending approval', accent: s.pendingMembers > 0 },
+        { num: s.leaders, lbl: 'Leaders / Board' },
+        { num: s.newLeads, lbl: 'New inquiries', accent: s.newLeads > 0 },
+        { num: s.pendingPosts, lbl: 'Pending content', accent: s.pendingPosts > 0 },
+        { num: s.orders, lbl: 'Payments logged' },
+        { num: '$' + (s.revenue || 0).toLocaleString(), lbl: 'Revenue processed' },
+      ];
+      document.getElementById('statRow').innerHTML = cards.map((c) =>
+        `<div class="stat-card ${c.accent ? 'accent' : ''}"><div class="num">${esc(c.num)}</div><div class="lbl">${esc(c.lbl)}</div></div>`).join('');
+      if (s.source === 'seed') {
+        document.getElementById('dashNotice').innerHTML =
+          'Showing the <strong>preview roster</strong>. Run the ChamberWare import to load all ~864 members.';
+        document.getElementById('dashNotice').hidden = false;
+      }
+      const leads = (await api('/api/admin/leads')).leads.slice(0, 5);
+      document.getElementById('recentLeads').innerHTML = leads.length
+        ? leads.map((l) => `<tr><td><span class="name">${esc(l.name || '—')}</span><div class="sub">${esc(l.email)}</div></td><td>${esc(l.reason || l.kind)}</td><td>${statusPill(l.status)}</td></tr>`).join('')
+        : '<tr><td colspan="3" class="sub">No inquiries yet.</td></tr>';
+    } catch (e) { showAuthError(e); }
+  }
+
+  // ── Members (status radios) ──
+  async function initMembers() {
+    mountShell('members');
+    let opts = { leaderOptions: ['', 'Leader', 'Board Member', 'New Member', 'Past President', 'Ambassador'], statusOptions: ['approved', 'pending', 'suspended', 'inactive'] };
+    try { opts = await api('/api/admin/options'); } catch (e) {}
+    const tiers = ['platinum', 'gold', 'silver', 'bronze', 'supporter', 'member'];
+    const tbody = document.getElementById('memberRows');
+    const search = document.getElementById('memberSearch');
+
+    async function load(q) {
+      try {
+        const { members } = await api('/api/admin/members' + (q ? `?q=${encodeURIComponent(q)}` : ''));
+        document.getElementById('memberCount').textContent = `${members.length} members`;
+        tbody.innerHTML = members.map((m) => row(m)).join('');
+        bind();
+      } catch (e) { showAuthError(e); }
+    }
+    function row(m) {
+      const id = esc(m.id);
+      const radios = opts.leaderOptions.map((o) => {
+        const checked = (m.leaderStatus || '') === o ? 'checked' : '';
+        const lbl = o || 'None';
+        return `<input type="radio" name="ld-${id}" id="ld-${id}-${esc(o || 'none')}" value="${esc(o)}" ${checked}><label for="ld-${id}-${esc(o || 'none')}">${esc(lbl)}</label>`;
+      }).join('');
+      return `<tr data-id="${id}">
+        <td><span class="name">${esc(m.name)}</span><div class="sub">${esc(m.category || '')}${m.neighborhood ? ' · ' + esc(m.neighborhood) : ''}</div></td>
+        <td><select class="admin-select" data-field="tier">${tiers.map((t) => `<option ${((m.tier || 'member') === t) ? 'selected' : ''}>${t}</option>`).join('')}</select></td>
+        <td><select class="admin-select" data-field="status">${opts.statusOptions.map((s) => `<option ${((m.status || 'approved') === s) ? 'selected' : ''}>${s}</option>`).join('')}</select></td>
+        <td><div class="radio-group" data-field="leaderStatus">${radios}</div></td>
+        <td><label class="toggle"><input type="checkbox" data-field="featured" ${m.featured ? 'checked' : ''}><span class="track"></span></label></td>
+        <td style="white-space:nowrap">
+          <a href="../members/profile.html?id=${id}" target="_blank" title="View public profile" style="text-decoration:none;margin-right:8px">View ↗</a>
+          <button type="button" data-reset title="Force a password reset at next login" style="cursor:pointer;background:none;border:1px solid var(--line,#d7d2c6);border-radius:6px;padding:3px 8px;font-size:.8rem">Reset PW</button>
+          <span class="saved-flash" data-flash>saved ✓</span>
+        </td>
+      </tr>`;
+    }
+    function bind() {
+      tbody.querySelectorAll('tr[data-id]').forEach((tr) => {
+        const id = tr.dataset.id;
+        const flash = tr.querySelector('[data-flash]');
+        const save = async (patch) => {
+          try {
+            await api(`/api/admin/members/${encodeURIComponent(id)}`, { method: 'PATCH', body: JSON.stringify(patch) });
+            flash.classList.add('show'); setTimeout(() => flash.classList.remove('show'), 1200);
+          } catch (e) { showAuthError(e); }
+        };
+        tr.querySelectorAll('[data-field="tier"],[data-field="status"]').forEach((el) =>
+          el.addEventListener('change', () => save({ [el.dataset.field]: el.value })));
+        tr.querySelectorAll('[data-field="leaderStatus"] input').forEach((el) =>
+          el.addEventListener('change', () => save({ leaderStatus: el.value })));
+        tr.querySelector('[data-field="featured"]').addEventListener('change', (e) =>
+          save({ featured: e.target.checked }));
+        tr.querySelector('[data-reset]')?.addEventListener('click', async () => {
+          if (!confirm('Force this member to set a new password at next login? Their current password will stop working.')) return;
+          try {
+            const r = await api(`/api/admin/members/${encodeURIComponent(id)}/reset-password`, { method: 'POST' });
+            flash.classList.add('show'); setTimeout(() => flash.classList.remove('show'), 1500);
+            alert(r.message || 'Password reset queued.');
+          } catch (e) { showAuthError(e); }
+        });
       });
     }
-    document.querySelectorAll('.ai-assistant__action button').forEach(b => {
-      b.addEventListener('click', () => { input.value = b.dataset.prompt; form.requestSubmit(); });
+    let t; search.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => load(search.value.trim()), 250); });
+    load('');
+  }
+
+  // ── Approvals queue ──
+  async function initApprovals() {
+    mountShell('approvals');
+    try {
+      const { members } = await api('/api/admin/members?status=pending');
+      const wrap = document.getElementById('approvalList');
+      wrap.innerHTML = members.length ? members.map((m) => `
+        <tr data-id="${esc(m.id)}">
+          <td><span class="name">${esc(m.name)}</span><div class="sub">${esc(m.contactName || '')} · ${esc(m.email || m.phone || '')}</div></td>
+          <td>${esc(m.category || '')}</td>
+          <td>
+            <button class="btn btn--forest btn--sm" data-approve>Approve</button>
+            <button class="btn btn--ghost btn--sm" data-suspend>Decline</button>
+          </td>
+        </tr>`).join('')
+        : '<tr><td colspan="3" class="sub">Nothing waiting for approval. 🎉</td></tr>';
+      wrap.querySelectorAll('tr[data-id]').forEach((tr) => {
+        const id = tr.dataset.id;
+        const act = async (status) => {
+          await api(`/api/admin/members/${encodeURIComponent(id)}`, { method: 'PATCH', body: JSON.stringify({ status }) });
+          tr.remove();
+        };
+        tr.querySelector('[data-approve]')?.addEventListener('click', () => act('approved'));
+        tr.querySelector('[data-suspend]')?.addEventListener('click', () => act('suspended'));
+      });
+    } catch (e) { showAuthError(e); }
+  }
+
+  // ── Pay Log ──
+  async function initOrders() {
+    mountShell('payments');
+    try {
+      const { orders } = await api('/api/admin/orders');
+      document.getElementById('orderRows').innerHTML = orders.length ? orders.map((o) => `
+        <tr><td>${esc(new Date(o.created).toLocaleDateString())}</td>
+        <td><span class="name">${esc(o.name || o.email || '—')}</span><div class="sub">${esc(o.email || '')}</div></td>
+        <td>${esc(o.kind)}${o.sku ? ' · ' + esc(o.sku) : ''}</td>
+        <td>$${Number(o.amount || 0).toFixed(2)}</td>
+        <td class="sub">$${Number(o.heedShare || 0).toFixed(2)}</td>
+        <td><span class="sub">${esc(o.transactionId || '')}</span></td></tr>`).join('')
+        : '<tr><td colspan="6" class="sub">No payments yet. Transactions appear here once AGMS checkout is live.</td></tr>';
+    } catch (e) { showAuthError(e); }
+  }
+
+  // ── Inquiries / notifications ──
+  async function initLeads() {
+    mountShell('leads');
+    const tbody = document.getElementById('leadRows');
+    async function load() {
+      try {
+        const { leads } = await api('/api/admin/leads');
+        tbody.innerHTML = leads.length ? leads.map((l) => `
+          <tr data-id="${esc(l.id)}">
+            <td><span class="name">${esc(l.name || '—')}</span><div class="sub">${esc(l.email)}${l.phone ? ' · ' + esc(l.phone) : ''}</div></td>
+            <td>${esc(l.reason || l.kind)}${l.company ? '<div class="sub">' + esc(l.company) + '</div>' : ''}</td>
+            <td class="sub">${esc((l.message || '').slice(0, 80))}</td>
+            <td>${statusPill(l.status)}</td>
+            <td><select class="admin-select" data-mark><option value="new" ${l.status === 'new' ? 'selected' : ''}>New</option><option value="read" ${l.status === 'read' ? 'selected' : ''}>Read</option><option value="done" ${l.status === 'done' ? 'selected' : ''}>Done</option></select></td>
+          </tr>`).join('')
+          : '<tr><td colspan="5" class="sub">No inquiries yet.</td></tr>';
+        tbody.querySelectorAll('tr[data-id]').forEach((tr) => {
+          tr.querySelector('[data-mark]')?.addEventListener('change', async (e) => {
+            await api(`/api/admin/leads/${encodeURIComponent(tr.dataset.id)}`, { method: 'PATCH', body: JSON.stringify({ status: e.target.value }) });
+            load();
+          });
+        });
+      } catch (e) { showAuthError(e); }
+    }
+    load();
+  }
+
+  // ── Events (read-only management view for now) ──
+  async function initEvents() {
+    mountShell('events');
+    try {
+      const data = await (await fetch('../data/events.json')).json();
+      const evs = (data.events || []).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+      document.getElementById('eventRows').innerHTML = evs.map((e) => `
+        <tr><td><span class="name">${esc(e.title)}</span><div class="sub">${esc(e.category || '')}</div></td>
+        <td>${e.confirmed ? esc(e.month + ' ' + e.day) : '<span class="pill pill--pending">TBA</span>'}</td>
+        <td>${esc(e.venue || e.neighborhood || '')}</td>
+        <td>${e.ticketed ? 'Ticketed' : 'RSVP'}${e.ticketCap ? ' · cap ' + e.ticketCap : ''}</td>
+        <td>${e.featured ? '<span class="pill pill--approved">Featured</span>' : ''}</td></tr>`).join('');
+    } catch (e) { console.error(e); }
+  }
+
+  // ── Content & approvals (posts) ──
+  async function initContent() {
+    mountShell('content');
+    const TYPES = ['news', 'announcement', 'discount', 'member_post', 'event'];
+    const form = document.getElementById('postForm');
+    const msg = document.getElementById('postMsg');
+
+    async function load() {
+      try {
+        const { posts } = await api('/api/admin/posts');
+        const pending = posts.filter((p) => p.status === 'pending');
+        const live = posts.filter((p) => p.status !== 'pending');
+        document.getElementById('pendingWrap').innerHTML = pending.length
+          ? pending.map((p) => rowFor(p, true)).join('')
+          : '<tr><td colspan="4" class="sub">Nothing waiting for review. 🎉</td></tr>';
+        document.getElementById('liveWrap').innerHTML = live.length
+          ? live.map((p) => rowFor(p, false)).join('')
+          : '<tr><td colspan="4" class="sub">No published content yet.</td></tr>';
+        bind();
+      } catch (e) { showAuthError(e); }
+    }
+    function rowFor(p, isPending) {
+      const id = esc(p.id);
+      return `<tr data-id="${id}">
+        <td><span class="name">${esc(p.title)}</span><div class="sub">${esc(p.authorName || '')}</div></td>
+        <td>${esc(p.type)}</td>
+        <td>${statusPill(p.status)}${p.featuredHome ? ' <span class="pill pill--approved">home</span>' : ''}</td>
+        <td>
+          ${isPending ? `<button class="btn btn--forest btn--sm" data-approve>Approve</button> <button class="btn btn--ghost btn--sm" data-reject>Reject</button>`
+            : `<button class="btn btn--ghost btn--sm" data-feature>${p.featuredHome ? 'Unfeature' : 'Feature'}</button> <button class="btn btn--ghost btn--sm" data-del>Delete</button>`}
+        </td></tr>`;
+    }
+    function bind() {
+      document.querySelectorAll('#pendingWrap tr[data-id], #liveWrap tr[data-id]').forEach((tr) => {
+        const id = tr.dataset.id;
+        const patch = async (body) => { await api('/api/admin/posts/' + encodeURIComponent(id), { method: 'PATCH', body: JSON.stringify(body) }); load(); };
+        tr.querySelector('[data-approve]')?.addEventListener('click', () => patch({ status: 'approved' }));
+        tr.querySelector('[data-reject]')?.addEventListener('click', () => patch({ status: 'rejected' }));
+        tr.querySelector('[data-feature]')?.addEventListener('click', () => patch({ featuredHome: !tr.querySelector('.pill--approved') }));
+        tr.querySelector('[data-del]')?.addEventListener('click', async () => { await api('/api/admin/posts/' + encodeURIComponent(id), { method: 'DELETE' }); load(); });
+      });
+    }
+    // image upload (event photos for slider, or any post image)
+    let imageUrl = '';
+    const imgInput = document.getElementById('postImage');
+    if (imgInput) imgInput.addEventListener('change', (e) => {
+      const f = e.target.files[0]; if (!f) return;
+      const r = new FileReader();
+      r.onload = async () => {
+        try {
+          const up = await api('/api/me/asset', { method: 'POST', body: JSON.stringify({ kind: 'photo', dataUrl: r.result }) });
+          imageUrl = up.url;
+          document.getElementById('postImgPrev').innerHTML = `<img src="${imageUrl}" style="max-width:220px;border-radius:8px">`;
+        } catch (err) { msg.hidden = false; msg.textContent = 'Image upload failed.'; }
+      };
+      r.readAsDataURL(f);
     });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const text = input.value.trim();
-      if (!text) return;
-      addMsg(body, text, 'user');
-      input.value = '';
-      const t = addMsg(body, '…', 'bot');
-      try {
-        const r = await fetch(`${window.CHAMBER_API_BASE}/staff-assistant`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: text })
-        });
-        const data = await r.json();
-        t.remove();
-        if (data.reply) addMsg(body, data.reply, 'bot');
-      } catch (err) {
-        t.textContent = 'Connection issue — but in production I would have drafted that for you, fetched the data, or queued the action.';
-      }
+      const fd = new FormData(form);
+      if (fd.get('type') === 'slide' && !imageUrl) { msg.hidden = false; msg.textContent = 'A slider photo needs an image.'; return; }
+      const body = { type: fd.get('type'), title: fd.get('title'), body: fd.get('body'), linkUrl: fd.get('linkUrl'), imageUrl, featuredHome: fd.get('featuredHome') === 'on' };
+      const btn = form.querySelector('button[type="submit"]'); btn.disabled = true;
+      try { await api('/api/admin/posts', { method: 'POST', body: JSON.stringify(body) }); form.reset(); document.getElementById('postImgPrev').innerHTML = ''; imageUrl = ''; msg.hidden = false; msg.textContent = 'Published.'; load(); }
+      catch (err) { msg.hidden = false; msg.textContent = 'Could not publish (title required).'; }
+      finally { btn.disabled = false; }
     });
+    load();
   }
 
-  function addMsg(container, text, role) {
-    const el = document.createElement('div');
-    el.className = `ai-msg ai-msg--${role}`;
-    el.textContent = text;
-    container.appendChild(el);
-    container.scrollTop = container.scrollHeight;
-    return el;
+  function showAuthError(e) {
+    const m = document.getElementById('adminError');
+    if (m) { m.hidden = false; m.textContent = 'Could not load admin data (' + e.message + '). If a token is required, set it via the console.'; }
+    console.error(e);
   }
 
-  return { mount };
+  return { mountShell, initDashboard, initMembers, initApprovals, initOrders, initLeads, initEvents, initContent, api, esc };
 })();

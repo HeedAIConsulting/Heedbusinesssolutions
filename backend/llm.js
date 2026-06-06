@@ -1,125 +1,73 @@
 /* ============================================================
-   Provider-agnostic LLM wrapper.
-   Picks Gemini → Anthropic → mock fallback based on which API key
-   is in the environment. All callers use the same .complete() signature
-   so swapping providers is one env var.
-
-   Usage:
-     const llm = require('./llm');
-     const text = await llm.complete({
-       model: 'staff',           // 'staff' | 'concierge' | 'fast'
-       system: 'You are ...',
-       messages: [{ role: 'user', content: '...' }],
-       maxTokens: 2400
-     });
+   Provider-agnostic LLM wrapper for the AI Concierge.
+   Order: Google Gemini (gemini-flash-latest) → Anthropic Claude → mock.
+   Keys come from env (GEMINI_API_KEY / ANTHROPIC_API_KEY). Never hardcode.
    ============================================================ */
+const GEMINI_KEY = () => process.env.GEMINI_API_KEY;
+const ANTHROPIC_KEY = () => process.env.ANTHROPIC_API_KEY;
 
-const HAS_GEMINI    = !!process.env.GEMINI_API_KEY;
-const HAS_ANTHROPIC = !!process.env.ANTHROPIC_API_KEY;
+export function provider() {
+  if (GEMINI_KEY()) return 'gemini';
+  if (ANTHROPIC_KEY()) return 'anthropic';
+  return 'mock';
+}
+export const enabled = () => provider() !== 'mock';
 
-// Lazy-load SDKs — only require what's actually configured so the server
-// boots even if one of them isn't installed.
-let geminiClient = null;
-let anthropicClient = null;
-
-if (HAS_GEMINI) {
+// Ask the model. Returns a string. `json` hints we want strict JSON back.
+export async function complete({ system = '', prompt, json = false, maxTokens = 700 } = {}) {
+  const which = provider();
   try {
-    const { GoogleGenerativeAI } = require('@google/generative-ai');
-    geminiClient = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    if (which === 'gemini') return await gemini(system, prompt, json, maxTokens);
+    if (which === 'anthropic') return await anthropic(system, prompt, json, maxTokens);
   } catch (e) {
-    console.warn('[llm] @google/generative-ai not installed — run `npm install @google/generative-ai`');
-    geminiClient = null;
+    console.error(`[llm:${which}]`, e.message);
+    // fall through to mock on provider error
   }
+  return mock(prompt);
 }
 
-if (HAS_ANTHROPIC) {
-  try {
-    const Anthropic = require('@anthropic-ai/sdk');
-    anthropicClient = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-  } catch (e) {
-    anthropicClient = null;
-  }
+async function gemini(system, prompt, json, maxTokens) {
+  // gemini-flash-latest ONLY — the -pro models have zero free-tier quota.
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${GEMINI_KEY()}`;
+  const body = {
+    systemInstruction: system ? { parts: [{ text: system }] } : undefined,
+    contents: [{ role: 'user', parts: [{ text: prompt }] }],
+    generationConfig: {
+      maxOutputTokens: maxTokens,
+      temperature: 0.3,
+      ...(json ? { responseMimeType: 'application/json' } : {}),
+    },
+  };
+  const ctrl = new AbortController();
+  const to = setTimeout(() => ctrl.abort(), 20000);
+  const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: ctrl.signal });
+  clearTimeout(to);
+  if (!res.ok) throw new Error(`gemini ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  const data = await res.json();
+  return data?.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || '';
 }
 
-// Map our role aliases to provider-specific model names.
-// We use Flash for ALL roles because gemini-pro-latest resolves to
-// gemini-3.1-pro which has *zero* free-tier quota (paid-only). Flash
-// has a generous free-tier quota and is fast + good enough for the
-// chamber's chat / drafting / outreach workloads.
-const GEMINI_MODELS = {
-  fast:      'gemini-flash-latest',
-  concierge: 'gemini-flash-latest',
-  staff:     'gemini-flash-latest',
-  draft:     'gemini-flash-latest'
-};
-const ANTHROPIC_MODELS = {
-  fast:      'claude-haiku-4-5',
-  concierge: 'claude-sonnet-4-6',
-  staff:     'claude-opus-4-7',
-  draft:     'claude-opus-4-7'
-};
-
-/**
- * Translate Anthropic-style messages into Gemini's contents shape.
- * Anthropic: [{ role: 'user'|'assistant', content: '...' }]
- * Gemini:    [{ role: 'user'|'model',     parts: [{ text: '...' }] }]
- */
-function toGeminiContents(messages) {
-  return messages.map(m => ({
-    role: m.role === 'assistant' ? 'model' : 'user',
-    parts: [{ text: typeof m.content === 'string' ? m.content : JSON.stringify(m.content) }]
-  }));
-}
-
-async function completeGemini({ model, system, messages, maxTokens }) {
-  const modelName = GEMINI_MODELS[model] || GEMINI_MODELS.staff;
-  const m = geminiClient.getGenerativeModel({
-    model: modelName,
-    systemInstruction: system,
-    generationConfig: { maxOutputTokens: maxTokens || 2400, temperature: 0.7 }
+async function anthropic(system, prompt, json, maxTokens) {
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-api-key': ANTHROPIC_KEY(), 'anthropic-version': '2023-06-01' },
+    body: JSON.stringify({
+      model: 'claude-3-5-haiku-latest',
+      max_tokens: maxTokens,
+      system: system + (json ? '\nRespond with valid JSON only.' : ''),
+      messages: [{ role: 'user', content: prompt }],
+    }),
   });
-  const result = await m.generateContent({ contents: toGeminiContents(messages) });
-  const text = result.response.text();
-  return { text: (text || '').trim(), provider: 'gemini', model: modelName };
+  if (!res.ok) throw new Error(`anthropic ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  const data = await res.json();
+  return (data.content || []).map((c) => c.text).join('');
 }
 
-async function completeAnthropic({ model, system, messages, maxTokens }) {
-  const modelName = ANTHROPIC_MODELS[model] || ANTHROPIC_MODELS.staff;
-  const r = await anthropicClient.messages.create({
-    model: modelName,
-    max_tokens: maxTokens || 2400,
-    system,
-    messages
-  });
-  return { text: r.content[0].text.trim(), provider: 'anthropic', model: modelName };
-}
-
-function completeMock({ messages }) {
-  // Smart-ish keyword fallback so demos work without any LLM key configured.
-  const last = messages[messages.length - 1]?.content || '';
-  return Promise.resolve({
-    text: `[mock LLM — no provider configured] You asked: "${String(last).slice(0, 200)}". ` +
-          `Set GEMINI_API_KEY or ANTHROPIC_API_KEY in .env.local to enable real responses.`,
-    provider: 'mock',
-    model: 'mock'
+// Deterministic fallback when no key is configured — keeps the feature usable.
+function mock(prompt) {
+  return JSON.stringify({
+    answer: "Here are the closest matches from the member directory. (The AI concierge isn't fully configured yet — add a GEMINI_API_KEY to enable conversational answers.)",
+    memberIds: [],
+    _mock: true,
   });
 }
-
-/**
- * Unified completion API. Returns { text, provider, model }.
- * Order: Gemini if available, else Anthropic, else mock.
- */
-async function complete(opts) {
-  if (geminiClient)    return completeGemini(opts);
-  if (anthropicClient) return completeAnthropic(opts);
-  return completeMock(opts);
-}
-
-/** What's actually wired right now? Used by /api/chamber health endpoint. */
-function status() {
-  if (geminiClient)    return { provider: 'gemini',    live: true };
-  if (anthropicClient) return { provider: 'anthropic', live: true };
-  return { provider: 'mock', live: false };
-}
-
-module.exports = { complete, status };

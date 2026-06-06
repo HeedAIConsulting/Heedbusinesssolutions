@@ -1,204 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Desktop Assistant · Chamber Admin</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/chamber.css?v=6">
-<link rel="stylesheet" href="admin.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Dashboard — WVWCCC Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/chamber.css" />
+  <link rel="stylesheet" href="admin.css" />
 </head>
-<body>
-
-<div class="admin-shell">
-  <div data-admin="side"></div>
-  <main class="admin-main">
-    <div data-admin="top"></div>
-    <div class="admin-content">
-      <div class="admin-page-head">
-        <div>
-          <div class="admin-page-head__sub" id="today-line">Friday · May 1, 2026</div>
-          <h1 id="greeting-line">Good morning, Diana.</h1>
-          <p class="text-muted">Here's what's happening at the Chamber of Commerce today. <span class="cm-badge" style="margin-left:8px;">Logged in as CEO</span></p>
-          <script>(function(){var d=new Date(),h=d.getHours(),g=h<12?'Good morning':h<17?'Good afternoon':'Good evening';document.getElementById('greeting-line').textContent=g+', Diana.';document.getElementById('today-line').textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});})();</script>
-        </div>
-        <div class="flex gap-3">
-          <a href="events.html" class="btn btn--outline">+ New event</a>
-          <a href="blog.html" class="btn btn--primary">+ New post</a>
-        </div>
-      </div>
-
-      <!-- Live Microsoft 365 connection banner — only renders if not yet connected -->
-      <div id="m365-banner" style="display:none;margin-bottom:24px;padding:18px 22px;background:linear-gradient(135deg,#F4E9C1,#FAF7F0);border:1px solid var(--gold);border-radius:var(--r-lg);display:none;align-items:center;gap:18px;">
-        <div style="font-size:2rem;line-height:1;">📧</div>
-        <div style="flex:1;">
-          <div style="font-family:var(--serif);font-weight:700;color:var(--navy);font-size:1.1rem;">Connect Microsoft 365 to enable email features</div>
-          <div class="text-sm" style="color:var(--slate-mid);">Sign in once with your chamber Outlook account. Then bulk-draft member emails, scan inbox, and reply with AI assistance — all drafts land in your real Outlook Drafts folder for review.</div>
-        </div>
-        <a id="m365-connect-link" class="btn btn--gold" href="#">Connect Microsoft 365 →</a>
-      </div>
-      <script>
-      (async function() {
-        try {
-          const r = await fetch(window.CHAMBER_API_BASE + '/m365/status');
-          const s = await r.json();
-          const banner = document.getElementById('m365-banner');
-          const link = document.getElementById('m365-connect-link');
-          if (!s.configured || s.connected) return;
-          // Use the API origin (Render) for the OAuth start so it works
-          // whether the user is on Pages or on Render.
-          const apiOrigin = (window.CHAMBER_API_BASE || '/api').replace(/\/api\/?$/, '');
-          link.href = apiOrigin + '/auth/m365/login';
-          banner.style.display = 'flex';
-        } catch (e) { /* offline / API down — silently hide */ }
-      })();
-      </script>
-
-      <div class="admin-stat-grid">
-        <div class="admin-stat">
-          <div class="admin-stat__label">Active Members</div>
-          <div class="admin-stat__num">453</div>
-          <div class="admin-stat__delta admin-stat__delta--up">▲ 12 this month</div>
-        </div>
-        <div class="admin-stat">
-          <div class="admin-stat__label">Revenue (MTD)</div>
-          <div class="admin-stat__num">$48,290</div>
-          <div class="admin-stat__delta admin-stat__delta--up">▲ 18% vs last month</div>
-        </div>
-        <div class="admin-stat">
-          <div class="admin-stat__label">Concierge Sessions</div>
-          <div class="admin-stat__num">2,847</div>
-          <div class="admin-stat__delta admin-stat__delta--up">▲ 142 yesterday</div>
-        </div>
-        <div class="admin-stat">
-          <div class="admin-stat__label">Member-Attributed Leads</div>
-          <div class="admin-stat__num">689</div>
-          <div class="admin-stat__delta admin-stat__delta--up">▲ 23% MoM</div>
-        </div>
-      </div>
-
-      <div class="admin-grid" style="grid-template-columns:2fr 1fr;">
-        <div class="admin-card">
-          <div class="admin-card__head">
-            <div class="admin-card__title">Needs your attention</div>
-            <a href="approvals.html" class="text-sm">View all →</a>
-          </div>
-          <div class="admin-card__body admin-card__body--p0">
-            <table class="admin-table">
-              <thead><tr><th>Item</th><th>Type</th><th>Submitted</th><th>Action</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td><strong>Cryohealthcare West Valley</strong><br><span class="text-xs text-muted">New listing — Health & Wellness</span></td>
-                  <td><span class="admin-pill admin-pill--blue">Listing</span></td>
-                  <td class="text-muted text-sm">2h ago</td>
-                  <td class="admin-actions"><button class="approve">Approve</button><button class="reject">Reject</button><button>Review</button></td>
-                </tr>
-                <tr>
-                  <td><strong>Three lessons from running a Reseda restaurant</strong><br><span class="text-xs text-muted">Guest post pitch from M. Alvarez</span></td>
-                  <td><span class="admin-pill admin-pill--gold">Guest Post</span></td>
-                  <td class="text-muted text-sm">6h ago</td>
-                  <td class="admin-actions"><button class="approve">Approve</button><button class="reject">Decline</button><button>Read</button></td>
-                </tr>
-                <tr>
-                  <td><strong>Ethos Fitness — Premium Listing upgrade</strong><br><span class="text-xs text-muted">Single-Guide $99/mo</span></td>
-                  <td><span class="admin-pill admin-pill--gold">Premium</span></td>
-                  <td class="text-muted text-sm">1d ago</td>
-                  <td class="admin-actions"><button class="approve">Activate</button><button>Review</button></td>
-                </tr>
-                <tr>
-                  <td><strong>15% off Member-to-Member Deal</strong><br><span class="text-xs text-muted">Submitted by Serenity Valley Spa</span></td>
-                  <td><span class="admin-pill admin-pill--gray">Member Deal</span></td>
-                  <td class="text-muted text-sm">1d ago</td>
-                  <td class="admin-actions"><button class="approve">Publish</button><button class="reject">Reject</button></td>
-                </tr>
-                <tr>
-                  <td><strong>Networking Mixer at Winnetka Bowl</strong><br><span class="text-xs text-muted">Sponsorship $1,500 from Valley Master Plumbing</span></td>
-                  <td><span class="admin-pill admin-pill--gold">Sponsorship</span></td>
-                  <td class="text-muted text-sm">2d ago</td>
-                  <td class="admin-actions"><button class="approve">Confirm</button><button>Review</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="admin-grid" style="gap:20px;">
-          <div class="admin-card">
-            <div class="admin-card__head"><div class="admin-card__title">Today's events</div></div>
-            <div class="admin-card__body" style="display:flex;flex-direction:column;gap:12px;">
-              <div style="display:flex;gap:12px;padding:12px;background:var(--cream);border-radius:8px;">
-                <div style="background:var(--navy);color:var(--gold);border-radius:8px;padding:6px 10px;text-align:center;flex-shrink:0;">
-                  <div class="text-xs" style="color:rgba(255,255,255,.7);">8:00 AM</div>
-                </div>
-                <div style="flex:1;"><strong style="color:var(--navy);">Martin's Connection Circle</strong><div class="text-xs text-muted mt-1">12 RSVPs · Computer Doctor</div></div>
-              </div>
-              <div style="display:flex;gap:12px;padding:12px;background:var(--cream);border-radius:8px;">
-                <div style="background:var(--navy);color:var(--gold);border-radius:8px;padding:6px 10px;text-align:center;flex-shrink:0;">
-                  <div class="text-xs" style="color:rgba(255,255,255,.7);">5:00 PM</div>
-                </div>
-                <div style="flex:1;"><strong style="color:var(--navy);">Board Meeting</strong><div class="text-xs text-muted mt-1">8 RSVPs · Chamber Office</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="admin-card">
-            <div class="admin-card__head"><div class="admin-card__title">Concierge insights (24h)</div></div>
-            <div class="admin-card__body" style="font-size:.92rem;">
-              <div class="flex justify-between mb-2"><span>Top query</span><strong>"plumber"</strong></div>
-              <div class="flex justify-between mb-2"><span>Most-recommended member</span><strong>Valley Plumbing</strong></div>
-              <div class="flex justify-between mb-2"><span>Coverage gap</span><strong style="color:var(--red);">"Pet groomer"</strong></div>
-              <div class="flex justify-between"><span>Concierge → calls</span><strong>38</strong></div>
-              <div class="mt-3">
-                <a href="reports.html" class="text-sm">Full Concierge report →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="admin-grid" style="grid-template-columns:1fr 1fr;margin-top:20px;">
-        <div class="admin-card">
-          <div class="admin-card__head"><div class="admin-card__title">Recent revenue (Square)</div><a href="billing.html" class="text-sm">All transactions →</a></div>
-          <div class="admin-card__body admin-card__body--p0">
-            <table class="admin-table">
-              <thead><tr><th>Source</th><th>Member</th><th>Amount</th></tr></thead>
-              <tbody>
-                <tr><td>Membership renewal</td><td>WH Camera & Telescopes</td><td><strong style="color:var(--green);">+$2,500</strong></td></tr>
-                <tr><td>Premium listing</td><td>Ethos Fitness</td><td><strong style="color:var(--green);">+$99</strong></td></tr>
-                <tr><td>Event ticket</td><td>5 × Tomahawk &amp; Tequila</td><td><strong style="color:var(--green);">+$225</strong></td></tr>
-                <tr><td>Sponsorship</td><td>Valley Master Plumbing</td><td><strong style="color:var(--green);">+$1,500</strong></td></tr>
-                <tr><td>Newsletter ad</td><td>Tarzana Family Dental</td><td><strong style="color:var(--green);">+$450</strong></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="admin-card">
-          <div class="admin-card__head"><div class="admin-card__title">Renewals this month</div><a href="renewals.html" class="text-sm">All renewals →</a></div>
-          <div class="admin-card__body admin-card__body--p0">
-            <table class="admin-table">
-              <thead><tr><th>Member</th><th>Tier</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td>Marriott Warner Center</td><td><span class="tier tier--platinum">Platinum</span></td><td><span class="admin-pill admin-pill--green">Auto-renewed</span></td></tr>
-                <tr><td>Lala's Argentine Grill</td><td><span class="tier tier--silver">Silver</span></td><td><span class="admin-pill admin-pill--gold">Reminder sent</span></td></tr>
-                <tr><td>Tarzana Bookkeeping</td><td><span class="tier tier--bronze">Bronze</span></td><td><span class="admin-pill admin-pill--red">Overdue 7d</span></td></tr>
-                <tr><td>KinderGym Kids</td><td><span class="tier tier--bronze">Bronze</span></td><td><span class="admin-pill admin-pill--gold">Reminder sent</span></td></tr>
-                <tr><td>SunRoom Infrared</td><td><span class="tier tier--supporter">Supporter</span></td><td><span class="admin-pill admin-pill--green">Auto-renewed</span></td></tr>
-              </tbody>
-            </table>
-          </div>
+<body class="admin">
+  <div class="admin-shell">
+    <aside class="admin-sidebar" data-admin-nav></aside>
+    <div class="admin-main">
+      <div class="admin-topbar"><h1>Dashboard</h1><a class="btn btn--gold btn--sm" href="../index.html">View site ↗</a></div>
+      <div class="admin-content">
+        <p id="adminError" class="admin-notice" hidden></p>
+        <p id="dashNotice" class="admin-notice" hidden></p>
+        <div class="stat-row" id="statRow"></div>
+        <div class="panel">
+          <div class="panel__head"><h3>Recent inquiries</h3><a class="btn btn--ghost btn--sm" href="leads.html">View all</a></div>
+          <table class="admin-table"><thead><tr><th>From</th><th>Reason</th><th>Status</th></tr></thead><tbody id="recentLeads"></tbody></table>
         </div>
       </div>
     </div>
-  </main>
-</div>
-
-<div data-admin="ai"></div>
-
-<script>// API base resolved by api-base.js below — leave any override BEFORE that script.</script>
-<script src='../js/api-base.js'></script>
-<script src="admin.js"></script>
-<script>AdminShell.mount({active:'dashboard'});</script>
-
+  </div>
+  <script src="../js/api-base.js"></script>
+  <script src="admin.js"></script>
+  <script>Admin.initDashboard();</script>
 </body>
 </html>

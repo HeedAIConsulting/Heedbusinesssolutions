@@ -1,246 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business Directory · West Valley ~ Warner Center Chamber</title>
-<meta name="description" content="Search the West Valley business directory — chamber members and community businesses across Tarzana, Woodland Hills, Reseda, and Warner Center.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/chamber.css?v=6">
-<style>
-.dir-toolbar { display:grid; grid-template-columns:2fr 1fr 1fr 1fr auto; gap:12px; padding:16px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); margin-bottom:16px; align-items:center; }
-.dir-toolbar input, .dir-toolbar select { padding:.6rem .85rem; border:1.5px solid var(--line); border-radius:var(--r-md); background:var(--paper); font: inherit; }
-.dir-toolbar label.toggle { display:inline-flex; align-items:center; gap:8px; font-size:.88rem; color:var(--slate); white-space:nowrap; cursor:pointer; padding:.4rem .6rem; }
-.dir-toolbar label.toggle input { width:18px;height:18px;margin:0; }
-.dir-counts { display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-bottom:18px; font-family:var(--mono); font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--slate); }
-.dir-counts strong { color:var(--navy); font-size:1.05rem; font-family:var(--serif); letter-spacing:0; text-transform:none; margin-right:4px; }
-.dir-counts .sep { width:1px; height:18px; background:var(--line); }
-.dir-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(290px,1fr)); gap:20px; }
-.member-card { background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); padding:22px; transition:var(--transition); position:relative; text-decoration:none; color:inherit; display:flex; flex-direction:column; }
-.member-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); border-color:var(--blue-soft); }
-.member-card--featured { border:2px solid var(--gold); background:linear-gradient(180deg, var(--gold-soft) 0%, var(--paper) 30%); }
-.member-card--featured::before { content:'★ Featured'; position:absolute; top:-1px; right:16px; background:var(--gold); color:var(--navy); padding:3px 10px; border-radius:0 0 var(--r-sm) var(--r-sm); font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-family:var(--mono); }
-.member-card--community { background:var(--cream); }
-.member-card__head { display:flex; gap:14px; align-items:flex-start; margin-bottom:12px; }
-.member-card__logo { width:52px; height:52px; border-radius:var(--r-md); background:var(--navy); color:var(--gold); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:1.4rem; font-weight:700; flex-shrink:0; }
-.member-card--community .member-card__logo { background:var(--slate); color:var(--paper); }
-.member-card__name { font-weight:700; color:var(--navy); font-size:1.02rem; line-height:1.3; }
-.member-card__meta { font-size:.78rem; color:var(--slate); margin-top:3px; }
-.member-card__badges { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
-.member-card__body { font-size:.88rem; color:var(--slate-mid); margin:6px 0 14px; line-height:1.5; flex:1; }
-.member-card__foot { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:auto; }
-.member-card__rating { display:inline-flex; align-items:center; gap:4px; font-size:.8rem; color:var(--slate-mid); }
-.member-card__rating .stars { color:var(--gold-deep); }
-.community-pill { display:inline-flex; align-items:center; gap:5px; background:var(--blue-soft); color:var(--navy); padding:3px 9px; border-radius:var(--r-full); font-family:var(--mono); font-size:.66rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; border:1.5px solid var(--blue-soft); }
-.load-more-row { text-align:center; margin-top:32px; }
-.empty-card { padding:40px; text-align:center; grid-column:1/-1; background:var(--paper); border:1px dashed var(--line); border-radius:var(--r-lg); color:var(--slate); }
-@media (max-width:900px) { .dir-toolbar { grid-template-columns: 1fr 1fr; } .dir-toolbar label.toggle { grid-column: 1 / -1; } }
-@media (max-width:500px) { .dir-toolbar { grid-template-columns: 1fr; } }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Member Directory — West Valley · Warner Center Chamber of Commerce</title>
+  <meta name="description" content="Search the West Valley · Warner Center Chamber member directory — vetted local businesses across Tarzana, Woodland Hills, Reseda, and the Warner Center." />
+  <link rel="canonical" href="https://woodlandhillscc.net/members/directory.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/chamber.css" />
 </head>
 <body>
+  <div data-partial="header"></div>
 
-<div data-partial="header"></div>
-
-<section class="page-hero">
-  <div class="container page-hero__inner">
-    <div class="breadcrumb"><a href="../index.html">Home</a> / Business Directory</div>
-    <h1>West Valley Business Directory</h1>
-    <p>800+ chamber members and community businesses across Tarzana, Woodland Hills, Reseda, Warner Center, and the wider San Fernando Valley.</p>
-  </div>
-</section>
-
-<section class="section bg-cream">
-  <div class="container">
-    <div class="dir-toolbar">
-      <input type="search" id="search" placeholder="Search by name, service, or keyword…" aria-label="Search the directory">
-      <select id="filter-cat" aria-label="Category">
-        <option value="">All categories</option>
-      </select>
-      <select id="filter-hood" aria-label="Neighborhood">
-        <option value="">All neighborhoods</option>
-      </select>
-      <select id="filter-tier" aria-label="Tier">
-        <option value="">All tiers</option>
-        <option value="platinum">Platinum</option>
-        <option value="gold">Gold</option>
-        <option value="silver">Silver</option>
-        <option value="bronze">Bronze</option>
-        <option value="supporter">Supporter</option>
-        <option value="member">Member</option>
-        <option value="community">Community</option>
-      </select>
-      <label class="toggle" for="filter-cm">
-        <input type="checkbox" id="filter-cm">
-        <span>Chamber members only</span>
-      </label>
+  <!-- page header -->
+  <section class="section-sm bg-forest">
+    <div class="container">
+      <span class="kicker">The Directory</span>
+      <h1 style="color:#fff">Find a vetted local business</h1>
+      <p class="lead" style="color:rgba(255,255,255,.85);max-width:60ch">
+        Every listing is a Chamber member — local, accountable, and part of the community since 1930.
+      </p>
     </div>
-    <div class="dir-counts" id="dir-counts" aria-live="polite"></div>
-    <div class="dir-grid" id="dir-grid"></div>
-    <div class="load-more-row" id="load-more-row" hidden>
-      <button class="btn btn--outline" id="load-more">Load more</button>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="section bg-navy">
-  <div class="container text-center">
-    <span class="eyebrow eyebrow--navy">Premium Listing</span>
-    <h2 style="color:#fff;">Stand out in the directory</h2>
-    <p style="color:rgba(255,255,255,.85);max-width:580px;margin:16px auto 32px;">Premium listings get top placement, the gold "Featured" badge, photo galleries, video, lead-capture forms, and inclusion in our Resource Guides.</p>
-    <a href="../sponsor.html#premium-listings" class="btn btn--gold btn--lg">See Premium Plans ›</a>
-  </div>
-</section>
+  <!-- search + filters -->
+  <section class="section">
+    <div class="container">
+      <form id="dirSearch" class="hero__concierge" style="max-width:640px;margin:0 0 var(--s-6)">
+        <div class="pill-input" style="box-shadow:var(--sh-sm)">
+          <span aria-hidden="true">🔎</span>
+          <input id="dirQuery" type="search" placeholder="Search by name, category, or service…" autocomplete="off" />
+          <button class="btn btn--forest btn--sm" type="submit">Search</button>
+        </div>
+      </form>
 
-<div data-partial="footer"></div>
+      <div class="grid" style="grid-template-columns:240px 1fr;gap:var(--s-7);align-items:start">
+        <!-- facets -->
+        <aside id="facets" aria-label="Filters">
+          <h4 style="margin-bottom:var(--s-3)">Category</h4>
+          <div id="categoryFacet" class="chips" style="flex-direction:column;align-items:flex-start;gap:6px"></div>
+          <h4 style="margin:var(--s-5) 0 var(--s-3)">Neighborhood</h4>
+          <div id="hoodFacet" class="chips" style="flex-direction:column;align-items:flex-start;gap:6px"></div>
+        </aside>
 
-<script>// API base resolved by api-base.js below — leave any override BEFORE that script.</script>
-<script src='../js/api-base.js'></script>
-<script src="../js/partials.js?v=6"></script>
-<script src="../js/chamber.js?v=6"></script>
-<script>
-window.ChamberPartials.mount({ active: 'members', depth: 1 });
-
-const PAGE_SIZE = 36;
-const TIER_ORDER = { platinum: 0, gold: 1, silver: 2, bronze: 3, supporter: 4, friend: 4, member: 5, community: 6 };
-
-let all = [];
-let filtered = [];
-let shown = PAGE_SIZE;
-
-const $ = (id) => document.getElementById(id);
-
-fetch('../data/directory.json').then(r => r.json()).then(data => {
-  all = data;
-
-  // Populate category dropdown
-  const cats = [...new Set(all.map(m => m.category).filter(Boolean))].sort();
-  const catSel = $('filter-cat');
-  cats.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; catSel.appendChild(o); });
-
-  // Populate neighborhood dropdown
-  const hoods = [...new Set(all.map(m => m.neighborhood).filter(Boolean))].sort();
-  const hoodSel = $('filter-hood');
-  hoods.forEach(h => { const o = document.createElement('option'); o.value = h; o.textContent = h; hoodSel.appendChild(o); });
-
-  applyFilters();
-}).catch(err => {
-  console.error('Failed to load directory:', err);
-  $('dir-grid').innerHTML = '<div class="empty-card">Could not load the directory. Please refresh.</div>';
-});
-
-['search', 'filter-cat', 'filter-hood', 'filter-tier', 'filter-cm'].forEach(id => {
-  $(id).addEventListener('input', applyFilters);
-  $(id).addEventListener('change', applyFilters);
-});
-
-$('load-more').addEventListener('click', () => {
-  shown += PAGE_SIZE;
-  render();
-});
-
-function applyFilters() {
-  const q = $('search').value.toLowerCase().trim();
-  const cat = $('filter-cat').value;
-  const hood = $('filter-hood').value;
-  const tier = $('filter-tier').value;
-  const cmOnly = $('filter-cm').checked;
-
-  filtered = all.filter(m => {
-    if (cmOnly && !m.chamberMember) return false;
-    if (cat && m.category !== cat) return false;
-    if (hood && m.neighborhood !== hood) return false;
-    if (tier && m.tier !== tier) return false;
-    if (q) {
-      const hay = [
-        m.name, m.tagline, m.category, m.subcategory, m.neighborhood,
-        m.address, m.specialties, (m.tags || []).join(' '), (m.features || []).join(' '),
-      ].filter(Boolean).join(' ').toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
-  });
-
-  // Sort: chamber members first, then by tier, then alpha
-  filtered.sort((a, b) => {
-    const cm = (b.chamberMember ? 1 : 0) - (a.chamberMember ? 1 : 0);
-    if (cm) return cm;
-    const ta = TIER_ORDER[a.tier] != null ? TIER_ORDER[a.tier] : 99;
-    const tb = TIER_ORDER[b.tier] != null ? TIER_ORDER[b.tier] : 99;
-    if (ta !== tb) return ta - tb;
-    return String(a.name).localeCompare(String(b.name));
-  });
-
-  shown = PAGE_SIZE;
-  render();
-}
-
-function escapeHTML(s) {
-  return String(s == null ? '' : s)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-}
-
-function ratingHTML(m) {
-  if (!m.rating) return '';
-  const full = Math.round(m.rating);
-  const stars = '★★★★★'.slice(0, full) + '☆☆☆☆☆'.slice(0, 5 - full);
-  return `<span class="member-card__rating"><span class="stars">${stars}</span> ${m.rating.toFixed(1)}${m.reviewCount ? ` <span class="text-muted">(${m.reviewCount})</span>` : ''}</span>`;
-}
-
-function cardHTML(m) {
-  const blurb = m.tagline || m.specialties || (m.features && m.features.slice(0, 3).join(' · ')) || '';
-  const meta = [m.category, m.neighborhood].filter(Boolean).join(' · ');
-  const badges = [];
-  if (m.chamberMember) badges.push('<span class="cm-badge">Chamber Member</span>');
-  else badges.push('<span class="community-pill">Community</span>');
-  if (m.tier && m.tier !== 'community' && m.tier !== 'member') {
-    badges.push(`<span class="tier tier--${escapeHTML(m.tier)}">${escapeHTML(m.tier)}</span>`);
-  }
-  const featuredCls = m.featured ? ' member-card--featured' : '';
-  const communityCls = !m.chamberMember ? ' member-card--community' : '';
-  return `
-    <a href="profile.html?id=${encodeURIComponent(m.id)}" class="member-card${featuredCls}${communityCls}">
-      <div class="member-card__head">
-        <div class="member-card__logo">${escapeHTML(m.logo || (m.name || '?').charAt(0).toUpperCase())}</div>
-        <div style="flex:1;min-width:0;">
-          <div class="member-card__name">${escapeHTML(m.name)}</div>
-          <div class="member-card__meta">${escapeHTML(meta)}</div>
-          <div class="member-card__badges">${badges.join('')}</div>
+        <!-- results -->
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--s-4)">
+            <div id="resultCount" class="member-tile__meta"></div>
+            <div id="dataNotice"></div>
+          </div>
+          <div class="grid grid-2" id="memberGrid" style="gap:var(--s-4)"></div>
+          <div id="emptyState" hidden class="notice" style="margin-top:var(--s-5)">No members match those filters. <button type="button" id="clearFilters" style="color:var(--green);font-weight:600;text-decoration:underline">Clear filters</button></div>
         </div>
       </div>
-      ${blurb ? `<p class="member-card__body">${escapeHTML(blurb)}</p>` : ''}
-      <div class="member-card__foot">
-        ${ratingHTML(m)}
-        ${m.phone ? `<span class="text-xs text-muted">${escapeHTML(m.phone)}</span>` : ''}
-      </div>
-    </a>
-  `;
-}
+    </div>
+  </section>
 
-function render() {
-  const grid = $('dir-grid');
-  if (!filtered.length) {
-    grid.innerHTML = '<div class="empty-card">No businesses match your filters. Try clearing a filter or searching for a different keyword.</div>';
-    $('load-more-row').hidden = true;
-  } else {
-    const slice = filtered.slice(0, shown);
-    grid.innerHTML = slice.map(cardHTML).join('');
-    $('load-more-row').hidden = shown >= filtered.length;
-    $('load-more').textContent = `Load more (${filtered.length - shown} remaining)`;
-  }
+  <div data-partial="footer"></div>
 
-  const totalChamber = all.filter(m => m.chamberMember).length;
-  const matchedChamber = filtered.filter(m => m.chamberMember).length;
-  $('dir-counts').innerHTML = `
-    <div><strong>${filtered.length.toLocaleString()}</strong> showing</div>
-    <span class="sep"></span>
-    <div><strong>${matchedChamber.toLocaleString()}</strong> chamber members</div>
-    <span class="sep"></span>
-    <div>of <strong>${all.length.toLocaleString()}</strong> total · ${totalChamber.toLocaleString()} chamber-wide</div>
-  `;
-}
-</script>
-
+  <script src="../js/partials.js"></script>
+  <script src="../js/api-base.js"></script>
+  <script src="../js/chamber.js"></script>
+  <script>
+    ChamberPartials.mount({ active: 'members', depth: 1, lang: 'en' });
+    Chamber.initDirectory();
+  </script>
 </body>
 </html>

@@ -65,7 +65,7 @@
   .wv-a11y-btn {\
     position: fixed; bottom: 24px; left: 24px; z-index: 99996;\
     width: 56px; height: 56px; border-radius: 50%;\
-    background: #0B2545; color: #C9A227;\
+    background: #1E5631; color: #C9A227;\
     display: flex; align-items: center; justify-content: center;\
     border: 3px solid #C9A227;\
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);\
@@ -81,18 +81,18 @@
     width: 360px; max-height: calc(100vh - 120px); overflow-y: auto;\
     background: #fff; color: #15202B;\
     border-radius: 14px; padding: 20px;\
-    box-shadow: 0 24px 56px rgba(11,37,69,0.30);\
-    font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;\
+    box-shadow: 0 24px 56px rgba(30,86,49,0.30);\
+    font-family: "Hanken Grotesk", system-ui, sans-serif;\
     display: none;\
   }\
   .wv-a11y-panel.is-open { display: block; }\
   .wv-a11y-panel__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #E5E0D2; }\
-  .wv-a11y-panel__title { font-family: "Source Serif Pro", Cambria, Georgia, serif; font-weight: 700; font-size: 1.1rem; color: #0B2545; margin: 0; }\
+  .wv-a11y-panel__title { font-family: "Source Serif Pro", Cambria, Georgia, serif; font-weight: 700; font-size: 1.1rem; color: #1E5631; margin: 0; }\
   .wv-a11y-panel__close { background: none; border: none; font-size: 1.4rem; cursor: pointer; color: #6B7280; padding: 4px 8px; border-radius: 4px; }\
-  .wv-a11y-panel__close:hover { background: #F2EBDB; color: #0B2545; }\
+  .wv-a11y-panel__close:hover { background: #F2EBDB; color: #1E5631; }\
 \
   .wv-a11y-section { margin-bottom: 14px; }\
-  .wv-a11y-section__label { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .68rem; text-transform: uppercase; letter-spacing: .12em; color: #8C6E14; margin-bottom: 6px; font-weight: 600; }\
+  .wv-a11y-section__label { font-family: "Spline Sans Mono", ui-monospace, monospace; font-size: .68rem; text-transform: uppercase; letter-spacing: .12em; color: #8C6E14; margin-bottom: 6px; font-weight: 600; }\
 \
   .wv-a11y-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); gap: 6px; }\
   .wv-a11y-tile {\
@@ -100,20 +100,20 @@
     font-size: .8rem; cursor: pointer; text-align: center; color: #2A3340; font-weight: 500;\
     transition: all 150ms; font-family: inherit;\
   }\
-  .wv-a11y-tile:hover { background: #DCE6F2; border-color: #134E8C; color: #0B2545; }\
-  .wv-a11y-tile.is-active { background: #C9A227; color: #0B2545; border-color: #8C6E14; font-weight: 700; }\
+  .wv-a11y-tile:hover { background: #E4F0E4; border-color: #3A8A3F; color: #1E5631; }\
+  .wv-a11y-tile.is-active { background: #C9A227; color: #1E5631; border-color: #8C6E14; font-weight: 700; }\
   .wv-a11y-tile__icon { display: block; font-size: 1.2rem; margin-bottom: 2px; }\
 \
   .wv-a11y-toggle { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: #FAF7F0; border-radius: 8px; cursor: pointer; margin-bottom: 6px; transition: background 150ms; }\
-  .wv-a11y-toggle:hover { background: #DCE6F2; }\
-  .wv-a11y-toggle input { width: 18px; height: 18px; accent-color: #0B2545; flex-shrink: 0; }\
+  .wv-a11y-toggle:hover { background: #E4F0E4; }\
+  .wv-a11y-toggle input { width: 18px; height: 18px; accent-color: #1E5631; flex-shrink: 0; }\
   .wv-a11y-toggle__label { font-size: .9rem; color: #2A3340; flex: 1; }\
 \
   .wv-a11y-reset { width: 100%; padding: 10px; background: transparent; border: 1.5px solid #E5E0D2; border-radius: 8px; color: #4D5662; cursor: pointer; font-weight: 500; font-family: inherit; margin-top: 8px; transition: all 150ms; }\
   .wv-a11y-reset:hover { background: #B33A3A; color: #fff; border-color: #B33A3A; }\
 \
   .wv-a11y-footer { font-size: .72rem; color: #6B7280; margin-top: 12px; padding-top: 10px; border-top: 1px solid #E5E0D2; line-height: 1.5; }\
-  .wv-a11y-footer a { color: #134E8C; }\
+  .wv-a11y-footer a { color: #3A8A3F; }\
 \
   /* === Applied modifications === */\
 \
@@ -157,7 +157,7 @@
   body.wv-a11y-highlight-headings h1, body.wv-a11y-highlight-headings h2,\
   body.wv-a11y-highlight-headings h3, body.wv-a11y-highlight-headings h4,\
   body.wv-a11y-highlight-headings h5, body.wv-a11y-highlight-headings h6 {\
-    background: #C9A227 !important; color: #0B2545 !important;\
+    background: #C9A227 !important; color: #1E5631 !important;\
     padding: 4px 8px !important; border-radius: 4px;\
   }\
 \
@@ -183,7 +183,7 @@
   /* Reading guide */\
   .wv-a11y-reading-guide {\
     position: fixed; left: 0; right: 0; height: 60px; pointer-events: none;\
-    background: rgba(11,37,69,0.85); z-index: 99995;\
+    background: rgba(30,86,49,0.85); z-index: 99995;\
     display: none;\
   }\
   body.wv-a11y-reading-guide-on .wv-a11y-reading-guide { display: block; }\

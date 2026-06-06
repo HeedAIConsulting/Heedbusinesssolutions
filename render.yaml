@@ -1,61 +1,42 @@
-# Render service definition — deploys the Express API backend.
-# https://render.com/docs/blueprint-spec
-#
-# IMPORTANT: This file lives at the REPO ROOT on the
-# `claude/hopeful-hellman-6f7a38` branch. The chamber site code is at the
-# branch root too — package.json, server.js, backend/, etc. all sit at /.
-# Do NOT set Render's "Root directory" to anything else.
-#
-# Recommended setup (Web Service, NOT Blueprint — Blueprint locks bad paths):
-#   1. Render dashboard → New + → Web Service
-#   2. Connect HeedAIConsulting/Heedbusinesssolutions
-#   3. Branch: claude/hopeful-hellman-6f7a38
-#   4. Root directory: (leave BLANK)
-#   5. Build command: npm install
-#   6. Start command: node server.js
-#   7. Health check path: /api/chamber
-#   8. Environment vars (set in dashboard, never committed):
-#        GEMINI_API_KEY
-#        ANTHROPIC_API_KEY            (optional fallback)
-#        MS_GRAPH_TENANT_ID
-#        MS_GRAPH_CLIENT_ID
-#        MS_GRAPH_CLIENT_SECRET
-#        M365_PRIMARY_MAILBOX         e.g. wendy@woodlandhillscc.net
-#        M365_REDIRECT_URI            https://<service>.onrender.com/auth/m365/callback
-#        COOKIE_SECRET                any random 32+ char string
-#   9. After first deploy, add M365_REDIRECT_URI to Azure portal →
-#        WVWCC Chamber Site → Authentication → Web platform → Redirect URIs.
-#  10. Update js/api-base.js RENDER_API_BASE constant to your actual onrender.com URL.
-#
-# Free tier: instance sleeps after 15 min idle, ~30s cold start. Fine for demos.
+# West Valley · Warner Center Chamber of Commerce — production blueprint.
+# POC stays on its own separate Render service; this is a NEW, independent service.
+
+databases:
+  - name: wvwccc-db
+    plan: basic-256mb        # bump to standard as the roster + orders grow
+    region: oregon
+    postgresMajorVersion: "16"
+
 services:
   - type: web
-    name: wvwccc-chamber-api
+    name: wvwccc-production
     runtime: node
-    plan: free
+    plan: standard            # NOT free — public site cannot tolerate cold starts
     region: oregon
-    buildCommand: npm ci --omit=dev || npm install --production
-    startCommand: node server.js
-    healthCheckPath: /api/chamber
+    # Dedicated repo (HeedAIConsulting/wvwccc): code is at the repo root, no rootDir.
+    buildCommand: npm install
+    preDeployCommand: npm run migrate    # apply backend/schema.sql before traffic flips
+    startCommand: npm start
+    healthCheckPath: /healthz
+    autoDeploy: true
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
-      # The secrets below are not committed — set them in the Render dashboard.
-      - key: GEMINI_API_KEY
+      - key: DATABASE_URL
+        fromDatabase:
+          name: wvwccc-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true   # Render generates a strong secret once
+      # ── AI Concierge ──
+      - key: GEMINI_API_KEY        # Heed key; always gemini-flash-latest
         sync: false
-      - key: ANTHROPIC_API_KEY
+      - key: ANTHROPIC_API_KEY     # fallback, optional
         sync: false
-      - key: MS_GRAPH_TENANT_ID
+      # ── Payments: AGMS on the NMI gateway ──
+      - key: AGMS_SECURITY_KEY     # gateway → Settings → Security Keys
         sync: false
-      - key: MS_GRAPH_CLIENT_ID
+      - key: AGMS_API_BASE         # sandbox: https://sandbox.nmi.com | prod: https://agms.transactiongateway.com
         sync: false
-      - key: MS_GRAPH_CLIENT_SECRET
-        sync: false
-      - key: M365_PRIMARY_MAILBOX
-        sync: false
-      - key: M365_REDIRECT_URI
-        sync: false
-      - key: COOKIE_SECRET
-        generateValue: true
+      - key: AGMS_USERNAME
+        value: heedaisolutions

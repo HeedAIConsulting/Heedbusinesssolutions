@@ -1,28 +1,15 @@
 node_modules/
 .env
 .env.local
+.env.*.local
+data/_store/
+# real DB dumps contain member PII — never commit (the synthetic sample-chamberware.sql is fine)
+woodlandhills*.sql
+*-db.sql
+*.dump
 *.log
 .DS_Store
+Thumbs.db
 
-# Sensitive — member contact data (PII)
-raw/wvwccc_members.csv
-raw/cityloop/
-
-# Large source data (regenerate from xlsx via scripts/build-sfv-businesses.js)
-raw/818guide/
-
-# Runtime stores (created by backend, should not be checked in)
-data/_store/
-
-# Build artifacts
-.cache/
-dist/
-
-# FTP/deployment credentials — NEVER commit
-.deploy.env
-
-# Cloudflare Wrangler / API key + secret store — NEVER commit
-.dev.vars
-.dev.vars.*
-.env.azure
-.env.gemini
+# reference screenshots — do NOT deploy (would be public)
+SCREENSHOTS/
