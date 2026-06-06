@@ -3,3 +3,7 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.log
+
+# Member roster exports (PII) — never commit
+websites/wvwccc/data/*.xlsx
+websites/wvwccc/data/*.csv
