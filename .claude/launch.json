@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "wvwccc",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-l", "3456", "."],
-      "port": 3456
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js"],
+      "port": 5500
     }
   ]
 }
