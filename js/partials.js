@@ -16,6 +16,16 @@ window.ChamberPartials = (function () {
     since: 'Est. 1930',
   };
 
+  // Verified Chamber accounts only (each visited & confirmed).
+  // Icons are static SVG files (official simple-icons paths, cream fill).
+  const SOCIALS = [
+    { id: 'facebook', label: 'Facebook', url: 'https://www.facebook.com/westvalleywarnercenterchamber' },
+    { id: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/westvalleywcchamber' },
+    { id: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/company/wvwcchamberofcommerce' },
+    { id: 'google', label: 'Google Business Profile', url: 'https://share.google/C7gUMpUcG75U8cz14' },
+    { id: 'yelp', label: 'Yelp', url: 'https://www.yelp.com/biz/west-valley-warner-center-chamber-of-commerce-woodland-hills-2' },
+  ];
+
   function header(active, depth, lang) {
     const L = lang === 'es';
     const t = L ? {
@@ -71,8 +81,7 @@ window.ChamberPartials = (function () {
             <a href="${p(depth, 'community/board.html')}">${L?'Tablón Comunitario':'Community Board'}</a>
             <a href="${p(depth, 'community/our-community.html')}">${L?'Nuestra Comunidad':'Our Community'}</a>
             <a href="${p(depth, 'community/grateful-hearts.html')}">Grateful Hearts</a>
-            <div class="nav-dd__sep">${L?'Más':'More'}</div>
-            <div data-dd-pages="Our Community"></div>
+            <a href="${p(depth, 'community/history.html')}">${L?'Historia':'Our History'}</a>
           </div>
         </div>
         <div class="nav-dd">
@@ -81,9 +90,10 @@ window.ChamberPartials = (function () {
             <a href="${p(depth, 'dining.html')}">${t.dining}</a>
             <a href="${p(depth, 'deals.html')}">${t.deals}</a>
             <a href="${p(depth, 'jobs/index.html')}">${t.jobs}</a>
-            <a href="${p(depth, 'resources.html')}">${L?'Todos los recursos':'All Resources'}</a>
-            <div class="nav-dd__sep">${L?'Info para visitantes':'Visitor info'}</div>
-            <div data-dd-pages="Resources & Visitor Info"></div>
+            <a href="${p(depth, 'real-estate.html')}">${L?'Bienes Raíces':'Real Estate'}</a>
+            <a href="${p(depth, 'guides/index.html')}">${L?'Guías Comunitarias':'Community Guides'}</a>
+            <a href="${p(depth, 'regional-resource-guide.html')}">${L?'Guía Regional 2026':'Regional Resource Guide'}</a>
+            <a href="${p(depth, 'resources.html')}">${L?'Todos los recursos':'All Resources'} →</a>
           </div>
         </div>
         <div class="nav-dd">
@@ -91,8 +101,8 @@ window.ChamberPartials = (function () {
           <div class="nav-dd__menu" data-dd="About & Membership">
             <a href="${p(depth, 'about.html')}">${L?'Acerca de':'About Us'}</a>
             <a href="${p(depth, 'leadership.html')}">${L?'Junta y Liderazgo':'Board & Leadership'}</a>
-            <div class="nav-dd__sep">${L?'Membresía':'Membership'}</div>
-            <div data-dd-pages="About & Membership"></div>
+            <a href="${p(depth, 'p/benefits-of-membership')}">${L?'Por qué unirse':'Why Join the Chamber'}</a>
+            <a href="${p(depth, 'resources.html')}">${L?'Más sobre la Cámara':'More Chamber pages'} →</a>
           </div>
         </div>
         <a href="${p(depth, 'join.html')}" class="btn btn--gold btn--sm nav-cta">${t.join}</a>
@@ -134,8 +144,9 @@ window.ChamberPartials = (function () {
           </span>
         </div>
         <p class="mt-4">${t.tag}</p>
-        <!-- SOCIAL LINKS: [NEEDS REAL DATA] — verify each handle by visiting the
-             actual account before rendering. Do NOT ship "#" placeholders. -->
+        <div class="footer-social" aria-label="${L ? 'Redes sociales' : 'Social media'}">
+          ${SOCIALS.map((s) => `<a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.label}" title="${s.label}"><img src="${p(depth, 'images/social/' + s.id + '.svg')}" alt="" width="20" height="20" loading="lazy"></a>`).join('')}
+        </div>
       </div>
       <div>
         <h4>${t.members}</h4>
@@ -154,6 +165,8 @@ window.ChamberPartials = (function () {
           <li><a href="${p(depth,'gallery.html')}">${L?'Galería de Fotos':'Photo Gallery'}</a></li>
           <li><a href="${p(depth,'community/news.html')}">${L?'Noticias':'Valley Biz Buzz'}</a></li>
           <li><a href="${p(depth,'jobs/index.html')}">${t.jobs}</a></li>
+          <li><a href="${p(depth,'real-estate.html')}">${L?'Bienes Raíces':'Real Estate'}</a></li>
+          <li><a href="${p(depth,'guides/index.html')}">${L?'Guías':'Community Guides'}</a></li>
           <li><a href="${p(depth,'donate.html')}">${t.donate}</a></li>
           <li><a href="${p(depth,'inquire.html')}?type=sponsorship">${t.sponsor}</a></li>
           <li><a href="${p(depth,'inquire.html')}?type=membership">${L?'Consultas':'Inquiries'}</a></li>
@@ -201,6 +214,72 @@ window.ChamberPartials = (function () {
       s.async = true; s.type = 'text/javascript';
       document.body.appendChild(s);
     }
+  }
+
+  // Neighborhood Resource promo — a gentle, dismissible invitation to the 2026
+  // Regional Resource Guide for visitors who want to learn about the community.
+  // Shows once per visitor (30-day snooze), never on admin/auth or the guide itself.
+  function mountGuidePromo(depth, lang) {
+    if (/\/(admin|auth)\//.test(window.location.pathname)) return;
+    if (/regional-resource-guide/.test(window.location.pathname)) return;
+    try {
+      const snooze = Number(localStorage.getItem('wv-guide-promo') || 0);
+      if (snooze && Date.now() - snooze < 30 * 86400000) return;
+    } catch (e) { /* private mode → just show it */ }
+    const L = lang === 'es';
+    const t = L ? {
+      kicker: 'Nuevos por aquí?',
+      title: 'Conozca el West Valley · Warner Center',
+      body: 'Consulte nuestra Guía de Recursos del Vecindario — descubra quién y qué negocios están aquí, en nuestra parte del planeta.',
+      cta: 'Ver la guía', close: 'Cerrar',
+    } : {
+      kicker: 'New to the area?',
+      title: 'Get to know the West Valley · Warner Center',
+      body: 'Check out our Neighborhood Resource Guide — learn who and what businesses are here in our part of the planet.',
+      cta: 'Explore the guide', close: 'Dismiss',
+    };
+    if (!document.getElementById('wv-guidepromo-css')) {
+      const st = document.createElement('style'); st.id = 'wv-guidepromo-css';
+      st.textContent = '.guide-promo{position:fixed;left:18px;bottom:18px;z-index:1200;max-width:340px;'
+        + 'background:var(--green-ink,#1b3326);color:#fff;border-radius:14px;padding:18px 20px;'
+        + 'box-shadow:0 18px 48px rgba(0,0,0,.32);border:1px solid rgba(201,162,39,.45);'
+        + 'background-image:radial-gradient(ellipse at 90% 0%,rgba(201,162,39,.22),transparent 60%);'
+        + 'opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s}'
+        + '.guide-promo.in{opacity:1;transform:none}'
+        + '.guide-promo__kicker{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright,#e3c35f)}'
+        + '.guide-promo h4{font-family:var(--display);font-size:1.05rem;color:#fff;margin:6px 0 6px;line-height:1.3}'
+        + '.guide-promo p{font-size:.86rem;color:rgba(255,255,255,.82);line-height:1.5;margin:0 0 12px}'
+        + '.guide-promo__row{display:flex;gap:10px;align-items:center}'
+        + '.guide-promo__close{position:absolute;top:8px;right:10px;background:none;border:none;color:rgba(255,255,255,.6);font-size:1.1rem;cursor:pointer;line-height:1;padding:4px}'
+        + '.guide-promo__close:hover{color:#fff}'
+        + '.guide-promo__later{background:none;border:none;color:rgba(255,255,255,.62);font-size:.8rem;cursor:pointer;text-decoration:underline;padding:0}'
+        + '@media(max-width:560px){.guide-promo{left:12px;right:12px;max-width:none;bottom:12px}}';
+      document.head.appendChild(st);
+    }
+    const card = document.createElement('aside');
+    card.className = 'guide-promo';
+    card.setAttribute('role', 'dialog');
+    card.setAttribute('aria-label', t.title);
+    card.innerHTML = `
+      <button class="guide-promo__close" type="button" aria-label="${t.close}">✕</button>
+      <span class="guide-promo__kicker">${t.kicker}</span>
+      <h4>${t.title}</h4>
+      <p>${t.body}</p>
+      <div class="guide-promo__row">
+        <a class="btn btn--gold btn--sm" href="${p(depth, 'regional-resource-guide.html')}">${t.cta} →</a>
+        <button class="guide-promo__later" type="button">${t.close}</button>
+      </div>`;
+    const dismiss = () => {
+      try { localStorage.setItem('wv-guide-promo', String(Date.now())); } catch (e) {}
+      card.classList.remove('in');
+      setTimeout(() => card.remove(), 450);
+    };
+    card.querySelector('.guide-promo__close').addEventListener('click', dismiss);
+    card.querySelector('.guide-promo__later').addEventListener('click', dismiss);
+    card.querySelector('a').addEventListener('click', () => {
+      try { localStorage.setItem('wv-guide-promo', String(Date.now())); } catch (e) {}
+    });
+    setTimeout(() => { document.body.appendChild(card); requestAnimationFrame(() => card.classList.add('in')); }, 6000);
   }
 
   // ADA / WCAG accessibility toolkit on every page except the admin console.
@@ -267,24 +346,12 @@ window.ChamberPartials = (function () {
       dd.addEventListener('mouseleave', () => { t = setTimeout(() => { dd.classList.remove('dd-open'); btn.setAttribute('aria-expanded', 'false'); }, 240); });
     });
     document.addEventListener('click', () => document.querySelectorAll('.nav-dd.dd-open').forEach((o) => o.classList.remove('dd-open')));
-    // fill dropdowns with migrated content pages, grouped
-    const ddTargets = document.querySelectorAll('[data-dd-pages]');
-    if (ddTargets.length) {
-      const base = depth ? '../' : '';
-      const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-      const url = (window.ChamberAPI ? ChamberAPI.url('/api/pages') : base + 'api/pages');
-      fetch(url).then((r) => r.json()).then((d) => {
-        const byGroup = {};
-        (d.pages || []).forEach((pg) => { (byGroup[pg.group] = byGroup[pg.group] || []).push(pg); });
-        ddTargets.forEach((c) => {
-          const list = (byGroup[c.getAttribute('data-dd-pages')] || []).slice().sort((a, b) => a.title.localeCompare(b.title));
-          c.innerHTML = list.map((pg) => `<a href="${base}p/${encodeURIComponent(pg.slug)}">${esc(pg.title)}</a>`).join('');
-        });
-      }).catch(() => {});
-    }
+    // (Migrated content pages are no longer auto-listed in the dropdowns — they
+    // live on resources.html, which every menu links to. Cleaner UI.)
 
     mountElevenLabs();
     mountAccessibility(depth);
+    mountGuidePromo(depth, lang);
 
     // Sticky header lifts off the page once scrolled (soft shadow).
     const hdr = document.querySelector('.site-header');

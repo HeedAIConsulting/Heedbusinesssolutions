@@ -1,137 +1,68 @@
-[
-  {
-    "id": "cityloop",
-    "title": "CityLoop — The West Valley Local Resource Guide",
-    "slug": "cityloop",
-    "tagline": "Find anything in the West Valley — instantly. The flagship insider's directory.",
-    "category": "Local",
-    "icon": "map",
-    "color": "navy",
-    "featured": true,
-    "providerCount": 320,
-    "sections": ["Search", "Categories", "Neighborhoods", "Trending Now", "Member Spotlights", "Open Now", "Local Tips"],
-    "sponsorTier": "Platinum",
-    "premiumSlots": 24,
-    "summary": "Search every Chamber-vetted business in Tarzana, Woodland Hills, Reseda, Warner Center, and Encino — with neighborhood filters, open-now status, and AI Concierge built in."
+{
+  "_meta": {
+    "note": "Community guides — each renders at /guides/<slug> from guides/view.html. Members are matched live from the directory by category (exact) and keyword (substring against name/category/keywords/tagline). Each guide has a featured-placement slot 'guide:<slug>' managed in Admin → Sponsorships.",
+    "schema_version": 1
   },
-  {
-    "id": "restaurant",
-    "title": "Dine West Valley — The Insider's Restaurant Guide",
-    "slug": "restaurant",
-    "tagline": "From hidden gems to the Valley's signature steakhouses, sushi temples, and date-night staples.",
-    "category": "Food & Drink",
-    "icon": "utensils",
-    "color": "gold",
-    "featured": true,
-    "providerCount": 82,
-    "sections": ["Date Night", "Family Friendly", "Happy Hour", "Brunch", "Outdoor Dining", "Late Night", "Catering"],
-    "sponsorTier": "Platinum",
-    "premiumSlots": 12,
-    "summary": "Curated by the Chamber's editorial team. 80+ member restaurants, sortable by occasion, neighborhood, and price."
-  },
-  {
-    "id": "parent-resource",
-    "title": "The Complete West Valley Parent Resource Guide",
-    "slug": "parent-resource",
-    "tagline": "Everything parents need — from preschools to pediatricians to weekend plans.",
-    "category": "Family",
-    "icon": "users",
-    "color": "blue",
-    "featured": true,
-    "providerCount": 64,
-    "sections": ["Schools & Preschools", "Pediatric Healthcare", "After-School Programs", "Birthday Parties", "Tutoring", "Special Needs Resources"],
-    "sponsorTier": "Gold",
-    "premiumSlots": 8,
-    "summary": "Vetted by Valley parents and Chamber families. From Tarzana preschools to Woodland Hills pediatric dentists, every stage covered."
-  },
-  {
-    "id": "spa",
-    "title": "The Wellness & Spa Guide",
-    "slug": "spa",
-    "tagline": "Day spas, medspas, recovery suites, and wellness sanctuaries across the West Valley.",
-    "category": "Wellness",
-    "icon": "leaf",
-    "color": "green",
-    "featured": true,
-    "providerCount": 48,
-    "sections": ["Day Spas", "Medspas & Aesthetics", "Recovery & Cryo", "Massage Therapy", "Yoga & Meditation", "Skincare", "Bridal & Couples"],
-    "sponsorTier": "Gold",
-    "premiumSlots": 8,
-    "summary": "Restore, recover, reset. The Valley's most-loved wellness providers, all Chamber members, with member discounts and easy booking."
-  },
-  {
-    "id": "home-maintenance",
-    "title": "Home Maintenance & Repair Guide",
-    "slug": "home-maintenance",
-    "tagline": "Vetted, member-recommended pros for everything from a leaky faucet to a full remodel.",
-    "category": "Home Services",
-    "icon": "tools",
-    "color": "navy",
-    "featured": true,
-    "providerCount": 76,
-    "sections": ["Plumbing", "Electrical", "HVAC", "Roofing", "Landscaping", "Pest Control", "Handyman", "Remodel & Build", "Cleaning", "Pool & Spa"],
-    "sponsorTier": "Platinum",
-    "premiumSlots": 12,
-    "summary": "Licensed, insured, neighbor-recommended. The Valley's home pros, with Chamber-member-exclusive discounts and 24/7 emergency triage."
-  },
-  {
-    "id": "business-solutions",
-    "title": "Business Solutions Guide",
-    "slug": "business-solutions",
-    "tagline": "Trusted local providers for everything you need to run, grow, and scale a West Valley business.",
-    "category": "Business",
-    "icon": "briefcase",
-    "color": "navy",
-    "featured": true,
-    "providerCount": 58,
-    "sections": ["Marketing & Web", "Accounting & Tax", "Legal", "HR & Payroll", "IT & Cybersecurity", "Insurance", "Commercial Real Estate", "Banking & Lending"],
-    "sponsorTier": "Platinum",
-    "premiumSlots": 12,
-    "summary": "Your B2B rolodex. Chamber-vetted CPAs, attorneys, marketers, and IT pros — the people other Valley business owners trust."
-  },
-  {
-    "id": "education",
-    "title": "Education & Learning Guide",
-    "slug": "education",
-    "tagline": "Schools, tutors, after-school enrichment, college prep, and music & arts lessons.",
-    "category": "Family",
-    "icon": "book",
-    "color": "blue",
-    "featured": true,
-    "providerCount": 54,
-    "sections": ["Public & Private Schools", "Preschool & Early Learning", "Tutoring & Test Prep", "Music & Arts Lessons", "STEM & Coding", "ESL & Language", "Special Needs", "College Counseling"],
-    "sponsorTier": "Gold",
-    "premiumSlots": 10,
-    "summary": "From LAUSD's strongest magnets to one-on-one SAT tutoring, the Valley's education ecosystem in one place."
-  },
-  {
-    "id": "family-activities",
-    "title": "Family Activities & Things-To-Do Guide",
-    "slug": "family-activities",
-    "tagline": "Birthday venues, summer camps, weekend outings, splash pads, museums, and family events.",
-    "category": "Family",
-    "icon": "sparkles",
-    "color": "gold",
-    "featured": true,
-    "providerCount": 62,
-    "sections": ["Birthday Venues", "Summer Camps", "Indoor Play", "Parks & Splash Pads", "Museums & Attractions", "Family Dining Out", "Free & Cheap", "Family Events"],
-    "sponsorTier": "Gold",
-    "premiumSlots": 10,
-    "summary": "What to do this Saturday, where to throw the next birthday, which camps still have spots — your weekend planner from Tarzana to Warner Center."
-  },
-  {
-    "id": "professional-services",
-    "title": "Professional Services Guide",
-    "slug": "professional-services",
-    "tagline": "Lawyers, CPAs, financial advisors, insurance brokers, real-estate pros, and consultants.",
-    "category": "Business",
-    "icon": "scale",
-    "color": "navy",
-    "featured": true,
-    "providerCount": 70,
-    "sections": ["Attorneys", "CPAs & Tax", "Financial Advisors", "Insurance Brokers", "Real Estate", "Title & Escrow", "Business Consultants", "Bankers & Lenders"],
-    "sponsorTier": "Platinum",
-    "premiumSlots": 12,
-    "summary": "Whether you're forming an LLC, refinancing, getting estate-planned, or buying a Tarzana home — start with these Chamber-vetted professionals."
-  }
-]
+  "guides": [
+    {
+      "slug": "senior-living",
+      "title": "Senior Living & Resources",
+      "kicker": "Community Guide",
+      "emoji": "🌅",
+      "lede": "Trusted senior care, living communities, and support services across the West Valley.",
+      "intro": "The West Valley is one of Los Angeles' most senior-friendly communities — home to nationally recognized retirement communities, in-home care agencies, and advocacy organizations. Every provider listed here is a Chamber member business, accountable to our community.",
+      "categories": ["Senior Care", "Senior Living Community", "Senior Advocacy", "Home Care Services", "Home Health Care", "Hospice", "Hearing Services"],
+      "keywords": ["senior", "elder", "assisted living", "retirement", "caregiver", "memory care", "in-home care"]
+    },
+    {
+      "slug": "health-wellness",
+      "title": "Health, Spas & Wellness",
+      "kicker": "Community Guide",
+      "emoji": "💆",
+      "lede": "Hospitals, medical practices, spas, fitness, and wellness professionals in the West Valley.",
+      "intro": "From world-class hospitals like UCLA Health and Providence Cedars-Sinai Tarzana to neighborhood spas, chiropractors, and fitness studios — the West Valley is a healthcare and wellness hub. Find a Chamber member provider below.",
+      "categories": ["Health & Wellness", "Fitness/Wellness", "Spa & Massage", "Chiropractor", "Acupuncturist", "Medical", "Hospital", "Healthcare", "Dentist", "Orthodontist", "Pediatric", "Pharmacy", "Optical", "Cancer Center", "Behavioral Health", "Counseling Services", "Psychologist", "Psychotherapist", "Therapist", "Physical Therapists", "Physical & Occupational Therapy", "Sports Medicine", "Weight Management Services", "Beauty Salon", "Beauty and Skin Care Services", "Martial Arts", "Children's Gym", "Sports Rehab"],
+      "keywords": ["wellness", "spa", "massage", "fitness", "yoga", "medical", "health"]
+    },
+    {
+      "slug": "home-improvement",
+      "title": "Home Improvement & Services",
+      "kicker": "Community Guide",
+      "emoji": "🛠️",
+      "lede": "Contractors, plumbers, electricians, landscapers, and home pros you can trust.",
+      "intro": "Hiring for your home is easier when the business is a Chamber member — local, established, and invested in this community. From full remodels to a single repair, start here.",
+      "categories": ["Home Improvement", "General Contractor", "Contractors", "Electrical Contractor", "Plumbing", "Roofing Contractor", "Paint Contractor", "Glass Contractor", "Handyman", "Landscaping", "Heating, Air Conditioning & Ventilating", "Garage Door & Window Repair and Installation", "Kitchen,Bath & Lighting Design", "Interior Design and Furnishing", "Appliance Repair", "Pest Control", "Cleaning & Restoration", "Restoration,Water & Fire", "Window Covering", "Solar Company", "Solar Broker", "Hardware Store", "Cleaning / Janitorial Services", "Commercial Cleaners"],
+      "keywords": ["remodel", "repair", "plumber", "electrician", "hvac", "roofing", "landscap"]
+    },
+    {
+      "slug": "entertainment",
+      "title": "Entertainment & Things To Do",
+      "kicker": "Community Guide",
+      "emoji": "🎭",
+      "lede": "Theatres, events, recreation, and fun across the West Valley and Warner Center.",
+      "intro": "There's more to do in the West Valley than ever — live theatre, bowling, golf, wine tastings, and event pros who can turn any occasion into a memory. All Chamber members, all local.",
+      "categories": ["Bowling Alley", "Theatre - Plays", "Orchestra", "Golf Simulator", "Country Club", "Wine Tasting / Wine Sales", "Entertainment & Event Planning", "Event Planning", "Events Services", "Special Events", "Party Equipment Rental - Special Events Consultants", "Party Rental Equipment", "Photobooth", "Balloon Artists", "Dance Academy", "Dance Instruction", "Sports Franchise", "Catering", "Banquet/Reception Hall", "Limousine Service"],
+      "keywords": ["entertainment", "events", "party", "theatre", "music", "recreation"]
+    },
+    {
+      "slug": "schools",
+      "title": "Schools & Education",
+      "kicker": "Community Guide",
+      "emoji": "🎓",
+      "lede": "Schools, tutoring, child care, and adult education in the West Valley.",
+      "intro": "The West Valley's schools — public, private, and specialty — are a major reason families put down roots here. These Chamber member schools and education services serve every age.",
+      "categories": ["Schools", "Schools - Adult", "School - Early Childhood", "School, K-5th Grades", "Educational Services", "Education / Non-Profit", "Technical Education Center", "Child Care and Education Services", "Language Instruction, Translation"],
+      "keywords": ["school", "education", "tutor", "academy", "learning", "preschool"]
+    },
+    {
+      "slug": "shopping",
+      "title": "Shopping & Retail",
+      "kicker": "Community Guide",
+      "emoji": "🛍️",
+      "lede": "From Westfield Topanga & The Village to one-of-a-kind local shops.",
+      "intro": "Anchored by Westfield Topanga & The Village — one of the country's premier shopping destinations — and surrounded by specialty retailers you won't find anywhere else. Shop local, shop member.",
+      "categories": ["Retailer, Specialty", "Shopping Center", "Clothing", "Electronics Retailer", "Mattress Retailer", "Cosmetics", "Florist", "Office Supplies", "Picture Framing/Custom Art Sales", "Promotional Products", "Grocery", "Bakery", "Hardware Store", "Pawn Broker"],
+      "keywords": ["shop", "retail", "boutique", "store"]
+    }
+  ]
+}
