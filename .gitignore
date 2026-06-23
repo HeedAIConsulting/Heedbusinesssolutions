@@ -1,9 +1,18 @@
 node_modules/
 .env
+.env.local
+.env.*.local
+data/_store/
+# real DB dumps contain member PII — never commit (the synthetic sample-chamberware.sql is fine)
+woodlandhills*.sql
+*-db.sql
+*.dump
+*.log
 .DS_Store
 Thumbs.db
-*.log
 
-# Member roster exports (PII) — never commit
-websites/wvwccc/data/*.xlsx
-websites/wvwccc/data/*.csv
+# reference screenshots — do NOT deploy (would be public)
+SCREENSHOTS/
+
+# Large source newsletter PDFs — too big for git/web; host/optimize separately
+websites/wvwccc/Biz Newsletter/
