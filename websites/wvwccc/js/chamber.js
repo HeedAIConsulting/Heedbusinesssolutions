@@ -245,7 +245,8 @@ window.Chamber = (function () {
     // always feels image-forward (logos/flyers/images — Felicia's request).
     const hero = ev.flyer || ev.thumbnail || (ev.images && ev.images[0]) || '';
     const flyerImg = hero
-      ? `<img class="ev-card__flyer" src="${esc(evImgSrc(hero, base))}" alt="${esc(ev.title)} flyer" onerror="this.style.display='none'">` : '';
+      ? `<img class="ev-card__flyer" src="${esc(evImgSrc(hero, base))}" alt="${esc(ev.title)} flyer" onerror="this.onerror=null;this.src='${base}images/wvwccc-logo.png';this.classList.add('ev-card__flyer--ph')">`
+      : `<img class="ev-card__flyer ev-card__flyer--ph" src="${base}images/wvwccc-logo.png" alt="">`;
     const extra = (ev.images || []).filter((u) => u && u !== hero).slice(0, 3);
     const imgs = flyerImg + (extra.length
       ? `<div class="ev-card__imgs">${extra.map((u) => `<img src="${esc(evImgSrc(u, base))}" alt="" loading="lazy">`).join('')}</div>` : '');
@@ -352,14 +353,15 @@ window.Chamber = (function () {
   // Compact "quick view" row for the events index — mirrors the legacy
   // event_listings.php: date · title · category · M/D/YY · RSVP/Tickets, with
   // full details on click (opens the inline event modal). No flyer/summary here.
-  function eventQuickRow(ev) {
+  function eventQuickRow(ev, depth = 0) {
     _eventReg[ev.id] = ev;
+    const base = depth ? '../' : '';
     const mo = ev.month || (ev.date ? MONTHS[Number(ev.date.slice(5, 7)) - 1] : 'TBA');
     const day = ev.day || (ev.date ? String(Number(ev.date.slice(8, 10))) : '');
     const dateUS = ev.date ? `${ev.date.slice(5, 7)}/${ev.date.slice(8, 10)}/${ev.date.slice(2, 4)}` : 'Date TBA';
     const cta = ev.ticketed
-      ? `<a class="btn btn--gold btn--sm" href="checkout.html?type=ticket&event=${esc(ev.id)}">Tickets</a>`
-      : `<a class="btn btn--ghost btn--sm" href="contact.html?event=${esc(ev.id)}">RSVP</a>`;
+      ? `<a class="btn btn--gold btn--sm" href="${base}checkout.html?type=ticket&event=${esc(ev.id)}">Tickets</a>`
+      : `<a class="btn btn--ghost btn--sm" href="${base}contact.html?event=${esc(ev.id)}">RSVP</a>`;
     return `
       <div class="ev-quick" data-ev-detail="${esc(ev.id)}" style="display:flex;align-items:center;gap:14px;padding:11px 14px;border-bottom:1px solid var(--gold-soft,#e6dcbf);cursor:pointer">
         <div style="flex:0 0 64px;text-align:center;line-height:1.05">
@@ -381,9 +383,10 @@ window.Chamber = (function () {
     _eventReg[ev.id] = ev;
     const base = depth ? '../' : '';
     const img = ev.thumbnail || ev.image || (ev.images && ev.images[0]) || '';
-    const media = img
-      ? `<div class="evp__media" style="background-image:url('${esc(evImgSrc(img, base))}')" role="img" aria-label="${esc(ev.title)} flyer"></div>`
-      : `<div class="evp__media evp__media--ph"><img src="${base}images/wvwccc-logo.png" alt="" class="evp__ph-logo"><span>${esc(ev.month || 'TBA')}</span><strong>${esc(ev.day || '·')}</strong></div>`;
+    // The chamber-logo placeholder is ALWAYS the base; a real image layers on top and
+    // removes itself on error — so a missing/broken/slow image never leaves a white box.
+    const evPh = `<img src="${base}images/wvwccc-logo.png" alt="" class="evp__ph-logo"><span>${esc(ev.month || 'TBA')}</span><strong>${esc(ev.day || '·')}</strong>`;
+    const media = `<div class="evp__media evp__media--ph" role="img" aria-label="${esc(ev.title)} flyer">${img ? `<img class="evp__cover" src="${esc(evImgSrc(img, base))}" alt="" loading="lazy" onerror="this.remove()">` : ''}${evPh}</div>`;
     const when = (ev.confirmed && ev.day)
       ? `${esc(ev.month)} ${esc(ev.day)}${ev.time ? ' · ' + esc(ev.time) : ''}`
       : 'Date to be announced';
@@ -1081,7 +1084,7 @@ window.Chamber = (function () {
         listEl.style.gap = view === 'quick' ? '0' : 'var(--s-4)';
         listEl.innerHTML = ordered.length
           ? (view === 'quick'
-              ? ordered.map((e) => eventQuickRow(e)).join('')
+              ? ordered.map((e) => eventQuickRow(e, 1)).join('')
               : ordered.map((e) => eventCard(e, 1, { newTab: true })).join(''))
           : empty;
       }
