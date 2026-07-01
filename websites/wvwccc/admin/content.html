@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Content — WVWCCC Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/chamber.css" />
+  <link rel="stylesheet" href="admin.css?v=20260622g" />
+</head>
+<body class="admin">
+  <div class="admin-shell">
+    <aside class="admin-sidebar" data-admin-nav></aside>
+    <div class="admin-main">
+      <div class="admin-topbar"><h1>Content &amp; messaging</h1></div>
+      <div class="admin-content">
+        <p id="adminError" class="admin-notice" hidden></p>
+
+        <div class="panel">
+          <div class="panel__head"><h3>Create news, announcement, or message</h3></div>
+          <div style="padding:var(--s-5)">
+            <form id="postForm" class="grid" style="gap:var(--s-3);max-width:680px">
+              <div class="grid grid-2" style="gap:var(--s-3)">
+                <div class="field"><label>Type</label>
+                  <select name="type" class="admin-select">
+                    <option value="news">News</option>
+                    <option value="announcement">Announcement / message</option>
+                    <option value="discount">Offer</option>
+                    <option value="event">Event note</option>
+                    <option value="slide">Home slider photo (event image)</option>
+                    <option value="gallery">Gallery photo (Photo Gallery page)</option>
+                    <option value="job">Job opening (Jobs Board)</option>
+                    <option value="listing">Property listing (Real Estate)</option>
+                  </select>
+                </div>
+                <div class="field"><label>Link (optional)</label><input name="linkUrl" type="url" placeholder="https://" /></div>
+              </div>
+              <div class="field"><label>Title / caption</label><input name="title" required /></div>
+              <div class="field"><label>Body</label><textarea name="body" rows="3"></textarea></div>
+              <div class="field"><label>Image <span class="sub">(required for slider photos; optional elsewhere)</span></label><input id="postImage" type="file" accept="image/*" /><div id="postImgPrev" style="margin-top:8px"></div></div>
+              <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="featuredHome"> Feature on the home page</label>
+              <p id="postMsg" class="admin-notice" hidden></p>
+              <button class="btn btn--forest" type="submit" style="width:fit-content">Publish</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head"><h3>Pending review (member submissions)</h3></div>
+          <table class="admin-table"><thead><tr><th>Title</th><th>Type</th><th>Status</th><th>Action</th></tr></thead><tbody id="pendingWrap"></tbody></table>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head"><h3>Published content</h3></div>
+          <table class="admin-table"><thead><tr><th>Title</th><th>Type</th><th>Status</th><th>Action</th></tr></thead><tbody id="liveWrap"></tbody></table>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <h3>Site pages <span class="sub">(migrated from the old website)</span></h3>
+            <input id="pageSearch" class="admin-select" type="search" placeholder="Filter pages…" style="min-width:220px" />
+          </div>
+          <table class="admin-table"><thead><tr><th>Page</th><th>Section</th><th>Status</th><th>Action</th></tr></thead><tbody id="pageRows"><tr><td colspan="4" class="sub">Loading…</td></tr></tbody></table>
+          <p class="sub" style="padding:0 16px 14px">
+            Hiding a page removes it from the website immediately (menus, the Resources index, and its
+            direct link). Nothing is deleted — restore it anytime.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/api-base.js"></script>
+  <script src="admin.js?v=20260630a"></script>
+  <script>Admin.initContent();</script>
+  <script defer src="/js/support.js?v=20260630a"></script>
+</body>
+</html>

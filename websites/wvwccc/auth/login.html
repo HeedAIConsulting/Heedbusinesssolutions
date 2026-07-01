@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — West Valley · Warner Center Chamber of Commerce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/chamber.css?v=20260619a" />
+</head>
+<body>
+  <div data-partial="header"></div>
+  <section class="section">
+    <div class="container" style="display:grid;place-items:center">
+      <main class="card" style="width:min(440px,94vw)">
+        <div style="text-align:center">
+          <img src="../images/wvwccc-logo.png" alt="WVWCCC" width="72" height="72" style="border-radius:50%;margin:0 auto var(--s-3);box-shadow:0 0 0 2px var(--gold)" />
+          <h1 style="font-size:1.6rem">Sign In</h1>
+          <p class="member-tile__meta">Members &amp; staff sign in here — you'll be taken to the right place automatically.</p>
+        </div>
+        <form id="loginForm" class="mt-5">
+          <div class="field"><label>Email</label><input name="email" type="email" required autocomplete="username" /></div>
+          <div class="field"><label>Password</label><input name="password" type="password" required autocomplete="current-password" /></div>
+          <p id="msg" class="notice" hidden></p>
+          <button class="btn btn--forest btn--lg" type="submit" style="width:100%">Sign in</button>
+        </form>
+        <p class="member-tile__meta mt-3" style="text-align:center">
+          <a href="forgot-password.html">Forgot your password?</a>
+        </p>
+        <div class="mt-3" style="display:flex;align-items:center;gap:10px;color:var(--muted)">
+          <span style="flex:1;height:1px;background:var(--line,#e4dcc8)"></span>
+          <span class="member-tile__meta">or</span>
+          <span style="flex:1;height:1px;background:var(--line,#e4dcc8)"></span>
+        </div>
+        <form id="magicForm" class="mt-3">
+          <div class="field"><label>Email me a sign-in link <span class="member-tile__meta">(no password needed)</span></label>
+            <input name="email" type="email" required autocomplete="username" placeholder="you@example.com" /></div>
+          <p id="magicMsg" class="notice" hidden></p>
+          <button class="btn btn--ghost btn--lg" type="submit" style="width:100%">Email me a link</button>
+        </form>
+        <p class="member-tile__meta mt-2" style="text-align:center">
+          Not a member yet? <a href="../join.html">Join the Chamber →</a>
+        </p>
+      </main>
+    </div>
+  </section>
+  <div data-partial="footer"></div>
+  <script src="../js/partials.js?v=20260630a"></script>
+  <script src="../js/api-base.js?v=20260619a"></script>
+  <script>
+    ChamberPartials.mount({ active: '', depth: 1, lang: 'en' });
+    const form = document.getElementById('loginForm');
+    const msg = document.getElementById('msg');
+    const ADMIN_ROLES = ['staff', 'admin', 'super_admin'];
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.hidden = true;
+      const body = Object.fromEntries(new FormData(form));
+      const btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Signing in…';
+      try {
+        const r = await fetch(ChamberAPI.url('/api/auth/login'), {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin', body: JSON.stringify(body),
+        });
+        const data = await r.json();
+        if (!r.ok || !data.ok) {
+          msg.textContent = data.needsReset
+            ? 'Your account needs a new password. Please use “Forgot your password?” below.'
+            : (data.error || 'Sign in failed.');
+          msg.style.borderColor = 'var(--red)'; msg.hidden = false; return;
+        }
+        if (data.mustChange) { location.href = 'set-password.html'; return; }
+        location.href = ADMIN_ROLES.includes(data.role) ? '../admin/index.html' : '../member/index.html';
+      } catch (err) { msg.textContent = 'Could not sign in right now.'; msg.hidden = false; }
+      finally { btn.disabled = false; btn.textContent = 'Sign in'; }
+    });
+
+    // Magic-link (passwordless) sign-in
+    const params = new URLSearchParams(location.search);
+    if (params.get('magic') === 'expired') { msg.textContent = 'That sign-in link expired or was already used — request a new one below.'; msg.style.borderColor = 'var(--red)'; msg.hidden = false; }
+    else if (params.get('magic') === 'error') { msg.textContent = 'Something went wrong with that link. Please try again.'; msg.style.borderColor = 'var(--red)'; msg.hidden = false; }
+    const magicForm = document.getElementById('magicForm');
+    const magicMsg = document.getElementById('magicMsg');
+    if (magicForm) magicForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = new FormData(magicForm).get('email');
+      const b = magicForm.querySelector('button'); b.disabled = true; b.textContent = 'Sending…';
+      try {
+        await fetch(ChamberAPI.url('/api/auth/magic/request'), {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }),
+        });
+        magicMsg.textContent = 'Check your email — if you have an account, a sign-in link is on its way. It expires in 20 minutes.';
+        magicMsg.style.borderColor = 'var(--green)'; magicMsg.hidden = false;
+        magicForm.querySelector('input').disabled = true; b.style.display = 'none';
+      } catch (err) { magicMsg.textContent = 'Could not send the link right now. Please try again.'; magicMsg.style.borderColor = 'var(--red)'; magicMsg.hidden = false; }
+      finally { b.disabled = false; b.textContent = 'Email me a link'; }
+    });
+  </script>
+</body>
+</html>

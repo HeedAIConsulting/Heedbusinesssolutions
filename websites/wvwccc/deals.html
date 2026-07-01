@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Member Deals & Offers — West Valley · Warner Center Chamber of Commerce</title>
+  <meta name="description" content="Exclusive deals and discounts from West Valley · Warner Center Chamber member businesses." />
+  <link rel="canonical" href="https://woodlandhillscc.net/deals.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/chamber.css?v=20260619a" />
+</head>
+<body>
+  <div data-partial="header"></div>
+  <section class="section-sm bg-forest">
+    <div class="container">
+      <span class="kicker">Member Deals</span>
+      <h1 style="color:#fff">Offers from local members</h1>
+      <p class="lead" style="color:rgba(255,255,255,.85);max-width:60ch">Support local and save — exclusive discounts from Chamber member businesses across the West Valley.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div id="dealsFeatured" hidden></div>
+      <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)">
+        <div class="view-toggle" role="tablist" aria-label="Offers view">
+          <button data-deals-view="grid" class="active" type="button">Cards</button>
+          <button data-deals-view="list" type="button">List</button>
+        </div>
+      </div>
+      <div id="dealsList" class="grid grid-3" style="gap:var(--s-5)"><p class="member-tile__meta">Loading…</p></div>
+      <div class="text-center mt-7"><a class="btn btn--ghost" href="member/index.html">Are you a member? Post an offer →</a></div>
+    </div>
+  </section>
+  <div data-partial="footer"></div>
+  <script src="js/partials.js?v=20260630a"></script>
+  <script src="js/api-base.js?v=20260619a"></script>
+  <script src="js/chamber.js?v=20260630a"></script>
+  <script>ChamberPartials.mount({ active: 'deals', depth: 0, lang: 'en' }); Chamber.initDeals(); Chamber.initFeaturedSlot('deals', '#dealsFeatured', { depth: 0 });</script>
+</body>
+</html>

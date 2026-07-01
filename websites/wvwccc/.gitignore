@@ -14,5 +14,9 @@ Thumbs.db
 # reference screenshots — do NOT deploy (would be public)
 SCREENSHOTS/
 
-# Large source newsletter PDFs — too big for git/web; host/optimize separately
-websites/wvwccc/Biz Newsletter/
+# Member roster exports — PII, never commit
+*.xlsx
+
+# Source newsletter PDFs (95–410 MB each) — never commit; we ship rendered
+# WebP page images under newsletters/assets/connect/ instead.
+Biz Newsletter/

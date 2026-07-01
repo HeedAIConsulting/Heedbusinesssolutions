@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events & Tickets — West Valley · Warner Center Chamber of Commerce</title>
+  <meta name="description" content="Chamber breakfasts, mixers, ribbon cuttings, and the annual Gala. RSVP and buy tickets for West Valley · Warner Center Chamber events." />
+  <link rel="canonical" href="https://woodlandhillscc.net/events/index.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/chamber.css?v=20260619a" />
+</head>
+<body>
+  <div data-partial="header"></div>
+
+  <section class="section-sm bg-forest">
+    <div class="container">
+      <span class="kicker">What's happening</span>
+      <h1 style="color:#fff">Chamber events &amp; tickets</h1>
+      <p class="lead" style="color:rgba(255,255,255,.85);max-width:62ch">
+        Monthly breakfasts, networking groups, ribbon cuttings, and our signature Gala —
+        <em>Black, White &amp; Bold!</em> on July 25. RSVP and buy tickets right here.
+      </p>
+      <div class="btn-row mt-4">
+        <a class="btn btn--gold" href="../ribbon-cutting.html">✂ Request a ribbon cutting</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:var(--s-5)">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <select id="evCat" aria-label="Filter by category" style="padding:9px 13px;border:1px solid var(--gold-soft,#e6dcbf);border-radius:8px;background:#fff;font:inherit;color:var(--green-ink,#1b3326)"><option value="">All categories</option></select>
+          <select id="evWhen" aria-label="Filter by timeframe" style="padding:9px 13px;border:1px solid var(--gold-soft,#e6dcbf);border-radius:8px;background:#fff;font:inherit;color:var(--green-ink,#1b3326)">
+            <option value="upcoming">Upcoming</option>
+            <option value="30">Next 30 days</option>
+            <option value="90">Next 90 days</option>
+            <option value="month">This month</option>
+            <option value="all">All dates</option>
+          </select>
+          <span id="evCount" class="member-tile__meta"></span>
+        </div>
+        <div class="view-toggle" role="tablist" aria-label="Event views">
+          <button data-view="quick" class="active" type="button">Quick list</button>
+          <button data-view="details" type="button">Details</button>
+          <button data-view="grid" type="button">📅 Calendar view</button>
+        </div>
+      </div>
+
+      <div id="eventsList" class="grid" style="gap:var(--s-4)"></div>
+      <div id="eventsGrid" hidden></div>
+    </div>
+  </section>
+
+  <div data-partial="footer"></div>
+
+  <script src="../js/partials.js?v=20260630a"></script>
+  <script src="../js/chamber.js?v=20260630a"></script>
+  <script>
+    ChamberPartials.mount({ active: 'events', depth: 1, lang: 'en' });
+    Chamber.initEvents();
+  </script>
+</body>
+</html>

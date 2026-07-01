@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Post an Offer or Update — WVWCCC Member</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/chamber.css?v=20260619a" />
+</head>
+<body>
+  <div data-partial="header"></div>
+  <section class="section">
+    <div class="container container-narrow">
+      <p class="member-tile__meta"><a href="index.html">← My Chamber</a></p>
+      <span class="kicker">Share with the community</span>
+      <h1>Post an offer, update, job, or listing</h1>
+      <p class="lead">Offers appear on the Deals page, community posts on the Community board, job openings on the Jobs Board, and property listings on the Real Estate page. Everything is reviewed by the Chamber before it goes live.</p>
+      <form id="postForm" class="card mt-5">
+        <div class="field">
+          <label>Type</label>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="type" value="discount" checked style="margin-right:6px">Offer / discount</label>
+            <label class="chip"><input type="radio" name="type" value="member_post" style="margin-right:6px">Community post</label>
+            <label class="chip"><input type="radio" name="type" value="job" style="margin-right:6px">Job opening</label>
+            <label class="chip"><input type="radio" name="type" value="listing" style="margin-right:6px">Property listing</label>
+          </div>
+        </div>
+        <div class="field"><label data-label-title>Title</label><input name="title" required maxlength="160" /></div>
+        <div class="field"><label>Details</label><textarea name="body" rows="4" required></textarea></div>
+
+        <div data-type-fields="discount">
+          <div class="field"><label>Discount code <span class="member-tile__meta">(optional)</span></label><input name="code" maxlength="80" /></div>
+        </div>
+
+        <div data-type-fields="job" hidden>
+          <div class="grid grid-2" style="gap:var(--s-3)">
+            <div class="field"><label>Position type</label>
+              <select name="jobType"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Internship</option><option>Temporary</option></select>
+            </div>
+            <div class="field"><label>Location</label><input name="jobLocation" maxlength="120" placeholder="Woodland Hills / Remote / Hybrid" /></div>
+            <div class="field"><label>Pay range <span class="member-tile__meta">(optional)</span></label><input name="payRange" maxlength="80" placeholder="$22–$28/hr" /></div>
+            <div class="field"><label>Apply-by email <span class="member-tile__meta">(or use the button link below)</span></label><input name="applyEmail" type="email" maxlength="160" /></div>
+          </div>
+        </div>
+
+        <div data-type-fields="listing" hidden>
+          <div class="grid grid-2" style="gap:var(--s-3)">
+            <div class="field"><label>Property type</label>
+              <select name="listingType"><option>Residential</option><option>Commercial</option></select>
+            </div>
+            <div class="field"><label>Offer type</label>
+              <select name="dealType"><option>For Sale</option><option>For Lease</option><option>For Rent</option></select>
+            </div>
+            <div class="field"><label>Price</label><input name="price" maxlength="40" placeholder="$1,250,000 or $3.25/sq ft NNN" /></div>
+            <div class="field"><label>Address / area</label><input name="listingAddress" maxlength="200" /></div>
+            <div class="field"><label>Beds <span class="member-tile__meta">(residential)</span></label><input name="beds" maxlength="10" /></div>
+            <div class="field"><label>Baths <span class="member-tile__meta">(residential)</span></label><input name="baths" maxlength="10" /></div>
+            <div class="field"><label>Square feet</label><input name="sqft" maxlength="12" /></div>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap:var(--s-3)">
+          <div class="field"><label>Button label</label><input name="ctaLabel" placeholder="Redeem / Apply / Details" /></div>
+          <div class="field"><label>Button link</label><input name="ctaUrl" type="url" placeholder="https://" /></div>
+        </div>
+        <div class="field"><label>Image (optional)</label><input id="postImage" type="file" accept="image/*" /></div>
+        <p id="postMsg" class="notice" hidden></p>
+        <button class="btn btn--gold btn--lg" type="submit">Submit for review</button>
+      </form>
+      <h3 class="mt-7">My posts</h3>
+      <div id="myPosts" class="grid" style="gap:var(--s-3)"></div>
+    </div>
+  </section>
+  <div data-partial="footer"></div>
+  <script src="../js/partials.js?v=20260630a"></script>
+  <script src="../js/api-base.js?v=20260619a"></script>
+  <script src="member.js"></script>
+  <script>ChamberPartials.mount({ active: '', depth: 1, lang: 'en' }); MemberPortal.initPost();</script>
+  <script defer src="/js/support.js?v=20260630a"></script>
+</body>
+</html>
