@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow"><title>The Firehawk Home Hardening Checklist — Firehawk</title>
+<meta name="description" content="The component-by-component wildfire hardening checklist for Southern California homes: roof, vents, eaves, windows, decks, and more.">
+<link rel="icon" type="image/png" href="../assets/logo-main.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--hawk:#1E4FA5;--hawk-deep:#142C54;--hawk-mist:#E8F0FB;--leaf:#4E8B2F;--leaf-deep:#35621F;--leaf-mist:#EDF5E6;
+--flame:#F26A21;--night:#0E1622;--paper:#FAFBF9;--ink:#1E2733;--ink-soft:#44505E;--line:#DEE5EE}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Nunito',sans-serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.skip{position:absolute;left:-9999px;top:0;background:var(--hawk-deep);color:#fff;padding:10px 18px;z-index:200;border-radius:0 0 8px 0}
+.skip:focus{left:0}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px}
+.disp{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;line-height:1.05;text-wrap:balance}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:13.5px}
+.concept{background:var(--hawk-deep);color:#9FB4D8;font-size:12px;text-align:center;padding:7px 14px;letter-spacing:.07em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif}
+.concept b{color:#fff}
+header{position:sticky;top:0;z-index:60;background:rgba(20,44,84,.96)}
+.nav{display:flex;align-items:center;gap:22px;padding:10px 24px;max-width:1120px;margin:0 auto}
+.nav img{height:40px}
+.nav ul{display:flex;gap:18px;list-style:none;margin-left:auto;font-size:14.5px;font-weight:700}
+.nav a{text-decoration:none;color:#C7D6EF} .nav a:hover,.nav a:focus-visible{color:#fff}
+.btn{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:16px;padding:12px 22px;border-radius:8px;text-decoration:none;border:0;cursor:pointer}
+.btn-flame{background:var(--flame);color:#fff} .btn-green{background:var(--leaf);color:#fff}
+.ghero{background:var(--hawk-deep);color:#fff;padding:56px 0}
+.ghero .eyebrow{color:#FF8A47}
+.ghero h1{font-size:clamp(34px,5vw,54px);margin:8px 0 10px;color:#fff}
+.ghero p{color:#B9C9E4;max-width:62ch}
+main{padding:48px 0 20px}
+main h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:27px;color:var(--hawk-deep);margin:38px 0 10px;scroll-margin-top:90px}
+main h2:first-of-type{margin-top:0}
+main p{color:var(--ink-soft);max-width:70ch;margin-bottom:12px}
+main b{color:var(--ink)}
+.why{background:var(--hawk-mist);border-left:4px solid var(--hawk);border-radius:0 10px 10px 0;padding:14px 18px;font-size:15px;color:var(--ink-soft);margin:12px 0}
+.check{list-style:none;margin:14px 0 6px;display:flex;flex-direction:column;gap:10px}
+.check li{background:#fff;border:1px solid var(--line);border-radius:10px}
+.check label{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;cursor:pointer;font-size:15.5px;color:var(--ink-soft)}
+.check input{width:20px;height:20px;margin-top:3px;accent-color:var(--leaf);flex:0 0 auto}
+.check input:checked+span{text-decoration:line-through;opacity:.6}
+.progress{position:sticky;top:64px;z-index:40;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 6px 18px rgba(20,44,84,.1);margin:20px 0;font-size:14px;font-weight:800}
+.bar{flex:1;height:8px;background:var(--hawk-mist);border-radius:4px;overflow:hidden}
+.bar div{height:100%;width:0%;background:linear-gradient(90deg,var(--hawk),var(--leaf));transition:width .3s}
+.callout{background:var(--leaf-mist);border:1px solid #CBE2B8;border-radius:14px;padding:22px 24px;margin:34px 0}
+.callout h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;font-size:22px;color:var(--leaf-deep);margin-bottom:6px}
+.callout form{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.callout input[type=email]{flex:1;min-width:220px;font-family:'Nunito',sans-serif;font-size:15px;padding:12px 15px;border:2px solid #CBE2B8;border-radius:10px}
+.callout input:focus{outline:none;border-color:var(--leaf)}
+.src{font-size:12.5px;color:#8B96A3;border-top:1px solid var(--line);margin-top:44px;padding-top:16px}
+footer{background:var(--night);color:#8FA2BF;padding:36px 24px 52px;font-size:13.5px;text-align:center;margin-top:60px}
+footer a{color:#C7D6EF}
+:focus-visible{outline:3px solid var(--flame);outline-offset:2px}
+@media print{header,.concept,.callout,footer,.progress{display:none}}
+</style></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="concept">Concept mockup — prepared for Steve Hochman by <b>Heed Business Solutions</b> · not the live site</div>
+<header><nav class="nav" aria-label="Main">
+<a href="../"><img src="../assets/logo-white.png" alt="Firehawk — home"></a>
+<ul><li><a href="../#road">The Road</a></li><li><a href="../#guides">Guides</a></li><li><a href="../blog/">Learn</a></li></ul>
+<a class="btn btn-flame" href="tel:8184024166">818-402-4166</a>
+</nav></header>
+<section class="ghero"><div class="wrap"><p class="eyebrow">Firehawk authority guide · free forever</p>
+<h1 class="disp">The Home Hardening Checklist</h1><p>Walk your own home against the same checklist Steve uses on assessments — component by component, from the roof down. Check items off as you go; your progress saves on this device.</p></div></section>
+<main id="main"><div class="wrap">
+<div class="progress" role="status"><span id="pct">0 done</span><div class="bar"><div></div></div></div><h2>Roof &amp; roof edges</h2><div class="why">Why it matters: the roof is your home’s largest ember-catching surface. Roofs are rated Class A, B, or C for fire resistance — Class A survives the most severe exposure, and it’s what insurers and inspectors look for first.</div><ul class="check"><li><label><input type="checkbox"><span><b>Roof covering is Class A</b> — tile, metal, or fire-rated composition shingle. If you’re not sure, your last re-roof invoice or an assessment will tell you.</span></label></li><li><label><input type="checkbox"><span><b>Gaps between the roof covering and decking are blocked</b> (bird-stops on tile roofs) so embers can’t lodge underneath.</span></label></li><li><label><input type="checkbox"><span><b>Roof edges and flashing are metal</b>, with no exposed combustible fascia.</span></label></li><li><label><input type="checkbox"><span><b>Debris is off the roof</b> — needles and leaves in valleys are kindling delivered to your weakest point.</span></label></li></ul><h2>Rain gutters</h2><div class="why">Why it matters: dry leaves in a gutter are an ember’s favorite landing pad — directly against your roof edge.</div><ul class="check"><li><label><input type="checkbox"><span><b>Gutters are clear</b> of leaves and needles (check monthly in fire season).</span></label></li><li><label><input type="checkbox"><span><b>Non-combustible gutter covers or firemesh</b> keep debris from accumulating at all.</span></label></li></ul><h2>Eaves, vents &amp; attic</h2><div class="why">Why it matters: attic and crawl-space vents are open doors for wind-blown embers — one of the two most common ways homes ignite from the inside.</div><ul class="check"><li><label><input type="checkbox"><span><b>Every vent is screened with 1/16&Prime; to 1/8&Prime; metal mesh</b>, or upgraded to ember-resistant (WUI-listed) vents.</span></label></li><li><label><input type="checkbox"><span><b>Open eaves are boxed in</b> with soffits of fire-resistant material (cement-fiber board is the workhorse).</span></label></li><li><label><input type="checkbox"><span><b>No gaps at the eave line</b> where birds or embers could enter the attic.</span></label></li><li><label><input type="checkbox"><span><b>Nothing combustible stored</b> directly against attic vents or under the house.</span></label></li></ul><h2>Walls, windows &amp; skylights</h2><div class="why">Why it matters: radiant heat can break single-pane glass before flame ever touches the house — and a broken window is an open door.</div><ul class="check"><li><label><input type="checkbox"><span><b>Siding is fire-resistant</b> (stucco, fiber-cement, treated wood) and extends from foundation to roofline with no gaps.</span></label></li><li><label><input type="checkbox"><span><b>Windows are dual-pane with tempered glass</b>, especially any window facing vegetation.</span></label></li><li><label><input type="checkbox"><span><b>Skylights are closable</b> and flat glass rather than domed plastic.</span></label></li><li><label><input type="checkbox"><span><b>Weep holes and utility penetrations are sealed or screened.</b></span></label></li></ul><h2>Decks, fences &amp; attachments</h2><div class="why">Why it matters: a wood fence or deck that touches the house is a fuse. Fire follows it right to your wall.</div><ul class="check"><li><label><input type="checkbox"><span><b>Deck boards within 10 feet of the house are non-combustible</b> or fire-rated, with nothing stored underneath.</span></label></li><li><label><input type="checkbox"><span><b>The last 5 feet of any fence that meets the house is metal</b> or masonry — a non-combustible “fuse break.”</span></label></li><li><label><input type="checkbox"><span><b>Patio covers match roofing standards</b> — same rules, same exposure.</span></label></li></ul><h2>Chimney, garage &amp; access</h2><ul class="check"><li><label><input type="checkbox"><span><b>Chimney outlet has a non-flammable spark screen</b> with openings between 3/8&Prime; and 1/2&Prime;.</span></label></li><li><label><input type="checkbox"><span><b>Garage door is weather-stripped</b> so embers can’t blow under, and flammable liquids are stored safely.</span></label></li><li><label><input type="checkbox"><span><b>Your address is visible from the road</b> — engines can’t defend a house they can’t find.</span></label></li><li><label><input type="checkbox"><span><b>Driveway has clearance for emergency vehicles</b> (about 10 feet each side).</span></label></li></ul><div class="callout"><h3>Want this as a printable PDF?</h3>
+<p style="font-size:15px">We'll email you the print version — and if you'd like, Steve will walk your property against it, free.</p>
+<form action="https://formspree.io/f/maewolao" method="POST" class="fsp">
+<input type="hidden" name="_subject" value="Firehawk guide request — Home Hardening Checklist">
+<input type="hidden" name="guide" value="Home Hardening Checklist">
+<input type="email" name="email" placeholder="Email address" required aria-label="Email address">
+<button class="btn btn-green" type="submit">Email me the guide</button></form></div>
+<p class="src">Firehawk guidance is adapted from publicly available fire-safety standards — CAL FIRE and Los Angeles County wildfire home-retrofit guidance, municipal home-hardening programs, and the California Office of the State Fire Marshal's listings of WUI-approved building products — rewritten, condensed, and maintained by Firehawk. It is general education, not a substitute for an on-site assessment.</p></div></main>
+<footer>Firehawk · Extreme Home Resilience · Serving Los Angeles, Ventura &amp; Orange Counties<br>
+<a href="tel:8184024166">818-402-4166</a> · <a href="mailto:steve@thefirehawk.net">steve@thefirehawk.net</a><br>
+<span style="opacity:.7">Concept mockup by Heed Business Solutions · Built to WCAG 2.1 AA accessibility standards</span></footer>
+<script>
+document.querySelectorAll('.check input').forEach(function(c){c.addEventListener('change',update)});
+function update(){var all=document.querySelectorAll('.check input'),done=document.querySelectorAll('.check input:checked');
+var b=document.querySelector('.bar div'),t=document.getElementById('pct');
+if(b){b.style.width=(done.length/all.length*100)+'%'} if(t){t.textContent=done.length+' of '+all.length+' done'}}
+document.querySelectorAll('form.fsp').forEach(function(f){f.addEventListener('submit',function(e){
+e.preventDefault();var d=new FormData(f);
+fetch(f.action,{method:'POST',body:d,headers:{'Accept':'application/json'}}).then(function(r){
+f.innerHTML='<p style="font-weight:800;color:#35621F">✓ On its way — check your inbox shortly.</p>'});});});
+</script></body></html>

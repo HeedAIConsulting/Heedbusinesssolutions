@@ -202,6 +202,44 @@ footer.colophon{border-top:1px solid var(--line);padding:26px 0 60px;font-size:1
       <div class="finding"><div class="big">0</div><p>pages targeting what buyers type: no "home hardening," no "defensible space" page, no city or county pages, no insurance-savings page. Searchers can't land where no page exists.</p></div>
     </div>
     <p style="margin-top:26px">There are also no clear calls to action — no assessment booking, no prominent click-to-call — and menu labels like "Emergency," "Survival," and "The Next Day" make sense once you know the story, but a first-time visitor doesn't yet. None of this is a criticism of the business; it's simply a site built to be looked at, not to be <em>found</em>.</p>
+    <style>
+      .freed{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+      @media(max-width:720px){.freed{grid-template-columns:1fr}}
+      .fcol{border-radius:12px;padding:24px}
+      .fcol.locked{background:var(--bad-bg);border:1px solid var(--line)}
+      .fcol.free{background:var(--surface);border:2px solid var(--ok)}
+      .fcol h3{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;font-size:20px;margin-bottom:10px}
+      .fcol.locked h3{color:var(--bad)} .fcol.free h3{color:var(--ok)}
+      .fcol ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+      .fcol li{font-size:14px;color:var(--ink-soft);padding-left:22px;position:relative}
+      .fcol.locked li::before{content:"✕";position:absolute;left:0;color:var(--bad);font-weight:700}
+      .fcol.free li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+    </style>
+    <h2 style="margin-top:44px">Free the content, and three doors open at once</h2>
+    <p>Everything that makes Firehawk credible already exists — the five areas of focus, the eight-part scope of work, the eaves fire sequence, the checklists and guides. It is just stored as pictures. The rebuild moves it into living text, and that single change pays three ways: <b>Google can rank it, screen readers can speak it, and visitors can search, copy, and share it.</b></p>
+    <div class="freed">
+      <div class="fcol locked">
+        <h3>Today — locked in images</h3>
+        <ul>
+          <li>The five focus areas are five JPEG buttons — invisible to search</li>
+          <li>The entire Scope of Work is eight slide images</li>
+          <li>Checklists and guides are photos of documents, or links that send visitors to CAL FIRE's website</li>
+          <li>Screen readers find almost nothing — an ADA exposure, not just an SEO one</li>
+          <li>Nothing can be quoted, copied, translated, or found</li>
+        </ul>
+      </div>
+      <div class="fcol free">
+        <h3>Rebuilt — living, searchable text</h3>
+        <ul>
+          <li>All five areas written out as real sections with proper headings</li>
+          <li>The full scope in plain words on the homepage's final stop</li>
+          <li>Firehawk-branded guide pages hosted on the site — the authority stays home instead of being sent to a government PDF</li>
+          <li>WCAG 2.1 AA accessibility: semantic structure, alt text on every image, contrast, keyboard navigation, reduced-motion support</li>
+          <li>Every sentence indexable, quotable, and shareable</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:22px"><b>The ADA point deserves its own sentence.</b> Content that lives in images is unreadable to assistive technology, and website-accessibility claims against small California businesses are a real and growing risk under the Unruh Act. The rebuild ships accessible by construction — which protects the business and happens to be the same work that makes Google rank it.</p>
   </div>
 </section>
 
@@ -291,6 +329,7 @@ footer.colophon{border-top:1px solid var(--line);padding:26px 0 60px;font-size:1
       <a class="mock-cta" style="background:var(--char);" href="websites/firehawk/blog/">The 20-article Learning Center →</a>
       <a class="mock-cta" style="background:var(--char);" href="websites/firehawk/social/">20 social post types →</a>
       <a class="mock-cta" style="background:var(--char);" href="websites/firehawk/go/insurance-dropped.html">A sample landing page →</a>
+      <a class="mock-cta" style="background:var(--char);" href="websites/firehawk/guides/home-hardening-checklist.html">The Firehawk authority guides →</a>
     </div>
   </div>
 </section>
@@ -365,6 +404,8 @@ footer.colophon{border-top:1px solid var(--line);padding:26px 0 60px;font-size:1
           <li><b>Hosting, security, and unlimited updates</b> — the site never goes stale again</li>
           <li><b>Analytics</b> (GA4 + Clarity) reported in plain English</li>
           <li><b>Content backend</b> — post and edit yourself anytime</li>
+          <li><b>ADA accessibility</b> — WCAG 2.1 AA structure, alt text, contrast, keyboard navigation</li>
+          <li><b>Firehawk authority guides</b> — your checklists as interactive pages on your site, not links out to CAL FIRE</li>
         </ul>
       </div>
       <div class="plan feat">

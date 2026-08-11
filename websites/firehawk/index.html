@@ -95,6 +95,22 @@ header{position:sticky;top:0;z-index:60;background:rgba(20,44,84,.96);backdrop-f
 .s2{background:var(--leaf-mist)} .s2 .milestone{background:var(--leaf)} .s2 .kicker{color:var(--leaf-deep)} .s2 .svc .tick{background:var(--leaf)} .s2 .statpill .big{color:var(--leaf-deep)}
 .s3{background:var(--night);color:var(--night-ink)} .s3 .milestone{background:var(--flame)} .s3 .kicker{color:var(--flame-glow)} .s3 h3{color:#fff} .s3 p.body{color:var(--night-soft)} .s3 .svc li{color:var(--night-soft)} .s3 .svc li b{color:#fff} .s3 .svc .tick{background:var(--flame)}
 .s3 .statpill{background:rgba(242,106,33,.12);border-color:rgba(242,106,33,.4)} .s3 .statpill .big{color:var(--flame-glow)} .s3 .statpill .cap{color:var(--night-soft)}
+.se{background:#FDF0EC} .se .milestone{background:#C42B1C} .se .kicker{color:#C42B1C} .se .svc .tick{background:#C42B1C} .se .statpill .big{color:#C42B1C}
+.s5{background:#14171C;color:var(--night-ink)} .s5 .milestone{background:#111;border-color:#3A4048} .s5 .kicker{color:#D6DCE4} .s5 h3{color:#fff} .s5 p.body{color:var(--night-soft)}
+.scope-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:20px}
+.scope-grid .sc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px 16px;font-size:14px;font-weight:700;color:#E6ECF4}
+.scope-grid .sc small{display:block;font-weight:600;color:#9DAEC7;font-size:12.5px;margin-top:3px}
+.areas{background:#fff;border-bottom:1px solid var(--line);padding:38px 0 44px}
+.areas h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;text-align:center;font-size:clamp(26px,3.4vw,36px);margin-bottom:6px}
+.areas .sub{text-align:center;color:var(--ink-soft);font-size:15px;max-width:62ch;margin:0 auto 26px}
+.area-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+@media(max-width:860px){.area-row{grid-template-columns:repeat(2,1fr)}}
+.area{border-radius:12px;color:#fff;text-decoration:none;padding:18px 16px;display:flex;flex-direction:column;gap:4px;min-height:112px;transition:transform .13s}
+.area:hover{transform:translateY(-3px)}
+.area .n{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;line-height:1}
+.area b{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:17px}
+.area small{font-size:12px;opacity:.85;font-weight:600}
+.a1{background:#C42B1C}.a2{background:var(--hawk)}.a3{background:#2F7D32}.a4{background:#8E1F1F}.a5{background:#17191D}
 .s4{background:linear-gradient(180deg,#E9F1FA,#F6FAF4)} .s4 .milestone{background:var(--leaf-deep)} .s4 .kicker{color:var(--hawk)} .s4 .svc .tick{background:var(--hawk)} .s4 .statpill .big{color:var(--hawk)}
 .road-end{position:relative;text-align:center;padding:70px 0 90px}
 .road-end .shield{width:120px;height:auto;margin:0 auto 18px;filter:drop-shadow(0 10px 24px rgba(20,44,84,.25))}
@@ -241,6 +257,20 @@ footer a{color:#C7D6EF;text-decoration:none}
   </div>
 </section>
 
+<section class="areas" aria-label="The five Firehawk areas of focus">
+  <div class="wrap">
+    <h2>Five areas of focus. Zero of them hidden in pictures.</h2>
+    <p class="sub">The same five areas from Firehawk's playbook — now as real, searchable, screen-readable text that Google and every visitor can actually use.</p>
+    <div class="area-row">
+      <a class="area a1" href="#stop-e"><span class="n">1</span><b>Emergency</b><small>Be ready before the warning posts</small></a>
+      <a class="area a2" href="#stop3"><span class="n">2</span><b>Survival</b><small>Water Shield &amp; Combat Command</small></a>
+      <a class="area a3" href="#stop4"><span class="n">3</span><b>The Next Day</b><small>Off-grid power &amp; daily resilience</small></a>
+      <a class="area a4" href="#stop1"><span class="n">4</span><b>Maximum Protection</b><small>Home hardening &amp; defensible space</small></a>
+      <a class="area a5" href="#stop5"><span class="n">5</span><b>Scope of Work</b><small>The complete Firehawk plan</small></a>
+    </div>
+  </div>
+</section>
+
 <section class="road-intro" id="road">
   <div class="wrap">
     <div class="eyebrow">Scroll the journey</div>
@@ -256,7 +286,7 @@ footer a{color:#C7D6EF;text-decoration:none}
     <div class="milestone">01</div>
     <div class="wrap">
       <div class="txt">
-        <div class="kicker"><span class="num">STOP 01 · BEFORE THE FIRE</span></div>
+        <div class="kicker"><span class="num">STOP 01 · AREA 4: MAXIMUM PROTECTION</span></div>
         <h3>Harden the home while the sky is still blue.</h3>
         <p class="body">Nine of ten homes lost to wildfire are ignited by wind-blown embers — not the flame front. Ember Defense closes every gap an ember can ride into.</p>
         <ul class="svc">
@@ -278,7 +308,7 @@ footer a{color:#C7D6EF;text-decoration:none}
     <div class="milestone">02</div>
     <div class="wrap">
       <div class="txt">
-        <div class="kicker"><span class="num">STOP 02 · THE PERIMETER</span></div>
+        <div class="kicker"><span class="num">STOP 02 · AREA 4: MAXIMUM PROTECTION · PERIMETER</span></div>
         <h3>Clear the ground the fire needs to reach you.</h3>
         <p class="body">A wildfire only moves where it finds fuel. We design your defensible space with you, then treat the perimeter and vegetation with an organic fire retardant — a Fire Wall that starves the fire before it can run at the house.</p>
         <ul class="svc">
@@ -296,11 +326,34 @@ footer a{color:#C7D6EF;text-decoration:none}
     </div>
   </section>
 
-  <section class="stage s3 rv" id="stop3">
+  <section class="stage se flip rv" id="stop-e">
     <div class="milestone">03</div>
     <div class="wrap">
       <div class="txt">
-        <div class="kicker"><span class="num">STOP 03 · WHEN THE FIRE COMES</span></div>
+        <div class="kicker"><span class="num">STOP 03 · AREA 1: EMERGENCY</span></div>
+        <h3>When the warning posts, you run a checklist — not a crisis.</h3>
+        <p class="body">Red Flag Warnings, evacuation zones, go-bags, the family plan. Firehawk turns emergency preparedness from a scramble into a routine — and publishes its own guides so your household can drill it before the wind starts.</p>
+        <ul class="svc">
+          <li><span class="tick">✓</span><span><b>The Firehawk Wildfire Action Plan</b> — the family plan, the go-bag, the red-flag-day routine.</span></li>
+          <li><span class="tick">✓</span><span><b>Red-flag walkthrough</b> — the seven moves that matter in the last 24 hours.</span></li>
+          <li><span class="tick">✓</span><span><b>If you leave</b> — early-evacuation protocol, and how an equipped home keeps fighting without you.</span></li>
+        </ul>
+        <div class="statpill"><span class="big">7</span><span class="cap">moves on the red-flag-day checklist — every one doable in daylight, none doable in smoke</span></div>
+        <p style="margin-top:16px"><a class="btn btn-green" href="guides/wildfire-action-plan.html">Get the free Action Plan</a></p>
+      </div>
+      <div class="photo-stack">
+        <div class="ph"><img src="assets/wind-embers.jpg" alt="Wind-blown embers streaming past homes during a wildfire"></div>
+        <div class="ph"><img src="assets/guide-gobag.jpg" alt="The Firehawk go-bag checklist"></div>
+        <div class="ph"><img src="assets/hero-2.jpg" alt="Firehawk — Extreme Home Resilience"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage s3 rv" id="stop3">
+    <div class="milestone">04</div>
+    <div class="wrap">
+      <div class="txt">
+        <div class="kicker"><span class="num">STOP 04 · AREA 2: SURVIVAL</span></div>
         <h3>The night it happens, your house fights back.</h3>
         <p class="body">For qualified homes: rotating zones saturate the roof, water jets stand ready to strike embers and breakout flames, and satellite cameras give you a 360° view from wherever you are — all on off-grid battery power, even after evacuation.</p>
         <ul class="svc">
@@ -319,10 +372,10 @@ footer a{color:#C7D6EF;text-decoration:none}
   </section>
 
   <section class="stage s4 flip rv" id="stop4">
-    <div class="milestone">04</div>
+    <div class="milestone">05</div>
     <div class="wrap">
       <div class="txt">
-        <div class="kicker"><span class="num">STOP 04 · THE NEXT DAY</span></div>
+        <div class="kicker"><span class="num">STOP 05 · AREA 3: THE NEXT DAY</span></div>
         <h3>The morning after, your lights are on.</h3>
         <p class="body">You made it through — and now the power is out, sometimes for days. When the grid goes down, the sun is still up: solar with battery backup keeps the essentials running day and night, and keeps your defenses armed.</p>
         <ul class="svc">
@@ -336,6 +389,27 @@ footer a{color:#C7D6EF;text-decoration:none}
         <div class="ph"><img src="assets/res-solar.jpg" alt="Residential solar installation"></div>
         <div class="ph"><img src="assets/battery2.png" alt="Battery backup system"></div>
         <div class="ph"><img src="assets/daily-power.png" alt="Daily off-grid power"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage s5 rv" id="stop5">
+    <div class="milestone">06</div>
+    <div class="wrap">
+      <div class="txt" style="grid-column:1/-1;max-width:none">
+        <div class="kicker"><span class="num">STOP 06 · AREA 5: SCOPE OF WORK</span></div>
+        <h3>The complete Firehawk scope, in plain words.</h3>
+        <p class="body">Eight capabilities, one integrated plan — sized to your property in the free assessment. No mystery slides, no jargon: this is everything Firehawk does.</p>
+        <div class="scope-grid">
+          <div class="sc">Ember Defense<small>Firemesh, vents, eaves, roof</small></div>
+          <div class="sc">Perimeter Protection<small>Defensible-space design</small></div>
+          <div class="sc">Fire Fuel Management<small>Clearing what fire feeds on</small></div>
+          <div class="sc">Water Shield<small>Rotating roof saturation</small></div>
+          <div class="sc">Combat Command<small>Water jets &amp; 360° cameras</small></div>
+          <div class="sc">Backup Power<small>Solar + battery systems</small></div>
+          <div class="sc">Unlimited Range<small>Monitoring from anywhere</small></div>
+          <div class="sc">Daily Resilience<small>Self-sufficiency, every day</small></div>
+        </div>
       </div>
     </div>
   </section>
@@ -411,14 +485,14 @@ footer a{color:#C7D6EF;text-decoration:none}
   <div class="wrap">
     <div class="eyebrow">Free downloads</div>
     <h2>Guides that make you the prepared house on the block</h2>
-    <p>Real checklists and plans — the same ones Steve walks through on assessments. Take them whether you hire us or not.</p>
+    <p>Firehawk writes and hosts its own guides — the same checklists Steve walks on assessments, free to every homeowner, no email required.</p>
     <div class="guide-grid">
-      <div class="gcard"><img src="assets/guide-gobag.jpg" alt=""><div class="m"><h4>The Go-Bag Checklist</h4><button data-guide="Go-Bag Checklist">Download free →</button></div></div>
-      <div class="gcard"><img src="assets/guide-action-plan.jpg" alt=""><div class="m"><h4>Family Wildfire Action Plan</h4><button data-guide="Wildfire Action Plan">Download free →</button></div></div>
-      <div class="gcard"><img src="assets/guide-retrofit.jpg" alt=""><div class="m"><h4>Low-Cost Retrofit List</h4><button data-guide="Low-Cost Retrofit List">Download free →</button></div></div>
-      <div class="gcard"><img src="assets/guide-hardening.jpg" alt=""><div class="m"><h4>Home Hardening Basics</h4><button data-guide="Home Hardening Basics">Download free →</button></div></div>
-      <div class="gcard"><img src="assets/guide-prepared-home.jpg" alt=""><div class="m"><h4>The Wildfire-Prepared Home</h4><button data-guide="Wildfire-Prepared Home">Download free →</button></div></div>
+      <a class="gcard" href="guides/home-hardening-checklist.html"><img src="assets/guide-hardening.jpg" alt=""><div class="m"><h4>The Home Hardening Checklist</h4><span style="color:var(--hawk);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:14px;font-weight:600">Read it here →</span></div></a>
+      <a class="gcard" href="guides/defensible-space-zones.html"><img src="assets/after1.jpg" alt=""><div class="m"><h4>Defensible Space, Zone by Zone</h4><span style="color:var(--hawk);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:14px;font-weight:600">Read it here →</span></div></a>
+      <a class="gcard" href="guides/wildfire-action-plan.html"><img src="assets/guide-action-plan.jpg" alt=""><div class="m"><h4>The Wildfire Action Plan &amp; Go-Bag</h4><span style="color:var(--hawk);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:14px;font-weight:600">Read it here →</span></div></a>
+      <a class="gcard" href="guides/wui-listed-products.html"><img src="assets/guide-prepared-home.jpg" alt=""><div class="m"><h4>What "WUI-Listed" Actually Means</h4><span style="color:var(--hawk);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:14px;font-weight:600">Read it here →</span></div></a>
     </div>
+    <p style="margin-top:18px;font-size:14px;color:var(--ink-soft)"><b>Hosted here, not linked out.</b> Most contractors send you to government PDFs. Firehawk publishes its own guides — interactive, phone-friendly, written for Southern California homes. That is what being the authority looks like.</p>
   </div>
 </section>
 
@@ -439,7 +513,7 @@ footer a{color:#C7D6EF;text-decoration:none}
 
 <section class="about">
   <div class="wrap">
-    <div><img src="assets/superman.jpg" alt="The Firehawk shield — protection is personal"></div>
+    <div><img src="assets/steve.jpg" onerror="this.onerror=null;this.src='assets/superman.jpg'" alt="Steve Hochman, founder of Firehawk"></div>
     <div>
       <div class="eyebrow">Who shows up</div>
       <h2>Steve Hochman answers his own phone.</h2>
@@ -465,7 +539,7 @@ footer a{color:#C7D6EF;text-decoration:none}
   <div class="wrap cols">
     <img src="assets/logo-white.png" alt="Firehawk">
     <div>Serving Los Angeles, Ventura &amp; Orange Counties<br><a href="tel:8184024166">818-402-4166</a> · <a href="mailto:steve@thefirehawk.net">steve@thefirehawk.net</a></div>
-    <div style="opacity:.75">Concept mockup by Heed Business Solutions · Aug 2026</div>
+    <div style="opacity:.75">Built to WCAG 2.1 AA accessibility standards<br>Concept mockup by Heed Business Solutions · Aug 2026</div>
   </div>
 </footer>
 
@@ -475,12 +549,14 @@ footer a{color:#C7D6EF;text-decoration:none}
     <div class="band"><img src="assets/logo-main.png" alt=""><h3 id="poptitle">The 10-Minute Home Wildfire Check</h3></div>
     <div class="bod">
       <p id="popcopy">Walk your own property tonight with the checklist Steve uses on every assessment — and find your three weakest points before the next red flag warning does.</p>
-      <form id="popform">
+      <form id="popform" action="https://formspree.io/f/maewolao" method="POST">
+        <input type="hidden" name="_subject" value="Firehawk demo — checklist request">
+        <input type="hidden" name="source" value="homepage-popup">
         <input type="text" name="name" placeholder="First name" required>
         <input type="email" name="email" placeholder="Email address" required>
         <button class="btn btn-green" type="submit">Send me the checklist</button>
       </form>
-      <p class="fine">One useful email. No spam, ever. Demo form — submissions are not stored.</p>
+      <p class="fine">One useful email. No spam, ever. (Demo: submissions route to Heed Business Solutions.)</p>
     </div>
   </div>
 </div>
@@ -546,8 +622,11 @@ footer a{color:#C7D6EF;text-decoration:none}
   addEventListener('keydown', function(e){ if(e.key==='Escape') closePop(); });
   document.getElementById('popform').addEventListener('submit', function(e){
     e.preventDefault();
-    this.innerHTML = '<p style="font-weight:800;color:var(--leaf-deep);font-size:16px">✓ On its way. Check your inbox in the next few minutes.</p>';
-    localStorage.setItem('fh-pop','1');
+    var f = this;
+    fetch(f.action, {method:'POST', body:new FormData(f), headers:{'Accept':'application/json'}}).finally(function(){
+      f.innerHTML = '<p style="font-weight:800;color:var(--leaf-deep);font-size:16px">✓ On its way. Check your inbox in the next few minutes.</p>';
+      localStorage.setItem('fh-pop','1');
+    });
   });
   if(!reduced){ setTimeout(openPop, 14000); document.addEventListener('mouseleave', function(e){ if(e.clientY < 8) openPop(); }); }
 })();

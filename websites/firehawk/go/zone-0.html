@@ -64,13 +64,15 @@ footer a{color:#C7D6EF}
 <div><h2>What you get</h2><ul><li>First-five-feet audit of walls, decks, and fences</li><li>Hardscape and planting swaps that still look good</li><li>Documentation for insurers and future rules</li></ul>
 <p style="margin-top:22px;color:var(--ink-soft)">Every engagement starts with the free Firehawk Home Assessment — all four stops on the Road to Complete Protection, plus the insurance paperwork. You keep the written plan whether or not you hire us.</p></div>
 <div class="book" id="book"><h3>Talk to Steve about it</h3><div class="sub">15 minutes, no pressure. He answers his own phone.</div>
-<form onsubmit="event.preventDefault();this.style.display='none';this.nextElementSibling.style.display='block';">
-<input type="text" placeholder="Name" required><input type="tel" placeholder="Phone" required>
-<input type="text" value="I want to talk about: What Zone 0 means for my property" aria-label="Topic">
-<select><option>Best time: Morning</option><option>Best time: Afternoon</option><option>Best time: Evening</option></select>
+<form action="https://formspree.io/f/maewolao" method="POST" onsubmit="event.preventDefault();var f=this;fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).finally(function(){f.style.display='none';f.nextElementSibling.style.display='block';});">
+<input type="hidden" name="_subject" value="Firehawk demo — call request: Zone 0 Compliance">
+<input type="hidden" name="landing_page" value="zone-0">
+<input type="text" name="name" placeholder="Name" required><input type="tel" name="phone" placeholder="Phone" required>
+<input type="text" name="topic" value="I want to talk about: What Zone 0 means for my property" aria-label="Topic">
+<select name="best_time"><option>Best time: Morning</option><option>Best time: Afternoon</option><option>Best time: Evening</option></select>
 <button class="btn btn-green" type="submit">Request my call</button></form>
 <p class="ok">✓ Got it — Steve will call you within one business day.</p>
-<p class="fine">Prefer right now? <a href="tel:8184024166">818-402-4166</a> · Demo form — submissions are not stored.</p></div>
+<p class="fine">Prefer right now? <a href="tel:8184024166">818-402-4166</a> · (Demo: submissions route to Heed Business Solutions.)</p></div>
 </div><footer>Firehawk · Extreme Home Resilience · Serving Los Angeles, Ventura &amp; Orange Counties<br>
 <a href="tel:8184024166">818-402-4166</a> · <a href="mailto:steve@thefirehawk.net">steve@thefirehawk.net</a><br>
 <span style="opacity:.7">Concept mockup by Heed Business Solutions · Aug 2026</span></footer></body></html>
