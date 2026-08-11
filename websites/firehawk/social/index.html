@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow"><title>Social Content Board — Firehawk × Heed</title>
+<link rel="icon" type="image/png" href="../assets/logo-main.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--hawk:#1E4FA5;--hawk-deep:#142C54;--hawk-mist:#E8F0FB;--leaf:#4E8B2F;--leaf-deep:#35621F;--leaf-mist:#EDF5E6;
+--flame:#F26A21;--flame-glow:#FF8A47;--night:#0E1622;--paper:#FAFBF9;--ink:#1E2733;--ink-soft:#4E5B6B;--line:#DEE5EE}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Nunito',sans-serif;font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+img{max-width:100%;display:block}
+.disp{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;line-height:1.04;text-wrap:balance}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:13.5px}
+.concept{background:var(--hawk-deep);color:#9FB4D8;font-size:12px;text-align:center;padding:7px 14px;letter-spacing:.07em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif}
+.concept b{color:#fff}
+header{position:sticky;top:0;z-index:60;background:rgba(20,44,84,.96)}
+.nav{display:flex;align-items:center;gap:22px;padding:10px 24px;max-width:1120px;margin:0 auto;color:#fff}
+.nav img{height:40px}
+.nav ul{display:flex;gap:18px;list-style:none;margin-left:auto;font-size:14.5px;font-weight:700}
+.nav a{text-decoration:none;color:#C7D6EF} .nav a:hover{color:#fff}
+.btn{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:16px;padding:12px 22px;border-radius:8px;text-decoration:none;border:0;cursor:pointer}
+.btn-flame{background:var(--flame);color:#fff} .btn-flame:hover{background:var(--flame-glow)}
+.btn-green{background:var(--leaf);color:#fff} .btn-green:hover{background:var(--leaf-deep)}
+footer{background:var(--night);color:#8FA2BF;padding:36px 24px 52px;font-size:13.5px;text-align:center;margin-top:70px}
+footer a{color:#C7D6EF}
+
+.shero{background:var(--hawk-deep);color:#fff;padding:60px 0;text-align:center}
+.shero .eyebrow{color:var(--flame-glow)}
+.shero h1{font-size:clamp(36px,5vw,56px);margin:8px 0 10px}
+.shero p{color:#B9C9E4;max-width:64ch;margin:0 auto}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin:44px auto}
+.scard{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(20,44,84,.08);display:flex;flex-direction:column}
+.tile{aspect-ratio:1/1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.tile .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,22,34,.05) 30%,rgba(14,22,34,.86))}
+.tile.brand{background:linear-gradient(160deg,var(--hawk-deep),var(--hawk))}
+.tile.brand .shade{background:none}
+.tile .logo{position:absolute;top:14px;left:14px;height:40px;background:#fff;border-radius:9px;padding:4px;z-index:2}
+.tile .hook{position:relative;z-index:2;color:#fff;font-weight:800;font-size:19px;line-height:1.3;padding:18px;font-family:'Nunito',sans-serif;text-wrap:balance}
+.tile.brand .hook{font-size:21px}
+.tile .accent{position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,var(--flame),var(--leaf));z-index:3}
+.split2{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr}
+.split2 img{width:100%;height:100%;object-fit:cover}
+.split2 .lab{position:absolute;top:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:14px;letter-spacing:.1em;color:#fff;background:rgba(14,22,34,.75);padding:3px 10px;border-radius:6px}
+.smeta{padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.smeta .type{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.smeta .type b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:17px;color:var(--hawk-deep)}
+.smeta .plat{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--leaf-deep)}
+.smeta p{font-size:13px;color:var(--ink-soft)}
+.note{max-width:760px;margin:0 auto;background:var(--hawk-mist);border:1px solid #C9DAF2;border-radius:12px;padding:16px 20px;font-size:14px;color:var(--ink-soft)}
+
+</style></head><body>
+<div class="concept">Concept mockup — prepared for Steve Hochman by <b>Heed Business Solutions</b> · not the live site</div>
+<header><div class="nav">
+<a href="../"><img src="../assets/logo-white.png" alt="Firehawk"></a>
+<ul><li><a href="../#road">The Road</a></li><li><a href="../#insurance">Insurance</a></li><li><a href="../blog/">Learn</a></li><li><a href="../social/">Social</a></li></ul>
+<a class="btn btn-flame" href="tel:8184024166">818-402-4166</a>
+</div></header>
+
+<section class="shero"><div class="wrap"><div class="eyebrow">Distribution demo — 20 post types</div>
+<h1 class="disp">A month of Firehawk, everywhere your neighbors scroll</h1>
+<p>Twenty different kinds of posts — stats, stories, checklists, polls, before-and-afters — every one on-brand, every one pointing back to a call with Steve. This is the content engine we run for MVP Law, Chris Gomberg, and Lourdes, built for Firehawk.</p></div></section>
+<div class="wrap"><div class="sgrid"><div class="scard"><div class="tile"><img class="bgimg" src="../assets/embers.jpg" alt=""><div class="shade"></div><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">90% of homes lost to wildfire ignite from embers — not flames.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>01 · Stat Shock</b><span class="plat">Facebook / Instagram</span></div><p>Embers travel a mile ahead of the fire. Your gutters, vents and eaves are the front line. Free assessment: link in bio. #WildfireSeason #HomeHardening</p></div></div><div class="scard"><div class="tile brand"><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">MYTH: The fire front burns houses down. FACT: Flying embers do.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>02 · Myth vs. Fact</b><span class="plat">Instagram carousel</span></div><p>Slide series busting the 5 biggest wildfire myths — ending with what actually works.</p></div></div><div class="scard"><div class="tile brand"><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">Red Flag Warning? Do these 7 things TODAY.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>03 · Checklist</b><span class="plat">Instagram / Nextdoor</span></div><p>1. Clear the first 5 ft · 2. Charge batteries · 3. Wet the mulch · 4. Close vents · 5. Pack the go-bag · 6. Photos for insurance · 7. Park nose-out. Save this post.</p></div></div><div class="scard"><div class="tile"><div class="split2"><span class="lab" style="left:12px">Before</span><span class="lab" style="right:12px">After</span><img src="../assets/perimeter-before.jpg" alt=""><img src="../assets/after1.jpg" alt=""></div><div class="shade"></div><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">One afternoon. One Fire Wall. A perimeter a fire can't feed on.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>04 · Before / After</b><span class="plat">Facebook / GBP</span></div><p>Organic retardant treatment on a Woodland Hills hillside — before and after.</p></div></div><div class="scard"><div class="tile"><img class="bgimg" src="../assets/firemesh.jpg" alt=""><div class="shade"></div><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">This week: firemesh on every gutter, vent, and eave in Tarzana.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>05 · Job of the Week</b><span class="plat">Facebook / Instagram</span></div><p>Every gap an ember can ride into, closed in a day. Documented for the homeowner's insurer.</p></div></div><div class="scard"><div class="tile brand"><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">Your premium has a discount hiding in it.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>06 · Insurance Tip</b><span class="plat">LinkedIn / Facebook</span></div><p>California's Safer from Wildfires rules require discounts for documented hardening — up to 14.6% off the wildfire portion. We do the work AND the paperwork.</p></div></div><div class="scard"><div class="tile brand"><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">“Will hardening really lower my insurance bill?”</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>07 · FAQ Friday</b><span class="plat">Instagram / Facebook</span></div><p>Short answer: documented hardening can. Long answer in this week's article — link in bio. Drop your questions below for next Friday.</p></div></div><div class="scard"><div class="tile"><img class="bgimg" src="../assets/hero-fight.jpg" alt=""><div class="shade"></div><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">The night the ridge glowed orange, the Hendersons' sprinklers came on by themselves.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>08 · Neighbor Story</b><span class="plat">Nextdoor</span></div><p>A true story from a qualified-home install. This is what Combat Command means.</p></div></div><div class="scard"><div class="tile brand"><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">California's 5-foot rule is coming. Early movers pay less.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>09 · Zone 0 Alert</b><span class="plat">Facebook / Nextdoor</span></div><p>Zone 0 = the five feet around your walls. Get compliant before it's a mandate with a deadline.</p></div></div><div class="scard"><div class="tile"><img class="bgimg" src="../assets/wind-embers.jpg" alt=""><div class="shade"></div><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">Santa Ana season starts in 6 weeks. Your house knows it before you do.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>10 · Seasonal</b><span class="plat">All platforms</span></div><p>September checklist drops Monday. Follow so you don't miss it.</p></div></div><div class="scard"><div class="tile"><img class="bgimg" src="../assets/guide-gobag.jpg" alt=""><div class="shade"></div><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">FREE: the Go-Bag Checklist your family will actually use.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>11 · Guide Download</b><span class="plat">Facebook / Instagram</span></div><p>The same checklist Steve hands out on every assessment. Comment GOBAG and we'll DM it.</p></div></div><div class="scard"><div class="tile"><img class="bgimg" src="../assets/superman.jpg" alt=""><div class="shade"></div><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">The guy who answers the phone is the guy on your roof.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>12 · Meet Steve</b><span class="plat">Instagram / Facebook</span></div><p>Firehawk is Steve Hochman — West Valley local, chamber member, wildfire nerd. Say hi at the next chamber breakfast.</p></div></div><div class="scard"><div class="tile"><img class="bgimg" src="../assets/watershield-roof.jpg" alt=""><div class="shade"></div><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">WATCH: a roof soak itself while the family is 40 miles away.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>13 · Video Teaser</b><span class="plat">Instagram Reels / TikTok</span></div><p>30-second Water Shield demo. Full walkthrough on the site.</p></div></div><div class="scard"><div class="tile brand"><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">POLL: What's your biggest wildfire worry?</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>14 · Poll</b><span class="plat">LinkedIn / Facebook</span></div><p>🔥 Embers on the roof · 🌿 The brush next door · 📄 Insurance · 🔌 Losing power. Vote below — next month's content covers the winner.</p></div></div><div class="scard"><div class="tile brand"><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">Your gutter guard has one more job than you think.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>15 · Did You Know</b><span class="plat">Instagram / GBP</span></div><p>Ember-resistant mesh doesn't just stop leaves — it closes the #1 entry point embers use to reach your attic.</p></div></div><div class="scard"><div class="tile brand"><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">Where should YOUR protection start? 3 questions, 60 seconds.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>16 · Quiz Teaser</b><span class="plat">Facebook / Instagram</span></div><p>Take the Firehawk starting-point quiz — no email required. Link in bio.</p></div></div><div class="scard"><div class="tile"><img class="bgimg" src="../assets/house-of-fire.jpg" alt=""><div class="shade"></div><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">Another hillside fire this week. Here's the 5-minute check to do tonight.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>17 · News React</b><span class="plat">LinkedIn / Facebook</span></div><p>Timely, useful, zero fearmongering — posted within 24h of local fire news.</p></div></div><div class="scard"><div class="tile brand"><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">“Our insurer re-quoted us the month after Firehawk finished.”</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>18 · Testimonial</b><span class="plat">GBP / Facebook</span></div><p>Real client outcomes, posted with permission, tied to the exact service that earned them.</p></div></div><div class="scard"><div class="tile"><img class="bgimg" src="../assets/res-solar.jpg" alt=""><div class="shade"></div><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">When the grid goes down, the sun is still up.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>19 · Solar Sunday</b><span class="plat">Instagram / Facebook</span></div><p>Off-Grid Resilience in one photo: this home ran 3 days on sunshine after the last PSPS shutoff.</p></div></div><div class="scard"><div class="tile brand"><img class="logo" src="../assets/logo-main.png" alt="Firehawk"><div class="hook">Proud member: West Valley · Warner Center Chamber of Commerce.</div><div class="accent"></div></div>
+<div class="smeta"><div class="type"><b>20 · Chamber Shoutout</b><span class="plat">LinkedIn / Facebook</span></div><p>Local business protecting local homes — see us at the monthly breakfast at Woodland Hills Country Club.</p></div></div></div>
+<div class="note"><b>About this board:</b> visuals here are working comps built from Firehawk's own photos and logo. In the live program each post ships with final art, platform-native sizing, scheduled distribution (Facebook, Instagram, LinkedIn, Nextdoor, Google Business), and monthly reporting.</div></div>
+<footer>Firehawk · Extreme Home Resilience · Serving Los Angeles, Ventura &amp; Orange Counties<br>
+<a href="tel:8184024166">818-402-4166</a> · <a href="mailto:steve@thefirehawk.net">steve@thefirehawk.net</a><br>
+<span style="opacity:.7">Concept mockup by Heed Business Solutions · Aug 2026</span></footer></body></html>
