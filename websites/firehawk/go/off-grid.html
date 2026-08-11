@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow"><title>Off-Grid Resilience — Firehawk</title>
+<link rel="icon" type="image/png" href="../assets/logo-main.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--hawk:#1E4FA5;--hawk-deep:#142C54;--hawk-mist:#E8F0FB;--leaf:#4E8B2F;--leaf-deep:#35621F;--leaf-mist:#EDF5E6;
+--flame:#F26A21;--flame-glow:#FF8A47;--night:#0E1622;--paper:#FAFBF9;--ink:#1E2733;--ink-soft:#4E5B6B;--line:#DEE5EE}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Nunito',sans-serif;font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+img{max-width:100%;display:block}
+.disp{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;line-height:1.04;text-wrap:balance}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:13.5px}
+.concept{background:var(--hawk-deep);color:#9FB4D8;font-size:12px;text-align:center;padding:7px 14px;letter-spacing:.07em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif}
+.concept b{color:#fff}
+header{position:sticky;top:0;z-index:60;background:rgba(20,44,84,.96)}
+.nav{display:flex;align-items:center;gap:22px;padding:10px 24px;max-width:1120px;margin:0 auto;color:#fff}
+.nav img{height:40px}
+.nav ul{display:flex;gap:18px;list-style:none;margin-left:auto;font-size:14.5px;font-weight:700}
+.nav a{text-decoration:none;color:#C7D6EF} .nav a:hover{color:#fff}
+.btn{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:16px;padding:12px 22px;border-radius:8px;text-decoration:none;border:0;cursor:pointer}
+.btn-flame{background:var(--flame);color:#fff} .btn-flame:hover{background:var(--flame-glow)}
+.btn-green{background:var(--leaf);color:#fff} .btn-green:hover{background:var(--leaf-deep)}
+footer{background:var(--night);color:#8FA2BF;padding:36px 24px 52px;font-size:13.5px;text-align:center;margin-top:70px}
+footer a{color:#C7D6EF}
+
+.lhero{background:var(--night);color:#fff;position:relative;overflow:hidden}
+.lhero .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3}
+.lhero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,22,34,.45),rgba(14,22,34,.92))}
+.lhero .wrap{position:relative;padding:84px 24px;text-align:center}
+.lhero .eyebrow{color:var(--flame-glow)}
+.lhero h1{font-size:clamp(40px,6vw,72px);color:#fff;margin:10px 0 14px}
+.lhero p{color:#B9C9E4;max-width:56ch;margin:0 auto 28px;font-size:18.5px}
+.lbody{max-width:880px;margin:56px auto;padding:0 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+@media(max-width:800px){.lbody{grid-template-columns:1fr}}
+.lbody h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:30px;margin-bottom:14px}
+.lbody ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.lbody li{display:flex;gap:12px;color:var(--ink-soft)}
+.lbody li::before{content:"✓";color:#fff;background:var(--leaf);border-radius:50%;width:22px;height:22px;flex:0 0 auto;display:grid;place-items:center;font-size:12px;font-weight:800;margin-top:2px}
+.book{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:0 14px 40px rgba(20,44,84,.12);position:sticky;top:80px}
+.book h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:24px;color:var(--hawk-deep);margin-bottom:4px}
+.book .sub{font-size:13.5px;color:var(--ink-soft);margin-bottom:16px}
+.book form{display:flex;flex-direction:column;gap:10px}
+.book input,.book select{font-family:'Nunito',sans-serif;font-size:15px;padding:12px 15px;border:2px solid var(--line);border-radius:10px;width:100%}
+.book input:focus,.book select:focus{outline:none;border-color:var(--hawk)}
+.book .fine{font-size:11.5px;color:#94A1B0;margin-top:8px}
+.book .ok{display:none;font-weight:800;color:var(--leaf-deep)}
+
+</style></head><body>
+<div class="concept">Concept mockup — prepared for Steve Hochman by <b>Heed Business Solutions</b> · not the live site</div>
+<header><div class="nav">
+<a href="../"><img src="../assets/logo-white.png" alt="Firehawk"></a>
+<ul><li><a href="../#road">The Road</a></li><li><a href="../#insurance">Insurance</a></li><li><a href="../blog/">Learn</a></li><li><a href="../social/">Social</a></li></ul>
+<a class="btn btn-flame" href="tel:8184024166">818-402-4166</a>
+</div></header>
+
+<section class="lhero"><img class="bgimg" src="../assets/res-solar.jpg" alt=""><div class="veil"></div>
+<div class="wrap"><div class="eyebrow">Off-Grid Resilience · Los Angeles · Ventura · Orange</div>
+<h1 class="disp">When the grid goes down, the sun is still up.</h1><p>Solar with battery backup keeps the essentials on for days — and keeps your defenses armed when lines are down.</p>
+<a class="btn btn-flame" href="#book">Schedule a call with Steve</a></div></section>
+<div class="lbody">
+<div><h2>What you get</h2><ul><li>Solar + battery sized to your real loads</li><li>Essentials on through any outage, fire or not</li><li>Keeps cameras and water systems live</li></ul>
+<p style="margin-top:22px;color:var(--ink-soft)">Every engagement starts with the free Firehawk Home Assessment — all four stops on the Road to Complete Protection, plus the insurance paperwork. You keep the written plan whether or not you hire us.</p></div>
+<div class="book" id="book"><h3>Talk to Steve about it</h3><div class="sub">15 minutes, no pressure. He answers his own phone.</div>
+<form onsubmit="event.preventDefault();this.style.display='none';this.nextElementSibling.style.display='block';">
+<input type="text" placeholder="Name" required><input type="tel" placeholder="Phone" required>
+<input type="text" value="I want to talk about: What off-grid backup costs for my home" aria-label="Topic">
+<select><option>Best time: Morning</option><option>Best time: Afternoon</option><option>Best time: Evening</option></select>
+<button class="btn btn-green" type="submit">Request my call</button></form>
+<p class="ok">✓ Got it — Steve will call you within one business day.</p>
+<p class="fine">Prefer right now? <a href="tel:8184024166">818-402-4166</a> · Demo form — submissions are not stored.</p></div>
+</div><footer>Firehawk · Extreme Home Resilience · Serving Los Angeles, Ventura &amp; Orange Counties<br>
+<a href="tel:8184024166">818-402-4166</a> · <a href="mailto:steve@thefirehawk.net">steve@thefirehawk.net</a><br>
+<span style="opacity:.7">Concept mockup by Heed Business Solutions · Aug 2026</span></footer></body></html>
