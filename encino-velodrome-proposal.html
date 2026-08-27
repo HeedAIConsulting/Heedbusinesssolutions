@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/images/logos/image_e43fb0dc-dabb-48f3-a17a-817ce837ff65.png" />
+<title>Encino Velodrome × Heed Business Solutions — Social Media Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+  :root {
+    --ground: #EFEBE1;
+    --surface: #F8F5EC;
+    --card: #FBF9F2;
+    --line: #D9D2C1;
+    --ink: #20242E;
+    --muted: #6E6A5B;
+    --sunset: #D14E1A;
+    --sprinter: #B0372A;
+    --stayer: #33628C;
+    --gold: #DFA33A;
+    --shadow: rgba(32, 36, 46, 0.9);
+    --chip: #EAE4D4;
+    --logo-uri: url("/images/encino-velodrome/encino-logo.png");
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #12151D;
+      --surface: #191D27;
+      --card: #1E232F;
+      --line: #313747;
+      --ink: #ECE7D9;
+      --muted: #A09D8D;
+      --sunset: #F06A31;
+      --sprinter: #D95445;
+      --stayer: #6E9CC4;
+      --gold: #E5B155;
+      --shadow: rgba(0, 0, 0, 0.85);
+      --chip: #262c3a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #12151D;
+    --surface: #191D27;
+    --card: #1E232F;
+    --line: #313747;
+    --ink: #ECE7D9;
+    --muted: #A09D8D;
+    --sunset: #F06A31;
+    --sprinter: #D95445;
+    --stayer: #6E9CC4;
+    --gold: #E5B155;
+    --shadow: rgba(0, 0, 0, 0.85);
+    --chip: #262c3a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+  a { color: var(--sunset); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--stayer); outline-offset: 2px; }
+
+  .display {
+    font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.95;
+    text-wrap: balance;
+  }
+  .mono { font-family: "IBM Plex Mono", "Courier New", monospace; }
+  .eyebrow {
+    font-family: "IBM Plex Mono", "Courier New", monospace;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 10px; height: 10px;
+    background: var(--sunset);
+    flex: none;
+  }
+
+  /* Track line divider: black measurement line, red sprinter's line, blue stayer band */
+  .trackline { display: flex; flex-direction: column; gap: 4px; margin: 0; }
+  .trackline span { display: block; height: 3px; }
+  .trackline .tl-black { background: var(--ink); }
+  .trackline .tl-red { background: var(--sprinter); }
+  .trackline .tl-blue { background: var(--stayer); height: 9px; }
+
+  /* Header bar */
+  header.top {
+    border-bottom: 2px solid var(--ink);
+    background: var(--surface);
+  }
+  header.top .wrap {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 14px; padding-bottom: 14px; gap: 16px; flex-wrap: wrap;
+  }
+  .wordmark { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+  .wordmark b { color: var(--sunset); }
+  .top-tag { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+
+  /* Hero */
+  .hero { position: relative; overflow: hidden; background: var(--surface); }
+  .hero .wrap { position: relative; padding-top: 72px; padding-bottom: 64px; }
+  .hero-banking {
+    position: absolute; right: -140px; top: -40px; width: 560px; height: 150%;
+    transform: rotate(-24deg);
+    background:
+      linear-gradient(to bottom,
+        transparent 0 34%,
+        var(--stayer) 34% 37%,
+        transparent 37% 46%,
+        var(--sprinter) 46% 47.5%,
+        transparent 47.5% 56%,
+        var(--ink) 56% 57.5%,
+        transparent 57.5%);
+    opacity: 0.18;
+    pointer-events: none;
+  }
+  h1.display { font-size: clamp(56px, 10vw, 124px); margin: 18px 0 10px; }
+  h1 .pop { color: var(--sunset); display: block; }
+  .lede { max-width: 62ch; font-size: 18px; margin: 18px 0 0; }
+  .lede b { font-weight: 600; }
+  .hero-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+  .chip {
+    font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500;
+    background: var(--chip); border: 1.5px solid var(--ink);
+    padding: 6px 12px; letter-spacing: 0.04em;
+  }
+
+  /* Stat strip */
+  .stats { background: var(--ink); color: var(--ground); }
+  .stats .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+  .stat { padding: 26px 20px; border-left: 1px solid color-mix(in srgb, var(--ground) 22%, transparent); }
+  .stat:first-child { border-left: none; }
+  .stat .n { font-family: "Anton", Impact, sans-serif; font-size: 44px; line-height: 1; color: var(--gold); }
+  .stat .l { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 8px; opacity: 0.85; }
+
+  /* Sections */
+  section { padding: 72px 0 8px; }
+  .sec-head { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; margin-bottom: 8px; }
+  h2.display { font-size: clamp(34px, 5vw, 54px); margin: 10px 0 6px; }
+  .sec-note { color: var(--muted); max-width: 62ch; margin: 0 0 34px; }
+  .sec-note b { color: var(--ink); font-weight: 600; }
+
+  /* Cards */
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 22px; }
+  .panel {
+    background: var(--card); border: 2px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--shadow);
+    padding: 24px 22px;
+  }
+  .panel h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; letter-spacing: 0.01em; }
+  .panel p { margin: 0; color: var(--muted); font-size: 15px; }
+  .panel .k {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--sunset);
+    display: block; margin-bottom: 10px;
+  }
+
+  /* Pillars */
+  .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 14px; margin-top: 26px; }
+  .pillar { border: 2px solid var(--ink); background: var(--surface); padding: 16px; box-shadow: 4px 4px 0 var(--shadow); }
+  .pillar .name { font-family: "Anton", Impact, sans-serif; text-transform: uppercase; font-size: 20px; letter-spacing: 0.02em; }
+  .pillar .share { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--sunset); font-weight: 600; margin: 2px 0 8px; }
+  .pillar p { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+  .pillar[data-line="red"] { border-top: 8px solid var(--sprinter); }
+  .pillar[data-line="blue"] { border-top: 8px solid var(--stayer); }
+  .pillar[data-line="gold"] { border-top: 8px solid var(--gold); }
+  .pillar[data-line="ink"] { border-top: 8px solid var(--ink); }
+  .pillar[data-line="sunset"] { border-top: 8px solid var(--sunset); }
+
+  /* Post mockups */
+  .posts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 10px; }
+  .post-block { display: flex; flex-direction: column; gap: 16px; }
+  .post-label { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .post-num { font-family: "Anton", Impact, sans-serif; font-size: 22px; color: var(--sunset); }
+  .fmt {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    border: 1.5px solid var(--ink); background: var(--chip); padding: 4px 9px;
+  }
+  .phone {
+    background: var(--card); border: 2px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--shadow);
+  }
+  .ig-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px; }
+  .avatar {
+    width: 36px; height: 36px; border-radius: 50%; flex: none;
+    background: #FFFFFF;
+    border: 2px solid var(--ink);
+    background-image: var(--logo-uri);
+    background-size: 130%;
+    background-position: center 20%;
+    background-repeat: no-repeat;
+  }
+  .ig-head .who { line-height: 1.25; }
+  .ig-head .u { font-weight: 700; font-size: 14px; }
+  .ig-head .loc { font-size: 12px; color: var(--muted); }
+  .ig-img { position: relative; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); overflow: hidden; }
+  .ig-img img.ph { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .ig-img.sq { aspect-ratio: 1 / 1; }
+  .credit-tag {
+    position: absolute; left: 10px; bottom: 10px;
+    font-family: "IBM Plex Mono", monospace; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: rgba(18, 21, 29, 0.78); color: #ECE7D9;
+    padding: 4px 8px;
+  }
+  .logo-chip {
+    position: absolute; right: 10px; bottom: 10px;
+    width: 64px; height: 46px;
+    background-color: #FFFFFF;
+    background-image: var(--logo-uri);
+    background-size: 86%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(18,21,29,0.35);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+  }
+  .archival {
+    aspect-ratio: 1 / 1;
+    background: #E9E2CE;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .archival img.pc {
+    width: 88%; height: auto;
+    box-shadow: 0 6px 18px rgba(20, 18, 10, 0.35);
+    transform: rotate(-1.2deg);
+  }
+  .ig-actions { display: flex; gap: 14px; padding: 12px 14px 4px; }
+  .ig-actions svg { width: 22px; height: 22px; stroke: var(--ink); fill: none; stroke-width: 1.8; }
+  .ig-actions .spacer { flex: 1; }
+  .ig-cap { padding: 4px 14px 16px; font-size: 13.5px; line-height: 1.55; }
+  .ig-cap .u { font-weight: 700; }
+  .ig-cap .tags { color: var(--stayer); }
+  .why { border-left: 4px solid var(--sunset); padding: 2px 0 2px 14px; font-size: 14px; color: var(--muted); }
+  .why b { color: var(--ink); }
+
+  /* Carousel (Track School) */
+  .caro { position: relative; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+  .caro-track {
+    display: flex; overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .caro-track::-webkit-scrollbar { display: none; }
+  .slide {
+    flex: none; width: 100%; aspect-ratio: 4 / 5;
+    scroll-snap-align: start;
+    background: #191C26; color: #EDE8DA;
+    padding: 26px 24px 56px;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .slide .s-eyebrow {
+    font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase; color: #E5B155;
+  }
+  .slide .s-big { font-family: "Anton", Impact, sans-serif; text-transform: uppercase; line-height: 0.95; }
+  .slide p { font-size: 14.5px; line-height: 1.55; color: #C9C4B4; margin: 10px 0 0; }
+  .slide p b { color: #EDE8DA; }
+  .slide .s-foot {
+    position: absolute; left: 24px; right: 24px; bottom: 14px;
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 10px;
+  }
+  .slide .s-count { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: #8B8878; }
+  .slide .s-lines { display: flex; flex-direction: column; gap: 3px; flex: 1; margin: 0 14px 4px; }
+  .slide .s-lines i { display: block; height: 2px; }
+  .slide .s-logo {
+    width: 54px; height: 38px; flex: none;
+    background-color: #FFFFFF;
+    background-image: var(--logo-uri);
+    background-size: 86%; background-position: center; background-repeat: no-repeat;
+    border: 1px solid rgba(0,0,0,0.3);
+  }
+  .rec-row { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: baseline; margin-top: 14px; }
+  .rec-row .t { font-family: "Anton", Impact, sans-serif; font-size: 44px; color: #F06A31; }
+  .rec-row .t.w { color: #E5B155; }
+  .rec-row .d { font-size: 13px; color: #C9C4B4; line-height: 1.45; }
+  .rec-row .d b { color: #EDE8DA; }
+  .caro-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 2px solid #EDE8DA; background: rgba(18, 21, 29, 0.65);
+    color: #EDE8DA; font-size: 17px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .caro-btn.prev { left: 10px; }
+  .caro-btn.next { right: 10px; }
+  .caro-dots { position: absolute; bottom: 62px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px; pointer-events: none; }
+  .caro-dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(237, 232, 218, 0.35); }
+  .caro-dots i.on { background: #F06A31; }
+
+  /* Mini oval diagram on slide 2 */
+  .oval-diag { margin-top: 16px; }
+  .oval-diag svg { width: 100%; height: auto; display: block; }
+  .oval-cap { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #8B8878; margin-top: 6px; }
+
+  /* Event card */
+  .event-card {
+    aspect-ratio: 4 / 5;
+    background: #191C26; color: #EDE8DA;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .event-card .ev-photo { position: relative; flex: 0 0 52%; overflow: hidden; }
+  .event-card .ev-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .event-card .ev-photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(25,28,38,0.05) 55%, rgba(25,28,38,0.92) 100%);
+  }
+  .event-card .ev-body { flex: 1; padding: 6px 22px 18px; display: flex; flex-direction: column; position: relative; }
+  .event-card .ev-kicker { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #E5B155; }
+  .event-card .ev-title { font-family: "Anton", Impact, sans-serif; text-transform: uppercase; font-size: 34px; line-height: 0.98; margin-top: 6px; }
+  .event-card .ev-title em { font-style: normal; color: #F06A31; }
+  .event-card .ev-meta { margin-top: auto; display: flex; flex-direction: column; gap: 5px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: #C9C4B4; }
+  .event-card .ev-meta b { color: #EDE8DA; font-weight: 600; }
+  .event-card .ev-lines { display: flex; gap: 4px; flex-direction: column; margin-top: 12px; }
+  .event-card .ev-lines i { height: 2px; display: block; }
+  .event-card .ev-logo {
+    position: absolute; right: 14px; top: 14px;
+    width: 66px; height: 48px;
+    background-color: #FFFFFF;
+    background-image: var(--logo-uri);
+    background-size: 86%; background-position: center; background-repeat: no-repeat;
+    border: 1px solid rgba(0,0,0,0.3);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+
+  /* Reels storyboards */
+  .reels { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+  .reel { background: var(--card); border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--shadow); padding: 22px; }
+  .reel h3 { margin: 10px 0 4px; font-size: 20px; }
+  .reel .hookline { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
+  .beat { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 14px; }
+  .beat .t { font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 600; color: var(--sunset); padding-top: 2px; }
+  .beat p { margin: 0; color: var(--muted); }
+  .beat p b { color: var(--ink); }
+
+  /* Week table */
+  .tablewrap { overflow-x: auto; border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--shadow); background: var(--card); }
+  table.week { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px; }
+  table.week th {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.14em; text-align: left;
+    background: var(--ink); color: var(--ground); padding: 12px 16px;
+  }
+  table.week td { padding: 13px 16px; border-top: 1px solid var(--line); vertical-align: top; }
+  table.week td.day { font-family: "Anton", Impact, sans-serif; text-transform: uppercase; font-size: 16px; letter-spacing: 0.04em; white-space: nowrap; }
+  table.week td.sched { color: var(--muted); font-family: "IBM Plex Mono", monospace; font-size: 12.5px; }
+  table.week td .pill {
+    display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 7px; margin-right: 6px;
+    border: 1.5px solid var(--ink); background: var(--chip);
+  }
+
+  /* Phases */
+  .phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+  .phase { background: var(--card); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--shadow); padding: 24px 22px; }
+  .phase .ph-num { font-family: "Anton", Impact, sans-serif; font-size: 40px; color: var(--sunset); line-height: 1; }
+  .phase h3 { margin: 10px 0 2px; font-size: 19px; }
+  .phase .span { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .phase ul { margin: 12px 0 0; padding: 0 0 0 18px; color: var(--muted); font-size: 14.5px; }
+  .phase li { margin: 7px 0; }
+  .phase li b { color: var(--ink); font-weight: 600; }
+
+  .kpis { margin-top: 30px; border: 2px solid var(--ink); background: var(--surface); box-shadow: 6px 6px 0 var(--shadow); padding: 20px 24px; }
+  .kpis .k { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sunset); }
+  .kpis ul { display: flex; flex-wrap: wrap; gap: 8px 26px; list-style: square; margin: 10px 0 6px; padding-left: 20px; font-size: 15px; }
+  .kpis .fine { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+
+  /* Offer */
+  .offer { background: var(--ink); color: var(--ground); border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--sunset); padding: 34px 30px; }
+  .offer h2 { color: var(--ground); margin-top: 0; }
+  .offer .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px 34px; }
+  .offer ul { margin: 8px 0 0; padding-left: 20px; font-size: 15px; line-height: 1.7; }
+  .offer li::marker { color: var(--gold); }
+  .offer .cta {
+    margin-top: 26px; padding-top: 20px; border-top: 1px solid color-mix(in srgb, var(--ground) 25%, transparent);
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .offer .cta .big { font-family: "Anton", Impact, sans-serif; font-size: 24px; text-transform: uppercase; letter-spacing: 0.02em; }
+  .offer .cta .contact { font-family: "IBM Plex Mono", monospace; font-size: 13px; }
+  .offer .cta .contact a { color: var(--gold); }
+
+  footer { padding: 46px 0 60px; }
+  footer .fine { font-size: 12.5px; color: var(--muted); max-width: 76ch; line-height: 1.7; }
+  footer .fine b { color: var(--ink); }
+
+  @media (max-width: 640px) {
+    section { padding-top: 54px; }
+    .hero .wrap { padding-top: 48px; padding-bottom: 44px; }
+    .stat { padding: 18px 16px; }
+    .stat .n { font-size: 34px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .phone { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+    .phone:hover { transform: translate(-2px, -2px); box-shadow: 12px 12px 0 var(--shadow); }
+    .caro-track { scroll-behavior: smooth; }
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="wordmark">HEED BUSINESS SOLUTIONS <b>×</b> ENCINO VELODROME</div>
+    <div class="top-tag">Proposal draft · August 2026 · Confidential, for the board</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-banking" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Social media growth proposal</p>
+    <h1 class="display">Fill the <span class="pop">grandstand.</span></h1>
+    <p class="lede">The Encino Velodrome is one of the great hiding-in-plain-sight stories in Los Angeles sports: a steep-banked 250-meter concrete oval in the Sepulveda Basin, built by volunteers for the 1961 season and still run by volunteers today. <b>Heed Business Solutions proposes to take over and run the Velodrome's social media</b>, with one goal: more riders on the track, more people at the rail, and more fuel for the rebuild.</p>
+    <div class="hero-meta">
+      <span class="chip">Prepared for Vinh, Roger and the Encino Velodrome board</span>
+      <span class="chip">By Michael Bowers · Heed Business Solutions</span>
+    </div>
+  </div>
+</div>
+
+<div class="trackline" aria-hidden="true"><span class="tl-black"></span><span class="tl-red"></span><span class="tl-blue"></span></div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n">1961</div><div class="l">First season raced</div></div>
+    <div class="stat"><div class="n">250 m</div><div class="l">Outdoor concrete oval</div></div>
+    <div class="stat"><div class="n">$10</div><div class="l">A training session</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">Volunteer-run nonprofit</div></div>
+  </div>
+</div>
+
+<section id="opportunity">
+  <div class="wrap">
+    <p class="eyebrow">01 · Why now</p>
+    <h2 class="display">A national-caliber story, told at club volume</h2>
+    <p class="sec-note">This track hosted the <b>1965 and 1968 US National Championships</b>, the <b>1968 US Olympic Trials</b>, and the <b>1972 and 1973 Grand Prix of the United States</b> on ABC television. Most of the Valley drives past it without knowing it exists. That gap between the story and its reach is exactly what social media is for.</p>
+    <div class="grid3">
+      <div class="panel">
+        <span class="k">The secret spot</span>
+        <h3>LA loves discovering places like this</h3>
+        <p>A 65-year-old concrete velodrome behind a chain-link fence is precisely the kind of place LA content thrives on. Real banking, real motorpacing, no-brakes track bikes, and a $10 price of entry make it endlessly shareable.</p>
+      </div>
+      <div class="panel">
+        <span class="k">Built-in shot list</span>
+        <h3>The calendar already makes the content</h3>
+        <p>Training six days a week, free junior sessions on Thursdays, Keirin drills on Saturday mornings, time trials and race days through the season, plus swap meets and a 2026 club kit. We never have to invent a reason to post.</p>
+      </div>
+      <div class="panel">
+        <span class="k">The rebuild</span>
+        <h3>A fundraising campaign that needs an audience</h3>
+        <p>Restoring Turns 1&ndash;4 with reinforced shotcrete is estimated at $875k&ndash;$950k. Donor campaigns run on story and momentum. A living feed that shows the track loved and used is the strongest case for writing a check.</p>
+      </div>
+    </div>
+    <p class="sec-note" style="margin-top:30px;"><b>One honest caveat:</b> Instagram restricts profile data for logged-out review, so a full audit of the current account (followers, reach, posting history, best performers) is step one the moment we receive collaborator access. Everything in this proposal was built from the Velodrome's public website, photo library, event listings, and published history.</p>
+  </div>
+</section>
+
+<section id="strategy">
+  <div class="wrap">
+    <p class="eyebrow">02 · The strategy</p>
+    <h2 class="display">Three audiences, five pillars</h2>
+    <p class="sec-note">Every post serves one of three people: the <b>rider-to-be</b> who doesn't yet know the track welcomes beginners, the <b>neighbor and enthusiast</b> who wants somewhere genuinely cool to be on a race night, and the <b>cycling community and donor</b> who will carry the rebuild. The content mix stays honest to all three.</p>
+    <div class="pillars">
+      <div class="pillar" data-line="sunset">
+        <div class="name">The Wall</div>
+        <div class="share">~30% · Reels-first</div>
+        <p>Spectacle plus smarts. POV laps, motorpacing, banking shots, and the Track School explainer series. The scroll-stopper that makes strangers ask "where IS that?"</p>
+      </div>
+      <div class="pillar" data-line="blue">
+        <div class="name">Start Here</div>
+        <div class="share">~25% · The funnel</div>
+        <p>The beginner path, repeated forever: $40 certification class, $5 rental bikes, $10 sessions. Every objection answered, link in bio.</p>
+      </div>
+      <div class="pillar" data-line="red">
+        <div class="name">Race Night</div>
+        <div class="share">~20% · Events</div>
+        <p>Promos, live stories, results and podiums for race days and time trials. Positioned as a thing to do in LA, free to watch.</p>
+      </div>
+      <div class="pillar" data-line="gold">
+        <div class="name">Since '61</div>
+        <div class="share">~10% · Heritage</div>
+        <p>Archive photos, Nationals and Olympic Trials history, founder stories. The moat no other LA venue can copy. Feeds kit sales and donations.</p>
+      </div>
+      <div class="pillar" data-line="ink">
+        <div class="name">Track Family</div>
+        <div class="share">~15% · Community</div>
+        <p>Faces of the track, volunteers, free junior Thursdays, swap meets. Proof that this is a club with a door wide open.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="examples">
+  <div class="wrap">
+    <p class="eyebrow">03 · Examples</p>
+    <h2 class="display">What we would post</h2>
+    <p class="sec-note">Six ready-to-run examples using <b>real photographs of the Encino Velodrome</b> from the club's own library, with the <b>club logo applied to every image</b> the way it would ship on the feed. Ongoing content comes from capture days we shoot at the track. Captions are drafts and publish only after board approval.</p>
+
+    <div class="posts">
+
+      <div class="post-block">
+        <div class="post-label"><span class="post-num">01</span><span class="fmt">Feed photo</span><span class="fmt">Pillar · The Wall</span></div>
+        <div class="phone">
+          <div class="ig-head">
+            <div class="avatar" role="img" aria-label="Encino Velodrome logo"></div>
+            <div class="who"><div class="u">encinovelodrome</div><div class="loc">Encino Velodrome · Sepulveda Basin</div></div>
+          </div>
+          <div class="ig-img sq">
+            <img class="ph" src="/images/encino-velodrome/golden-hour.png" style="object-position: 46% 30%;" alt="A junior rider in an Encino Velo club kit rides in golden light with the velodrome wall, floodlights and palm trees behind">
+            <span class="credit-tag">Photo · Encino Velodrome</span>
+            <span class="logo-chip" role="img" aria-label="Encino Velodrome logo watermark"></span>
+          </div>
+          <div class="ig-actions" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.6 4.5 6.2 4.5c2.2 0 3.9 1.2 5.8 3.3 1.9-2.1 3.6-3.3 5.8-3.3 3.6 0 5.7 3.5 4.2 7.2C19.5 16.3 12 21 12 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.2-5.1A8.5 8.5 0 1 1 21 11.5z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            <span class="spacer"></span>
+            <svg viewBox="0 0 24 24"><path d="M19 21V3H5v18l7-5 7 5z"/></svg>
+          </div>
+          <div class="ig-cap">
+            <span class="u">encinovelodrome</span> Golden hour hits different at 17301 Oxnard St.<br><br>
+            A 250 meter concrete oval has been hiding in the Sepulveda Basin since 1961, and it is still the best kept secret in LA cycling.<br><br>
+            Open training Tuesday and Wednesday evenings. $10 a session, rental bikes on site, first timers always welcome.<br><br>
+            <span class="tags">#EncinoVelodrome #TrackCycling #BikeLA #SanFernandoValley #FixedGear #LACycling</span>
+          </div>
+        </div>
+        <p class="why"><b>Why it works:</b> a real rider, in the club's own kit, on the club's own concrete. The secret-spot feeling earns saves and shares, and saves are what the algorithm rewards.</p>
+      </div>
+
+      <div class="post-block">
+        <div class="post-label"><span class="post-num">02</span><span class="fmt">Carousel · 6 slides</span><span class="fmt">Series · Track School</span><span class="fmt">Doubles as story frames</span></div>
+        <div class="phone">
+          <div class="ig-head">
+            <div class="avatar" role="img" aria-label="Encino Velodrome logo"></div>
+            <div class="who"><div class="u">encinovelodrome</div><div class="loc">Encino Velodrome · Sepulveda Basin</div></div>
+          </div>
+
+          <div class="caro">
+            <div class="caro-track" id="caroTrack" tabindex="0" aria-label="Track School carousel, 6 slides. Scroll or use the next and previous buttons.">
+              <div class="slide">
+                <span class="s-eyebrow">Track School · No. 01</span>
+                <div class="s-big" style="font-size:96px; margin-top:26px; color:#F06A31;">8.857</div>
+                <div class="s-big" style="font-size:26px; margin-top:6px;">seconds.</div>
+                <p>The fastest 200 meters ever ridden on a bicycle.</p>
+                <p><b>The Flying 200, explained.</b> Swipe &rarr;</p>
+                <div class="s-foot">
+                  <span class="s-count">1 / 6</span>
+                  <span class="s-lines" aria-hidden="true"><i style="background:#20242E;"></i><i style="background:#B0372A;"></i><i style="background:#33628C;"></i></span>
+                  <span class="s-logo" role="img" aria-label="Encino Velodrome logo"></span>
+                </div>
+              </div>
+              <div class="slide">
+                <span class="s-eyebrow">What it is</span>
+                <div class="s-big" style="font-size:30px; margin-top:14px;">A time trial with a running start</div>
+                <p>You get two or three laps to wind up, climbing high on the banking. Then the clock catches your <b>final 200 meters</b>: dive off the wall, hug the black line, empty the tank.</p>
+                <div class="oval-diag" aria-hidden="true">
+                  <svg viewBox="0 0 300 150">
+                    <ellipse cx="150" cy="75" rx="128" ry="54" fill="none" stroke="#4A4F5E" stroke-width="10"/>
+                    <path d="M 150 129 A 128 54 0 0 0 262 102" fill="none" stroke="#F06A31" stroke-width="10" stroke-linecap="round"/>
+                    <circle cx="150" cy="129" r="7" fill="#E5B155"/>
+                    <text x="150" y="52" fill="#8B8878" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">250 m oval</text>
+                    <text x="216" y="145" fill="#F06A31" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">timed: last 200 m</text>
+                  </svg>
+                </div>
+                <div class="s-foot">
+                  <span class="s-count">2 / 6</span>
+                  <span class="s-lines" aria-hidden="true"><i style="background:#20242E;"></i><i style="background:#B0372A;"></i><i style="background:#33628C;"></i></span>
+                  <span class="s-logo" role="img" aria-label="Encino Velodrome logo"></span>
+                </div>
+              </div>
+              <div class="slide">
+                <span class="s-eyebrow">Why it exists</span>
+                <div class="s-big" style="font-size:30px; margin-top:14px;">Ten seconds that seed the sprint</div>
+                <p>Before any match sprint tournament, every rider gets one Flying 200. The times set the bracket: <b>fastest faces slowest</b> in round one.</p>
+                <p>One flat-out effort decides your whole day. No teammates, no draft, nowhere to hide.</p>
+                <div class="s-foot">
+                  <span class="s-count">3 / 6</span>
+                  <span class="s-lines" aria-hidden="true"><i style="background:#20242E;"></i><i style="background:#B0372A;"></i><i style="background:#33628C;"></i></span>
+                  <span class="s-logo" role="img" aria-label="Encino Velodrome logo"></span>
+                </div>
+              </div>
+              <div class="slide">
+                <span class="s-eyebrow">Since when</span>
+                <div class="s-big" style="font-size:30px; margin-top:14px;">Seventy years of chasing tenths</div>
+                <p>Sprinting is track cycling's original discipline, and ratified Flying 200 records reach back to <b>1954</b>, when Italy's Cesare Pinarello clocked <b>12.0</b> at Milan's legendary Vigorelli.</p>
+                <p>Aero tucks, harder gears and faster tracks later, we are under nine.</p>
+                <div class="s-foot">
+                  <span class="s-count">4 / 6</span>
+                  <span class="s-lines" aria-hidden="true"><i style="background:#20242E;"></i><i style="background:#B0372A;"></i><i style="background:#33628C;"></i></span>
+                  <span class="s-logo" role="img" aria-label="Encino Velodrome logo"></span>
+                </div>
+              </div>
+              <div class="slide">
+                <span class="s-eyebrow">The records</span>
+                <div class="s-big" style="font-size:30px; margin-top:12px;">The fastest ever</div>
+                <div class="rec-row">
+                  <span class="t">8.857</span>
+                  <span class="d"><b>Matthew Richardson</b> (GBR)<br>Konya, 2025. First ever under 9, twice in two days.</span>
+                </div>
+                <div class="rec-row">
+                  <span class="t w">10.154</span>
+                  <span class="d"><b>Kelsey Mitchell</b> (CAN)<br>Cochabamba, 2019.</span>
+                </div>
+                <p style="font-size:12.5px;">Both fell at altitude, where the air is thin and the tracks are fast.</p>
+                <div class="s-foot">
+                  <span class="s-count">5 / 6</span>
+                  <span class="s-lines" aria-hidden="true"><i style="background:#20242E;"></i><i style="background:#B0372A;"></i><i style="background:#33628C;"></i></span>
+                  <span class="s-logo" role="img" aria-label="Encino Velodrome logo"></span>
+                </div>
+              </div>
+              <div class="slide">
+                <span class="s-eyebrow">Your turn</span>
+                <div class="s-big" style="font-size:44px; margin-top:16px; color:#F06A31;">What's your 200?</div>
+                <p>Every rider here has a Flying 200 PR waiting. Time trial days run through the season on our 250 meters of California concrete.</p>
+                <p><b>$10 sessions &middot; $5 rental bikes &middot; beginners certified in one class</b></p>
+                <p>encinovelodrome.org &middot; link in bio</p>
+                <div class="s-foot">
+                  <span class="s-count">6 / 6</span>
+                  <span class="s-lines" aria-hidden="true"><i style="background:#20242E;"></i><i style="background:#B0372A;"></i><i style="background:#33628C;"></i></span>
+                  <span class="s-logo" role="img" aria-label="Encino Velodrome logo"></span>
+                </div>
+              </div>
+            </div>
+            <button class="caro-btn prev" id="caroPrev" aria-label="Previous slide">&#8592;</button>
+            <button class="caro-btn next" id="caroNext" aria-label="Next slide">&#8594;</button>
+            <div class="caro-dots" id="caroDots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+
+          <div class="ig-actions" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.6 4.5 6.2 4.5c2.2 0 3.9 1.2 5.8 3.3 1.9-2.1 3.6-3.3 5.8-3.3 3.6 0 5.7 3.5 4.2 7.2C19.5 16.3 12 21 12 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.2-5.1A8.5 8.5 0 1 1 21 11.5z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            <span class="spacer"></span>
+            <svg viewBox="0 0 24 24"><path d="M19 21V3H5v18l7-5 7 5z"/></svg>
+          </div>
+          <div class="ig-cap">
+            <span class="u">encinovelodrome</span> 8.857 seconds. That is all it took Matthew Richardson to cover 200 meters last summer, the fastest Flying 200 ever ridden.<br><br>
+            Track School No. 1: what the Flying 200 is, why ten seconds decide a whole sprint tournament, and the records that redefined fast.<br><br>
+            Then come set your own. Time trial days run all season at the Velodrome. Link in bio.<br><br>
+            <span class="tags">#TrackSchool #Flying200 #TrackCycling #Velodrome #EncinoVelodrome #BikeLA</span>
+          </div>
+        </div>
+        <p class="why"><b>Why it works:</b> educational carousels get saved, and saves compound reach for weeks. A numbered series (Track School No. 1, No. 2, ...) trains people to follow for the next one, and the same six frames repost as a story.</p>
+      </div>
+
+      <div class="post-block">
+        <div class="post-label"><span class="post-num">03</span><span class="fmt">Event graphic</span><span class="fmt">Pillar · Race Night</span></div>
+        <div class="phone">
+          <div class="ig-head">
+            <div class="avatar" role="img" aria-label="Encino Velodrome logo"></div>
+            <div class="who"><div class="u">encinovelodrome</div><div class="loc">Encino Velodrome · Sepulveda Basin</div></div>
+          </div>
+          <div class="ig-img">
+            <div class="event-card">
+              <div class="ev-photo">
+                <img src="/images/encino-velodrome/night-race.jpg" alt="The Encino Velodrome at dusk under floodlights with a sunset sky, spectators in the stand and riders on track">
+              </div>
+              <span class="ev-logo" role="img" aria-label="Encino Velodrome logo"></span>
+              <div class="ev-body">
+                <span class="ev-kicker">Race the clock</span>
+                <div class="ev-title">Time trial day <em>at the track</em></div>
+                <div class="ev-meta">
+                  <span><b>Sunday, April 12, 2026</b></span>
+                  <span>17301 Oxnard St, Encino</span>
+                  <span>Register: bikereg.com &middot; <b>Watching is free</b></span>
+                </div>
+                <div class="ev-lines" aria-hidden="true"><i style="background:#EDE8DA;"></i><i style="background:#D95445;"></i><i style="background:#6E9CC4;"></i></div>
+              </div>
+            </div>
+            <span class="credit-tag">Photo · Encino Velodrome</span>
+          </div>
+          <div class="ig-actions" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.6 4.5 6.2 4.5c2.2 0 3.9 1.2 5.8 3.3 1.9-2.1 3.6-3.3 5.8-3.3 3.6 0 5.7 3.5 4.2 7.2C19.5 16.3 12 21 12 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.2-5.1A8.5 8.5 0 1 1 21 11.5z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            <span class="spacer"></span>
+            <svg viewBox="0 0 24 24"><path d="M19 21V3H5v18l7-5 7 5z"/></svg>
+          </div>
+          <div class="ig-cap">
+            <span class="u">encinovelodrome</span> Race the clock. ⏱️<br><br>
+            Time Trial day at the Encino Velodrome, Sunday April 12. Chase a personal best on 250 meters of history, or just come watch fast bikes at sunset. Cowbells welcome.<br><br>
+            Registration at bikereg.com. Watching is free, like always.<br><br>
+            📍 17301 Oxnard St, Encino<br><br>
+            <span class="tags">#TimeTrial #TrackRacing #Velodrome #ThingsToDoLA #EncinoVelodrome</span>
+          </div>
+        </div>
+        <p class="why"><b>Why it works:</b> one clean template, every event. Built here from the real April 12, 2026 Time Trial. Same layout repeats for each race day, so the feed looks professional and each promo takes minutes, not hours. The dusk photo does the selling.</p>
+      </div>
+
+      <div class="post-block">
+        <div class="post-label"><span class="post-num">04</span><span class="fmt">Feed photo</span><span class="fmt">Series · Track School</span></div>
+        <div class="phone">
+          <div class="ig-head">
+            <div class="avatar" role="img" aria-label="Encino Velodrome logo"></div>
+            <div class="who"><div class="u">encinovelodrome</div><div class="loc">Encino Velodrome · Sepulveda Basin</div></div>
+          </div>
+          <div class="ig-img sq">
+            <img class="ph" src="/images/encino-velodrome/motorpacing.png" style="object-position: 52% 40%;" alt="A motorcycle pilot leads a track cyclist tucked into the draft on the banking of the Encino Velodrome">
+            <span class="credit-tag">Photo · Encino Velodrome</span>
+            <span class="logo-chip" role="img" aria-label="Encino Velodrome logo watermark"></span>
+          </div>
+          <div class="ig-actions" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.6 4.5 6.2 4.5c2.2 0 3.9 1.2 5.8 3.3 1.9-2.1 3.6-3.3 5.8-3.3 3.6 0 5.7 3.5 4.2 7.2C19.5 16.3 12 21 12 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.2-5.1A8.5 8.5 0 1 1 21 11.5z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            <span class="spacer"></span>
+            <svg viewBox="0 0 24 24"><path d="M19 21V3H5v18l7-5 7 5z"/></svg>
+          </div>
+          <div class="ig-cap">
+            <span class="u">encinovelodrome</span> Why is there a motorcycle on the track? Physics. 🏍️<br><br>
+            Above 30 mph, most of what you fight is air. Tucked behind the moto, that wall of wind disappears, so you can hold race speed long enough for your legs to learn it.<br><br>
+            That is motorpacing: leg speed, positioning, and confidence at speeds you cannot reach alone. And it happens right here in Encino.<br><br>
+            Ask us about structured training. Link in bio.<br><br>
+            <span class="tags">#Motorpacing #TrackCycling #TrainFast #EncinoVelodrome #BikeLA</span>
+          </div>
+        </div>
+        <p class="why"><b>Why it works:</b> answers a question every visitor actually asks and positions the Velodrome as coaching, not just concrete. The pilot is Henry Shibata, and post 06 tells his story.</p>
+      </div>
+
+      <div class="post-block">
+        <div class="post-label"><span class="post-num">05</span><span class="fmt">Feed photo · Archive</span><span class="fmt">Pillar · Since '61</span></div>
+        <div class="phone">
+          <div class="ig-head">
+            <div class="avatar" role="img" aria-label="Encino Velodrome logo"></div>
+            <div class="who"><div class="u">encinovelodrome</div><div class="loc">Encino Velodrome · Sepulveda Basin</div></div>
+          </div>
+          <div class="ig-img archival">
+            <img class="pc" src="/images/encino-velodrome/postcard-1960.jpg" alt="A vintage aerial postcard of the Encino Velodrome around 1960, with a full infield, crowded stands and packed parking lots">
+            <span class="credit-tag">Club archive</span>
+            <span class="logo-chip" role="img" aria-label="Encino Velodrome logo watermark"></span>
+          </div>
+          <div class="ig-actions" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.6 4.5 6.2 4.5c2.2 0 3.9 1.2 5.8 3.3 1.9-2.1 3.6-3.3 5.8-3.3 3.6 0 5.7 3.5 4.2 7.2C19.5 16.3 12 21 12 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.2-5.1A8.5 8.5 0 1 1 21 11.5z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            <span class="spacer"></span>
+            <svg viewBox="0 0 24 24"><path d="M19 21V3H5v18l7-5 7 5z"/></svg>
+          </div>
+          <div class="ig-cap">
+            <span class="u">encinovelodrome</span> Los Angeles, early 1960s. Look closely: packed parking, a full infield, a crowd at the rail. 🗺️<br><br>
+            Built by volunteers for the 1961 season. Site of the 1965 and 1968 US National Championships, the 1968 US Olympic Trials, and televised Grand Prix racing in '72 and '73. Still 100% volunteer run today.<br><br>
+            Help us write the next 65 seasons. The campaign to rebuild Turns 1 through 4 is live. Link in bio.<br><br>
+            <span class="tags">#Since1961 #LAHistory #Velodrome #GrassrootsCycling #EncinoVelodrome</span>
+          </div>
+        </div>
+        <p class="why"><b>Why it works:</b> heritage is the one asset no other LA venue can copy. Archive scans consistently outperform for local pages, and every heritage post carries the rebuild link.</p>
+      </div>
+
+      <div class="post-block">
+        <div class="post-label"><span class="post-num">06</span><span class="fmt">People spotlight</span><span class="fmt">Series · Faces of the Track</span><span class="fmt">Pillar · Track Family</span></div>
+        <div class="phone">
+          <div class="ig-head">
+            <div class="avatar" role="img" aria-label="Encino Velodrome logo"></div>
+            <div class="who"><div class="u">encinovelodrome</div><div class="loc">Encino Velodrome · Sepulveda Basin</div></div>
+          </div>
+          <div class="ig-img sq">
+            <img class="ph" src="/images/encino-velodrome/henry-shibata.png" style="object-position: 55% 45%;" alt="Henry Shibata pilots the pacing scooter high on the Encino Velodrome banking with a rider tucked into his draft">
+            <span class="credit-tag">Photo · Encino Velodrome</span>
+            <span class="logo-chip" role="img" aria-label="Encino Velodrome logo watermark"></span>
+          </div>
+          <div class="ig-actions" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.6 4.5 6.2 4.5c2.2 0 3.9 1.2 5.8 3.3 1.9-2.1 3.6-3.3 5.8-3.3 3.6 0 5.7 3.5 4.2 7.2C19.5 16.3 12 21 12 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.2-5.1A8.5 8.5 0 1 1 21 11.5z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            <span class="spacer"></span>
+            <svg viewBox="0 0 24 24"><path d="M19 21V3H5v18l7-5 7 5z"/></svg>
+          </div>
+          <div class="ig-cap">
+            <span class="u">encinovelodrome</span> Faces of the Track, No. 1: Henry Shibata. 🇯🇵<br><br>
+            If you have trained here, you know the hum of Henry's scooter before you see it. He has given years to this velodrome, keeps the books as club treasurer, and pilots the pace scooter that teaches our riders to hold real speed.<br><br>
+            And here is the part that makes visitors do a double take: Henry raced keirin in Japan, where the sport was born and where pacing riders is an art of its own. When you follow his wheel around our banking, you are learning from the real thing.<br><br>
+            Find Henry at Keirin training, Saturdays 9am to noon. Say hi. Ask him anything.<br><br>
+            <span class="tags">#FacesOfTheTrack #Keirin #TrackFamily #EncinoVelodrome #TrackCycling</span>
+          </div>
+        </div>
+        <p class="why"><b>Why it works:</b> people follow people. A spotlight series turns the club's regulars into recurring characters, and Henry's story, a genuine Japanese keirin rider pacing a California club track, is exactly the kind of detail cycling media and the algorithm both love.</p>
+      </div>
+
+    </div>
+
+    <div class="reels">
+      <div class="reel">
+        <div class="post-label"><span class="post-num">07</span><span class="fmt">Reel · ~30s</span><span class="fmt">Pillar · Start Here</span></div>
+        <h3>"This bike has no brakes"</h3>
+        <p class="hookline">The single biggest myth keeping new riders away, flipped into the reason they come. Shot at the track on a capture day.</p>
+        <div class="beat"><span class="t">0&ndash;2s</span><p><b>Hook:</b> tight shot of a track bike, on-screen text "This bike has no brakes." Beat of silence.</p></div>
+        <div class="beat"><span class="t">2&ndash;10s</span><p><b>Flip:</b> coach VO explains why that makes the track SAFER: everyone rides the same direction, same speed rules, no surprises.</p></div>
+        <div class="beat"><span class="t">10&ndash;22s</span><p><b>Proof:</b> first-timer's POV wobbling onto the apron, then carving the banking with a grin. Quick cuts, tire hum up loud.</p></div>
+        <div class="beat"><span class="t">22&ndash;30s</span><p><b>CTA:</b> rider to camera: "Best thing I've done all year." Text overlay: "Beginner class · rentals on site · link in bio."</p></div>
+      </div>
+      <div class="reel">
+        <div class="post-label"><span class="post-num">08</span><span class="fmt">Reel · ~20s</span><span class="fmt">Pillar · The Wall</span></div>
+        <h3>"Sound on. Tuesday night in Encino."</h3>
+        <p class="hookline">No talking, no music. The track sells itself in audio. Shot at the track on a capture day.</p>
+        <div class="beat"><span class="t">0&ndash;3s</span><p><b>Hook:</b> black frame, on-screen text "sound on 🔊", cut to golden-hour wide of the oval.</p></div>
+        <div class="beat"><span class="t">3&ndash;14s</span><p><b>Texture:</b> tires humming on concrete, chain whir, the motorpacing bike rolling by, a coach shouting "hold your line!", a cowbell from the rail. Cut on every sound.</p></div>
+        <div class="beat"><span class="t">14&ndash;20s</span><p><b>CTA:</b> riders roll past at speed. Text overlay: "Watching is free. Riding is $10. Since 1961." Location sticker: Encino Velodrome.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cadence">
+  <div class="wrap">
+    <p class="eyebrow">04 · Cadence</p>
+    <h2 class="display">A week at the track</h2>
+    <p class="sec-note">The Velodrome's real weekly schedule is the editorial calendar. Roughly <b>4 feed posts, 2 reels, and stories on every session day</b>, produced from capture visits and volunteer/rider phone footage we collect and edit.</p>
+    <div class="tablewrap">
+      <table class="week">
+        <thead><tr><th scope="col">Day</th><th scope="col">At the track</th><th scope="col">What we publish</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Mon</td><td class="sched">Structured training · 6pm</td><td><span class="pill">Stories</span>Session clips; motorpacing b-roll banked for reels</td></tr>
+          <tr><td class="day">Tue</td><td class="sched">Power 9am · Open training 5pm</td><td><span class="pill">Reel</span>The Wall: POV laps, skills, "sound on" edits</td></tr>
+          <tr><td class="day">Wed</td><td class="sched">Open training 5&ndash;7:30pm</td><td><span class="pill">Feed</span>Track Family: Faces of the Track rider/volunteer feature</td></tr>
+          <tr><td class="day">Thu</td><td class="sched">Power 9am · Juniors FREE 5:30pm</td><td><span class="pill">Feed</span><span class="pill">Stories</span>Juniors spotlight aimed at Valley parents</td></tr>
+          <tr><td class="day">Fri</td><td class="sched">Event days per calendar</td><td><span class="pill">Feed</span><span class="pill">Live</span>Race/TT promo in the morning, live stories at night</td></tr>
+          <tr><td class="day">Sat</td><td class="sched">Keirin training 9am&ndash;12pm</td><td><span class="pill">Reel</span>Keirin explainer or highlight; Track School carousel rotates</td></tr>
+          <tr><td class="day">Sun</td><td class="sched">&mdash;</td><td><span class="pill">Feed</span>Results graphic, weekly recap, or rebuild progress update</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <p class="eyebrow">05 · Rollout</p>
+    <h2 class="display">The first 90 days</h2>
+    <div class="phases">
+      <div class="phase">
+        <div class="ph-num">1</div>
+        <h3>Foundation</h3>
+        <div class="span mono">Weeks 1&ndash;2</div>
+        <ul>
+          <li><b>Full account audit</b> with collaborator access; baselines recorded</li>
+          <li><b>Bio, link and highlights rebuilt:</b> Start Here · Race Night · The Rebuild · Juniors</li>
+          <li><b>Brand kit</b> from the club's logo and colors: type, templates, logo placement on every image</li>
+          <li><b>Capture day #1</b> at the track; pinned trio published (anthem, Start Here carousel, rebuild story)</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="ph-num">2</div>
+        <h3>Rhythm</h3>
+        <div class="span mono">Weeks 3&ndash;8</div>
+        <ul>
+          <li><b>The weekly engine</b> above, every week, without fail</li>
+          <li><b>Collab posts</b> with LA shops, clubs and ride crews to borrow reach</li>
+          <li><b>UGC pipeline:</b> riders tagged, reposted, credited; geotag hygiene on every post</li>
+          <li><b>Juniors push</b> timed to school season: free Thursdays in front of Valley parents</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="ph-num">3</div>
+        <h3>Amplify</h3>
+        <div class="span mono">Weeks 9&ndash;13</div>
+        <ul>
+          <li><b>"Rebuild the Wall" series:</b> progress meters, donor shoutouts, before/after of Turns 1&ndash;4</li>
+          <li><b>Open house push</b> around a race day; local press and LA cycling creators invited to ride</li>
+          <li><b>Monthly report</b> to the board: growth, reach, class signups, donation link clicks</li>
+        </ul>
+      </div>
+    </div>
+    <div class="kpis">
+      <span class="k">What we measure</span>
+      <ul>
+        <li>Beginner class signups (tracked link)</li>
+        <li>Race day turnout</li>
+        <li>Follower growth and reach</li>
+        <li>Rebuild donation link clicks</li>
+      </ul>
+      <p class="fine">Baselines come out of the week-1 audit; targets are agreed with the board, not invented in a pitch.</p>
+    </div>
+  </div>
+</section>
+
+<section id="offer" style="padding-bottom:72px;">
+  <div class="wrap">
+    <p class="eyebrow">06 · The offer</p>
+    <div class="offer" style="margin-top:18px;">
+      <h2 class="display">You run the track. We run the feed.</h2>
+      <div class="cols">
+        <ul>
+          <li><b>Done-for-you:</b> strategy, capture days, editing, captions, scheduling, community replies, monthly reporting</li>
+          <li><b>Board keeps the mic:</b> nothing publishes without approval, and approved captions post verbatim</li>
+        </ul>
+        <ul>
+          <li><b>Real imagery only:</b> photos and film shot at the track, club logo on every image; AI assists planning and templates, never the pictures we publish</li>
+          <li><b>Priced for a volunteer nonprofit:</b> one flat monthly rate, no long lock-in, cancel any season</li>
+        </ul>
+      </div>
+      <div class="cta">
+        <div class="big">Ready when you are.</div>
+        <div class="contact">Michael Bowers · Heed Business Solutions · <a href="mailto:mbowers@heedconsulting.ai">mbowers@heedconsulting.ai</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trackline" aria-hidden="true"><span class="tl-black"></span><span class="tl-red"></span><span class="tl-blue"></span></div>
+
+<footer>
+  <div class="wrap">
+    <p class="fine"><b>Notes and sources.</b> Facts come from encinovelodrome.org (history, training schedule, pricing, rebuild project), socalcycling.com's velodrome directory, and the event's BikeReg listing (Encino Velodrome Time Trial, April 12, 2026). Flying 200 facts: UCI world record progression (Wikipedia) and 2025 reporting on Matthew Richardson's 8.857 in Konya; women's record Kelsey Mitchell, 10.154, Cochabamba 2019. All photographs are real images of the Encino Velodrome from the club's own website and archive, used in this private proposal to show creative direction; the club logo is shown as it would ship on published posts. Henry Shibata's role as club treasurer is listed on encinovelodrome.org; his years with the club, keirin background and scooter duty come from the club, and his spotlight caption publishes only with his and the board's blessing. Sample captions are drafts and would be reviewed and approved by the board before anything goes live. Prepared August 27, 2026 by Heed Business Solutions.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var track = document.getElementById('caroTrack');
+    var prev = document.getElementById('caroPrev');
+    var next = document.getElementById('caroNext');
+    var dots = document.getElementById('caroDots');
+    if (!track || !prev || !next || !dots) return;
+    var items = dots.querySelectorAll('i');
+    function slideW() { return track.clientWidth || 1; }
+    function idx() { return Math.round(track.scrollLeft / slideW()); }
+    function go(delta) {
+      var target = Math.min(5, Math.max(0, idx() + delta));
+      track.scrollTo({ left: target * slideW() });
+    }
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    var raf = null;
+    track.addEventListener('scroll', function () {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = null;
+        var i = idx();
+        items.forEach(function (d, n) { d.className = n === i ? 'on' : ''; });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
