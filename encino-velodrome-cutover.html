@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/images/logos/image_e43fb0dc-dabb-48f3-a17a-817ce837ff65.png" />
+<title>Encino Velodrome &mdash; DNS Cutover Runbook | Heed Business Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+  :root {
+    --ground:#FFFFFF; --surface:#F6F8FA; --card:#FFFFFF; --line:#E3E6EB;
+    --ink:#12151A; --muted:#5B6270; --red:#C8102E; --blue:#1B4F9C;
+    --red-lt:#EF3340; --blue-lt:#6BA5E7;
+    --shadow:rgba(18,21,26,0.88); --chip:#F3F5F8;
+    --logo-uri:url("/images/encino-velodrome/encino-logo.png");
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0D0F13; --surface:#14171D; --card:#181C23; --line:#2A303A;
+      --ink:#F0F2F5; --muted:#98A0AD; --red:#FF5566; --blue:#7FB3EE;
+      --red-lt:#FF5566; --blue-lt:#7FB3EE;
+      --shadow:rgba(0,0,0,0.85); --chip:#222A35;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0D0F13; --surface:#14171D; --card:#181C23; --line:#2A303A;
+    --ink:#F0F2F5; --muted:#98A0AD; --red:#FF5566; --blue:#7FB3EE;
+    --red-lt:#FF5566; --blue-lt:#7FB3EE;
+    --shadow:rgba(0,0,0,0.85); --chip:#222A35;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+  a{color:var(--red);text-decoration-thickness:2px;text-underline-offset:3px}
+  a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+  .display{font-family:"Anton","Arial Narrow",Impact,sans-serif;font-weight:400;
+    text-transform:uppercase;letter-spacing:.01em;line-height:.95;text-wrap:balance}
+  .mono{font-family:"IBM Plex Mono","Courier New",monospace}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+    text-transform:uppercase;letter-spacing:.22em;color:var(--muted);
+    display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:10px;height:10px;background:var(--red);flex:none}
+
+  .trackline{display:flex;flex-direction:column;gap:4px;margin:0}
+  .trackline span{display:block;height:3px}
+  .trackline .tl-black{background:var(--ink)}
+  .trackline .tl-red{background:var(--red)}
+  .trackline .tl-blue{background:var(--blue);height:9px}
+
+  header.top{border-bottom:2px solid var(--ink);background:var(--surface)}
+  header.top .wrap{display:flex;justify-content:space-between;align-items:center;
+    padding-top:12px;padding-bottom:12px;gap:16px;flex-wrap:wrap}
+  .brandbar{display:flex;align-items:center;gap:12px}
+  .brandbar .mark{width:54px;height:38px;flex:none;background-color:#FFF;
+    background-image:var(--logo-uri);background-size:88%;background-position:center;
+    background-repeat:no-repeat;border:1px solid var(--line)}
+  .wordmark{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase}
+  .wordmark b{color:var(--red)}
+  .top-tag{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
+
+  .hero{position:relative;overflow:hidden;background:var(--surface)}
+  .hero .wrap{position:relative;padding-top:56px;padding-bottom:48px}
+  .hero-banking{position:absolute;right:-140px;top:-40px;width:520px;height:150%;
+    transform:rotate(-24deg);
+    background:linear-gradient(to bottom,transparent 0 34%,var(--blue) 34% 37%,
+      transparent 37% 46%,var(--red) 46% 47.5%,transparent 47.5% 56%,
+      var(--ink) 56% 57.5%,transparent 57.5%);opacity:.16;pointer-events:none}
+  h1.display{font-size:clamp(48px,8vw,96px);margin:14px 0 10px}
+  h1 .pop{color:var(--red);display:block}
+  .lede{max-width:62ch;font-size:18px;margin:14px 0 0}
+  .lede b{font-weight:600}
+
+  /* reader guide */
+  .guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:28px}
+  .guide .who{border:2px solid var(--ink);background:var(--card);padding:18px 20px;
+    box-shadow:5px 5px 0 var(--shadow)}
+  .guide .who h3{margin:0 0 6px;font-size:17px}
+  .guide .who p{margin:0;font-size:14.5px;color:var(--muted)}
+  .guide .who .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:8px}
+  .guide .who[data-r="plain"]{border-top:8px solid var(--blue)}
+  .guide .who[data-r="plain"] .tag{color:var(--blue)}
+  .guide .who[data-r="tech"]{border-top:8px solid var(--red)}
+  .guide .who[data-r="tech"] .tag{color:var(--red)}
+
+  section{padding:60px 0 8px}
+  h2.display{font-size:clamp(30px,4.2vw,46px);margin:8px 0 6px}
+  h3.sub{font-family:"Anton",Impact,sans-serif;text-transform:uppercase;font-size:21px;
+    letter-spacing:.02em;margin:34px 0 10px;font-weight:400}
+  .sec-note{color:var(--muted);max-width:64ch;margin:0 0 26px}
+  .sec-note b{color:var(--ink);font-weight:600}
+  p.body{max-width:66ch}
+  p.body b{font-weight:600}
+
+  .badge{display:inline-flex;align-items:center;gap:8px;font-family:"IBM Plex Mono",monospace;
+    font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    border:1.5px solid var(--ink);padding:4px 10px;background:var(--chip);margin-bottom:14px}
+  .badge.plain{border-color:var(--blue);color:var(--blue)}
+  .badge.tech{border-color:var(--red);color:var(--red)}
+
+  .warn{background:var(--ink);color:var(--ground);border:2px solid var(--ink);
+    box-shadow:8px 8px 0 var(--red);padding:28px 26px;margin:8px 0 4px}
+  .warn h3{font-family:"Anton",Impact,sans-serif;text-transform:uppercase;font-weight:400;
+    font-size:25px;margin:0 0 12px;letter-spacing:.02em}
+  .warn p{margin:0 0 12px;font-size:15.5px;max-width:70ch}
+  .warn p:last-child{margin-bottom:0}
+  .warn b{color:var(--red-lt)}
+  .warn code{font-family:"IBM Plex Mono",monospace;font-size:13px;
+    background:rgba(255,255,255,.1);padding:2px 6px}
+
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+  .panel{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--shadow);
+    padding:22px 20px}
+  .panel h4{margin:0 0 8px;font-size:17px;font-weight:700}
+  .panel p{margin:0;color:var(--muted);font-size:14.5px}
+  .panel p+p{margin-top:9px}
+  .panel .k{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:9px}
+  .panel[data-line="blue"]{border-top:8px solid var(--blue)}
+  .panel[data-line="red"]{border-top:8px solid var(--red)}
+  .panel[data-line="ink"]{border-top:8px solid var(--ink)}
+
+  .tablewrap{overflow-x:auto;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--shadow);
+    background:var(--card);margin-bottom:10px}
+  table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
+  th{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;text-transform:uppercase;
+    letter-spacing:.12em;text-align:left;background:var(--ink);color:var(--ground);padding:10px 13px}
+  td{padding:10px 13px;border-top:1px solid var(--line);vertical-align:top}
+  td.t{font-family:"IBM Plex Mono",monospace;font-weight:600;white-space:nowrap}
+  td.v{font-family:"IBM Plex Mono",monospace;font-size:12.5px;word-break:break-all}
+  td.n{font-family:"IBM Plex Mono",monospace;font-size:12.5px;white-space:nowrap}
+  tr.crit td{background:color-mix(in srgb,var(--red) 9%,transparent)}
+  tr.crit td.t{color:var(--red)}
+  .pill{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border:1.5px solid var(--ink);
+    background:var(--chip);white-space:nowrap}
+  .pill.mail{border-color:var(--red);color:var(--red)}
+  .pill.web{border-color:var(--blue);color:var(--blue)}
+
+  ol.steps{counter-reset:s;list-style:none;padding:0;margin:20px 0 0}
+  ol.steps li{position:relative;padding:0 0 18px 52px;margin:0}
+  ol.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-4px;
+    font-family:"Anton",Impact,sans-serif;font-size:26px;color:var(--red);line-height:1}
+  ol.steps li h4{margin:0 0 4px;font-size:16px;font-weight:700}
+  ol.steps li p{margin:0;color:var(--muted);font-size:14.5px;max-width:64ch}
+  ol.steps li p b{color:var(--ink);font-weight:600}
+  ol.steps li code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+    background:var(--chip);border:1px solid var(--line);padding:1px 5px}
+
+  pre{background:var(--ink);color:var(--ground);padding:16px 18px;overflow-x:auto;
+    border:2px solid var(--ink);box-shadow:6px 6px 0 var(--shadow);
+    font-family:"IBM Plex Mono",monospace;font-size:13px;line-height:1.6;margin:14px 0}
+  pre .c{color:#8FA0B5}
+
+  ul.clean{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:15px;max-width:66ch}
+  ul.clean li{margin:8px 0}
+  ul.clean li b{color:var(--ink);font-weight:600}
+  ul.clean li::marker{color:var(--red)}
+
+  footer{padding:40px 0 56px}
+  footer .fine{font-size:12.5px;color:var(--muted);max-width:76ch;line-height:1.7}
+  footer .fine b{color:var(--ink)}
+
+  @media (max-width:640px){
+    section{padding-top:46px}
+    .hero .wrap{padding-top:40px;padding-bottom:36px}
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandbar">
+      <span class="mark" role="img" aria-label="Encino Velodrome logo"></span>
+      <span class="wordmark">ENCINO VELODROME <b>×</b> HEED BUSINESS SOLUTIONS</span>
+    </div>
+    <div class="top-tag">Runbook · September 2026</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-banking" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Moving the domain to Cloudflare</p>
+    <h1 class="display">The <span class="pop">cutover.</span></h1>
+    <p class="lede">Everything the club runs on <b>encinovelodrome.org</b> is steered by one small settings file. To publish the new website we need to move that file from GoDaddy to Cloudflare. <b>The website is not what's at risk. Email is.</b> This page explains why, and exactly how we avoid it.</p>
+
+    <div class="guide">
+      <div class="who" data-r="plain">
+        <span class="tag">Roger — sections 1 to 3</span>
+        <h3>What it is, what could go wrong, what I need from you</h3>
+        <p>Plain English, no commands. About four minutes. You can stop after section 3 — the rest is the technical procedure.</p>
+      </div>
+      <div class="who" data-r="tech">
+        <span class="tag">Vinh — sections 4 to 7</span>
+        <h3>Inventory, record set, commands, verification, rollback</h3>
+        <p>The exact zone as captured on 10 September, both phases, and the script. Sections 1 to 3 are worth skimming for the SPF trap.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="trackline" aria-hidden="true"><span class="tl-black"></span><span class="tl-red"></span><span class="tl-blue"></span></div>
+
+<section id="what">
+  <div class="wrap">
+    <span class="badge plain">01 · Plain English</span>
+    <h2 class="display">What we are actually doing</h2>
+    <p class="body">Think of the domain name as an address book that tells the rest of the internet where to find things. One line says <b>"the website lives here."</b> Another says <b>"email for this domain goes there."</b> Others prove to other mail systems that our email is really ours.</p>
+    <p class="body" style="margin-top:14px;">Right now that address book is kept at <b>GoDaddy</b>. We want to keep it at <b>Cloudflare</b> instead, because Cloudflare is free, faster, and is where the new website will be published from. The domain stays yours and stays registered at GoDaddy. Only the address book moves.</p>
+    <p class="body" style="margin-top:14px;">Here is the important part: <b>we are not changing the website in this step.</b> The current Zoho site keeps running exactly as it does today. We copy the address book across letter for letter, change nothing anyone can see, and confirm it all still works. Only later, when the new site is ready, do we change the line that points at the website.</p>
+    <div class="grid2" style="margin-top:26px;">
+      <div class="panel" data-line="blue">
+        <span class="k">Cost</span>
+        <h4>Nothing</h4>
+        <p>Cloudflare's free plan covers everything the club needs. No new bills, and no change to the GoDaddy registration you already pay for.</p>
+      </div>
+      <div class="panel" data-line="ink">
+        <span class="k">What members notice</span>
+        <h4>Nothing, if it goes right</h4>
+        <p>The website stays up. Email keeps arriving. The calendar, the donation links and BikeReg are all untouched — none of them depend on this.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <span class="badge plain">02 · Plain English</span>
+    <h2 class="display">The one real risk, in one page</h2>
+    <p class="sec-note">There is exactly one way this migration quietly hurts the club, and it is worth understanding before you approve it.</p>
+
+    <div class="warn">
+      <h3>A hidden note in the old address book</h3>
+      <p>Alongside "email goes to Zoho," the club's address book contains a second entry whose job is to <b>vouch for your email</b> — to tell Gmail, Outlook and the rest that a message claiming to be from <code>board@encinovelodrome.org</code> is genuine. Without it, your mail looks suspicious to spam filters.</p>
+      <p>That vouching entry does not sit on its own. It points at <b>another entry that also lives inside the old address book</b>, one GoDaddy created automatically. If we copy the obvious lines across and miss that one, the chain snaps.</p>
+      <p>Nothing breaks loudly. Email still sends. It just starts <b>failing its trust check</b>, and over days it slides into other people's spam folders — inspection requests, board mail, donation receipts — with no error message and no obvious cause.</p>
+      <p style="margin-top:16px;">I found it by reading the live settings rather than assuming, and it is written into the record set as a required line. <b>This page exists mostly so that this one thing cannot be forgotten.</b></p>
+    </div>
+
+    <h3 class="sub">Two other things worth knowing</h3>
+    <p class="body">While checking, I found the club's email is missing two protections that most organisations have. Neither is caused by this move, and neither is urgent, but both are easy wins while we are in here.</p>
+    <ul class="clean">
+      <li><b>No DKIM.</b> This is a second, stronger signature on outgoing mail. Zoho can switch it on from your admin console. Right now the club's email is vouched for one way instead of two.</li>
+      <li><b>No DMARC.</b> This is the instruction that tells other mail systems what to do with messages that fail the checks, and it reports who is sending mail using your name. I have included a <b>monitoring-only</b> version that changes nothing about delivery and simply starts collecting that information.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="ask">
+  <div class="wrap">
+    <span class="badge plain">03 · Plain English</span>
+    <h2 class="display">What I need, and what happens when</h2>
+    <div class="grid2">
+      <div class="panel" data-line="red">
+        <span class="k">From Roger</span>
+        <h4>Approval, and a quiet window</h4>
+        <p>Say go, and pick a day that is not a race day and not the day before a big mailing. A weekday morning is ideal.</p>
+        <p>Also: a decision on whether we turn on the two email protections above at the same time. My recommendation is yes.</p>
+      </div>
+      <div class="panel" data-line="blue">
+        <span class="k">From Vinh</span>
+        <h4>Cloudflare account and a scoped key</h4>
+        <p>Create the free Cloudflare account, add the domain, and generate an API token limited to editing DNS on this one zone. Then change the nameservers at GoDaddy when we are ready.</p>
+        <p>Everything else is scripted and reviewable before it runs.</p>
+      </div>
+    </div>
+
+    <h3 class="sub">The shape of the day</h3>
+    <ol class="steps">
+      <li>
+        <h4>Beforehand — no visible change</h4>
+        <p>Cloudflare account created, domain added, and the full address book loaded in <b>exactly as it is today</b>. Nothing is live yet. Nothing has moved.</p>
+      </li>
+      <li>
+        <h4>The switch — about five minutes of work</h4>
+        <p>Vinh changes two settings at GoDaddy. From that moment the internet gradually starts reading the new address book instead of the old one. <b>Because both say the same thing, nobody notices.</b></p>
+      </li>
+      <li>
+        <h4>Settling — a few hours, up to two days</h4>
+        <p>Different parts of the internet update at different speeds. During this window some computers use the old book and some the new. Since both are identical, this is uneventful. We check email and the website through it.</p>
+      </li>
+      <li>
+        <h4>Later — the new website</h4>
+        <p>Once the new site is built and approved, one line changes to point at it. That is a separate day, and it is quick to undo.</p>
+      </li>
+    </ol>
+
+    <h3 class="sub">If something goes wrong</h3>
+    <p class="body">We put the GoDaddy nameservers back, and the old address book takes over again. The safety net is that we never delete anything at GoDaddy during the move — the old copy sits there untouched. The one caveat worth stating plainly: <b>reversing a nameserver change is not instant.</b> It can take a few hours to fully unwind, which is exactly why phase one changes nothing visible, so we are never racing a clock with a broken site.</p>
+  </div>
+</section>
+
+<div class="trackline" aria-hidden="true"><span class="tl-black"></span><span class="tl-red"></span><span class="tl-blue"></span></div>
+
+<section id="inventory">
+  <div class="wrap">
+    <span class="badge tech">04 · Technical</span>
+    <h2 class="display">The zone as captured</h2>
+    <p class="sec-note">Read live over DNS-over-HTTPS on <b>10 September 2026</b>, authoritative servers <span class="mono">ns65 / ns66.domaincontrol.com</span>, SOA serial <span class="mono">2026091001</span>. This is observed state, not a guess, and it is what the parity phase reproduces.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Type</th><th>Name</th><th>Value</th><th>TTL</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td class="t">A</td><td class="n">@</td><td class="v">3.33.251.168</td><td class="n">3600</td><td><span class="pill web">web</span> Zoho Sites via AWS Global Accelerator</td></tr>
+          <tr><td class="t">A</td><td class="n">@</td><td class="v">15.197.225.128</td><td class="n">3600</td><td><span class="pill web">web</span> second Zoho apex address</td></tr>
+          <tr><td class="t">CNAME</td><td class="n">www</td><td class="v">zhs.zohosites.com</td><td class="n">3600</td><td><span class="pill web">web</span> Zoho Sites host</td></tr>
+          <tr><td class="t">MX</td><td class="n">@</td><td class="v">10 mx.zoho.com</td><td class="n">3600</td><td><span class="pill mail">mail</span> Zoho Mail</td></tr>
+          <tr><td class="t">MX</td><td class="n">@</td><td class="v">20 mx2.zoho.com</td><td class="n">3600</td><td><span class="pill mail">mail</span></td></tr>
+          <tr><td class="t">MX</td><td class="n">@</td><td class="v">50 mx3.zoho.com</td><td class="n">3600</td><td><span class="pill mail">mail</span></td></tr>
+          <tr><td class="t">TXT</td><td class="n">@</td><td class="v">v=spf1 include:dc-8e814c8572._spfm.encinovelodrome.org ~all</td><td class="n">3600</td><td><span class="pill mail">mail</span> SPF, indirect</td></tr>
+          <tr class="crit"><td class="t">TXT</td><td class="n">dc-8e814c8572._spfm</td><td class="v">v=spf1 include:zohomail.com ~all</td><td class="n">3600</td><td><span class="pill mail">mail</span> <b>the dependency — must be recreated</b></td></tr>
+          <tr><td class="t">TXT</td><td class="n">@</td><td class="v">zoho-verification=zb09632506.zmverify.zoho.com</td><td class="n">3600</td><td><span class="pill mail">mail</span> domain ownership</td></tr>
+          <tr><td class="t">CNAME</td><td class="n">_domainconnect</td><td class="v">_domainconnect.gd.domaincontrol.com</td><td class="n">3600</td><td>GoDaddy helper — drop</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sec-note" style="margin-top:18px;"><b>Swept and confirmed absent:</b> DKIM at <span class="mono">zmail, zoho, default, s1, s2, selector1, selector2, k1, google, mail, dkim</span> selectors; <span class="mono">_dmarc</span>; CAA. Also absent: AAAA, SRV, and any of the usual cPanel/webmail/autodiscover subdomains.</p>
+  </div>
+</section>
+
+<section id="phase1">
+  <div class="wrap">
+    <span class="badge tech">05 · Technical</span>
+    <h2 class="display">Phase 1 — parity</h2>
+    <p class="sec-note">Load these into Cloudflare <b>before</b> touching nameservers, then flip. Byte-for-byte identical to the table above, so the switch is a no-op from the outside. <b>Do not trust Cloudflare's automatic scan</b> — it imports most records but misses some; diff against section 4.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Type</th><th>Name</th><th>Content</th><th>TTL</th><th>Proxy</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="t">A</td><td class="n">@</td><td class="v">3.33.251.168</td><td class="n">3600</td><td class="n">DNS only</td><td>never proxy Zoho Sites in parity</td></tr>
+          <tr><td class="t">A</td><td class="n">@</td><td class="v">15.197.225.128</td><td class="n">3600</td><td class="n">DNS only</td><td></td></tr>
+          <tr><td class="t">CNAME</td><td class="n">www</td><td class="v">zhs.zohosites.com</td><td class="n">3600</td><td class="n">DNS only</td><td></td></tr>
+          <tr><td class="t">MX</td><td class="n">@</td><td class="v">mx.zoho.com · priority 10</td><td class="n">3600</td><td class="n">n/a</td><td><span class="pill mail">mail</span></td></tr>
+          <tr><td class="t">MX</td><td class="n">@</td><td class="v">mx2.zoho.com · priority 20</td><td class="n">3600</td><td class="n">n/a</td><td><span class="pill mail">mail</span></td></tr>
+          <tr><td class="t">MX</td><td class="n">@</td><td class="v">mx3.zoho.com · priority 50</td><td class="n">3600</td><td class="n">n/a</td><td><span class="pill mail">mail</span></td></tr>
+          <tr><td class="t">TXT</td><td class="n">@</td><td class="v">v=spf1 include:dc-8e814c8572._spfm.encinovelodrome.org ~all</td><td class="n">3600</td><td class="n">n/a</td><td>keep as-is in parity</td></tr>
+          <tr class="crit"><td class="t">TXT</td><td class="n">dc-8e814c8572._spfm</td><td class="v">v=spf1 include:zohomail.com ~all</td><td class="n">3600</td><td class="n">n/a</td><td><b>omit this and SPF silently breaks</b></td></tr>
+          <tr><td class="t">TXT</td><td class="n">@</td><td class="v">zoho-verification=zb09632506.zmverify.zoho.com</td><td class="n">3600</td><td class="n">n/a</td><td>do not drop — un-verifies the mail domain</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Safe to add at the same time</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Type</th><th>Name</th><th>Content</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td class="t">TXT</td><td class="n">_dmarc</td><td class="v">v=DMARC1; p=none; rua=mailto:board@encinovelodrome.org; fo=1</td><td>Monitoring only. <b>p=none changes no delivery behaviour</b> — it just starts reporting. Zero risk.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">After parity is verified, not before</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Type</th><th>Name</th><th>Content</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td class="t">TXT</td><td class="n">@</td><td class="v">v=spf1 include:zohomail.com ~all</td><td>Collapses the indirection. This is exactly what the current chain resolves to, one lookup shorter, with no dependency on a GoDaddy-generated record. <b>Replace the old apex SPF in the same edit — two SPF records at once is a fail.</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="phase2">
+  <div class="wrap">
+    <span class="badge tech">06 · Technical</span>
+    <h2 class="display">Phase 2 — web cutover</h2>
+    <p class="sec-note">Only once the new site is built, reviewed and approved. Mail records are untouched.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Action</th><th>Type</th><th>Name</th><th>Content</th><th>Proxy</th></tr></thead>
+        <tbody>
+          <tr><td>remove</td><td class="t">A</td><td class="n">@</td><td class="v">3.33.251.168</td><td class="n">—</td></tr>
+          <tr><td>remove</td><td class="t">A</td><td class="n">@</td><td class="v">15.197.225.128</td><td class="n">—</td></tr>
+          <tr><td>add</td><td class="t">CNAME</td><td class="n">@</td><td class="v">&lt;project&gt;.pages.dev</td><td class="n">Proxied</td></tr>
+          <tr><td>replace</td><td class="t">CNAME</td><td class="n">www</td><td class="v">&lt;project&gt;.pages.dev</td><td class="n">Proxied</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sec-note" style="margin-top:16px;">Cloudflare flattens a CNAME at the apex, so no A record is needed. Lower both TTLs to 300 a day ahead so a rollback of <em>this</em> step lands in minutes rather than an hour.</p>
+  </div>
+</section>
+
+<section id="run" style="padding-bottom:60px;">
+  <div class="wrap">
+    <span class="badge tech">07 · Technical</span>
+    <h2 class="display">Running it</h2>
+    <p class="sec-note">The script dry-runs by default and prints every create and update before doing anything. It never deletes without <span class="mono">--prune</span>, and refuses to prune MX or mail TXT records at all.</p>
+<pre><span class="c"># scoped token: Zone.DNS Edit, this zone only</span>
+export CLOUDFLARE_API_TOKEN=...
+
+./apply-dns.sh                 <span class="c"># dry run — shows the plan, writes nothing</span>
+./apply-dns.sh --apply         <span class="c"># commit phase 1 parity</span>
+
+<span class="c"># ...now change nameservers at GoDaddy to the two Cloudflare gives you...</span>
+
+./apply-dns.sh --verify        <span class="c"># reads live DNS back; needs no token</span>
+
+<span class="c"># later, once the new site is approved:</span>
+./apply-dns.sh --phase 2 --host &lt;project&gt;.pages.dev --apply</pre>
+
+    <h3 class="sub">What good looks like</h3>
+    <ul class="clean">
+      <li><b>Nameservers</b> answer as Cloudflare, and <span class="mono">--verify</span> shows the same A, MX and TXT values as section 4.</li>
+      <li><b>SPF resolves through two hops:</b> apex → <span class="mono">dc-8e814c8572._spfm</span> → <span class="mono">zohomail.com</span>. If the middle hop returns nothing, stop and fix it before anything else.</li>
+      <li><b>Send a test message</b> from <span class="mono">board@</span> to a Gmail address. Open <em>Show original</em> and confirm <span class="mono">SPF: PASS</span>. This is the check that actually matters.</li>
+      <li><b>The site still loads</b> on both the apex and <span class="mono">www</span>, and still serves from Zoho.</li>
+    </ul>
+
+    <h3 class="sub">Rollback</h3>
+    <ul class="clean">
+      <li>Point the nameservers back to <span class="mono">ns65 / ns66.domaincontrol.com</span>. The GoDaddy zone is never deleted during this migration, so the old records are still sitting there.</li>
+      <li>Expect hours, not minutes — nameserver delegation is cached by the registry, up to 48 hours in the worst case. This is the reason phase 1 changes nothing visible: there is no outage to race.</li>
+      <li>For phase 2, rollback is just restoring the two Zoho A records and the <span class="mono">www</span> CNAME, which moves at record TTL — minutes if you lowered them first.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="trackline" aria-hidden="true"><span class="tl-black"></span><span class="tl-red"></span><span class="tl-blue"></span></div>
+
+<footer>
+  <div class="wrap">
+    <p class="fine"><b>How this was produced.</b> Every record in section 4 was read from live DNS over DNS-over-HTTPS on 10 September 2026 — nothing here is copied from documentation or assumed from a provider's defaults. The SPF dependency was found by resolving the include chain rather than reading the apex record alone. The absence of DKIM was established by sweeping eleven common selectors; a selector in use under a name outside that list would not have been detected, so confirm in the Zoho admin console before concluding DKIM is off. Record values, the apply script and the raw inventory were delivered alongside this page as <span class="mono">records.json</span>, <span class="mono">apply-dns.sh</span> and <span class="mono">dns-inventory.txt</span>. Prepared by Michael Bowers, Heed Business Solutions.</p>
+  </div>
+</footer>
+
+</body>
+</html>
