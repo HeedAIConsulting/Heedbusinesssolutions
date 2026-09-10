@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/images/logos/image_e43fb0dc-dabb-48f3-a17a-817ce837ff65.png" />
+<title>Encino Velodrome &mdash; Source Dossier | Heed Business Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+  :root {
+    --ground: #FFFFFF; --surface: #F6F8FA; --card: #FFFFFF; --line: #E3E6EB;
+    --ink: #12151A; --muted: #5B6270; --red: #C8102E; --blue: #1B4F9C;
+    --red-lt: #EF3340; --blue-lt: #6BA5E7;
+    --shadow: rgba(18, 21, 26, 0.88); --chip: #F3F5F8;
+    --logo-uri: url("/images/encino-velodrome/encino-logo.png");
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0D0F13; --surface: #14171D; --card: #181C23; --line: #2A303A;
+      --ink: #F0F2F5; --muted: #98A0AD; --red: #FF5566; --blue: #7FB3EE;
+      --red-lt: #FF5566; --blue-lt: #7FB3EE;
+      --shadow: rgba(0, 0, 0, 0.85); --chip: #222A35;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0D0F13; --surface: #14171D; --card: #181C23; --line: #2A303A;
+    --ink: #F0F2F5; --muted: #98A0AD; --red: #FF5566; --blue: #7FB3EE;
+    --red-lt: #FF5566; --blue-lt: #7FB3EE;
+    --shadow: rgba(0, 0, 0, 0.85); --chip: #222A35;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+  a { color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  a:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+  .display { font-family: "Anton", "Arial Narrow", Impact, sans-serif; font-weight: 400;
+    text-transform: uppercase; letter-spacing: 0.01em; line-height: 0.95; text-wrap: balance; }
+  .mono { font-family: "IBM Plex Mono", "Courier New", monospace; }
+  .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted);
+    display: flex; align-items: center; gap: 10px; }
+  .eyebrow::before { content: ""; width: 10px; height: 10px; background: var(--red); flex: none; }
+
+  .trackline { display: flex; flex-direction: column; gap: 4px; margin: 0; }
+  .trackline span { display: block; height: 3px; }
+  .trackline .tl-black { background: var(--ink); }
+  .trackline .tl-red { background: var(--red); }
+  .trackline .tl-blue { background: var(--blue); height: 9px; }
+
+  header.top { border-bottom: 2px solid var(--ink); background: var(--surface); }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center;
+    padding-top: 12px; padding-bottom: 12px; gap: 16px; flex-wrap: wrap; }
+  .brandbar { display: flex; align-items: center; gap: 12px; }
+  .brandbar .mark { width: 54px; height: 38px; flex: none; background-color: #FFFFFF;
+    background-image: var(--logo-uri); background-size: 88%; background-position: center;
+    background-repeat: no-repeat; border: 1px solid var(--line); }
+  .wordmark { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase; }
+  .wordmark b { color: var(--red); }
+  .top-tag { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+
+  .hero { position: relative; overflow: hidden; background: var(--surface); }
+  .hero .wrap { position: relative; padding-top: 64px; padding-bottom: 56px; }
+  .hero-banking { position: absolute; right: -140px; top: -40px; width: 560px; height: 150%;
+    transform: rotate(-24deg);
+    background: linear-gradient(to bottom, transparent 0 34%, var(--blue) 34% 37%,
+      transparent 37% 46%, var(--red) 46% 47.5%, transparent 47.5% 56%,
+      var(--ink) 56% 57.5%, transparent 57.5%);
+    opacity: 0.16; pointer-events: none; }
+  h1.display { font-size: clamp(50px, 8.5vw, 104px); margin: 16px 0 10px; }
+  h1 .pop { color: var(--red); display: block; }
+  .lede { max-width: 64ch; font-size: 18px; margin: 16px 0 0; }
+  .lede b { font-weight: 600; }
+  .hero-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .chip { font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500;
+    background: var(--chip); border: 1.5px solid var(--ink); padding: 6px 12px; letter-spacing: 0.04em; }
+
+  .stats { background: var(--ink); color: var(--ground); }
+  .stats .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+  .stat { padding: 24px 20px; border-left: 1px solid color-mix(in srgb, var(--ground) 22%, transparent); }
+  .stat:first-child { border-left: none; }
+  .stat .n { font-family: "Anton", Impact, sans-serif; font-size: 40px; line-height: 1; color: var(--red-lt); }
+  .stat .l { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-top: 8px; opacity: 0.85; }
+
+  section { padding: 68px 0 8px; }
+  h2.display { font-size: clamp(32px, 4.6vw, 50px); margin: 10px 0 6px; }
+  h3.sub { font-family: "Anton", Impact, sans-serif; text-transform: uppercase; font-size: 22px;
+    letter-spacing: 0.02em; margin: 36px 0 10px; font-weight: 400; }
+  .sec-note { color: var(--muted); max-width: 64ch; margin: 0 0 30px; }
+  .sec-note b { color: var(--ink); font-weight: 600; }
+
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; }
+  .panel { background: var(--card); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--shadow); padding: 22px 20px; }
+  .panel h4 { margin: 0 0 8px; font-size: 17px; font-weight: 700; }
+  .panel p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .panel p + p { margin-top: 9px; }
+  .panel .k { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 9px; }
+  .panel[data-line="red"] { border-top: 8px solid var(--red); }
+  .panel[data-line="blue"] { border-top: 8px solid var(--blue); }
+  .panel[data-line="ink"] { border-top: 8px solid var(--ink); }
+
+  .alarm { background: var(--ink); color: var(--ground); border: 2px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--red); padding: 30px 28px; margin-top: 8px; }
+  .alarm h3 { font-family: "Anton", Impact, sans-serif; text-transform: uppercase; font-weight: 400;
+    font-size: 26px; margin: 0 0 10px; letter-spacing: 0.02em; }
+  .alarm p { margin: 0 0 12px; font-size: 15.5px; max-width: 72ch; }
+  .alarm p:last-child { margin-bottom: 0; }
+  .alarm b { color: var(--red-lt); }
+  .alarm .fix { font-family: "IBM Plex Mono", monospace; font-size: 13px;
+    border-top: 1px solid color-mix(in srgb, var(--ground) 25%, transparent); padding-top: 14px; margin-top: 16px; }
+
+  .tablewrap { overflow-x: auto; border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--shadow);
+    background: var(--card); margin-bottom: 8px; }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px; }
+  th { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em; text-align: left;
+    background: var(--ink); color: var(--ground); padding: 11px 14px; }
+  td { padding: 11px 14px; border-top: 1px solid var(--line); vertical-align: top; }
+  td.mono, td.yr { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+  td.ev { font-family: "Anton", Impact, sans-serif; text-transform: uppercase; font-size: 15px;
+    letter-spacing: 0.03em; white-space: nowrap; }
+  td.time { font-family: "IBM Plex Mono", monospace; font-weight: 600; color: var(--red); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  tr.empty td { color: var(--muted); }
+  tr.empty td.time { color: var(--blue); font-style: italic; }
+  .pill { display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+    font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px;
+    border: 1.5px solid var(--ink); background: var(--chip); white-space: nowrap; }
+  .pill.r { border-color: var(--red); color: var(--red); }
+  .pill.b { border-color: var(--blue); color: var(--blue); }
+
+  .namegrid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .namegrid span { font-family: "IBM Plex Mono", monospace; font-size: 12.5px;
+    border: 1.5px solid var(--line); background: var(--surface); padding: 5px 10px; }
+
+  ul.clean { margin: 10px 0 0; padding-left: 20px; color: var(--muted); font-size: 15px; }
+  ul.clean li { margin: 8px 0; }
+  ul.clean li b { color: var(--ink); font-weight: 600; }
+  ul.clean li::marker { color: var(--red); }
+
+  .ask { background: var(--ink); color: var(--ground); border: 2px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--red); padding: 32px 28px; margin-top: 20px; }
+  .ask h2 { color: var(--ground); margin-top: 0; }
+  .ask ol { margin: 8px 0 0; padding-left: 22px; font-size: 15.5px; line-height: 1.75; }
+  .ask li::marker { color: var(--red-lt); font-family: "IBM Plex Mono", monospace; font-weight: 600; }
+  .ask li b { color: var(--ground); }
+  .ask .cta { margin-top: 24px; padding-top: 18px;
+    border-top: 1px solid color-mix(in srgb, var(--ground) 25%, transparent);
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .ask .cta .big { font-family: "Anton", Impact, sans-serif; font-size: 22px; text-transform: uppercase; letter-spacing: 0.02em; }
+  .ask .cta .contact { font-family: "IBM Plex Mono", monospace; font-size: 13px; }
+  .ask .cta .contact a { color: var(--blue-lt); }
+
+  footer { padding: 42px 0 56px; }
+  footer .fine { font-size: 12.5px; color: var(--muted); max-width: 76ch; line-height: 1.7; }
+  footer .fine b { color: var(--ink); }
+
+  @media (max-width: 640px) {
+    section { padding-top: 50px; }
+    .hero .wrap { padding-top: 44px; padding-bottom: 40px; }
+    .stat { padding: 18px 16px; } .stat .n { font-size: 32px; }
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandbar">
+      <span class="mark" role="img" aria-label="Encino Velodrome logo"></span>
+      <span class="wordmark">ENCINO VELODROME <b>×</b> HEED BUSINESS SOLUTIONS</span>
+    </div>
+    <div class="top-tag">Source dossier · 10 September 2026</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-banking" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Everything the public internet still holds</p>
+    <h1 class="display">The paper <span class="pop">trail.</span></h1>
+    <p class="lede">While we wait on the repo and the GoDaddy invite, I scraped every public source I could reach: the live site, the old site nobody took down, the results archive, the records board, the race calendar, the audio, the video. <b>There is far more here than expected, and some of it is actively disappearing.</b> This is the raw material the content strategy gets built from.</p>
+    <div class="hero-meta">
+      <span class="chip">Sources harvested and saved locally</span>
+      <span class="chip">Michael Bowers · Heed Business Solutions</span>
+    </div>
+  </div>
+</div>
+
+<div class="trackline" aria-hidden="true"><span class="tl-black"></span><span class="tl-red"></span><span class="tl-blue"></span></div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n">39</div><div class="l">Dead results links</div></div>
+    <div class="stat"><div class="n">27</div><div class="l">Races, 2009&ndash;2014</div></div>
+    <div class="stat"><div class="n">10</div><div class="l">Record holders named</div></div>
+    <div class="stat"><div class="n">1</div><div class="l">Blog post since 2024</div></div>
+  </div>
+</div>
+
+<section id="alarm">
+  <div class="wrap">
+    <p class="eyebrow">01 · Read this first</p>
+    <h2 class="display">Two things are rotting in public</h2>
+    <p class="sec-note">Neither is anyone's fault. Both are fixable this month, and both get harder the longer they sit.</p>
+
+    <div class="alarm">
+      <h3>The entire results archive is already gone</h3>
+      <p>The Results page lists <b>27 race meetings from 2009 to 2014</b>, each linking to a PDF or spreadsheet. I pulled all 39 file links and requested every one of them. <b>All 39 return 404.</b> The page looks like an archive and functions as a dead end: a visitor clicking any result from any year gets nothing.</p>
+      <p>The files did not move, they stopped being served when the site changed hands. Which means the only surviving copies are in <b>Vinh's repo</b> or the Internet Archive.</p>
+      <p class="fix">FIX &rarr; the repo copy answers this. Failing that, the Wayback Machine is blocked from my environment but not from yours: pull <span class="mono">web.archive.org/web/2015*/encinovelodrome.org/eventresults/*</span>. I have saved the complete list of all 39 filenames so nothing gets missed.</p>
+    </div>
+
+    <div class="alarm" style="margin-top:24px; box-shadow: 8px 8px 0 var(--blue);">
+      <h3>The old site is still live, and it is the better site</h3>
+      <p>The previous WordPress site never came down. It sits at <span class="mono">encinovelodrome.wordpress.com</span>, it is fully readable, and it contains <b>the club's entire written library</b>: the founding history, Bob Hansing's full obituary, a seven-step Beginner's Guide, Rider Etiquette, a Code of Conduct, a complete Track Racing FAQ explaining every event on a velodrome, the Youth Program, weekly training, sponsorship tiers, and <b>the track records board</b>.</p>
+      <p>Almost none of this exists on the current site. It is a free WordPress.com site tied to an account nobody has mentioned, which means it can vanish without notice and take the only public copy of the records with it.</p>
+      <p class="fix">FIX &rarr; I have already mirrored every page of it to text. The originals should be exported properly and the good material republished under the club's own domain.</p>
+    </div>
+  </div>
+</section>
+
+<section id="records">
+  <div class="wrap">
+    <p class="eyebrow">02 · The find</p>
+    <h2 class="display">The records board, and the half of it that is blank</h2>
+    <p class="sec-note">Recovered from the old site. These are the fastest rides ever recorded at Encino, and they are the seed data for the records page in the rebuild. Read the bottom half carefully.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Event</th><th scope="col">Record</th><th scope="col">Holder</th><th scope="col">Year</th></tr></thead>
+        <tbody>
+          <tr><td class="ev">Flying 200m</td><td class="time">0:11.18</td><td>Kevin Mansker</td><td class="yr">2011</td></tr>
+          <tr><td class="ev">1,000m TT</td><td class="time">1:10.73</td><td>Spencer Hartfeld</td><td class="yr">2005</td></tr>
+          <tr><td class="ev">4,000m Pursuit</td><td class="time">4:58.65</td><td>Cody O'Reilly</td><td class="yr">2011</td></tr>
+          <tr><td class="ev">Team Sprint</td><td class="time">0:51.09</td><td>Nate Koch, Daniel Walker, Dan Reback</td><td class="yr">2011</td></tr>
+          <tr><td class="ev">Team Pursuit</td><td class="time">4:57.34</td><td>Mike Garrett, Aron Gadhia, Tom Rieber, Josh Horowitz</td><td class="yr">2006</td></tr>
+          <tr class="empty"><td class="ev">Flying 200m</td><td class="time">&mdash; open &mdash;</td><td>Women. No record listed.</td><td class="yr">&mdash;</td></tr>
+          <tr class="empty"><td class="ev">500m TT</td><td class="time">&mdash; open &mdash;</td><td>Women. No record listed.</td><td class="yr">&mdash;</td></tr>
+          <tr class="empty"><td class="ev">3,000m Pursuit</td><td class="time">&mdash; open &mdash;</td><td>Women. No record listed.</td><td class="yr">&mdash;</td></tr>
+          <tr class="empty"><td class="ev">Team Sprint</td><td class="time">&mdash; open &mdash;</td><td>Women. No record listed.</td><td class="yr">&mdash;</td></tr>
+          <tr class="empty"><td class="ev">Team Pursuit</td><td class="time">&mdash; open &mdash;</td><td>Women. No record listed.</td><td class="yr">&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid3" style="margin-top:26px;">
+      <div class="panel" data-line="red">
+        <span class="k">The campaign</span>
+        <h4>"The board is half empty"</h4>
+        <p>Every women's record at this velodrome is unclaimed. Whether that is a record-keeping gap or the literal truth, it is the most inviting fact on the entire site: <b>show up, ride a Flying 200, and your name is the first one on the board.</b></p>
+        <p>Verify with the board first. If any women's times exist on paper, the story becomes restoring them, which is just as good.</p>
+      </div>
+      <div class="panel" data-line="blue">
+        <span class="k">The hook</span>
+        <h4>11.18 against 8.857</h4>
+        <p>The Track School carousel already explains the Flying 200 world record. Now it has a local anchor: the fastest ever ridden on this concrete is <b>Kevin Mansker's 11.18 from 2011</b>, still standing after fifteen years.</p>
+      </div>
+      <div class="panel" data-line="ink">
+        <span class="k">The people</span>
+        <h4>Ten names to find</h4>
+        <p>Every holder is a potential Faces of the Track feature or a returning guest at a record night. Several are likely still riding in Southern California.</p>
+        <div class="namegrid">
+          <span>Kevin Mansker</span><span>Spencer Hartfeld</span><span>Cody O'Reilly</span><span>Nate Koch</span><span>Daniel Walker</span><span>Dan Reback</span><span>Mike Garrett</span><span>Aron Gadhia</span><span>Tom Rieber</span><span>Josh Horowitz</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="races">
+  <div class="wrap">
+    <p class="eyebrow">03 · The archive</p>
+    <h2 class="display">This club used to name races like a punk band</h2>
+    <p class="sec-note">The 2009&ndash;2014 calendar is not a list of dates, it is a <b>voice</b>. Someone at this track had a genuine talent for naming a bike race, and it is the single most reusable brand asset I have found. The results files are dead, but the names survive on the page.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Year</th><th scope="col">The races</th></tr></thead>
+        <tbody>
+          <tr><td class="yr">2014</td><td><b>Swap Your Legs</b> &middot; Ride the Black Line Series &middot; Arizona Track Race Series I &amp; II</td></tr>
+          <tr><td class="yr">2013</td><td><b>Pretty in Black</b> p/b Privateer &middot; <b>Encino Velodrome Boneshaker</b> p/b Zone 3 &middot; Test &amp; Tune Omniums p/b South Bay Wheelmen &middot; SCNCA Masters Track Championships</td></tr>
+          <tr><td class="yr">2012</td><td><b>Concrete Jungle II</b> &middot; <b>Never Mind the Bumps</b> p/b Zone 3 &middot; <b>Pista Libre</b> p/b Orange 20 &middot; Encino 6 &middot; Far West II &middot; SCNCA Junior Track Championships &middot; Saguaro Velo Arizona Track Weekend</td></tr>
+          <tr><td class="yr">2011</td><td><b>Feet of Fury</b> (twice) &middot; <b>Black Line Fever</b> &middot; Encino 6 Hour Race &middot; Far West Elite Track Championships</td></tr>
+          <tr><td class="yr">2010</td><td><b>The Fast, The Slow and The Ugly</b> p/b Euro Asia Imports &middot; <b>For A Fist Full Of Handlebars</b> p/b Orange 20 &middot; <b>Gone in 250 Meters</b> p/b Privateer &middot; <b>Attack of the Track People</b> p/b L&Auml;RABAR &middot; John Fitzpatrick and Dave Staub Memorial Far West Championships &middot; SCNCA Masters Track Championships</td></tr>
+          <tr><td class="yr">2009</td><td>Encino Velodrome Championships &middot; the Hansing series, scored across the season</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid3" style="margin-top:26px;">
+      <div class="panel" data-line="red">
+        <span class="k">Why it matters</span>
+        <h4>Personality is the differentiator</h4>
+        <p>Carson has the Olympic track. Encino has <b>Attack of the Track People</b>. No amount of budget buys that tone, and reviving it costs nothing but nerve. A named race with a poster is a content series, a ticket driver, and a reason for press to care.</p>
+      </div>
+      <div class="panel" data-line="blue">
+        <span class="k">The thread</span>
+        <h4>The Hansing series</h4>
+        <p>Season-long standings ran under the <b>Hansing</b> name, after founder Bob Hansing. One of the 2010 races was presented by <b>Euro Asia Imports</b>, the company Hansing himself founded. The club has been honoring its own history in its race calendar the whole time.</p>
+      </div>
+      <div class="panel" data-line="ink">
+        <span class="k">Old sponsors</span>
+        <h4>A warm list, not a cold one</h4>
+        <p>Privateer, Orange 20 Bikes, South Bay Wheelmen, Zone 3 Multisport, LÄRABAR, Euro Asia Imports, Saguaro Velo. These businesses backed races here before. <b>That is the first call list for sponsorship, and it is not a cold one.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="history">
+  <div class="wrap">
+    <p class="eyebrow">04 · The story</p>
+    <h2 class="display">A golf game, a flood basin, and a man who found Japan</h2>
+    <p class="sec-note">The founding story is fully documented and genuinely good. It has a beginning, a turn, and a punchline, which is more than most brands can say.</p>
+    <div class="grid3">
+      <div class="panel" data-line="ink">
+        <span class="k">1953</span>
+        <h4>"What if we build our own velodrome?"</h4>
+        <p>Four friends in the bike trade &mdash; <b>George Garner, Bob Hansing, Jack Kemp, Charlie Morton</b> &mdash; on a ride, half joking. Later that year Morton plays golf with a friend from the Army Corps of Engineers and hears about an unused piece of land in the Sepulveda flood basin.</p>
+        <p>They form a nonprofit, raise money from the cycling trade, and each put in their own. Asphalt for the 1961 season, cement by 1963.</p>
+      </div>
+      <div class="panel" data-line="red">
+        <span class="k">The punchline</span>
+        <h4>The first man to ride it</h4>
+        <p>The grading finishes. Three of them stand admiring the work, look up, and Hansing is already out there riding laps on the bare dirt oval. <b>He went into the record as the first person ever to ride the Encino Velodrome.</b></p>
+      </div>
+      <div class="panel" data-line="blue">
+        <span class="k">The circle</span>
+        <h4>Hansing found the track in Japan</h4>
+        <p>Navy, Korea, early 1950s. Ashore at Yokohama and Sasebo, in the club's own words: <b>"While others headed for the bars Bob headed for the nearest Japanese velodrome."</b> He borrowed a bike far too small for him and rode the oriental oval.</p>
+        <p>Seventy years later the club's treasurer, <b>Henry Shibata</b>, is a Japanese keirin rider who pilots the pace scooter. The founder went to Japan to find keirin; keirin came to Encino. <b>That is the best story this place has and nobody has told it.</b></p>
+      </div>
+    </div>
+    <h3 class="sub">Hansing, in full</h3>
+    <p class="sec-note" style="max-width:72ch;">His obituary is on the old site and reads like a history of American cycling: Montrose Bike Shop, opened 1955 and family-run for 46 years. Founder of <b>Euro Asia Imports</b>. <b>President of Shimano American Corporation.</b> Founder of the Montrose Cycle Club, which produced national and Olympic riders. Fifteen years on the board of the Amateur Bicycle League of America. <b>Coach of the 1968 US Olympic cycling team in Mexico City</b>, manager of the 1971 Pan-American team in Cali. He announced the races at Encino for years while his wife Bev worked the concession stand. Born Glendale 1931, died 2001.</p>
+  </div>
+</section>
+
+<section id="assets">
+  <div class="wrap">
+    <p class="eyebrow">05 · What else is out there</p>
+    <h2 class="display">Assets, names and numbers</h2>
+    <div class="grid3">
+      <div class="panel" data-line="red">
+        <span class="k">Audio</span>
+        <h4>A narrated history, already recorded</h4>
+        <p>Sitting unlinked on the live site: an <b>8.4 MB MP3 of the Velodrome's history, narrated by Roger Espinosa.</b> I have downloaded it. That is a podcast episode, a reel voiceover bed, and an audiogram series with no production cost.</p>
+      </div>
+      <div class="panel" data-line="blue">
+        <span class="k">Video</span>
+        <h4>A YouTube channel and a playlist</h4>
+        <p>youtube.com/c/EncinoVelodrome, plus an Encino Velodrome Videos playlist and third-party coverage. <b>Pure Cycles filmed the Swap Your Legs race.</b> There is also a run of remote-control car racing videos shot on the track, including an 83 mph RC speed run, which is a genuinely odd and very shareable side of the place.</p>
+      </div>
+      <div class="panel" data-line="ink">
+        <span class="k">Photos</span>
+        <h4>A Flickr archive, referenced</h4>
+        <p>The old site embeds a Flickr feed and a Photo Archive page that now 404s. <b>Finding who holds that Flickr account is a priority</b>, it is likely the largest photo set in existence and it belongs in the asset drive.</p>
+      </div>
+    </div>
+
+    <h3 class="sub">People worth chasing</h3>
+    <ul class="clean">
+      <li><b>The board, on record:</b> Roger Espinosa (President), Rick Skalak (VP), Henry Shibata (Treasurer), William J. Smith (Secretary/Grants), Vinh Tran (Technology), Davin Agustines, Todd Tuengel, Jane Skalak, Rob Bush.</li>
+      <li><b>Rick Denman</b> founded the youth program here, free coaching and equipment for anyone eighteen and under. Worth a profile and worth knowing whether that program still runs in that form.</li>
+      <li><b>"Dingo"</b> ran Monday evening structured training and got a headline on the old site when he came back to it. Still on the schedule today as the Monday session. A nickname with that much staying power is a character.</li>
+      <li><b>Durer Shomer</b> wrote the club's track racing FAQ, which is the best explainer of track cycling I have read on any club site.</li>
+      <li><b>John Fitzpatrick and Dave Staub</b> have a memorial championship named for them. I could not find who they were, and someone at the track will know.</li>
+    </ul>
+
+    <h3 class="sub">Numbers to keep straight</h3>
+    <ul class="clean">
+      <li><b>250 metres, concrete, banked at 46 degrees</b>, which makes it one of the steepest tracks anywhere. Riders aged <b>9 to 80+</b>.</li>
+      <li><b>$10</b> a session, <b>$40</b> beginner certification, <b>$5</b> bike rental. Annual membership <b>$250</b>, with <b>$75</b> and <b>$50</b> tiers for people who put work into the place.</li>
+      <li>Club track rental <b>$100/hour</b>, two-hour minimum, plus 50% if the lights are on.</li>
+      <li>Donation tiers run Supporter, Friend, Soigneur, Medalist, <b>Hall of Fame at $3,000</b>, and donors can earmark a specific project: the motor, the boards, the lights, the concrete, the landscaping.</li>
+      <li>Club races are sanctioned through <b>ATRA</b>, not USAC. <b>That matters for the results system:</b> it means the club is free to publish its own standings without a national body in the loop.</li>
+      <li>The rebuild spec names every line to be repainted: <b>cote d'azur, black measurement, sprinter's red, stayer's blue</b>, 200m, two pursuit lines, finish. The brand palette and the concrete agree with each other.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="next" style="padding-bottom:64px;">
+  <div class="wrap">
+    <p class="eyebrow">06 · What this changes</p>
+    <div class="ask">
+      <h2 class="display">Six things I would do with this</h2>
+      <ol>
+        <li><b>Rescue the results archive</b> before anything else. Repo first, Wayback second. I have the full filename list ready.</li>
+        <li><b>Export the old WordPress site properly</b> and republish the FAQ, Beginner's Guide, Etiquette and history under the club's own domain. <b>Track School is no longer something I have to write</b>, it is something the club already wrote and forgot.</li>
+        <li><b>Run "the board is half empty"</b> as the first real campaign, once the board confirms the women's records are genuinely open. It is the strongest invitation this place has.</li>
+        <li><b>Tell the Hansing and Shibata story.</b> A founder who went looking for velodromes in postwar Japan, and a Japanese keirin rider running the scooter today. That is the anchor piece for the whole heritage pillar.</li>
+        <li><b>Bring back the race names.</b> Put a real one on the 2027 calendar with a poster, and let the tone do the marketing.</li>
+        <li><b>Call the old sponsors.</b> Privateer, Orange 20, South Bay Wheelmen, Zone 3, Euro Asia. They backed races here before, and the rebuild gives them a reason to come back.</li>
+      </ol>
+      <div class="cta">
+        <div class="big">Everything above is saved and ready.</div>
+        <div class="contact">Michael Bowers · <a href="mailto:mbowers@heedconsulting.ai">mbowers@heedconsulting.ai</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trackline" aria-hidden="true"><span class="tl-black"></span><span class="tl-red"></span><span class="tl-blue"></span></div>
+
+<footer>
+  <div class="wrap">
+    <p class="fine"><b>Sources and method.</b> Harvested 10 September 2026 from public pages only: encinovelodrome.org (all 12 pages in its sitemap, plus the blog index and the results archive links), the still-live encinovelodrome.wordpress.com (history, Bob Hansing, Beginner's Guide, Track Records, Track Racing FAQ, Rider Etiquette, Code of Conduct, weekly training, youth program, volunteer, donate, sponsorship, 2013 race calendar), and public search results for press, video and historical references. The 404 status of all 39 results files was verified by request, not inferred. Track records, race names, board roster, pricing and rebuild specifications are quoted from those pages as found and should be confirmed with the board before publication, particularly the empty women's records, which may reflect a record-keeping gap rather than the racing history. The Internet Archive is unreachable from my working environment, so archived copies have not been retrieved. No private, member-only or password-protected source was accessed. Prepared by Michael Bowers, Heed Business Solutions.</p>
+  </div>
+</footer>
+
+</body>
+</html>
