@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/images/logos/image_e43fb0dc-dabb-48f3-a17a-817ce837ff65.png" />
+<title>Encino Velodrome &mdash; Build Plan | Heed Business Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+  :root {
+    --ground: #FFFFFF;
+    --surface: #F6F8FA;
+    --card: #FFFFFF;
+    --line: #E3E6EB;
+    --ink: #12151A;
+    --muted: #5B6270;
+    --red: #C8102E;
+    --blue: #1B4F9C;
+    --red-lt: #EF3340;
+    --blue-lt: #6BA5E7;
+    --shadow: rgba(18, 21, 26, 0.88);
+    --chip: #F3F5F8;
+    --logo-uri: url("/images/encino-velodrome/encino-logo.png");
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0D0F13;
+      --surface: #14171D;
+      --card: #181C23;
+      --line: #2A303A;
+      --ink: #F0F2F5;
+      --muted: #98A0AD;
+      --red: #FF5566;
+      --blue: #7FB3EE;
+      --red-lt: #FF5566;
+      --blue-lt: #7FB3EE;
+      --shadow: rgba(0, 0, 0, 0.85);
+      --chip: #222A35;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0D0F13;
+    --surface: #14171D;
+    --card: #181C23;
+    --line: #2A303A;
+    --ink: #F0F2F5;
+    --muted: #98A0AD;
+    --red: #FF5566;
+    --blue: #7FB3EE;
+    --red-lt: #FF5566;
+    --blue-lt: #7FB3EE;
+    --shadow: rgba(0, 0, 0, 0.85);
+    --chip: #222A35;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+  a { color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  a:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+  .display {
+    font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+    font-weight: 400; text-transform: uppercase;
+    letter-spacing: 0.01em; line-height: 0.95; text-wrap: balance;
+  }
+  .mono { font-family: "IBM Plex Mono", "Courier New", monospace; }
+  .eyebrow {
+    font-family: "IBM Plex Mono", "Courier New", monospace;
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--muted);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ""; width: 10px; height: 10px; background: var(--red); flex: none; }
+
+  .trackline { display: flex; flex-direction: column; gap: 4px; margin: 0; }
+  .trackline span { display: block; height: 3px; }
+  .trackline .tl-black { background: var(--ink); }
+  .trackline .tl-red { background: var(--red); }
+  .trackline .tl-blue { background: var(--blue); height: 9px; }
+
+  header.top { border-bottom: 2px solid var(--ink); background: var(--surface); }
+  header.top .wrap {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 12px; padding-bottom: 12px; gap: 16px; flex-wrap: wrap;
+  }
+  .brandbar { display: flex; align-items: center; gap: 12px; }
+  .brandbar .mark {
+    width: 54px; height: 38px; flex: none;
+    background-color: #FFFFFF;
+    background-image: var(--logo-uri);
+    background-size: 88%; background-position: center; background-repeat: no-repeat;
+    border: 1px solid var(--line);
+  }
+  .wordmark { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+  .wordmark b { color: var(--red); }
+  .top-tag { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+
+  .hero { position: relative; overflow: hidden; background: var(--surface); }
+  .hero .wrap { position: relative; padding-top: 64px; padding-bottom: 56px; }
+  .hero-banking {
+    position: absolute; right: -140px; top: -40px; width: 560px; height: 150%;
+    transform: rotate(-24deg);
+    background: linear-gradient(to bottom,
+      transparent 0 34%, var(--blue) 34% 37%,
+      transparent 37% 46%, var(--red) 46% 47.5%,
+      transparent 47.5% 56%, var(--ink) 56% 57.5%, transparent 57.5%);
+    opacity: 0.16; pointer-events: none;
+  }
+  h1.display { font-size: clamp(52px, 9vw, 108px); margin: 16px 0 10px; }
+  h1 .pop { color: var(--red); display: block; }
+  .lede { max-width: 64ch; font-size: 18px; margin: 16px 0 0; }
+  .lede b { font-weight: 600; }
+  .hero-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .chip {
+    font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500;
+    background: var(--chip); border: 1.5px solid var(--ink);
+    padding: 6px 12px; letter-spacing: 0.04em;
+  }
+
+  .stats { background: var(--ink); color: var(--ground); }
+  .stats .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .stat { padding: 24px 20px; border-left: 1px solid color-mix(in srgb, var(--ground) 22%, transparent); }
+  .stat:first-child { border-left: none; }
+  .stat .n { font-family: "Anton", Impact, sans-serif; font-size: 40px; line-height: 1; color: var(--red-lt); }
+  .stat .l { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px; opacity: 0.85; }
+
+  section { padding: 68px 0 8px; }
+  h2.display { font-size: clamp(32px, 4.6vw, 50px); margin: 10px 0 6px; }
+  h3.sub { font-family: "Anton", Impact, sans-serif; text-transform: uppercase; font-size: 22px; letter-spacing: 0.02em; margin: 36px 0 10px; font-weight: 400; }
+  .sec-note { color: var(--muted); max-width: 64ch; margin: 0 0 30px; }
+  .sec-note b { color: var(--ink); font-weight: 600; }
+
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; }
+  .panel { background: var(--card); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--shadow); padding: 22px 20px; }
+  .panel h4 { margin: 0 0 8px; font-size: 17px; font-weight: 700; }
+  .panel p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .panel .k {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--red);
+    display: block; margin-bottom: 9px;
+  }
+  .panel[data-line="red"] { border-top: 8px solid var(--red); }
+  .panel[data-line="blue"] { border-top: 8px solid var(--blue); }
+  .panel[data-line="ink"] { border-top: 8px solid var(--ink); }
+
+  .tablewrap { overflow-x: auto; border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--shadow); background: var(--card); margin-bottom: 8px; }
+  table { border-collapse: collapse; width: 100%; min-width: 660px; font-size: 14px; }
+  th {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em; text-align: left;
+    background: var(--ink); color: var(--ground); padding: 11px 14px;
+  }
+  td { padding: 11px 14px; border-top: 1px solid var(--line); vertical-align: top; }
+  td.day { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+  td.wk { font-family: "Anton", Impact, sans-serif; text-transform: uppercase; font-size: 15px; letter-spacing: 0.04em; white-space: nowrap; }
+  .pill {
+    display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px;
+    border: 1.5px solid var(--ink); background: var(--chip); white-space: nowrap;
+  }
+  .pill.r { border-color: var(--red); color: var(--red); }
+  .pill.b { border-color: var(--blue); color: var(--blue); }
+
+  ul.clean { margin: 10px 0 0; padding-left: 20px; color: var(--muted); font-size: 15px; }
+  ul.clean li { margin: 7px 0; }
+  ul.clean li b { color: var(--ink); font-weight: 600; }
+  ul.clean li::marker { color: var(--red); }
+
+  .flow { counter-reset: step; margin-top: 22px; display: grid; gap: 14px; }
+  .step {
+    position: relative; background: var(--card); border: 2px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--shadow); padding: 16px 18px 16px 62px;
+  }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; left: 16px; top: 14px;
+    font-family: "Anton", Impact, sans-serif; font-size: 26px; color: var(--red); line-height: 1;
+  }
+  .step h4 { margin: 0 0 4px; font-size: 16px; font-weight: 700; }
+  .step p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .step p b { color: var(--ink); font-weight: 600; }
+
+  .notdoing { border: 2px dashed var(--line); background: var(--surface); padding: 20px 22px; margin-top: 24px; }
+  .notdoing .k { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue); }
+  .notdoing ul { margin: 10px 0 0; padding-left: 20px; font-size: 14.5px; color: var(--muted); }
+  .notdoing li { margin: 6px 0; }
+  .notdoing li b { color: var(--ink); font-weight: 600; }
+
+  .phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 22px; }
+  .phase { background: var(--card); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--shadow); padding: 22px 20px; }
+  .phase .ph { font-family: "Anton", Impact, sans-serif; font-size: 34px; color: var(--red); line-height: 1; }
+  .phase h4 { margin: 8px 0 2px; font-size: 18px; }
+  .phase .span { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+  .phase ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+  .phase li { margin: 6px 0; }
+  .phase li b { color: var(--ink); font-weight: 600; }
+
+  .ask { background: var(--ink); color: var(--ground); border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--red); padding: 32px 28px; margin-top: 20px; }
+  .ask h2 { color: var(--ground); margin-top: 0; }
+  .ask .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 6px 32px; }
+  .ask ul { margin: 8px 0 0; padding-left: 20px; font-size: 15px; line-height: 1.7; }
+  .ask li::marker { color: var(--red-lt); }
+  .ask .cta {
+    margin-top: 24px; padding-top: 18px; border-top: 1px solid color-mix(in srgb, var(--ground) 25%, transparent);
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .ask .cta .big { font-family: "Anton", Impact, sans-serif; font-size: 22px; text-transform: uppercase; letter-spacing: 0.02em; }
+  .ask .cta .contact { font-family: "IBM Plex Mono", monospace; font-size: 13px; }
+  .ask .cta .contact a { color: var(--blue-lt); }
+
+  footer { padding: 42px 0 56px; }
+  footer .fine { font-size: 12.5px; color: var(--muted); max-width: 76ch; line-height: 1.7; }
+  footer .fine b { color: var(--ink); }
+
+  @media (max-width: 640px) {
+    section { padding-top: 50px; }
+    .hero .wrap { padding-top: 44px; padding-bottom: 40px; }
+    .stat { padding: 18px 16px; }
+    .stat .n { font-size: 32px; }
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandbar">
+      <span class="mark" role="img" aria-label="Encino Velodrome logo"></span>
+      <span class="wordmark">ENCINO VELODROME <b>×</b> HEED BUSINESS SOLUTIONS</span>
+    </div>
+    <div class="top-tag">Build plan · September 2026 · For Vinh &amp; Roger</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-banking" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Phase one · Strategy, content, website</p>
+    <h1 class="display">Hold your <span class="pop">line.</span></h1>
+    <p class="lede">The pitch is done. This is the build. Three things start now: <b>a content engine that runs every week without anyone having to think of a post</b>, <b>an asset drive to recover the Velodrome's history before it disappears</b>, and <b>a website rebuilt around the one thing the current site cannot do: publish race results.</b></p>
+    <div class="hero-meta">
+      <span class="chip">Michael Bowers · Heed Business Solutions</span>
+      <span class="chip">encinovelodrome.org</span>
+    </div>
+  </div>
+</div>
+
+<div class="trackline" aria-hidden="true"><span class="tl-black"></span><span class="tl-red"></span><span class="tl-blue"></span></div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n">2014</div><div class="l">Last results posted</div></div>
+    <div class="stat"><div class="n">24</div><div class="l">Posts in the first month</div></div>
+    <div class="stat"><div class="n">12</div><div class="l">Systems to inherit</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">Website build phases</div></div>
+  </div>
+</div>
+
+<section id="gap">
+  <div class="wrap">
+    <p class="eyebrow">01 · Where it stands</p>
+    <h2 class="display">The gap is not effort. It's plumbing.</h2>
+    <p class="sec-note">The club does the hard part already: six days of training a week, free junior sessions, Keirin mornings, a full race calendar. What is missing is the machinery that turns all that activity into something the public can see, follow, and act on.</p>
+    <div class="grid3">
+      <div class="panel" data-line="red">
+        <span class="k">The evidence</span>
+        <h4>The results page stops in July 2014</h4>
+        <p>Twelve years of racing has happened since, and none of it is on the site. What is there sits in PDFs and Excel files, one download at a time. A rider who raced last month has nothing to look up, share, or be proud of.</p>
+      </div>
+      <div class="panel" data-line="blue">
+        <span class="k">The cost</span>
+        <h4>Every race night evaporates</h4>
+        <p>No standings means no reason to come back next week to defend a place. No records board means a fast Flying 200 goes unrecognized. No rider pages means nothing to send to a parent, a coach, or a sponsor.</p>
+      </div>
+      <div class="panel" data-line="ink">
+        <span class="k">The opportunity</span>
+        <h4>Results are the best content there is</h4>
+        <p>They are already produced, they carry names, and people search for their own name. Publishing them well feeds the website, the social feed, and the fundraising case at the same time, from one act of data entry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <p class="eyebrow">02 · The handover</p>
+    <h2 class="display">Twelve systems, one set of keys</h2>
+    <p class="sec-note">Vinh's transition document lays out everything the club runs on. Most of it is in better shape than expected: the group email addresses are already structured to survive board turnover, donations are on Stripe at the nonprofit rate, and membership is on BikeReg and works. <b>Two items decide the website plan, and one is urgent.</b></p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">System</th><th scope="col">Where it lives</th><th scope="col">What happens to it</th></tr></thead>
+        <tbody>
+          <tr><td class="wk">Domain</td><td class="day">GoDaddy</td><td>Transfers between accounts easily. DNS points at the new host when phase 1 ships. <b>No downtime, no email disruption.</b></td></tr>
+          <tr><td class="wk">Website</td><td class="day">Zoho Sites</td><td><b>The constraint.</b> A page builder cannot run a results system, so the rebuild moves off it. Everything else on this list stays where it is.</td></tr>
+          <tr><td class="wk">Old site + results</td><td class="day">GitHub, private</td><td><b>Urgent.</b> Vinh's repo still holds the historical results and track records. That is the seed data for the results archive and the records board, and it is one person's private repo today. <b>Getting a copy is the first thing on my list.</b></td></tr>
+          <tr><td class="wk">Calendar</td><td class="day">Google Calendar</td><td>Keep. It is the tool the club actually updates. The new site embeds it and the socials read from it, so one entry feeds everything.</td></tr>
+          <tr><td class="wk">Instagram</td><td class="day">@encinovelodrome</td><td>Primary channel, already auto-sharing to Facebook. I need collaborator access to audit and post.</td></tr>
+          <tr><td class="wk">Facebook Page</td><td class="day">Page, 2023-</td><td>Official channel. The older Encino Velodrome account is stale; point it at the page and retire it rather than running two.</td></tr>
+          <tr><td class="wk">Racing group</td><td class="day">Facebook group</td><td>Stale, with Ken resharing official posts. Keep it for rider chatter, but official announcements come from the page so there is one source of truth.</td></tr>
+          <tr><td class="wk">Email</td><td class="day">Zoho Mail</td><td>Already right. <b>board@</b> and <b>treasury@</b> forward to whoever holds the role. Caption approvals run through board@.</td></tr>
+          <tr><td class="wk">Annual waiver</td><td class="day">Tally</td><td>Works, but nobody can find it at the track. <b>QR codes posted trackside is a phase 1 deliverable</b>, and the same code goes in the Start Here page.</td></tr>
+          <tr><td class="wk">Donations</td><td class="day">Stripe</td><td>Nonprofit rate already in place. The rebuild page gets a proper donate flow instead of a few scattered links.</td></tr>
+          <tr><td class="wk">Venmo / Zelle</td><td class="day">Henry's number</td><td>Loose end. Registered to a phone number that may be out of date, with past login trouble. Worth confirming before it matters.</td></tr>
+          <tr><td class="wk">Membership</td><td class="day">BikeReg</td><td>Keep. Annual membership and race entry both work. The site links out; I am not rebuilding registration.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sec-note" style="margin-top:22px;">The pattern worth protecting is the one Vinh already started: <b>accounts belong to roles, not to people.</b> Group addresses, a page instead of a personal profile, shared logins for coordinators. Every new thing I build follows the same rule, so the next handover is a document and not an excavation.</p>
+  </div>
+</section>
+
+<div class="trackline" aria-hidden="true"><span class="tl-black"></span><span class="tl-red"></span><span class="tl-blue"></span></div>
+
+<section id="content">
+  <div class="wrap">
+    <p class="eyebrow">03 · The content engine</p>
+    <h2 class="display">A month of posts, planned once</h2>
+    <p class="sec-note">Five pillars, set in the proposal, now loaded with a real calendar. Roughly <b>six posts a week</b>: four feed posts, two reels, stories on session days. Everything below is producible from two capture visits a month plus rider and volunteer footage. Captions go to the board before anything publishes.</p>
+
+    <h3 class="sub">Week 1 · Establish the place</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Day</th><th scope="col">Format</th><th scope="col">Pillar</th><th scope="col">The post</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Mon</td><td><span class="pill">Carousel</span></td><td><span class="pill b">Start Here</span></td><td><b>Pinned:</b> everything a first-timer needs. $40 certification, $5 rentals, $10 sessions, what to bring. This one stays pinned to the top of the profile.</td></tr>
+          <tr><td class="day">Tue</td><td><span class="pill">Reel</span></td><td><span class="pill r">The Wall</span></td><td>"Sound on. Tuesday night in Encino." No music, no talking. Tire hum, chain whir, a coach shouting hold your line.</td></tr>
+          <tr><td class="day">Wed</td><td><span class="pill">Feed</span></td><td><span class="pill">Track Family</span></td><td>Faces of the Track No. 1: Henry Shibata, treasurer, scooter pilot, Japanese keirin rider.</td></tr>
+          <tr><td class="day">Thu</td><td><span class="pill">Stories</span></td><td><span class="pill b">Start Here</span></td><td>Juniors Thursday, live. Free, 5:30pm, aimed squarely at Valley parents during pickup hours.</td></tr>
+          <tr><td class="day">Fri</td><td><span class="pill">Feed</span></td><td><span class="pill">Since '61</span></td><td>The 1961 aerial postcard: packed lot, full infield, crowd at the rail. Ends on the rebuild link.</td></tr>
+          <tr><td class="day">Sat</td><td><span class="pill">Reel</span></td><td><span class="pill r">The Wall</span></td><td>Keirin morning: what that word actually means, filmed during Saturday practice.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Week 2 · Teach something</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Day</th><th scope="col">Format</th><th scope="col">Pillar</th><th scope="col">The post</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Mon</td><td><span class="pill">Carousel</span></td><td><span class="pill r">The Wall</span></td><td><b>Track School No. 1: The Flying 200.</b> What it is, why ten seconds seed a whole sprint bracket, the records. Already built.</td></tr>
+          <tr><td class="day">Tue</td><td><span class="pill">Feed</span></td><td><span class="pill r">The Wall</span></td><td>Why there is a motorcycle on the track. Motorpacing explained, with Henry piloting.</td></tr>
+          <tr><td class="day">Wed</td><td><span class="pill">Reel</span></td><td><span class="pill b">Start Here</span></td><td>"This bike has no brakes." The myth flipped into the reason the track is safe.</td></tr>
+          <tr><td class="day">Thu</td><td><span class="pill">Feed</span></td><td><span class="pill">Track Family</span></td><td>A junior rider and a parent, in their own words. The strongest ad the free Thursday session has.</td></tr>
+          <tr><td class="day">Fri</td><td><span class="pill">Event card</span></td><td><span class="pill r">Race Night</span></td><td>Next race or time trial. One template, real details, watching is free.</td></tr>
+          <tr><td class="day">Sun</td><td><span class="pill">Feed</span></td><td><span class="pill r">Race Night</span></td><td>Results graphic. Names and places, published the night of. <b>This is the post the website will generate automatically.</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Week 3 · Open the archive</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Day</th><th scope="col">Format</th><th scope="col">Pillar</th><th scope="col">The post</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Mon</td><td><span class="pill">Feed</span></td><td><span class="pill">Since '61</span></td><td>Archive drop No. 1, straight from the asset drive. Photo plus the story behind it, credited to whoever sent it in.</td></tr>
+          <tr><td class="day">Tue</td><td><span class="pill">Reel</span></td><td><span class="pill r">The Wall</span></td><td>POV lap. Camera on the bars, one full lap of the banking, no cuts.</td></tr>
+          <tr><td class="day">Wed</td><td><span class="pill">Feed</span></td><td><span class="pill">Track Family</span></td><td>Volunteer spotlight: the officials, the grill crew, whoever holds a race night together.</td></tr>
+          <tr><td class="day">Thu</td><td><span class="pill">Carousel</span></td><td><span class="pill r">The Wall</span></td><td><b>Track School No. 2: What is a Keirin?</b> Japan, 1948. A pacer, a bell, a sprint. Ties straight back to Henry.</td></tr>
+          <tr><td class="day">Fri</td><td><span class="pill">Feed</span></td><td><span class="pill b">Start Here</span></td><td>What it actually costs. Three numbers, no asterisks, an answer to the most common DM.</td></tr>
+          <tr><td class="day">Sat</td><td><span class="pill">Stories</span></td><td><span class="pill">Track Family</span></td><td>Saturday morning, unedited. The most human thing the feed posts all week.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Week 4 · Convert and fund</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Day</th><th scope="col">Format</th><th scope="col">Pillar</th><th scope="col">The post</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Mon</td><td><span class="pill">Carousel</span></td><td><span class="pill b">Start Here</span></td><td>Your first night, start to finish. Park here, find this person, borrow this bike, ride these laps.</td></tr>
+          <tr><td class="day">Tue</td><td><span class="pill">Reel</span></td><td><span class="pill r">The Wall</span></td><td>How fast do they actually go? Speed, on screen, against something people can picture.</td></tr>
+          <tr><td class="day">Wed</td><td><span class="pill">Feed</span></td><td><span class="pill">Track Family</span></td><td>A rider who showed up not knowing anyone, now certified. Before and after, six weeks apart.</td></tr>
+          <tr><td class="day">Thu</td><td><span class="pill">Carousel</span></td><td><span class="pill r">The Wall</span></td><td><b>Track School No. 3: Reading the lines.</b> Black measurement, red sprinter's, blue stayer's. Why they exist and what happens if you cross one.</td></tr>
+          <tr><td class="day">Fri</td><td><span class="pill">Feed</span></td><td><span class="pill">Since '61</span></td><td>Rebuild the Wall. Turns 1 through 4, what the money does, where it stands. The month's fundraising push.</td></tr>
+          <tr><td class="day">Sun</td><td><span class="pill">Feed</span></td><td><span class="pill r">Race Night</span></td><td>Month in review plus current season standings, pulled from the new results system.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sec-note" style="margin-top:22px;">Two of these, <b>Track School</b> and <b>Faces of the Track</b>, are numbered series on purpose. Numbering trains people to expect the next one, and gives the feed a spine that survives a slow week.</p>
+  </div>
+</section>
+
+<section id="assets">
+  <div class="wrap">
+    <p class="eyebrow">04 · The asset drive</p>
+    <h2 class="display">Get the history off the hard drives</h2>
+    <p class="sec-note">Sixty-five seasons of photos, results and stories exist mostly in private hands: shoeboxes, garages, dead laptops. Publicly available material I can scrape. Everything else has to be asked for, and asked for now, while the people who have it are still around to ask.</p>
+    <div class="grid3">
+      <div class="panel" data-line="red">
+        <span class="k">Collect</span>
+        <h4>Photos, reports, legends, records</h4>
+        <p>Race and event photos, race reports and old result sheets, the local legends and what they did, record holders, and anything else specific to Encino. Unsorted and unlabeled is fine.</p>
+      </div>
+      <div class="panel" data-line="blue">
+        <span class="k">Where it goes</span>
+        <h4>Four places at once</h4>
+        <p>The <b>Since '61</b> content pillar, the new site's history and archive pages, the all-time records board, and the rebuild campaign, where proof of what this place was is the strongest argument for what it can be.</p>
+      </div>
+      <div class="panel" data-line="ink">
+        <span class="k">How</span>
+        <h4>One email, one destination</h4>
+        <p>The ask goes out to everyone connected to the track, with a single upload link so nothing gets lost in reply chains. Every contributor is credited by name when their material runs.</p>
+      </div>
+    </div>
+    <p class="sec-note" style="margin-top:26px;"><b>One decision needed:</b> where submissions land. The cleanest answer is an upload page on the new site that writes straight into the archive, which means the drive and the rebuild should start together rather than in sequence. A shared Drive folder works as a stopgap if the email needs to go out first.</p>
+  </div>
+</section>
+
+<section id="site">
+  <div class="wrap">
+    <p class="eyebrow">05 · The website</p>
+    <h2 class="display">Rebuilt around race results</h2>
+    <p class="sec-note">The current site is a Zoho Sites build: fine for a brochure, structurally unable to run results. The rebuild keeps what works, sharpens the path for new riders, and adds the thing the club has never had: <b>a way for a coordinator to put results up the same night they are ridden.</b> With the domain on GoDaddy, the cutover is a DNS change, and email stays untouched on Zoho.</p>
+
+    <h3 class="sub">The sitemap</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Page</th><th scope="col">Its one job</th><th scope="col">Status</th></tr></thead>
+        <tbody>
+          <tr><td class="wk">Home</td><td>What this place is, where it is, when you can ride, and the next race. One clear path to Start Here.</td><td><span class="pill r">Rebuild</span></td></tr>
+          <tr><td class="wk">Start Here</td><td>The whole beginner path on one page: certification, rentals, pricing, what to bring, FAQ, and a booking link. The page every post points to.</td><td><span class="pill r">Rebuild</span></td></tr>
+          <tr><td class="wk">Schedule</td><td>Training week plus the race calendar, subscribable, correct. Feeds the home page and the socials.</td><td><span class="pill">Keep, fix</span></td></tr>
+          <tr><td class="wk">Results</td><td>Every race night, by date and event, published the night of. Replaces the PDF list.</td><td><span class="pill b">New system</span></td></tr>
+          <tr><td class="wk">Standings</td><td>Season points by category. The reason to come back next week.</td><td><span class="pill b">New system</span></td></tr>
+          <tr><td class="wk">Track Records</td><td>Flying 200, 500m, kilo, pursuit. All-time and by age category, with the date and the holder.</td><td><span class="pill b">New system</span></td></tr>
+          <tr><td class="wk">Riders</td><td>A page per rider: results history, personal bests, first race. Something to send to a parent or a sponsor.</td><td><span class="pill b">New system</span></td></tr>
+          <tr><td class="wk">History</td><td>1961 to now, plus the archive gallery built from the asset drive.</td><td><span class="pill r">Rebuild</span></td></tr>
+          <tr><td class="wk">The Rebuild</td><td>Turns 1&ndash;4, the number, the progress, the donate button. Linked from every heritage post.</td><td><span class="pill">Keep, fix</span></td></tr>
+          <tr><td class="wk">Membership</td><td>Memberships, rentals, club kit. Straightforward commerce.</td><td><span class="pill">Keep, fix</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Race night, end to end</h3>
+    <p class="sec-note">Modeled on how OnTheDay.net works for road promoters, where results go online immediately after data entry and standings update themselves. Adapted for a weekly club track night, which has many short events and no pre-entry database.</p>
+    <div class="flow">
+      <div class="step">
+        <h4>Coordinator opens the night</h4>
+        <p>Logs in, picks the date, and chooses events from a template: <b>scratch, points, miss-and-out, keirin, handicap, Flying 200, 500m, kilo, team sprint.</b> Categories come preset (A/B/C, juniors, masters, women) and are editable per event.</p>
+      </div>
+      <div class="step">
+        <h4>Enters results, two ways</h4>
+        <p>Either type them in on a phone or tablet at trackside, with rider names autocompleting from the rider table, or <b>paste and upload the spreadsheet the club already keeps on a clipboard.</b> Both paths matter: nobody should have to change how they work on race night.</p>
+      </div>
+      <div class="step">
+        <h4>Saves as a draft, then publishes</h4>
+        <p>Nothing is public until the coordinator hits publish, so a half-entered night never leaks. Entry keeps working with bad signal in the Basin and syncs when it reconnects.</p>
+      </div>
+      <div class="step">
+        <h4>The site does the rest</h4>
+        <p>One publish updates the results page, recalculates <b>season standings</b>, refreshes each <b>rider profile</b>, and checks every time against the <b>records board</b>, flagging a new club record automatically.</p>
+      </div>
+      <div class="step">
+        <h4>The feed gets fed</h4>
+        <p>The same publish generates a <b>ready-to-post results graphic</b> in the club's colors and a printable PDF for the noticeboard. Race night becomes Sunday's post with no extra work.</p>
+      </div>
+    </div>
+
+    <div class="notdoing">
+      <span class="k">What this deliberately does not do</span>
+      <ul>
+        <li><b>USA Cycling submission and national rankings.</b> OnTheDay.net already does this for sanctioned events and does it properly. For sanctioned race days the club keeps using it, and the site links or mirrors those results rather than competing with them.</li>
+        <li><b>Chip timing or hardware.</b> Times come from the people already holding the stopwatches.</li>
+        <li><b>Race registration and payment.</b> BikeReg handles that today and works. The site links out.</li>
+      </ul>
+    </div>
+
+    <h3 class="sub">How it gets built</h3>
+    <div class="phases">
+      <div class="phase">
+        <div class="ph">1</div>
+        <h4>The brochure, fixed</h4>
+        <div class="span mono">Weeks 1&ndash;2</div>
+        <ul>
+          <li><b>Start Here</b> rebuilt as the conversion page</li>
+          <li>Home, schedule, rebuild and history refreshed</li>
+          <li>Mobile-first, fast, correct on every price and time</li>
+          <li><b>Archive upload page</b> live so the asset drive has somewhere to land</li>
+          <li><b>Waiver QR codes</b> for the track, linked to Tally</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="ph">2</div>
+        <h4>Results v1</h4>
+        <div class="span mono">Weeks 3&ndash;5</div>
+        <ul>
+          <li>Coordinator login and roles</li>
+          <li>Race night entry: form plus spreadsheet upload</li>
+          <li>Public results pages with permalinks</li>
+          <li>PDF export for the noticeboard</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="ph">3</div>
+        <h4>The reasons to return</h4>
+        <div class="span mono">Weeks 6&ndash;8</div>
+        <ul>
+          <li>Season <b>standings</b> by category</li>
+          <li><b>Rider profiles</b> and personal bests</li>
+          <li><b>Records board</b> with automatic flagging</li>
+          <li>Auto-generated results graphics for social</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="ph">4</div>
+        <h4>The archive</h4>
+        <div class="span mono">Ongoing</div>
+        <ul>
+          <li>Gallery built from the asset drive, contributors credited</li>
+          <li>Back-fill from <b>Vinh's repo</b> plus any sheets that survive after 2014</li>
+          <li>Legends and record-holder profiles</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sec-note" style="margin-top:26px;"><b>On the stack:</b> Node and Postgres on Render, the same setup I already run for other clients, which keeps hosting cheap and predictable for a nonprofit and means one person can maintain it. Phase 1 is publishable on its own, so the site improves before the results system exists.</p>
+  </div>
+</section>
+
+<section id="ask" style="padding-bottom:64px;">
+  <div class="wrap">
+    <p class="eyebrow">06 · To start</p>
+    <div class="ask">
+      <h2 class="display">What I need from you</h2>
+      <div class="cols">
+        <ul>
+          <li><b>A copy of the old site repo</b> from Vinh. It holds the historical results and track records, and nothing else replaces it</li>
+          <li><b>Instagram collaborator access</b> plus admin on the Facebook page, so I can audit and start posting</li>
+          <li><b>GoDaddy and Zoho Sites logins</b>, or an invite to each</li>
+        </ul>
+        <ul>
+          <li><b>The last three race nights' result sheets</b>, in whatever format they exist. The real format drives the design</li>
+          <li><b>Who the coordinators are</b>, so they get logins, and who approves captions at board@</li>
+          <li><b>The mailing list</b> for the asset drive, and a capture day on the calendar: one Keirin morning, one race night</li>
+        </ul>
+      </div>
+      <div class="cta">
+        <div class="big">Give me those and week one starts.</div>
+        <div class="contact">Michael Bowers · <a href="mailto:mbowers@heedconsulting.ai">mbowers@heedconsulting.ai</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trackline" aria-hidden="true"><span class="tl-black"></span><span class="tl-red"></span><span class="tl-blue"></span></div>
+
+<footer>
+  <div class="wrap">
+    <p class="fine"><b>Notes.</b> Current site facts (training schedule, pricing, rebuild project, and the results archive ending in July 2014) come from encinovelodrome.org as of September 2026. The race night workflow is modeled on OnTheDay.net's promoter tools, which publish results online immediately after data entry, update series standings automatically, and submit to USA Cycling; that USAC submission is the one capability this plan intentionally leaves with them. Content calendar dates are relative to week one of launch, not fixed to a month. The handover section is drawn from Vinh's transition document dated to this month; the old-site repository is private, so its contents are described from that document rather than inspected. Everything here is a plan for discussion, not work already underway. Prepared by Michael Bowers, Heed Business Solutions.</p>
+  </div>
+</footer>
+
+</body>
+</html>
