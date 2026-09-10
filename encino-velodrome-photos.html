@@ -242,6 +242,28 @@
     .grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
   }
 
+
+  /* ---------- series nav (shared across the five working papers) ---------- */
+  nav.series{background:var(--surface);border-bottom:2px solid var(--ink);
+    font-family:"IBM Plex Mono","Courier New",monospace}
+  nav.series .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    padding-top:9px;padding-bottom:9px}
+  nav.series .series-lbl{font-size:10px;font-weight:600;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted);flex:none}
+  nav.series ul{display:flex;list-style:none;margin:0;padding:0;gap:6px;flex-wrap:wrap}
+  nav.series a{display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:11.5px;font-weight:500;letter-spacing:.04em;color:var(--muted);
+    border:1.5px solid var(--line);background:var(--card);padding:4px 9px;line-height:1.5}
+  nav.series a .nn{font-size:9.5px;font-weight:600;letter-spacing:.1em;opacity:.75}
+  nav.series a:hover{color:var(--ink);border-color:var(--ink)}
+  nav.series a:focus-visible{outline:3px solid var(--red,var(--stayer,#1B4F9C));outline-offset:2px}
+  nav.series a[aria-current="page"]{color:var(--ground);background:var(--ink);
+    border-color:var(--ink);font-weight:600}
+  nav.series a[aria-current="page"] .nn{color:var(--red-lt,#EF3340);opacity:1}
+  @media (max-width:640px){
+    nav.series .wrap{gap:8px}
+    nav.series .series-lbl{width:100%}
+  }
 </style>
 
 <header class="top">
@@ -253,6 +275,19 @@
     <div class="top-tag">Asset library · September 2026</div>
   </div>
 </header>
+
+<nav class="series" aria-label="Encino Velodrome working papers">
+  <div class="wrap">
+    <span class="series-lbl">Working papers</span>
+    <ul>
+      <li><a href="/encino-velodrome-proposal" title="What I would post, and the calendar"><span class="nn">01</span>The plan</a></li>
+      <li><a href="/encino-velodrome-plan" title="The website rebuild and race results"><span class="nn">02</span>The build</a></li>
+      <li><a href="/encino-velodrome-cutover" title="Moving the domain, safely"><span class="nn">03</span>The cutover</a></li>
+      <li><a href="/encino-velodrome-photos" aria-current="page" title="Every asset we hold"><span class="nn">04</span>The contact sheet</a></li>
+      <li><a href="/encino-velodrome-sources" title="Everything public about the track"><span class="nn">05</span>The paper trail</a></li>
+    </ul>
+  </div>
+</nav>
 
 <div class="hero">
   <div class="hero-banking" aria-hidden="true"></div>
